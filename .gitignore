@@ -64,3 +64,5 @@ crashlytics-build.properties
 #Folder with ultraheavy art files
 [Aa]ssets/Art/Others
 
+#UserSettings
+[Uu]serSettings/EditorUserSettings.asset
