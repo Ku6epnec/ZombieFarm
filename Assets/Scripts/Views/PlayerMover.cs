@@ -9,7 +9,7 @@ namespace ZombieFarm.Views
     {
         [Header("Movement Settings")]
         [SerializeField] private float movementSpeed = 1;
-        //[SerializeField] private float gravity = 20f;
+        [SerializeField] private float gravity = 9.8f;
 
         private Vector2 moveCommand;
         private PlayerInput playerInput;
@@ -46,6 +46,7 @@ namespace ZombieFarm.Views
         {
             Vector3 motion = new Vector3(moveCommand.x, 0, moveCommand.y);
             motion *= movementSpeed * movementSpeed * Time.deltaTime;
+            motion.y -= gravity;
 
             characterController.Move(transform.rotation * motion);
         }
