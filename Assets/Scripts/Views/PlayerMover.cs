@@ -26,17 +26,6 @@ namespace ZombieFarm.Views
             playerInput.onActionTriggered += OnPlayerInputActionTriggered;
         }
 
-        private void FixedUpdate()
-        {
-            if (moveCommand == Vector2.zero)
-            {
-                return;
-            }
-
-            Move();
-            Rotate();
-        }
-
         private void OnPlayerInputActionTriggered(InputAction.CallbackContext context)
         {
             switch (context.action.name)
@@ -49,6 +38,17 @@ namespace ZombieFarm.Views
                     Debug.LogError("Wrong action name!");
                     break;
             }
+        }
+
+        private void FixedUpdate()
+        {
+            if (moveCommand == Vector2.zero)
+            {
+                return;
+            }
+
+            Move();
+            Rotate();
         }
 
         private void Move()
