@@ -9,6 +9,7 @@ namespace ZombieFarm.Views
     {
         [Header("Movement Settings")]
         [SerializeField] private float movementSpeed = 1;
+        [SerializeField] private float rotationSpeed = 1;
         [SerializeField] private float gravity = 9.8f;
 
         private Vector2 moveCommand;
@@ -59,9 +60,9 @@ namespace ZombieFarm.Views
                 return;
             }
 
-            Vector3 relativePos = new Vector3(-moveCommand.x, 0, -moveCommand.y);
-            Quaternion rotation = Quaternion.LookRotation(relativePos, Vector3.up);
-            transform.rotation = rotation;
+            Vector3 target = new Vector3(-moveCommand.x, 0, -moveCommand.y);
+            Quaternion targetRotation = Quaternion.LookRotation(target, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed);
         }
     }
 }
