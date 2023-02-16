@@ -16,6 +16,8 @@ namespace ZombieFarm.Views
         private PlayerInput playerInput;
         private CharacterController characterController;
 
+        internal float CurrentMotionSpeed => moveCommand.magnitude;
+
         private void Awake()
         {
             playerInput = GetComponent<PlayerInput>();
@@ -26,6 +28,11 @@ namespace ZombieFarm.Views
 
         private void FixedUpdate()
         {
+            if (moveCommand == Vector2.zero)
+            {
+                return;
+            }
+
             Move();
             Rotate();
         }
@@ -55,11 +62,6 @@ namespace ZombieFarm.Views
 
         private void Rotate()
         {
-            if (moveCommand == Vector2.zero)
-            {
-                return;
-            }
-
             Vector3 target = new Vector3(-moveCommand.x, 0, -moveCommand.y);
             Quaternion targetRotation = Quaternion.LookRotation(target, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed);
