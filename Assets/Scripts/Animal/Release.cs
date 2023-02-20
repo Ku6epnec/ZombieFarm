@@ -7,8 +7,9 @@ public class Release : MonoBehaviour
 {
     //count
     [SerializeField] float necessaryTime = 3f;
-    [SerializeField] float elapsed = 0;
     [SerializeField] Slider slider;
+
+    private float elapsed = 0;
 
     private void Start()
     {
