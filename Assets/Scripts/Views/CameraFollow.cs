@@ -9,7 +9,7 @@ namespace ZombieFarm.Views
         [SerializeField] private Transform target;
 
         private void LateUpdate()
-        { 
+        {
             transform.position = target.position + cameraOffset;
         }
     }
