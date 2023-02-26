@@ -7,7 +7,8 @@ public class AnimalFollow : MonoBehaviour
     [SerializeField] private Transform target;
 
     private CharacterController controller;
-    [SerializeField] private bool isFollowing = false;
+    private float distanceBetween = 5f;
+    private bool isFollowing = false;
 
 
     private void Start()
@@ -22,7 +23,8 @@ public class AnimalFollow : MonoBehaviour
             Vector3 direction = target.position - transform.position;
             direction = direction.normalized;
             Vector3 velocity = direction * moveSpeed;
-            controller.Move(velocity * Time.deltaTime);
+            if (Vector3.Distance(target.position, transform.position) > distanceBetween)
+                controller.Move(velocity * Time.deltaTime);
         }
     }
 
