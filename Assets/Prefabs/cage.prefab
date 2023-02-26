@@ -126,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   necessaryTime: 3
   progressBar: {fileID: 2220093709332133308}
+  animal: {fileID: 0}
 --- !u!135 &2483226110707996331
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -271,6 +272,7 @@ GameObject:
   - component: {fileID: 555566005915738897}
   - component: {fileID: 5384819637275851961}
   - component: {fileID: 3630214592060889798}
+  - component: {fileID: 6919643967262997802}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -360,6 +362,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6919643967262997802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6011053491934792056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2581981397211874db6f39ebf6ed6897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _object: {fileID: 0}
 --- !u!1 &7011872008555588046
 GameObject:
   m_ObjectHideFlags: 0
