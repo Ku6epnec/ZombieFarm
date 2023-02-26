@@ -125,8 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   necessaryTime: 3
-  elapsed: 0
-  slider: {fileID: 2220093709332133308}
+  progressBar: {fileID: 2220093709332133308}
 --- !u!135 &2483226110707996331
 SphereCollider:
   m_ObjectHideFlags: 0
