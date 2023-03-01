@@ -1,32 +1,43 @@
-using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using ZombieFarm.Views;
 
 namespace ZombieFarm.AI
 {
     [RequireComponent(typeof(NavMeshAgent))]
     public class Zombie : MonoBehaviour
     { 
-        [SerializeField] private Transform player;
         [SerializeField] private float distanceToPlayerForAttack;
         [SerializeField] private float distanceToPlayerForChase;
         [SerializeField] private GameObject walkingPointsParent;
-        [SerializeField][Range(0, 100)] private float walkingProbability;
+        [SerializeField][Range(0, 1000)] private int walkingProbability;
 
+        private Transform player;
         private NavMeshAgent agent;
-        private Transform[] walkingPoints;
-        private const float accuracy = 0.001f;
-        private Vector3? walkingTarget;
+        private List<Transform> walkingPoints;
 
         private void Awake()
         {
+            player = Root.Player;
             agent = GetComponent<NavMeshAgent>();
-            walkingPoints = walkingPointsParent.GetComponentsInChildren<Transform>();
+            walkingPoints = GetWalkingPoints();
         }
 
-        private void Update()
+        private List<Transform> GetWalkingPoints()
+        {
+            WalkingPoint[] points = walkingPointsParent.GetComponentsInChildren<WalkingPoint>();
+            List<Transform> transformPoints = new List<Transform>();
+
+            foreach (WalkingPoint point in points)
+            {
+                transformPoints.Add(point.transform);    
+            }
+
+            return transformPoints;
+        }
+
+        private void FixedUpdate()
         {
             if (TryChase() == true)
             {
@@ -39,25 +50,15 @@ namespace ZombieFarm.AI
 
         private bool TryWalk()
         {
-            //dirty
-            if (walkingTarget != null)
+            if (agent.remainingDistance > 0.6f)
             {
-                if (Vector3.Distance(transform.position, walkingTarget.Value) > accuracy)
-                {
-                    return true;
-                }
-                else
-                {
-                    walkingTarget = null;
-                    return false;
-                }
+                return true;
             }
 
-            if (Random.Range(0, 100) < walkingProbability)
+            if (Random.Range(0, 1000) < walkingProbability)
             {
-                int pointToMove = Random.Range(0, walkingPoints.Length);
-                walkingTarget = walkingPoints[pointToMove].position;
-                agent.SetDestination(walkingTarget.Value);
+                int pointToMove = Random.Range(0, walkingPoints.Count);
+                agent.SetDestination(walkingPoints[pointToMove].position);
                 return true;
             }
 
