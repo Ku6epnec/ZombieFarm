@@ -166,11 +166,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4656119312787569634, guid: fa7fb9bc35ea1e746a04ba2a6acf14dc,
-        type: 3}
-      propertyPath: distanceToPlayerForChase
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 7987316759743317609, guid: fa7fb9bc35ea1e746a04ba2a6acf14dc,
         type: 3}
       propertyPath: m_LocalScale.x
