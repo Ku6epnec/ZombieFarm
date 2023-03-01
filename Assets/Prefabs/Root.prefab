@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5132448535112985823}
   m_Layer: 0
-  m_Name: zombieWalkingPoints
+  m_Name: WalkingPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,7 +68,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837371235925127101}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 34.93, y: -8.595001, z: -80.63}
+  m_LocalPosition: {x: -21.826653, y: 34.900482, z: 29.439278}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -76,8 +76,8 @@ Transform:
   - {fileID: 1149924856081566631}
   - {fileID: 5329184408896070614}
   - {fileID: 4884874410238545775}
-  m_Father: {fileID: 8942437822678751037}
-  m_RootOrder: 13
+  m_Father: {fileID: 3177421075037819366}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3579879022115191417
 GameObject:
@@ -195,12 +195,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4945794036430080038}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 34.93, y: -8.595001, z: -80.63}
+  m_LocalPosition: {x: -27.226654, y: 34.900482, z: 29.749275}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8942437822678751037}
-  m_RootOrder: 12
+  m_Father: {fileID: 3177421075037819366}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4344105976384228041
 MeshFilter:
@@ -287,9 +287,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToPlayerForAttack: 1
-  distanceToPlayerForChase: 5
+  distanceToPlayerForChase: 15
   walkingPointsParent: {fileID: 1837371235925127101}
   walkingProbability: 3
+--- !u!1 &8877474650441403622
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3177421075037819366}
+  m_Layer: 0
+  m_Name: Monsters
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3177421075037819366
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8877474650441403622}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 56.756653, y: -43.495483, z: -110.069275}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5132448535112985823}
+  - {fileID: 5885914746574812385}
+  m_Father: {fileID: 8942437822678751037}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8942437822534473912
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,8 +566,7 @@ Transform:
   - {fileID: 8942437823461318068}
   - {fileID: 8942437822735082512}
   - {fileID: 217263259355393793}
-  - {fileID: 5885914746574812385}
-  - {fileID: 5132448535112985823}
+  - {fileID: 3177421075037819366}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

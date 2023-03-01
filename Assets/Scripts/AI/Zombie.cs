@@ -19,9 +19,13 @@ namespace ZombieFarm.AI
 
         private void Awake()
         {
-            player = Root.Player;
             agent = GetComponent<NavMeshAgent>();
             walkingPoints = GetWalkingPoints();
+        }
+
+        private void Start()
+        {
+            player = Root.Player;
         }
 
         private List<Transform> GetWalkingPoints()
