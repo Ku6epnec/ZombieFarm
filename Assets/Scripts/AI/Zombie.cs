@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -11,31 +12,122 @@ namespace ZombieFarm.AI
         [SerializeField] private float distanceToPlayerForAttack;
         [SerializeField] private float distanceToPlayerForChase;
         [SerializeField] private ProgressBar healthProgressBar;
+        [SerializeField] private Transform player;
 
         [Header("Walking")]
         [SerializeField] private GameObject walkingPointsParent;
         [SerializeField][Range(0, 1000)] private int walkingProbability;
 
-        private Transform player;
         private NavMeshAgent agent;
         private List<Transform> walkingPoints;
+        private ZombieState currentState;
+
+        private event Action ChangeState = () => { };
+
+        private bool IsCurrentStateUpdatableInEveryFrame => currentState == ZombieState.Chase;
 
         private void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
             walkingPoints = GetWalkingPoints();
+            currentState = GetCurrentZombieState();
 
             healthProgressBar.ProcessCompleted += Die;
-        }
-
-        private void Start()
-        {
-            player = Root.Player;
+            ChangeState += UpdateAction;
         }
 
         private void OnDestroy()
         {
             healthProgressBar.ProcessCompleted -= Die;
+            ChangeState -= UpdateAction;
+        }
+
+        private void FixedUpdate()
+        {
+            RefreshCurrentState();
+
+            if (IsCurrentStateUpdatableInEveryFrame == true)
+            {
+                UpdateAction();
+            }
+        }
+
+        private void Walk()
+        {
+            int pointToMove = UnityEngine.Random.Range(0, walkingPoints.Count);
+            agent.SetDestination(walkingPoints[pointToMove].position);
+        }
+
+        private void Chase()
+        {
+            agent.SetDestination(player.transform.position);
+        }
+
+        private void Attack()
+        {
+            healthProgressBar.StartProgress();
+        }
+
+        private void Die()
+        {
+            Destroy(this.gameObject);
+        }
+
+        private void RefreshCurrentState()
+        {
+            ZombieState lastZombieState = currentState;
+            currentState = GetCurrentZombieState();
+
+            if (currentState != lastZombieState)
+            {
+                ChangeState();
+            }
+        }
+
+        private void UpdateAction()
+        {
+            healthProgressBar.gameObject.SetActive(currentState == ZombieState.Chase || currentState == ZombieState.Attack);
+
+            switch (currentState)
+            {
+                case ZombieState.Attack:
+                    Attack();
+                    break;
+
+                case ZombieState.Chase:
+                    Chase();
+                    break;
+
+                case ZombieState.Walking:
+                    Walk();
+                    break;
+
+                case ZombieState.Idle:
+                default:
+                    break;
+            }
+        }
+
+        private ZombieState GetCurrentZombieState()
+        {
+            float distanceToPlayer = Vector3.Distance(this.transform.position, player.transform.position);
+
+            if (distanceToPlayer < distanceToPlayerForAttack)
+            { 
+                return ZombieState.Attack;
+            }
+
+            if (distanceToPlayer < distanceToPlayerForChase)
+            { 
+                return ZombieState.Chase;
+            }
+
+            if (agent.hasPath && agent.remainingDistance > 0.6f || UnityEngine.Random.Range(0, 1000) < walkingProbability)
+            { 
+                return ZombieState.Walking;
+            } 
+
+            return ZombieState.Idle;
         }
 
         private List<Transform> GetWalkingPoints()
@@ -49,71 +141,6 @@ namespace ZombieFarm.AI
             }
 
             return transformPoints;
-        }
-
-        private void FixedUpdate()
-        {
-            if (TryChase() == true)
-            {
-                TryAttack();
-                return;
-            }
-
-            TryWalk();
-        }
-
-        private bool TryWalk()
-        {
-            if (agent.remainingDistance > 0.6f)
-            {
-                return true;
-            }
-
-            if (Random.Range(0, 1000) < walkingProbability)
-            {
-                int pointToMove = Random.Range(0, walkingPoints.Count);
-                agent.SetDestination(walkingPoints[pointToMove].position);
-                return true;
-            }
-
-            return false;
-        }
-
-        private bool TryChase()
-        {
-            bool canChase = Vector3.Distance(this.transform.position, player.transform.position) < distanceToPlayerForChase;
-
-            healthProgressBar.gameObject.SetActive(canChase);
-
-            if (canChase == true)
-            {
-                agent.SetDestination(player.transform.position);
-                return true;
-            }
-
-            healthProgressBar.ResetProgress();
-            return false;
-        }
-
-        private bool TryAttack()
-        {
-            if (Vector3.Distance(this.transform.position, player.transform.position) < distanceToPlayerForAttack)
-            {
-                Attack();
-                return true;
-            }
-
-            return false;
-        }
-
-        private void Attack()
-        {
-            healthProgressBar.StartProgress();
-        }
-
-        private void Die()
-        {
-            Destroy(this.gameObject);
         }
     }
 }
