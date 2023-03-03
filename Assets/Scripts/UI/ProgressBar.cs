@@ -12,7 +12,6 @@ public class ProgressBar : MonoBehaviour
     [SerializeField] float necessaryTime = 3f;
 
     private Slider slider;
-    private bool isProcessStarted = false;
 
     private void Awake()
     {
@@ -28,24 +27,16 @@ public class ProgressBar : MonoBehaviour
 
     public void StartProgress()
     {
-        if (isProcessStarted == true)
-        {
-            return;
-        }
-
         StartCoroutine(SetProgress());
     }
 
     public void ResetProgress()
     {
         slider.value = 0;
-        isProcessStarted = false;
     }
 
     private IEnumerator SetProgress()
     {
-        isProcessStarted = true;
-
         while (slider.value < necessaryTime)
         { 
             slider.value += Time.fixedDeltaTime;
@@ -54,7 +45,6 @@ public class ProgressBar : MonoBehaviour
 
         if (slider.value >= necessaryTime)
         {
-            isProcessStarted = false;
             ProcessCompleted();
             yield break;
         }
