@@ -10,6 +10,9 @@ namespace ZombieFarm.AI
     { 
         [SerializeField] private float distanceToPlayerForAttack;
         [SerializeField] private float distanceToPlayerForChase;
+        [SerializeField] private ProgressBar healthProgressBar;
+
+        [Header("Walking")]
         [SerializeField] private GameObject walkingPointsParent;
         [SerializeField][Range(0, 1000)] private int walkingProbability;
 
@@ -21,11 +24,18 @@ namespace ZombieFarm.AI
         {
             agent = GetComponent<NavMeshAgent>();
             walkingPoints = GetWalkingPoints();
+
+            healthProgressBar.ProcessCompleted += Die;
         }
 
         private void Start()
         {
             player = Root.Player;
+        }
+
+        private void OnDestroy()
+        {
+            healthProgressBar.ProcessCompleted -= Die;
         }
 
         private List<Transform> GetWalkingPoints()
@@ -71,12 +81,17 @@ namespace ZombieFarm.AI
 
         private bool TryChase()
         {
-            if (Vector3.Distance(this.transform.position, player.transform.position) < distanceToPlayerForChase)
+            bool canChase = Vector3.Distance(this.transform.position, player.transform.position) < distanceToPlayerForChase;
+
+            healthProgressBar.gameObject.SetActive(canChase);
+
+            if (canChase == true)
             {
                 agent.SetDestination(player.transform.position);
                 return true;
             }
 
+            healthProgressBar.ResetProgress();
             return false;
         }
 
@@ -84,12 +99,21 @@ namespace ZombieFarm.AI
         {
             if (Vector3.Distance(this.transform.position, player.transform.position) < distanceToPlayerForAttack)
             {
-                //TODO: attack actions
-                Debug.LogError("Attack!");
+                Attack();
                 return true;
             }
 
             return false;
+        }
+
+        private void Attack()
+        {
+            healthProgressBar.StartProgress();
+        }
+
+        private void Die()
+        {
+            Destroy(this.gameObject);
         }
     }
 }
