@@ -736,6 +736,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8942437822678751037}
     m_Modifications:
+    - target: {fileID: 94661977709154574, guid: 9cd9943fddfeb38478ed585dab6487e7,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3148990438845501692, guid: 9cd9943fddfeb38478ed585dab6487e7,
         type: 3}
       propertyPath: m_RootOrder
@@ -791,10 +796,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5131528949365291768, guid: 9cd9943fddfeb38478ed585dab6487e7,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 8065758933510448171}
     - target: {fileID: 8977962778062786044, guid: 9cd9943fddfeb38478ed585dab6487e7,
         type: 3}
       propertyPath: m_Name
       value: Monsters
+      objectReference: {fileID: 0}
+    - target: {fileID: 9134614028406287952, guid: 9cd9943fddfeb38478ed585dab6487e7,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cd9943fddfeb38478ed585dab6487e7, type: 3}
