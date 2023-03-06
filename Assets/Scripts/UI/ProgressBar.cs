@@ -12,6 +12,7 @@ public class ProgressBar : MonoBehaviour
     [SerializeField] float necessaryTime = 3f;
 
     private Slider slider;
+    private IEnumerator progress;
 
     private void Awake()
     {
@@ -27,12 +28,18 @@ public class ProgressBar : MonoBehaviour
 
     public void StartProgress()
     {
-        StartCoroutine(SetProgress());
+        progress = SetProgress();
+        StartCoroutine(progress);
     }
 
     public void ResetProgress()
     {
         slider.value = 0;
+
+        if (progress != null)
+        {
+            StopCoroutine(progress);
+        }
     }
 
     private IEnumerator SetProgress()
