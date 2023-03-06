@@ -22,7 +22,8 @@ namespace ZombieFarm.AI
         private List<Transform> walkingPoints;
         private ZombieState currentState;
 
-        private event Action ChangeState = () => { };
+        public event Action<ZombieState> OnChangeState = (newState) => { };
+        public event Action OnDie = () => { };
 
         private bool IsCurrentStateUpdatableInEveryFrame => currentState == ZombieState.Chase;
 
@@ -30,16 +31,20 @@ namespace ZombieFarm.AI
         {
             agent = GetComponent<NavMeshAgent>();
             walkingPoints = GetWalkingPoints();
-            currentState = GetCurrentZombieState();
 
             healthProgressBar.ProcessCompleted += Die;
-            ChangeState += UpdateAction;
+            OnChangeState += UpdateAction;
+        }
+
+        private void Start()
+        {
+            currentState = ZombieState.Idle;
         }
 
         private void OnDestroy()
         {
             healthProgressBar.ProcessCompleted -= Die;
-            ChangeState -= UpdateAction;
+            OnChangeState -= UpdateAction;
         }
 
         private void FixedUpdate()
@@ -48,7 +53,7 @@ namespace ZombieFarm.AI
 
             if (IsCurrentStateUpdatableInEveryFrame == true)
             {
-                UpdateAction();
+                UpdateAction(currentState);
             }
         }
 
@@ -61,6 +66,7 @@ namespace ZombieFarm.AI
         private void Chase()
         {
             agent.SetDestination(player.transform.position);
+            healthProgressBar.ResetProgress();
         }
 
         private void Attack()
@@ -70,7 +76,7 @@ namespace ZombieFarm.AI
 
         private void Die()
         {
-            Destroy(this.gameObject);
+            OnDie();
         }
 
         private void RefreshCurrentState()
@@ -80,15 +86,15 @@ namespace ZombieFarm.AI
 
             if (currentState != lastZombieState)
             {
-                ChangeState();
+                OnChangeState(currentState);
             }
         }
 
-        private void UpdateAction()
+        private void UpdateAction(ZombieState newState)
         {
-            healthProgressBar.gameObject.SetActive(currentState == ZombieState.Chase || currentState == ZombieState.Attack);
+            healthProgressBar.gameObject.SetActive(newState == ZombieState.Chase || newState == ZombieState.Attack);
 
-            switch (currentState)
+            switch (newState)
             {
                 case ZombieState.Attack:
                     Attack();
