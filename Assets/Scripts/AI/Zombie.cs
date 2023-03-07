@@ -8,9 +8,13 @@ namespace ZombieFarm.AI
 {
     [RequireComponent(typeof(NavMeshAgent))]
     public class Zombie : MonoBehaviour
-    { 
-        [SerializeField] private float distanceToPlayerForAttack;
-        [SerializeField] private float distanceToPlayerForChase;
+    {
+        [SerializeField] private float speedForWalking = 2f;
+        [SerializeField] private float speedForChasing = 6f;
+        [SerializeField] private float distanceToPlayerForAttack = 2f;
+        [SerializeField] private float distanceToPlayerForChase = 15f;
+
+        [Header("References")]
         [SerializeField] private ProgressBar healthProgressBar;
         [SerializeField] private Transform player;
 
@@ -59,18 +63,26 @@ namespace ZombieFarm.AI
 
         private void Walk()
         {
+            agent.speed = speedForWalking;
+
             int pointToMove = UnityEngine.Random.Range(0, walkingPoints.Count);
             agent.SetDestination(walkingPoints[pointToMove].position);
         }
 
         private void Chase()
         {
+            agent.speed = speedForChasing;
+            agent.isStopped = false;
+
             agent.SetDestination(player.transform.position);
             healthProgressBar.ResetProgress();
         }
 
         private void Attack()
         {
+            agent.speed = 0;
+            agent.isStopped = true;
+
             healthProgressBar.StartProgress();
         }
 
