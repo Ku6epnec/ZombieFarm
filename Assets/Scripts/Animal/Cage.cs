@@ -6,17 +6,17 @@ using UnityEngine.UI;
 public class Cage : MonoBehaviour
 {
     //count
-    [SerializeField] float necessaryTime = 3f;
-    [SerializeField] Slider progressBar;
     [SerializeField] AnimalFollow animal;
+    [SerializeField] ProgressBar progressBar;
 
-    private float elapsed = 0;
-
-    private void Start()
+    private void Awake()
     {
-        if (progressBar == null) progressBar = GetComponentInChildren<Slider>();
-        progressBar.maxValue = necessaryTime;
-        progressBar.gameObject.SetActive(false);
+        progressBar.ProcessCompleted += Free;
+    }
+
+    private void OnDestroy()
+    {
+        progressBar.ProcessCompleted -= Free;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,17 +24,7 @@ public class Cage : MonoBehaviour
         if (other.tag == "Player")
         {
             progressBar.gameObject.SetActive(true);
-            progressBar.value = 0;
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            elapsed += Time.fixedDeltaTime;
-            progressBar.value = elapsed;
-            if (elapsed > necessaryTime) Free();
+            progressBar.StartProgress();
         }
     }
 
@@ -42,8 +32,8 @@ public class Cage : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            elapsed = 0;
             progressBar.gameObject.SetActive(false);
+            progressBar.ResetProgress();
         }
     }
 
