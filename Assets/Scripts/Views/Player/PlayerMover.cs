@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace ZombieFarm.Views
+namespace ZombieFarm.Views.Player
 {
     [RequireComponent(typeof(PlayerInput), typeof(CharacterController))]
     public class PlayerMover : MonoBehaviour

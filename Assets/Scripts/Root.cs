@@ -2,10 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZombieFarm.Views;
+using ZombieFarm.Managers.Interfaces;
+using ZombieFarm.Managers;
 
 public class Root : MonoBehaviour
 {
+    [SerializeField] Transform player;
+    [SerializeField] ZombieManager zombieManager;
+
     private static Root instance;
+
     private void Awake()
     {
         instance = this;
@@ -15,12 +21,15 @@ public class Root : MonoBehaviour
     {
         get
         {
-            return instance.RefreshPlayerMover().transform;
+            return instance.player;
         }
     }
 
-    private PlayerMover RefreshPlayerMover()
+    public static IEnemyManager ZombieManager
     {
-        return GetComponentInChildren<PlayerMover>();
+        get
+        {
+            return instance.zombieManager;
+        }
     }
 }

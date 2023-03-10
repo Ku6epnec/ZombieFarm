@@ -9,6 +9,9 @@ namespace ZombieFarm.AI
     [RequireComponent(typeof(NavMeshAgent))]
     public class Zombie : MonoBehaviour
     {
+        public event Action<ZombieState> OnChangeState = (newState) => { };
+        public event Action<Zombie> OnDie = (Zombie) => { };
+
         [SerializeField] private float speedForWalking = 2f;
         [SerializeField] private float speedForChasing = 6f;
         [SerializeField] private float distanceToPlayerForAttack = 2f;
@@ -16,7 +19,6 @@ namespace ZombieFarm.AI
 
         [Header("References")]
         [SerializeField] private ProgressBar healthProgressBar;
-        [SerializeField] private Transform player;
 
         [Header("Walking")]
         [SerializeField] private GameObject walkingPointsParent;
@@ -25,9 +27,6 @@ namespace ZombieFarm.AI
         private NavMeshAgent agent;
         private List<Transform> walkingPoints;
         private ZombieState currentState;
-
-        public event Action<ZombieState> OnChangeState = (newState) => { };
-        public event Action OnDie = () => { };
 
         private bool IsCurrentStateUpdatableInEveryFrame => currentState == ZombieState.Chase;
 
@@ -74,7 +73,7 @@ namespace ZombieFarm.AI
             agent.speed = speedForChasing;
             agent.isStopped = false;
 
-            agent.SetDestination(player.transform.position);
+            agent.SetDestination(Root.Player.transform.position);
             healthProgressBar.ResetProgress();
         }
 
@@ -88,7 +87,7 @@ namespace ZombieFarm.AI
 
         private void Die()
         {
-            OnDie();
+            OnDie(this);
         }
 
         private void RefreshCurrentState()
@@ -128,7 +127,7 @@ namespace ZombieFarm.AI
 
         private ZombieState GetCurrentZombieState()
         {
-            float distanceToPlayer = Vector3.Distance(this.transform.position, player.transform.position);
+            float distanceToPlayer = Vector3.Distance(this.transform.position, Root.Player.transform.position);
 
             if (distanceToPlayer < distanceToPlayerForAttack)
             { 
