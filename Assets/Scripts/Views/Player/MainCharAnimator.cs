@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-namespace ZombieFarm.Views
+namespace ZombieFarm.Views.Player
 {
     [RequireComponent(typeof(PlayerMover), typeof(Animator))]
     public class MainCharAnimator : MonoBehaviour
@@ -12,7 +12,6 @@ namespace ZombieFarm.Views
         private float stateTransitionStep = 0.02f;
 
         private const string animatorParameter_CurrentMotionSpeed_Float_Name = "CurrentMotionSpeed";
-        private const string animatorParameter___Name = "CurrentMotionSpeed";
         private static readonly int animatorParameter_CurrentMotionSpeed_Float_Id = Animator.StringToHash(animatorParameter_CurrentMotionSpeed_Float_Name);
 
         private void Awake()
@@ -35,11 +34,6 @@ namespace ZombieFarm.Views
 
             motionSpeed = Mathf.MoveTowards(motionSpeed, playerMover.CurrentMotionSpeed, stateTransitionStep);
             animator.SetFloat(animatorParameter_CurrentMotionSpeed_Float_Id, motionSpeed);
-        }
-
-        private void Attack()
-        { 
-            
         }
     }
 }

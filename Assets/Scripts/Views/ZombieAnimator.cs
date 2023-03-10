@@ -39,7 +39,7 @@ namespace ZombieFarm.Views
             animator.SetInteger(animatorParameter_StateIndex_Int_Id, (int)newState);
         }
 
-        private void Die()
+        private void Die(Zombie _)
         {
             animator.SetTrigger(animatorParameter_Death_Trigger_Id);
 

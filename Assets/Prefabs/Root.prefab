@@ -259,6 +259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8f616cf9619cb44a93d723abd905ef7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 8065758933510448171}
+  zombieManager: {fileID: 1464619162750591380}
 --- !u!1 &8942437822713572962
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,6 +1069,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cd9943fddfeb38478ed585dab6487e7, type: 3}
+--- !u!114 &1464619162750591380 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1439004409693364366, guid: 9cd9943fddfeb38478ed585dab6487e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 552537289251930394}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dab5b338ac83b9489d7787e4d2f6041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3177421075037819366 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3148990438845501692, guid: 9cd9943fddfeb38478ed585dab6487e7,
