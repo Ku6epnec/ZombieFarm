@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using ZombieFarm.Views;
-using ZombieFarm.Managers.Interfaces;
 using ZombieFarm.Managers;
+using ZombieFarm.Managers.Interfaces;
+using ZombieFarm.Views.Player;
 
 public class Root : MonoBehaviour
 {
-    [SerializeField] Transform player;
+    [SerializeField] PlayerMover player;
     [SerializeField] ZombieManager zombieManager;
 
     private static Root instance;
@@ -17,7 +15,7 @@ public class Root : MonoBehaviour
         instance = this;
     }
 
-    public static Transform Player
+    public static PlayerMover Player
     {
         get
         {
