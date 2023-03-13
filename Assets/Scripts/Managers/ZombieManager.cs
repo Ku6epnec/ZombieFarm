@@ -10,15 +10,12 @@ namespace ZombieFarm.Managers
     {
         public event Action OnMonsterAttack = () => { };
 
-        private List<Zombie> zombies;
+        [SerializeField] private List<Zombie> zombies;
 
         private void Awake()
         {
-            Zombie[] _zombies = GetComponentsInChildren<Zombie>();
-
-            foreach (Zombie zombie in _zombies)
+            foreach (Zombie zombie in zombies)
             {
-                zombies.Add(zombie);
                 zombie.OnChangeState += OnChangeZombieState;
                 zombie.OnDie += OnZombieDie;
             }
