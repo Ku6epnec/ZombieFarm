@@ -7,6 +7,7 @@ namespace ZombieFarm.Views
     {
         [SerializeField] private Vector3 cameraOffset;
         [SerializeField] private Transform target;
+        [SerializeField][Range(0, 1)] private float ivisibleForObstacles;
 
         private void LateUpdate()
         { 
@@ -31,7 +32,7 @@ namespace ZombieFarm.Views
             foreach (Material material in mesh.materials)
             {
                 Color _color = material.color;
-                _color.a = 0.2f;
+                _color.a = ivisibleForObstacles;
                 material.color = _color;
             }
 
@@ -42,9 +43,13 @@ namespace ZombieFarm.Views
         {
             GameObject obstacle = collider.gameObject;
             MeshRenderer mesh = obstacle.GetComponent<MeshRenderer>();
-            Color _color = mesh.material.color;
-            _color.a = 1.0f;
-            mesh.material.color = _color;
+            foreach (Material material in mesh.materials)
+            {
+                Color _color = material.color;
+                _color.a = 1.0f;
+                material.color = _color;
+            };
+
             Debug.Log("Обзор перестало загораживать: " + obstacle);
         }
     }
