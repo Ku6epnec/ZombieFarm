@@ -29,7 +29,7 @@ public class ProgressBar : MonoBehaviour
         if (middleLane)
         {
             middleLaneWidth = middleLane.rect.width;
-            middleLane.sizeDelta = new Vector2(0, middleLane.rect.height);
+            middleLane.sizeDelta = new Vector2(middleLaneWidth, middleLane.rect.height);
         }
        // middleLane.localScale = new Vector3(0, 1, 1);
     }
@@ -44,7 +44,7 @@ public class ProgressBar : MonoBehaviour
     {
         slider.value = 0;
         if (middleLane)
-            middleLane.sizeDelta = new Vector2(0, middleLane.rect.height);
+            middleLane.sizeDelta = new Vector2(middleLaneWidth, middleLane.rect.height);
 
         if (progress != null)
         {
@@ -59,7 +59,7 @@ public class ProgressBar : MonoBehaviour
             slider.value += Time.fixedDeltaTime;
             //middleLane.localScale = new Vector3(slider.value/necessaryTime, 1, 1);
             if (middleLane)
-                middleLane.sizeDelta = new Vector2(slider.value / necessaryTime * middleLaneWidth, middleLane.rect.height);
+                middleLane.sizeDelta = new Vector2(middleLaneWidth - slider.value / necessaryTime * middleLaneWidth, middleLane.rect.height);
             yield return null;
         }
 

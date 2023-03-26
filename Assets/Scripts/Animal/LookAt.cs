@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class LookAt : MonoBehaviour
 {
+    [Tooltip("Main camera by default")]
     [SerializeField] GameObject _object;
+
+    private void Start()
+    {
+        if (_object == null)
+            _object = Camera.main.gameObject;
+    }
 
     private void Update()
     {
