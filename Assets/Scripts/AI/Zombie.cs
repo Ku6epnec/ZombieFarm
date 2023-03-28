@@ -87,6 +87,7 @@ namespace ZombieFarm.AI
 
         private void Die()
         {
+            healthProgressBar.gameObject.SetActive(false);
             OnDie(this);
         }
 
