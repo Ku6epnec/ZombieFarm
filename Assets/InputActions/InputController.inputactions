@@ -74,7 +74,7 @@
                 {
                     "name": "",
                     "id": "537d5732-d2e0-44ef-a413-115b80363b3e",
-                    "path": "<Joystick>/stick",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -86,6 +86,17 @@
                     "name": "",
                     "id": "5a27a178-5d17-41a1-9e83-6a7b983b6d4a",
                     "path": "<AndroidJoystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e6d800ee-a364-499b-8918-7af135a90b6c",
+                    "path": "<Joystick>/stick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
