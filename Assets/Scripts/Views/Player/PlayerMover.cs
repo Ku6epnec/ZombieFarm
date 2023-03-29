@@ -12,9 +12,12 @@ namespace ZombieFarm.Views.Player
         [SerializeField] private float rotationSpeed = 1;
         [SerializeField] private float gravity = 9.8f;
 
+        [SerializeField] private DynamicJoystick _joystick;
+
         private Vector2 moveCommand;
         private PlayerInput playerInput;
         private CharacterController characterController;
+        private Rigidbody _rigidbody;
 
         internal float CurrentMotionSpeed => moveCommand.magnitude;
 
@@ -22,6 +25,7 @@ namespace ZombieFarm.Views.Player
         {
             playerInput = GetComponent<PlayerInput>();
             characterController = GetComponent<CharacterController>();
+            _rigidbody = GetComponent<Rigidbody>();
 
             playerInput.onActionTriggered += OnPlayerInputActionTriggered;
         }
@@ -56,6 +60,8 @@ namespace ZombieFarm.Views.Player
             Vector3 motion = new Vector3(-moveCommand.x, 0, -moveCommand.y);
             motion *= movementSpeed * Time.deltaTime;
             motion.y -= gravity;
+
+            _rigidbody.velocity = new Vector3(_joystick.Horizontal * movementSpeed, _rigidbody.velocity.y, _joystick.Vertical * movementSpeed);
 
             characterController.Move(motion);
         }
