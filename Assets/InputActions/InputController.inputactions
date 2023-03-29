@@ -73,9 +73,20 @@
                 },
                 {
                     "name": "",
-                    "id": "78f95f9f-87ca-438e-b29c-0ab6a47f22b8",
+                    "id": "537d5732-d2e0-44ef-a413-115b80363b3e",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5a27a178-5d17-41a1-9e83-6a7b983b6d4a",
                     "path": "<AndroidJoystick>/stick",
-                    "interactions": "Hold",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Move",
