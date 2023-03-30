@@ -8,8 +8,8 @@ public class Cage : MonoBehaviour
     [SerializeField] ProgressBar progressBar;
     [SerializeField] private Transform cageModel;
     [SerializeField] private ParticleSystem disappearVFX;
+    [SerializeField] private float destroyTimeout = 2f;
 
-    private float destroyTimeout = 0f;
     private void Awake()
     {
         progressBar.ProcessCompleted += Free;
@@ -47,7 +47,7 @@ public class Cage : MonoBehaviour
         
         disappearVFX.gameObject.SetActive(true);
         
-        StartCoroutine(DestroyTimer(disappearVFX.main.duration));
+        StartCoroutine(DestroyTimer(destroyTimeout));
     }
 
     private IEnumerator DestroyTimer(float destroyTimeout)
