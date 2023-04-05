@@ -26,6 +26,7 @@ public class Cage : MonoBehaviour
         {
             progressBar.gameObject.SetActive(true);
             progressBar.StartProgress();
+            other.GetComponent<ZombieFarm.Views.Player.PlayerView>().OnAttack();
         }
     }
 
