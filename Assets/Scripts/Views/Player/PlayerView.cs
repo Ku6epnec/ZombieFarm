@@ -22,7 +22,7 @@ namespace ZombieFarm.Views.Player
             Root.ZombieManager.OnMonsterAttack -= OnAttack;
         }
 
-        private void OnAttack()
+        public void OnAttack()
         {
             RefreshCurrentState(PlayerState.Attack);
         }
