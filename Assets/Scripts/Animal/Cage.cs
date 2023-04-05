@@ -8,7 +8,7 @@ public class Cage : MonoBehaviour
     [SerializeField] ProgressBar progressBar;
     [SerializeField] private Transform cageModel;
     [SerializeField] private ParticleSystem disappearVFX;
-    [SerializeField] private float destroyTimeout = 2f;
+    private float destroyTimeout = 2f;
 
     private void Awake()
     {
