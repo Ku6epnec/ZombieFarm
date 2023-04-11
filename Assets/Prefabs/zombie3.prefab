@@ -223,7 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedForWalking: 2
   speedForChasing: 10
-  distanceToPlayerForAttack: 2
+  distanceToPlayerForAttack: 4
   distanceToPlayerForChase: 15
   healthProgressBar: {fileID: 9090548676054563748}
   walkingPointsParent: {fileID: 0}
