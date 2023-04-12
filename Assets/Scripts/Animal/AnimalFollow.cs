@@ -5,6 +5,7 @@ public class AnimalFollow : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private Transform target;
+    [SerializeField] private GameObject vfx;
 
     private CharacterController controller;
     private float distanceBetween = 5f;
@@ -32,6 +33,11 @@ public class AnimalFollow : MonoBehaviour
     {
         isFollowing = true;
 
-        if (targetObject != null) target = targetObject.transform;
+        if (targetObject != null)
+        { 
+            target = targetObject.transform;
+        } 
+
+        vfx.SetActive(true);
     }
 }
