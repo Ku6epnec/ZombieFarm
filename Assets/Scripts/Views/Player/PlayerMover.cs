@@ -12,7 +12,7 @@ namespace ZombieFarm.Views.Player
         [SerializeField] private float rotationSpeed = 1;
         [SerializeField] private float gravity = 9.8f;
 
-        [SerializeField] private DynamicJoystick _joystick;
+        [SerializeField] private FloatingJoystick _joystick;
 
         private Vector2 moveCommand;
         private PlayerInput playerInput;
