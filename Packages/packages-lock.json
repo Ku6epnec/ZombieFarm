@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.scroodge.unitytools": {
+      "version": "https://github.com/ScroodgeM/UnityTools.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "873ecd4034f7f4bcd797f5d282e305b02ff68a25"
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
