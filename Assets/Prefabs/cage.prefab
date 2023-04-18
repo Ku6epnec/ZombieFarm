@@ -51,7 +51,6 @@ MonoBehaviour:
   progressBar: {fileID: 6626031990652524857}
   cageModel: {fileID: 1523942098824264105}
   disappearVFX: {fileID: 303242583822971850}
-  destroyTimeout: 2
 --- !u!135 &2483226110707996331
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -362,11 +361,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -150
-      objectReference: {fileID: 0}
-    - target: {fileID: 5196117087091987157, guid: e74b94b61ac4cb842859ece945628c3d,
-        type: 3}
-      propertyPath: necessaryTime
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5293204749370377828, guid: e74b94b61ac4cb842859ece945628c3d,
         type: 3}

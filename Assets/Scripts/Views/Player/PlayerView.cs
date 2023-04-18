@@ -9,6 +9,8 @@ namespace ZombieFarm.Views.Player
         
         private PlayerState currentPlayerState;
         private float deltaSpeed = 0.05f;
+        private bool destroyObjectState = true;
+        private IRemovableObject removableObject;
 
         private void Start()
         {
@@ -22,14 +24,30 @@ namespace ZombieFarm.Views.Player
             Root.ZombieManager.OnMonsterAttack -= OnAttack;
         }
 
-        public void OnAttack()
+        private void OnAttack()
         {
             RefreshCurrentState(PlayerState.Attack);
         }
 
+        public void DestroyObject(bool inProcess)
+        {
+            destroyObjectState = inProcess;
+
+            if (inProcess == true)
+            {
+                OnAttack();
+            }
+            else
+            {
+                RefreshCurrentState(PlayerState.Idle);
+                removableObject.OnDestroyProcess -= DestroyObject;
+                removableObject = null;
+            }
+        }
+
         private void Update()
         {
-            if (Root.Player.CurrentMotionSpeed > deltaSpeed)
+            if (Root.Player.CurrentMotionSpeed > deltaSpeed && destroyObjectState == false)
             {
                 RefreshCurrentState(PlayerState.Idle);
             }
@@ -44,6 +62,12 @@ namespace ZombieFarm.Views.Player
             {
                 OnChangeState(currentPlayerState);
             }
+        }
+
+        public void RegisterRemovableObject(IRemovableObject removableObject)
+        {
+            this.removableObject = removableObject;
+            this.removableObject.OnDestroyProcess += DestroyObject;
         }
     }
 }
