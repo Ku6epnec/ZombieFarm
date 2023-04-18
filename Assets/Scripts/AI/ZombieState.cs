@@ -6,6 +6,5 @@ namespace ZombieFarm.AI
         Walking = 1,
         Chase = 2,
         Attack = 3,
-        Die = 4,
     }
 }

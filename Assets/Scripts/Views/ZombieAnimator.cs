@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,8 +9,6 @@ namespace ZombieFarm.Views
     public class ZombieAnimator : MonoBehaviour
     {
         [SerializeField] private float secondsBeforeDisappearance = 2.9f;
-        [SerializeField] private ZombieVfx disappearVFX;
-        [SerializeField] private Transform zombieModel;
 
         private Zombie zombie;
         private Animator animator;
@@ -19,11 +16,8 @@ namespace ZombieFarm.Views
         private const string animatorParameter_StateIndex_Int_Name = "State";
         private const string animatorParameter_Death_Trigger_Name = "Death";
 
-        private static readonly int animatorParameter_StateIndex_Int_Id =
-            Animator.StringToHash(animatorParameter_StateIndex_Int_Name);
-
-        private static readonly int animatorParameter_Death_Trigger_Id =
-            Animator.StringToHash(animatorParameter_Death_Trigger_Name);
+        private static readonly int animatorParameter_StateIndex_Int_Id = Animator.StringToHash(animatorParameter_StateIndex_Int_Name);
+        private static readonly int animatorParameter_Death_Trigger_Id = Animator.StringToHash(animatorParameter_Death_Trigger_Name);
 
         private void Awake()
         {
@@ -49,23 +43,14 @@ namespace ZombieFarm.Views
         {
             animator.SetTrigger(animatorParameter_Death_Trigger_Id);
 
-            StartCoroutine(WaitingForAction(secondsBeforeDisappearance, () => StartVFX()));
+            StartCoroutine(DestroyAfterWaiting());
         }
 
-        private void StartVFX()
+        private IEnumerator DestroyAfterWaiting()
         {
-            zombieModel.gameObject.SetActive(false);
-            disappearVFX.gameObject.SetActive(true);
+            yield return new WaitForSeconds(secondsBeforeDisappearance);
 
-            StartCoroutine(WaitingForAction(disappearVFX.GetMaxParticleDuration(), () => Destroy(gameObject)));
+            Destroy(this.gameObject);
         }
-        
-        private IEnumerator WaitingForAction(float time, Action action)
-        {
-            yield return new WaitForSeconds(time);
-
-            action();
-        }
-
     }
 }

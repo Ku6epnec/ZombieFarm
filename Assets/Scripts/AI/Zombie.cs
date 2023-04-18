@@ -87,8 +87,6 @@ namespace ZombieFarm.AI
 
         private void Die()
         {
-            currentState = ZombieState.Die;
-            healthProgressBar.gameObject.SetActive(false);
             OnDie(this);
         }
 
@@ -122,7 +120,6 @@ namespace ZombieFarm.AI
                     break;
 
                 case ZombieState.Idle:
-                case ZombieState.Die:
                 default:
                     break;
             }
@@ -130,11 +127,6 @@ namespace ZombieFarm.AI
 
         private ZombieState GetCurrentZombieState()
         {
-            if (currentState == ZombieState.Die)
-            {
-                return ZombieState.Die;
-            }
-
             float distanceToPlayer = Vector3.Distance(this.transform.position, Root.Player.transform.position);
 
             if (distanceToPlayer < distanceToPlayerForAttack)

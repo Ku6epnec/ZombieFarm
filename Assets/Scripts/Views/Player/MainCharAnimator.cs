@@ -6,8 +6,6 @@ namespace ZombieFarm.Views.Player
     [RequireComponent(typeof(PlayerView), typeof(Animator))]
     public class MainCharAnimator : MonoBehaviour
     {
-        [SerializeField] Transform axe;
-
         private PlayerView playerView;
         private Animator animator;
         private float motionSpeed = 0;
@@ -50,7 +48,6 @@ namespace ZombieFarm.Views.Player
 
         private void OnChangeState(PlayerState newState)
         {
-            axe.gameObject.SetActive(newState == PlayerState.Attack);
             animator.SetInteger(animatorParameter_StateIndex_Int_Id, (int)newState);
         }
     }
