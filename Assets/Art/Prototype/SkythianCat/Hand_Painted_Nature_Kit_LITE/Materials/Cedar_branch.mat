@@ -78,7 +78,7 @@ Material:
     - _Blend: 0.386
     - _BumpScale: 1
     - _ColorMask: 15
-    - _Cutoff: 0.154
+    - _Cutoff: 0.826
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1

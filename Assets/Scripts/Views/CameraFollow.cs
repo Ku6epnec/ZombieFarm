@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 namespace ZombieFarm.Views
@@ -12,17 +11,6 @@ namespace ZombieFarm.Views
         private void LateUpdate()
         { 
             transform.position = target.position + cameraOffset;
-            
-            RaycastHit[] allHits;
-            allHits = Physics.RaycastAll(transform.position, target.position, 100);
-            foreach (var hit in allHits)
-            {
-                if (!hit.transform.tag.Equals("Player"))
-                {
-                    Debug.Log("Мы пульнули лазером в объект: " + hit);
-                }
-            }
-            Debug.DrawRay(transform.position, -target.position, Color.black, 100);
         }
         private void OnTriggerEnter(Collider collider)
         {
@@ -35,8 +23,6 @@ namespace ZombieFarm.Views
                 _color.a = ivisibleForObstacles;
                 material.color = _color;
             }
-
-            Debug.Log("Обзор загораживает: " + obstacle);
         }
 
         private void OnTriggerExit(Collider collider)
@@ -49,8 +35,6 @@ namespace ZombieFarm.Views
                 _color.a = 1.0f;
                 material.color = _color;
             };
-
-            Debug.Log("Обзор перестало загораживать: " + obstacle);
         }
     }
 }

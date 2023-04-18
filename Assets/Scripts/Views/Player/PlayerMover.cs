@@ -70,7 +70,6 @@ namespace ZombieFarm.Views.Player
 
         private void Rotate()
         {
-            //Vector3 target = new Vector3(-moveCommand.x, 0, -moveCommand.y);
             Vector3 target = new Vector3(-_joystick.Horizontal, 0, -_joystick.Vertical);
             Quaternion targetRotation = Quaternion.LookRotation(target, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed);
