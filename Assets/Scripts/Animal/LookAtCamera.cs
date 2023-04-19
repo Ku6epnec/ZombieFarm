@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LookAt : MonoBehaviour
+public class LookAtCamera : MonoBehaviour
 {
-    [Tooltip("Main camera by default")]
-    [SerializeField] GameObject _object;
+    GameObject _object;
 
     private void Start()
     {
-        if (_object == null)
-            _object = Camera.main.gameObject;
+        _object = Camera.main.gameObject;
     }
 
     private void Update()
