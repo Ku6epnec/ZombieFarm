@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class AnimalFollow : MonoBehaviour
 {
+    public event Action OnStartFollowing = () => { }; 
+
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private Transform target;
     [SerializeField] private GameObject vfx;
@@ -39,5 +42,6 @@ public class AnimalFollow : MonoBehaviour
         } 
 
         vfx.SetActive(true);
+        OnStartFollowing();
     }
 }
