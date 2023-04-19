@@ -59,6 +59,7 @@ public class Cage : MonoBehaviour, IRemovableObject
         animal.StartFollowing();
         
         disappearVFX.gameObject.SetActive(true);
+        progressBar.gameObject.SetActive(false);
 
         StartCoroutine(DestroyTimer(destroyTimeout));
     }
