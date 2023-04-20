@@ -9,7 +9,7 @@ namespace ZombieFarm.Views.Player
         
         private PlayerState currentPlayerState;
         private float deltaSpeed = 0.05f;
-        private bool destroyObjectState = true;
+        private bool destroyObjectState = false;
         private IRemovableObject removableObject;
 
         private void Start()
