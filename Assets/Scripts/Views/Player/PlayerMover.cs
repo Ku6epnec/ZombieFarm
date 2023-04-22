@@ -17,7 +17,6 @@ namespace ZombieFarm.Views.Player
         private Vector2 moveCommand;
         private PlayerInput playerInput;
         private CharacterController characterController;
-        private Rigidbody _rigidbody;
 
         internal float CurrentMotionSpeed => moveCommand.magnitude;
 
@@ -25,7 +24,6 @@ namespace ZombieFarm.Views.Player
         {
             playerInput = GetComponent<PlayerInput>();
             characterController = GetComponent<CharacterController>();
-            _rigidbody = GetComponent<Rigidbody>();
 
             playerInput.onActionTriggered += OnPlayerInputActionTriggered;
         }
