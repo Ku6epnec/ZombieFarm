@@ -47,8 +47,6 @@ namespace ZombieFarm.Views.Player
 
         private void Update()
         {
-            Debug.Log("Root.Player.CurrentMotionSpeed = " + Root.Player.CurrentMotionSpeed);
-            Debug.Log("destroyObjectState = " + destroyObjectState);
             if (Root.Player.CurrentMotionSpeed > deltaSpeed && destroyObjectState == false)
             {
                 RefreshCurrentState(PlayerState.Idle);
