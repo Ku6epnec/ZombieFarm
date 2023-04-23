@@ -32,11 +32,11 @@ namespace ZombieFarm.Views.Player
 
         private void OnPlayerInputActionTriggered(InputAction.CallbackContext context)
         {
+            if (MousePress)
             switch (context.action.name)
-            {
+            {   
                 case "Move":
-                    if (MousePress)
-                        moveCommand = context.action.ReadValue<Vector2>();
+                    moveCommand = context.action.ReadValue<Vector2>();
                     break;
 
                 default:
