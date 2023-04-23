@@ -18,6 +18,8 @@ namespace ZombieFarm.Views.Player
         private PlayerInput playerInput;
         private CharacterController characterController;
 
+        private bool MousePress = false;
+
         internal float CurrentMotionSpeed => moveCommand.magnitude;
 
         private void Awake()
@@ -33,7 +35,9 @@ namespace ZombieFarm.Views.Player
             switch (context.action.name)
             {
                 case "Move":
-                    moveCommand = context.action.ReadValue<Vector2>();
+                    if (MousePress)
+                        moveCommand = context.action.ReadValue<Vector2>();
+                    else moveCommand = Vector2.zero;
                     break;
 
                 default:
@@ -44,6 +48,13 @@ namespace ZombieFarm.Views.Player
 
         private void FixedUpdate()
         {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+
+            {
+                MousePress = true;
+                Debug.Log("Нажали на ЛКМ");
+            }
+
             if (moveCommand == Vector2.zero)
             {
                 return;
@@ -51,6 +62,12 @@ namespace ZombieFarm.Views.Player
 
             Move();
             Rotate();
+
+            if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                MousePress = false;
+                Debug.Log("Отпустили ЛКМ");
+            }
         }
 
         private void Move()
