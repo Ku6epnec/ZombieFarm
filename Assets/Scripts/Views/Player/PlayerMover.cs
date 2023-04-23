@@ -44,14 +44,21 @@ namespace ZombieFarm.Views.Player
                     break;
             }
         }
-
-        private void FixedUpdate()
+        private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 MousePress = true;
             }
+            else if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                MousePress = false;
+                moveCommand = Vector2.zero;
+            }
+        }
 
+        private void FixedUpdate()
+        {
             if (moveCommand == Vector2.zero)
             {
                 return;
@@ -59,22 +66,11 @@ namespace ZombieFarm.Views.Player
 
             Move();
             Rotate();
-
-            if (Input.GetKeyUp(KeyCode.Mouse0))
-            {
-                MousePress = false;
-                moveCommand = Vector2.zero;
-            }
-
         }
 
         private void Move()
         {
-            Vector3 motion = new Vector3(-moveCommand.x, 0, -moveCommand.y);
-            motion *= movementSpeed * Time.deltaTime;
-            motion.y -= gravity;
-
-            Vector3 motionJoystick = new Vector3(-_joystick.Horizontal, 0, -_joystick.Vertical);
+           Vector3 motionJoystick = new Vector3(-_joystick.Horizontal, 0, -_joystick.Vertical);
             motionJoystick *= movementSpeed * Time.deltaTime;
             motionJoystick.y -= gravity;
 
