@@ -37,7 +37,6 @@ namespace ZombieFarm.Views.Player
                 case "Move":
                     if (MousePress)
                         moveCommand = context.action.ReadValue<Vector2>();
-                    else moveCommand = Vector2.zero;
                     break;
 
                 default:
@@ -49,10 +48,8 @@ namespace ZombieFarm.Views.Player
         private void FixedUpdate()
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
-
             {
                 MousePress = true;
-                Debug.Log("Нажали на ЛКМ");
             }
 
             if (moveCommand == Vector2.zero)
@@ -66,8 +63,9 @@ namespace ZombieFarm.Views.Player
             if (Input.GetKeyUp(KeyCode.Mouse0))
             {
                 MousePress = false;
-                Debug.Log("Отпустили ЛКМ");
+                moveCommand = Vector2.zero;
             }
+
         }
 
         private void Move()
