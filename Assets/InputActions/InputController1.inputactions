@@ -1,5 +1,5 @@
 {
-    "name": "InputController",
+    "name": "InputController1",
     "maps": [
         {
             "name": "Player",
@@ -10,6 +10,15 @@
                     "type": "Value",
                     "id": "b4abc380-b52d-4982-8e63-af33cf4163e9",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Mouse",
+                    "type": "Value",
+                    "id": "3cfce964-ed09-4ca9-9329-d2dac18a9daf",
+                    "expectedControlType": "Analog",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -73,34 +82,12 @@
                 },
                 {
                     "name": "",
-                    "id": "5a27a178-5d17-41a1-9e83-6a7b983b6d4a",
-                    "path": "<AndroidJoystick>/stick",
+                    "id": "23966651-d564-4cc4-a048-c511495363fd",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e6d800ee-a364-499b-8918-7af135a90b6c",
-                    "path": "<Joystick>/stick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2d249952-89da-425e-93ff-6c6dc05da3fb",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
+                    "action": "Mouse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

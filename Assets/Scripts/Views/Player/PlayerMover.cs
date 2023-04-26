@@ -19,7 +19,6 @@ namespace ZombieFarm.Views.Player
         private CharacterController characterController;
 
         private bool MousePress = false;
-        private bool changeController = false;
 
         internal float CurrentMotionSpeed => moveCommand.magnitude;
 
@@ -33,10 +32,10 @@ namespace ZombieFarm.Views.Player
 
         private void OnPlayerInputActionTriggered(InputAction.CallbackContext context)
         {
-            if (changeController)
+            if (MousePress)
             switch (context.action.name)
-            {
-                    case "Move":
+            {   
+                case "Move":
                     moveCommand = context.action.ReadValue<Vector2>();
                     break;
 
@@ -47,19 +46,14 @@ namespace ZombieFarm.Views.Player
         }
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Tab)) changeController = !changeController;
-
-            if (changeController)
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                if (Input.GetKeyDown(KeyCode.Mouse0))
-                {
-                    MousePress = true;
-                }
-                else if (Input.GetKeyUp(KeyCode.Mouse0))
-                {
-                    MousePress = false;
-                    moveCommand = Vector2.zero;
-                }
+                MousePress = true;
+            }
+            else if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                MousePress = false;
+                moveCommand = Vector2.zero;
             }
         }
 
@@ -70,30 +64,22 @@ namespace ZombieFarm.Views.Player
                 return;
             }
 
-            if (changeController)
-            {
-                Move();
-                Rotate();
-            }
-            else
-            {
-                Move(-_joystick.Horizontal, -_joystick.Vertical);
-                Rotate(-_joystick.Horizontal, -_joystick.Vertical);
-            }
+            Move();
+            Rotate();
         }
 
-        private void Move(float moveHorizontal, float moveVertical)
+        private void Move()
         {
-           Vector3 motion = new Vector3(moveHorizontal, 0, moveVertical);
-            motion *= movementSpeed * Time.deltaTime;
-            motion.y -= gravity;
+           Vector3 motionJoystick = new Vector3(-_joystick.Horizontal, 0, -_joystick.Vertical);
+            motionJoystick *= movementSpeed * Time.deltaTime;
+            motionJoystick.y -= gravity;
 
-            characterController.Move(motion);
+            characterController.Move(motionJoystick);
         }
 
-        private void Rotate(float moveHorizontal, float moveVertical)
+        private void Rotate()
         {
-            Vector3 target = new Vector3(moveHorizontal, 0, moveVertical);
+            Vector3 target = new Vector3(-_joystick.Horizontal, 0, -_joystick.Vertical);
             Quaternion targetRotation = Quaternion.LookRotation(target, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed);
         }
