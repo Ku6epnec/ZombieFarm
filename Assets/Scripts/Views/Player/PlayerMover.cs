@@ -33,6 +33,7 @@ namespace ZombieFarm.Views.Player
 
         private void OnPlayerInputActionTriggered(InputAction.CallbackContext context)
         {
+            if (changeController)
             switch (context.action.name)
             {
                     case "Move":
@@ -46,10 +47,7 @@ namespace ZombieFarm.Views.Player
         }
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Tab))
-            { 
-                changeController = !changeController; 
-            }
+            if (Input.GetKeyDown(KeyCode.Tab)) changeController = !changeController;
 
             if (changeController)
             {
@@ -74,8 +72,8 @@ namespace ZombieFarm.Views.Player
 
             if (changeController)
             {
-                Move(-moveCommand.x, -moveCommand.y);
-                Rotate(-moveCommand.x, -moveCommand.y);
+                Move();
+                Rotate();
             }
             else
             {
