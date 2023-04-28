@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using ZombieFarm.Managers;
 using ZombieFarm.Managers.Interfaces;
@@ -9,6 +10,8 @@ public class Root : MonoBehaviour
     [SerializeField] ZombieManager zombieManager;
     [SerializeField] UIManager uiManager;
     [SerializeField] ViewManager viewManager;
+    [SerializeField] ResourceManager resourceManager;
+    [SerializeField] ConfigManager configManager;
 
     private static Root instance;
 
@@ -46,6 +49,22 @@ public class Root : MonoBehaviour
         get
         {
             return instance.viewManager;
+        }
+    }
+    
+    public static IResourceManager ResourceManager
+    {
+        get
+        {
+            return instance.resourceManager;
+        }
+    }
+    
+    public static ConfigManager ConfigManager
+    {
+        get
+        {
+            return instance.configManager;
         }
     }
 }
