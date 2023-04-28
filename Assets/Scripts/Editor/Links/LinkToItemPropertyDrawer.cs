@@ -3,6 +3,7 @@ using ZombieFarm.Config.LinkTargets;
 using UnityEditor;
 using UnityEngine;
 using UnityTools.Editor.Links;
+using CozyServer.DTS.Links;
 
 namespace CozyIslands.Editor.Links
 {
