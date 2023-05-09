@@ -59,8 +59,12 @@ public class Root : MonoBehaviour
             return instance.resourceManager;
         }
     }
+<<<<<<< HEAD
     
     public static ConfigManager ConfigManager
+=======
+    public static IConfigManager ConfigManager
+>>>>>>> a455c69 (resource and config managers)
     {
         get
         {

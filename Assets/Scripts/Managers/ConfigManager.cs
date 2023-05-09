@@ -1,4 +1,5 @@
 using CozyServer.DTS.Links;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -7,22 +8,13 @@ using UnityEngine;
 using UnityTools.Runtime.Links;
 using ZombieFarm.Config.LinkTargets;
 
-public class ConfigManager : MonoBehaviour
+public class ConfigManager : MonoBehaviour, IConfigManager
 {
-    Dictionary<ILink, ScriptableObject> items;
+    private readonly Dictionary<Type, Dictionary<string, object>> cache = new Dictionary<Type, Dictionary<string, object>>();
 
     public void Initialize()
     {
-        List<string> buffer = new List<string>();
-        GetListOfAssets<Item>(buffer);
 
-        foreach (string asset in buffer)
-        {
-            Item item = AssetDatabase.LoadAssetAtPath<Item>(asset);
-            LinkToItem linkToItem = new LinkToItem();
-            linkToItem.itemId = asset;
-            items.Add(linkToItem, item);
-        }
     }
 
 
@@ -42,5 +34,28 @@ public class ConfigManager : MonoBehaviour
                     .Replace(Path.DirectorySeparatorChar, '/')
                     .Replace(Path.AltDirectorySeparatorChar, '/'); // replace all kind of path separators to unity-style path separator
         }
+    }
+
+    public T GetByLink<T>(ILink link) where T : UnityEngine.Object
+    {
+        if (cache.TryGetValue(typeof(T), out Dictionary<string, object> typedCache) == false)
+        {
+            typedCache = new Dictionary<string, object>();
+            cache.Add(typeof(T), typedCache);
+        }
+
+        if (typedCache.TryGetValue(link.LinkedObjectId, out object cachedObject) == false)
+        {
+            cachedObject = Resources.Load<T>(Path.Combine(GetPathForAssetInsideResources<T>(), link.LinkedObjectId));
+            typedCache.Add(link.LinkedObjectId, cachedObject);
+        }
+
+        return cachedObject as T;
+
+    }
+
+    public static string GetPathForAssetInsideResources<T>()
+    {
+        return Path.Combine("LinkTargets", typeof(T).Name).Replace(@"\", @"/");
     }
 }

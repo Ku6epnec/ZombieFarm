@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using ZombieFarm.Config.Links;
 
 namespace ZombieFarm.Config.LinkTargets
 {
