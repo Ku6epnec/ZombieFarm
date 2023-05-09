@@ -1,7 +1,8 @@
 ﻿
+using CozyServer.DTS.Links;
 using System;
 
-namespace CozyServer.DTS.Links
+namespace ZombieFarm.Config.Links
 {
     [Serializable]
     public struct LinkToItem : ILink

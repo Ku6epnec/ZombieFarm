@@ -3,9 +3,9 @@ using ZombieFarm.Config.LinkTargets;
 using UnityEditor;
 using UnityEngine;
 using UnityTools.Editor.Links;
-using CozyServer.DTS.Links;
+using ZombieFarm.Config.Links;
 
-namespace CozyIslands.Editor.Links
+namespace ZombieFarm.Editor.Links
 {
     [CustomPropertyDrawer(typeof(LinkToItem), true)]
     public class LinkToItemPropertyDrawer : LinkToConfigPropertyDrawer

@@ -5,29 +5,32 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 using UnityTools.Runtime.Links;
+using ZombieFarm.Config.Links;
 using ZombieFarm.Config.LinkTargets;
 
 public class ResourceManager : MonoBehaviour, IResourceManager
 {
-    Dictionary<ILink, int> resourceAmount;
+    Dictionary<LinkToResource, int> resourceAmount;
 
     private void Start()
     {
         Initialize();
     }
 
-    void Initialize()
+    private void Initialize()
     {
-        resourceAmount = new Dictionary<ILink, int>();
-
+        resourceAmount = new Dictionary<LinkToResource, int>();
     }
 
-    public void AddResource(ILink type, int amount)
+    public void AddResource(LinkToResource type, int amount)
     {
+        AddResourceIfMissing(type);
         resourceAmount[type] += amount;
     }
-    public bool SubtractResource(ILink type, int amount)
+
+    public bool SubtractResource(LinkToResource type, int amount)
     {
+        AddResourceIfMissing(type);
         if (resourceAmount[type] - amount < 0)
         {
             return false;
@@ -39,9 +42,23 @@ public class ResourceManager : MonoBehaviour, IResourceManager
         }
     }
 
-    public int GetResourceAmount(ILink type)
+    public int GetResourceAmount(LinkToResource type)
     {
-        return resourceAmount[type];
+        if (resourceAmount.ContainsKey(type) == false)
+        {
+            return 0;
+        }
+        else
+        {
+            return resourceAmount[type];
+        }
     }
 
+    private void AddResourceIfMissing(LinkToResource type)
+    {
+        if (resourceAmount.ContainsKey(type) == false)
+        {
+            resourceAmount.Add(type, 0);
+        }
+    }
 }
