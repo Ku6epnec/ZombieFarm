@@ -36,7 +36,7 @@ namespace ZombieFarm.Views.Player
             switch (context.action.name)
             {   
                 case "Move":
-                    moveCommand = context.action.ReadValue<Vector2>();
+                    moveCommand = context.action.ReadValue<Vector2>().normalized;
                     break;
 
                 default:
