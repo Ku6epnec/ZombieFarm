@@ -1,6 +1,5 @@
 
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace ZombieFarm.Views.Player
 {
