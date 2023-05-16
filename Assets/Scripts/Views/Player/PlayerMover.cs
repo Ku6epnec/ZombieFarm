@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace ZombieFarm.Views.Player
 {
-    [RequireComponent(typeof(PlayerInput), typeof(CharacterController))]
+    [RequireComponent(typeof(CharacterController))]
     public class PlayerMover : MonoBehaviour
     {
         [Header("Movement Settings")]
@@ -12,54 +12,31 @@ namespace ZombieFarm.Views.Player
         [SerializeField] private float rotationSpeed = 1;
         [SerializeField] private float gravity = 9.8f;
 
-        [SerializeField] private FloatingJoystick _joystick;
+        [SerializeField] private FloatingJoystick floatingJoystick;
 
-        private Vector2 moveCommand;
-        private PlayerInput playerInput;
         private CharacterController characterController;
 
-        private bool MousePress = false;
+        private bool isJoystickActive = false;
 
-        internal float CurrentMotionSpeed => moveCommand.magnitude;
+        internal float CurrentMotionSpeed => GetCurrentMoveCommand().magnitude;
 
         private void Awake()
         {
-            playerInput = GetComponent<PlayerInput>();
             characterController = GetComponent<CharacterController>();
 
-            playerInput.onActionTriggered += OnPlayerInputActionTriggered;
+            floatingJoystick.OnPointerStateChanged += OnPointerStateChanged;
         }
 
-        private void OnPlayerInputActionTriggered(InputAction.CallbackContext context)
+        private void OnPointerStateChanged(bool pointerDown)
         {
-            if (MousePress)
-            switch (context.action.name)
-            {   
-                case "Move":
-                    moveCommand = context.action.ReadValue<Vector2>().normalized;
-                    break;
+            isJoystickActive = pointerDown;
+        }
 
-                default:
-                    Debug.LogError("Wrong action name!");
-                    break;
-            }
-        }
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                MousePress = true;
-            }
-            else if (Input.GetKeyUp(KeyCode.Mouse0))
-            {
-                MousePress = false;
-                moveCommand = Vector2.zero;
-            }
-        }
+        private Vector3 GetCurrentMoveCommand() => isJoystickActive == true ? new Vector3(-floatingJoystick.Horizontal, 0, -floatingJoystick.Vertical) : Vector3.zero;
 
         private void FixedUpdate()
         {
-            if (moveCommand == Vector2.zero)
+            if (isJoystickActive == false)
             {
                 return;
             }
@@ -70,7 +47,7 @@ namespace ZombieFarm.Views.Player
 
         private void Move()
         {
-           Vector3 motionJoystick = new Vector3(-_joystick.Horizontal, 0, -_joystick.Vertical);
+            Vector3 motionJoystick = GetCurrentMoveCommand();
             motionJoystick *= movementSpeed * Time.deltaTime;
             motionJoystick.y -= gravity;
 
@@ -79,7 +56,7 @@ namespace ZombieFarm.Views.Player
 
         private void Rotate()
         {
-            Vector3 target = new Vector3(-_joystick.Horizontal, 0, -_joystick.Vertical);
+            Vector3 target = GetCurrentMoveCommand();
             Quaternion targetRotation = Quaternion.LookRotation(target, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed);
         }
