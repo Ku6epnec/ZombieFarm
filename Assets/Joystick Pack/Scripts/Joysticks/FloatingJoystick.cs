@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using ZombieFarm.Interfaces;
 
-public class FloatingJoystick : Joystick
+public class FloatingJoystick : Joystick, IJoystick
 {
-    internal event Action<bool> OnPointerStateChanged = (pointerDown) => { };
+    public event Action<bool> OnPointerStateChanged = (pointerDown) => { };
+    public Vector3 GetCurrentMoveCommand() => new Vector3(-Horizontal, 0, -Vertical);
 
     protected override void Start()
     {

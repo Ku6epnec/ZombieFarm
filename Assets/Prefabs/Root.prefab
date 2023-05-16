@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 4490524181235862106}
   - component: {fileID: 9186902767800452588}
   - component: {fileID: 3346327998279605083}
+  - component: {fileID: 3306377722131285886}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -190,6 +191,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3306377722131285886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4860772441091920290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15f665f209ef2684ba1ae62b6f5f561b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatingJoystick: {fileID: 4140688408228926865}
 --- !u!1 &8942437822534473912
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,6 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1536820973131904190}
   zombieManager: {fileID: 1464619162750591380}
+  uiManager: {fileID: 3306377722131285886}
 --- !u!1 &8942437822713572962
 GameObject:
   m_ObjectHideFlags: 0

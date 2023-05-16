@@ -1,9 +1,9 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public interface IRemovableObject
+namespace ZombieFarm.Interfaces
 {
-    event Action<bool> OnDestroyProcess;
+    public interface IRemovableObject
+    {
+        event Action<bool> OnDestroyProcess;
+    }
 }

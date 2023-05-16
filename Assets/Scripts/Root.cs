@@ -7,6 +7,7 @@ public class Root : MonoBehaviour
 {
     [SerializeField] PlayerMover player;
     [SerializeField] ZombieManager zombieManager;
+    [SerializeField] UIManager uiManager;
 
     private static Root instance;
 
@@ -28,6 +29,14 @@ public class Root : MonoBehaviour
         get
         {
             return instance.zombieManager;
+        }
+    }
+
+    public static IUIManager UIManager
+    {
+        get 
+        {
+            return instance.uiManager;
         }
     }
 }
