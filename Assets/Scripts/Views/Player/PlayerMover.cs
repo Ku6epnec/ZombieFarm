@@ -15,6 +15,8 @@ namespace ZombieFarm.Views.Player
 
         private bool isJoystickActive = false;
 
+        private Vector3 target;
+
         internal float CurrentMotionSpeed => Root.UIManager.Joystick.GetCurrentMoveCommand().magnitude;
 
         private void Awake()
@@ -44,13 +46,17 @@ namespace ZombieFarm.Views.Player
                 return;
             }
 
-            Move();
-            Rotate();
+            target = Root.UIManager.Joystick.GetCurrentMoveCommand();
+            if (target != Vector3.zero)
+            {
+                Move();
+                Rotate();
+            }
         }
 
         private void Move()
         {
-            Vector3 motionJoystick = Root.UIManager.Joystick.GetCurrentMoveCommand();
+            Vector3 motionJoystick = target;
             motionJoystick *= movementSpeed * Time.deltaTime;
             motionJoystick.y -= gravity;
 
@@ -59,9 +65,8 @@ namespace ZombieFarm.Views.Player
 
         private void Rotate()
         {
-            Vector3 target = Root.UIManager.Joystick.GetCurrentMoveCommand();
             Quaternion targetRotation = Quaternion.LookRotation(target, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed);         
         }
     }
 }
