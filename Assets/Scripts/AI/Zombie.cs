@@ -7,13 +7,27 @@ using UnityEngine.AI;
 namespace ZombieFarm.AI
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    public class Zombie : MonoBehaviour
+    public class Zombie : MonoBehaviour, IHealth, IDamage
     {
+        public float Health => _health;
+        public float MaxHealth => _maxHealth;
+        public float Damage => _damage;
+
+        [Header("HealthStats")]
+        public float _health = 10;
+        public float _maxHealth = 10;
+
+        [Header("DamageStats")]
+        public float _damage = 1;
+
         public event Action<ZombieState> OnChangeState = (newState) => { };
         public event Action<Zombie> OnDie = (Zombie) => { };
 
+        [Header("SpeedStats")]
         [SerializeField] private float speedForWalking = 2f;
         [SerializeField] private float speedForChasing = 6f;
+
+        [Header("DistanceStats")]
         [SerializeField] private float distanceToPlayerForAttack = 2f;
         [SerializeField] private float distanceToPlayerForChase = 15f;
 
@@ -37,6 +51,8 @@ namespace ZombieFarm.AI
 
             healthProgressBar.ProcessCompleted += Die;
             OnChangeState += UpdateAction;
+
+            healthProgressBar.InitSlider(MaxHealth);
         }
 
         private void Start()
@@ -74,7 +90,7 @@ namespace ZombieFarm.AI
             agent.isStopped = false;
 
             agent.SetDestination(Root.Player.transform.position);
-            healthProgressBar.ResetProgress();
+            //healthProgressBar.ResetProgress();
         }
 
         private void Attack()
@@ -82,7 +98,8 @@ namespace ZombieFarm.AI
             agent.speed = 0;
             agent.isStopped = true;
 
-            healthProgressBar.StartProgress();
+            _health -= _damage;
+            healthProgressBar.StartProgress(_health);
         }
 
         private void Die()

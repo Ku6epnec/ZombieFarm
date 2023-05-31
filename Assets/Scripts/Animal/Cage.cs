@@ -4,10 +4,11 @@ using UnityEngine;
 using ZombieFarm.Interfaces;
 using ZombieFarm.Views.Player;
 
-public class Cage : MonoBehaviour, IRemovableObject
+public class Cage : MonoBehaviour, IRemovableObject, IHealth
 {
     public event Action<bool> OnDestroyProcess = (inProgress) => { };
-
+    public float Health => _health;
+    public float MaxHealth => _maxHealth;
     //count
     [SerializeField] AnimalFollow animal;
     [SerializeField] ProgressBar progressBar;
@@ -15,11 +16,17 @@ public class Cage : MonoBehaviour, IRemovableObject
     [SerializeField] private ParticleSystem disappearVFX;
 
     private float destroyTimeout = 2f;
-    private PlayerView playerView; 
+    private PlayerView playerView;
+
+    public float _maxHealth = 10;
+    public float _health = 10;
+
+    private float _damage = 1;
 
     private void Awake()
     {
         progressBar.ProcessCompleted += Free;
+        progressBar.InitSlider(_maxHealth);
     }
 
     private void OnDestroy()
@@ -35,7 +42,8 @@ public class Cage : MonoBehaviour, IRemovableObject
             OnDestroyProcess(true);
 
             progressBar.gameObject.SetActive(true);
-            progressBar.StartProgress();
+            _health -= _damage;
+            progressBar.StartProgress(_health);
         }
     }
 
@@ -44,7 +52,7 @@ public class Cage : MonoBehaviour, IRemovableObject
         if (other.tag == "Player")
         {
             progressBar.gameObject.SetActive(false);
-            progressBar.ResetProgress();
+            //progressBar.ResetProgress();
 
             OnDestroyProcess(false);
         }
