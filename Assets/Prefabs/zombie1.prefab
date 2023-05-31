@@ -903,7 +903,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2581981397211874db6f39ebf6ed6897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _object: {fileID: 0}
 --- !u!1 &5574352465871659068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,6 +1029,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ed6c4799c573549af9045c09245f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _health: 10
+  _maxHealth: 10
+  _damage: 1
   speedForWalking: 2
   speedForChasing: 10
   distanceToPlayerForAttack: 4
@@ -1698,6 +1700,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1726771608368272282}
     m_Modifications:
+    - target: {fileID: 947848841905929808, guid: 8ea195b04925d70498d212b694bbc1ff,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1507260890393482661, guid: 8ea195b04925d70498d212b694bbc1ff,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1756,6 +1763,11 @@ PrefabInstance:
     - target: {fileID: 1507260890942055207, guid: 8ea195b04925d70498d212b694bbc1ff,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2217021363041014579, guid: 8ea195b04925d70498d212b694bbc1ff,
+        type: 3}
+      propertyPath: m_Type
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5293204749370377828, guid: 8ea195b04925d70498d212b694bbc1ff,
