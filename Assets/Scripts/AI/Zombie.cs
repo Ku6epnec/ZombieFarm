@@ -42,10 +42,13 @@ namespace ZombieFarm.AI
         private List<Transform> walkingPoints;
         private ZombieState currentState;
 
+        [SerializeField] private ZombieFarm.Views.Player.PlayerView playerView;
+
         private bool IsCurrentStateUpdatableInEveryFrame => currentState == ZombieState.Chase;
 
         private void Awake()
         {
+            playerView = FindObjectOfType<ZombieFarm.Views.Player.PlayerView>();
             agent = GetComponent<NavMeshAgent>();
             walkingPoints = GetWalkingPoints();
 
@@ -99,6 +102,7 @@ namespace ZombieFarm.AI
             agent.isStopped = true;
 
             _health -= _damage;
+            playerView.RecievedDamage(Damage);
             healthProgressBar.StartProgress(_health);
         }
 

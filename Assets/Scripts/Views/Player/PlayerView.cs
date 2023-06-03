@@ -4,7 +4,7 @@ using ZombieFarm.Interfaces;
 
 namespace ZombieFarm.Views.Player
 { 
-    public class PlayerView : MonoBehaviour
+    public class PlayerView : MonoBehaviour, IHealth, IDamage
     {
         public event Action<PlayerState> OnChangeState = (newState) => { };
         
@@ -13,9 +13,25 @@ namespace ZombieFarm.Views.Player
         private bool destroyObjectState = false;
         private IRemovableObject removableObject;
 
-        private void Start()
+        public float Health => _health;
+        public float MaxHealth => _maxHealth;
+        public float Damage => _damage;
+
+        [Header("HealthStats")]
+        public float _health = 20;
+        public float _maxHealth = 20;
+
+        [Header("DamageStats")]
+        public float _damage = 1;
+
+        [Header("References")]
+        [SerializeField] private ProgressBar healthProgressBar;
+
+        private void Awake()
         {
             currentPlayerState = PlayerState.Idle;
+            healthProgressBar.InitSlider(MaxHealth);
+            healthProgressBar.ProcessCompleted += Die;
 
             Root.ZombieManager.OnMonsterAttack += OnAttack;
         }
@@ -23,6 +39,7 @@ namespace ZombieFarm.Views.Player
         private void OnDestroy()
         {
             Root.ZombieManager.OnMonsterAttack -= OnAttack;
+            healthProgressBar.ProcessCompleted -= Die;
         }
 
         private void OnAttack()
@@ -44,6 +61,20 @@ namespace ZombieFarm.Views.Player
                 removableObject.OnDestroyProcess -= DestroyObject;
                 removableObject = null;
             }
+        }
+
+        public void RecievedDamage(float damage)
+        {
+            _health -= damage;
+            healthProgressBar.StartProgress(_health);
+        }
+
+        private void Die()
+        {
+            //currentState = ZombieState.Die;
+            healthProgressBar.gameObject.SetActive(false);
+            Destroy(gameObject);
+            //OnDie(this);
         }
 
         private void Update()
