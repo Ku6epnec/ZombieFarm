@@ -101,8 +101,14 @@ namespace ZombieFarm.AI
             agent.speed = 0;
             agent.isStopped = true;
 
-            _health -= _damage;
+            //_health -= _damage;
             playerView.RecievedDamage(Damage);
+           //healthProgressBar.StartProgress(_health);
+        }
+
+        public void RecievedDamage(float damage)
+        {
+            _health -= damage;
             healthProgressBar.StartProgress(_health);
         }
 

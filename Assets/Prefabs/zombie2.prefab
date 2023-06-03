@@ -319,7 +319,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2581981397211874db6f39ebf6ed6897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _object: {fileID: 0}
 --- !u!1 &1828788212833712826
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,9 +366,10 @@ GameObject:
   - component: {fileID: 983319285676577902}
   - component: {fileID: 6878625291768294683}
   - component: {fileID: 4691639151591081239}
+  - component: {fileID: -1696954429153348416}
   m_Layer: 0
   m_Name: zombie2
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -446,6 +446,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ed6c4799c573549af9045c09245f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _health: 10
+  _maxHealth: 10
+  _damage: 1
   speedForWalking: 2
   speedForChasing: 10
   distanceToPlayerForAttack: 4
@@ -453,6 +456,7 @@ MonoBehaviour:
   healthProgressBar: {fileID: 3732784771679817912}
   walkingPointsParent: {fileID: 0}
   walkingProbability: 3
+  playerView: {fileID: 0}
 --- !u!114 &4691639151591081239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,6 +472,24 @@ MonoBehaviour:
   secondsBeforeDisappearance: 3
   disappearVFX: {fileID: 6149126995907423009}
   zombieModel: {fileID: 861487693991317738}
+--- !u!143 &-1696954429153348416
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920011725772298721}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2353487535849959931
 GameObject:
   m_ObjectHideFlags: 0

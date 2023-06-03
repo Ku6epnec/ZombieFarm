@@ -17,11 +17,6 @@ public class ProgressBar : MonoBehaviour
     private IEnumerator progress;
     private float MaxHealth;
 
-    /*private void Awake()
-    {
-        InitSlider();
-    }*/
-
     public void InitSlider(float _maxHealth)
     {
         slider = GetComponent<Slider>();
@@ -53,17 +48,13 @@ public class ProgressBar : MonoBehaviour
 
     private IEnumerator SetProgress(float _health)
     {
-        //while (slider.value < necessaryTime)
         if (_health > 0)
         {
-            Debug.Log("Текущее количество здоровья объекта: " + name + " Здоровье: " + _health / MaxHealth);
             slider.value += Time.fixedDeltaTime;
-            //middleLane.sizeDelta = new Vector2(middleLaneWidth - slider.value / necessaryTime * middleLaneWidth, middleLane.rect.height);
             middleLane.sizeDelta = new Vector2( (_health / MaxHealth) * middleLaneWidth, middleLane.rect.height);
             yield return null;
         }
 
-        //if (slider.value >= necessaryTime)
         if (_health <= 0)
         {
             ProcessCompleted();
