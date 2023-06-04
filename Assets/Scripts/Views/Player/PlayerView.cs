@@ -4,7 +4,7 @@ using ZombieFarm.Interfaces;
 
 namespace ZombieFarm.Views.Player
 { 
-    public class PlayerView : MonoBehaviour, IHealth, IDamage
+    public class PlayerView : MonoBehaviour, IHealth, IDamage, IHaveArmor
     {
         public event Action<PlayerState> OnChangeState = (newState) => { };
         
@@ -15,11 +15,15 @@ namespace ZombieFarm.Views.Player
 
         public float Health => _health;
         public float MaxHealth => _maxHealth;
+        public float Armor => _armor;
         public float Damage => _damage;
 
         [Header("HealthStats")]
         public float _health = 20;
         public float _maxHealth = 20;
+
+        [Header("ArmorStats")]
+        public float _armor = 0;
 
         [Header("DamageStats")]
         public float _damage = 1;
@@ -89,16 +93,18 @@ namespace ZombieFarm.Views.Player
 
         public void RecievedDamage(float damage)
         {
-            _health -= damage;
-            healthProgressBar.StartProgress(_health);
+            damage = damage - _armor;
+            if (damage > 0)
+            {
+                _health -= damage;
+                healthProgressBar.StartProgress(_health);
+            }
         }
 
         private void Die()
         {
-            //currentState = ZombieState.Die;
             healthProgressBar.gameObject.SetActive(false);
             Destroy(gameObject);
-            //OnDie(this);
         }
 
         private void Update()

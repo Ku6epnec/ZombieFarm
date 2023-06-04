@@ -146,6 +146,7 @@ namespace ZombieFarm.AI
             switch (newState)
             {
                 case ZombieState.Attack:
+                    if (timer <= 0)
                     Attack();
                     break;
 
