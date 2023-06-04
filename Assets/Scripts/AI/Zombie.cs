@@ -78,7 +78,12 @@ namespace ZombieFarm.AI
         private void FixedUpdate()
         {
             RefreshCurrentState();
-
+            timer -= Time.deltaTime;
+            if (currentState == ZombieState.Attack && timer <= 0)
+            {
+                Attack();
+                timer = Maxtimer;
+            }
             if (IsCurrentStateUpdatableInEveryFrame == true)
             {
                 UpdateAction(currentState);
