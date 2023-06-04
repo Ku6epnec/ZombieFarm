@@ -15,6 +15,7 @@ namespace ZombieFarm.Views.Player
         internal event Action Interactive = () => { };
         internal event Action DeInteractive = () => { };
         public LookAt lookAt;
+        private GameObject choosenObject;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -38,7 +39,7 @@ namespace ZombieFarm.Views.Player
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag("Zombie"))
+            if (other.gameObject == InteractiveObject)
             {
                 InteractiveObject = null;
             }
