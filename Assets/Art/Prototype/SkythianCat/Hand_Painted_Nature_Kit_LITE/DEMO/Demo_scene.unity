@@ -124,6 +124,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: de5e688d484276e439912ad7ac2a0f3f, type: 2}
+--- !u!114 &144763383 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 89959468901902972, guid: fa7fb9bc35ea1e746a04ba2a6acf14dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1818485945}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0439dfd7c514b7429ebd34a78363c06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &769116884 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8131392078995878616, guid: fa7fb9bc35ea1e746a04ba2a6acf14dc,
@@ -269,6 +281,11 @@ PrefabInstance:
       propertyPath: _damage
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 944995672342835783, guid: fa7fb9bc35ea1e746a04ba2a6acf14dc,
+        type: 3}
+      propertyPath: lookAt
+      value: 
+      objectReference: {fileID: 144763383}
     - target: {fileID: 965391106717772831, guid: fa7fb9bc35ea1e746a04ba2a6acf14dc,
         type: 3}
       propertyPath: m_AnchorMax.y

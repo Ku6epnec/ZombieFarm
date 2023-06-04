@@ -42,13 +42,18 @@ namespace ZombieFarm.AI
         private List<Transform> walkingPoints;
         private ZombieState currentState;
 
+        private float timer;
+        private float Maxtimer = 1.0f;
+
         [SerializeField] private ZombieFarm.Views.Player.PlayerView playerView;
+        [SerializeField] private ZombieFarm.Views.Player.InteractiveArea interactiveArea;
 
         private bool IsCurrentStateUpdatableInEveryFrame => currentState == ZombieState.Chase;
 
         private void Awake()
         {
             playerView = FindObjectOfType<ZombieFarm.Views.Player.PlayerView>();
+            interactiveArea = FindObjectOfType<ZombieFarm.Views.Player.InteractiveArea>();
             agent = GetComponent<NavMeshAgent>();
             walkingPoints = GetWalkingPoints();
 
@@ -65,6 +70,7 @@ namespace ZombieFarm.AI
 
         private void OnDestroy()
         {
+            
             healthProgressBar.ProcessCompleted -= Die;
             OnChangeState -= UpdateAction;
         }
@@ -93,7 +99,6 @@ namespace ZombieFarm.AI
             agent.isStopped = false;
 
             agent.SetDestination(Root.Player.transform.position);
-            //healthProgressBar.ResetProgress();
         }
 
         private void Attack()
@@ -101,9 +106,7 @@ namespace ZombieFarm.AI
             agent.speed = 0;
             agent.isStopped = true;
 
-            //_health -= _damage;
             playerView.RecievedDamage(Damage);
-           //healthProgressBar.StartProgress(_health);
         }
 
         public void RecievedDamage(float damage)
@@ -114,6 +117,7 @@ namespace ZombieFarm.AI
 
         private void Die()
         {
+            interactiveArea.InteractiveObject = null;
             currentState = ZombieState.Die;
             healthProgressBar.gameObject.SetActive(false);
             OnDie(this);
