@@ -9,7 +9,7 @@ public class Cage : MonoBehaviour, IRemovableObject, IHealth
     public event Action<bool> OnDestroyProcess = (inProgress) => { };
     public float Health => _health;
     public float MaxHealth => _maxHealth;
-    //count
+
     [SerializeField] AnimalFollow animal;
     [SerializeField] ProgressBar progressBar;
     [SerializeField] private Transform cageModel;
@@ -45,6 +45,12 @@ public class Cage : MonoBehaviour, IRemovableObject, IHealth
             _health -= _damage;
             progressBar.StartProgress(_health);
         }
+    }
+
+    public void RecievedDamage(float damage)
+    {
+        _health -= damage;
+        progressBar.StartProgress(_health);
     }
 
     private void OnTriggerExit(Collider other)
