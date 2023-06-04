@@ -51,13 +51,11 @@ namespace ZombieFarm.Views.Player
 
         public void OnIdle()
         {
-            Debug.Log("Ñòîèì-æä¸ì!");
             RefreshCurrentState(PlayerState.Idle);
         }
 
         public void OnAttack()
-        {
-            Debug.Log("ÀÒÒÀÊÓÅÌÌÌÌÌÌ!");
+        {         
             if (interactiveArea.InteractiveObject != null)
             {
                 enemy = interactiveArea.Enemy;
