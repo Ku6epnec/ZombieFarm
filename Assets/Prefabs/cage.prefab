@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2483226110707996331}
   m_Layer: 0
   m_Name: cage
-  m_TagString: Untagged
+  m_TagString: Interactible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,6 +52,8 @@ MonoBehaviour:
   progressBar: {fileID: 6626031990652524857}
   cageModel: {fileID: 1523942098824264105}
   disappearVFX: {fileID: 5006418446517543615}
+  _maxHealth: 10
+  _health: 10
 --- !u!135 &2483226110707996331
 SphereCollider:
   m_ObjectHideFlags: 0

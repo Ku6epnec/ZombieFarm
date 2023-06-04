@@ -9,6 +9,7 @@ namespace ZombieFarm.Views.Player
     {
         public GameObject InteractiveObject;
         public ZombieFarm.AI.Zombie Enemy;
+        public Cage cage;
         private float timer;
         private float MaxTimer = 1;
         internal event Action Interactive = () => { };
@@ -23,6 +24,14 @@ namespace ZombieFarm.Views.Player
                 if (InteractiveObject.TryGetComponent<ZombieFarm.AI.Zombie>(out ZombieFarm.AI.Zombie zombie))
                 {
                     Enemy = zombie;
+                }
+            }
+            else if ((other.tag == "Interactible"))
+            {
+                InteractiveObject = other.gameObject;
+                if (InteractiveObject.TryGetComponent<Cage>(out Cage _cage))
+                {
+                    cage = _cage;
                 }
             }
         }

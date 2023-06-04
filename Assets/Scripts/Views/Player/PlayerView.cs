@@ -58,8 +58,15 @@ namespace ZombieFarm.Views.Player
         {         
             if (interactiveArea.InteractiveObject != null)
             {
-                enemy = interactiveArea.Enemy;
-                enemy.RecievedDamage(Damage);
+                if (interactiveArea.cage != null)
+                {
+                    interactiveArea.cage.RecievedDamage(Damage);
+                }
+                else if (interactiveArea.Enemy != null)
+                {
+                    enemy = interactiveArea.Enemy;
+                    enemy.RecievedDamage(Damage);
+                }
             }
             RefreshCurrentState(PlayerState.Attack);
         }
