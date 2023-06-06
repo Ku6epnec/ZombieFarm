@@ -3,26 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZombieFarm.Config.Links;
+using ZombieFarm.Config.LinkTargets;
 
 public class Loot : MonoBehaviour
 {
-    [Serializable]
-    public struct ResourceAmount
-    {
-        public LinkToResource resource;
-        public int amount;
-    }
-
-    public List<ResourceAmount> resourcesLoot;
-    public List<LinkToItem> itemsLoot;
-
-    protected bool wasUsed = false;
+    [SerializeField] private LinkToLootSource link;
 
     public void AddToInventory()
     {
-        if (wasUsed == true) return;
+        LootSource lootSource = Root.ConfigManager.GetByLink<LootSource>(link);
 
-        foreach (ResourceAmount loot in resourcesLoot)
+        foreach (var loot in lootSource.resourcesLoot)
         {
             Root.ResourceManager.AddResource(loot.resource, loot.amount);
         }

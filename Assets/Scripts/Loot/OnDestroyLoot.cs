@@ -7,6 +7,5 @@ public class OnDestroyLoot : Loot
     private void OnDestroy()
     {
         AddToInventory();
-        wasUsed = true;
     }
 }
