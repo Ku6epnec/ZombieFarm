@@ -53,7 +53,7 @@ namespace ZombieFarm.Views.Player
                 Interactive();
                 lookAt.InitObject(InteractiveObject);
             }
-            else if (InteractiveObject == null)
+            else if (InteractiveObject == null && timer <= 0)
             {
                 lookAt.DeInitObject();
                 DeInteractive();
