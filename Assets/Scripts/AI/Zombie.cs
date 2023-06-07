@@ -71,7 +71,6 @@ namespace ZombieFarm.AI
 
         private void OnDestroy()
         {
-            Debug.Log("Убираем зомби объект");
             healthProgressBar.ProcessCompleted -= Die;
             OnChangeState -= UpdateAction;
         }
