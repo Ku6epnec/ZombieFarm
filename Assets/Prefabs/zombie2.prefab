@@ -446,6 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ed6c4799c573549af9045c09245f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterController: {fileID: -1696954429153348416}
   _health: 10
   _maxHealth: 10
   _damage: 1
@@ -457,6 +458,7 @@ MonoBehaviour:
   walkingPointsParent: {fileID: 0}
   walkingProbability: 3
   playerView: {fileID: 0}
+  interactiveArea: {fileID: 0}
 --- !u!114 &4691639151591081239
 MonoBehaviour:
   m_ObjectHideFlags: 0
