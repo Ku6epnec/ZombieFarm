@@ -12,6 +12,7 @@ namespace ZombieFarm.AI
         public float Health => _health;
         public float MaxHealth => _maxHealth;
         public float Damage => _damage;
+        [SerializeField] private CharacterController characterController;
 
         [Header("HealthStats")]
         public float _health = 10;
@@ -70,7 +71,7 @@ namespace ZombieFarm.AI
 
         private void OnDestroy()
         {
-            
+            Debug.Log("Убираем зомби объект");
             healthProgressBar.ProcessCompleted -= Die;
             OnChangeState -= UpdateAction;
         }
@@ -122,6 +123,7 @@ namespace ZombieFarm.AI
 
         private void Die()
         {
+            Destroy(characterController);
             interactiveArea.InteractiveObject = null;
             currentState = ZombieState.Die;
             healthProgressBar.gameObject.SetActive(false);
