@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63beebc083ca4314d929668165eb38e1, type: 3}
   m_Name: Wool
   m_EditorClassIdentifier: 
+  displayName: "\u0428\u0435\u0440\u0441\u0442\u044C"
   worth: 5
   sprite: {fileID: 0}
