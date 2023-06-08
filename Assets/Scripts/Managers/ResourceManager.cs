@@ -1,4 +1,5 @@
 using CozyServer.DTS.Links;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -11,6 +12,8 @@ using ZombieFarm.Config.LinkTargets;
 public class ResourceManager : MonoBehaviour, IResourceManager
 {
     Dictionary<LinkToResource, int> resourceAmount;
+
+    public event Action<LinkToResource> OnChangeResource = (resourceName) => { };
 
     private void Start()
     {
@@ -26,6 +29,7 @@ public class ResourceManager : MonoBehaviour, IResourceManager
     {
         AddResourceIfMissing(type);
         resourceAmount[type] += amount;
+        OnChangeResource(type);
     }
 
     public bool SubtractResource(LinkToResource type, int amount)
@@ -38,6 +42,7 @@ public class ResourceManager : MonoBehaviour, IResourceManager
         else
         {
             resourceAmount[type] -= amount;
+            OnChangeResource(type);
             return true;
         }
     }
