@@ -37,6 +37,7 @@ namespace ZombieFarm.Views.Player
 
 
         public ZombieFarm.AI.Zombie enemy;
+        public Cage cage;
 
         private void Awake()
         {
@@ -68,19 +69,14 @@ namespace ZombieFarm.Views.Player
 
         private void OnApplyDamage()
         {
-            enemy.RecievedDamage(Damage);
-            /*if (interactiveArea.InteractiveObject != null)
+            if (enemy != null)
             {
-                if (interactiveArea.cage != null)
-                {
-                    interactiveArea.cage.RecievedDamage(Damage);
-                }
-                else if (interactiveArea.Enemy != null)
-                {
-                    enemy = interactiveArea.Enemy;
-                    enemy.RecievedDamage(Damage);
-                }
-            }*/
+                enemy.RecievedDamage(Damage);
+            }
+            else if (cage != null)
+            {
+                cage.RecievedDamage(Damage);
+            }
         }
 
         public void DestroyObject(bool inProcess)
