@@ -33,6 +33,8 @@ namespace ZombieFarm.Views.Player
 
         [Header("InteractiveArea")]
         [SerializeField] private InteractiveArea interactiveArea;
+        [SerializeField] private AttackTrigger attackTrigger;
+
 
         public ZombieFarm.AI.Zombie enemy;
 
@@ -42,15 +44,16 @@ namespace ZombieFarm.Views.Player
             healthProgressBar.InitSlider(MaxHealth);
             healthProgressBar.ProcessCompleted += Die;
 
+            attackTrigger.ApplyDamage += OnApplyDamage;
             interactiveArea.Interactive += OnAttack;
             interactiveArea.DeInteractive += OnIdle;
-            Root.ZombieManager.OnMonsterAttack += OnAttack;
         }
 
         private void OnDestroy()
         {
             Root.ZombieManager.OnMonsterAttack -= OnAttack;
             healthProgressBar.ProcessCompleted -= Die;
+            attackTrigger.ApplyDamage -= OnApplyDamage;
         }
 
         public void OnIdle()
@@ -59,8 +62,14 @@ namespace ZombieFarm.Views.Player
         }
 
         public void OnAttack()
-        {         
-            if (interactiveArea.InteractiveObject != null)
+        {                    
+            RefreshCurrentState(PlayerState.Attack);
+        }
+
+        private void OnApplyDamage()
+        {
+            enemy.RecievedDamage(Damage);
+            /*if (interactiveArea.InteractiveObject != null)
             {
                 if (interactiveArea.cage != null)
                 {
@@ -71,8 +80,7 @@ namespace ZombieFarm.Views.Player
                     enemy = interactiveArea.Enemy;
                     enemy.RecievedDamage(Damage);
                 }
-            }
-            RefreshCurrentState(PlayerState.Attack);
+            }*/
         }
 
         public void DestroyObject(bool inProcess)
