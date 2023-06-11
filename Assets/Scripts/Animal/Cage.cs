@@ -23,10 +23,18 @@ public class Cage : MonoBehaviour, IRemovableObject, IHealth
 
     private float _damage = 1;
 
+    private float Maxtimer = 2.0f;
+    private float recievedDamageTimer;
+
     private void Awake()
     {
         progressBar.ProcessCompleted += Free;
         progressBar.InitSlider(_maxHealth);
+    }
+
+    private void Update()
+    {
+        recievedDamageTimer -= Time.deltaTime;
     }
 
     private void OnDestroy()
@@ -49,8 +57,12 @@ public class Cage : MonoBehaviour, IRemovableObject, IHealth
 
     public void RecievedDamage(float damage)
     {
-        _health -= damage;
-        progressBar.StartProgress(_health);
+        if (recievedDamageTimer <= 0)
+        {
+            _health -= damage;
+            progressBar.StartProgress(_health);
+            recievedDamageTimer = Maxtimer;
+        }
     }
 
     private void OnTriggerExit(Collider other)

@@ -11,6 +11,7 @@ namespace ZombieFarm.Views.Player
         internal event Action ApplyDamage = () => { };
         private PlayerView playerView;
         public ZombieFarm.AI.Zombie Enemy;
+        public Cage cage;
         private void Awake()
         {
             playerView = FindObjectOfType<PlayerView>();
@@ -27,10 +28,16 @@ namespace ZombieFarm.Views.Player
                 playerView.enemy = Enemy;
                 ApplyDamage();
             }
-        }
-        private void Update()
-        {
-            ApplyDamage();
+            else if(other.tag == "Interactible")
+            {
+                InteractiveObject = other.gameObject;
+                if (InteractiveObject.TryGetComponent<Cage>(out Cage _cage))
+                {
+                    cage = _cage;
+                }
+                playerView.cage = cage;
+                ApplyDamage();
+            }
         }
     }
 }
