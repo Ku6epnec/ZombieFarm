@@ -45,6 +45,7 @@ namespace ZombieFarm.AI
 
         private float timer;
         private float Maxtimer = 1.0f;
+        private float recievedDamageTimer;
 
         [SerializeField] private ZombieFarm.Views.Player.PlayerView playerView;
         [SerializeField] private ZombieFarm.Views.Player.InteractiveArea interactiveArea;
@@ -73,12 +74,14 @@ namespace ZombieFarm.AI
         {
             healthProgressBar.ProcessCompleted -= Die;
             OnChangeState -= UpdateAction;
+            interactiveArea.InteractiveObject = null;
         }
 
         private void FixedUpdate()
         {
             RefreshCurrentState();
             timer -= Time.deltaTime;
+            recievedDamageTimer -= Time.deltaTime;
             if (currentState == ZombieState.Attack && timer <= 0)
             {
                 Attack();
@@ -116,8 +119,12 @@ namespace ZombieFarm.AI
 
         public void RecievedDamage(float damage)
         {
-            _health -= damage;
-            healthProgressBar.StartProgress(_health);
+            if (recievedDamageTimer <= 0)
+            {
+                _health -= damage;
+                healthProgressBar.StartProgress(_health);
+                recievedDamageTimer = 2;
+            }
         }
 
         private void Die()

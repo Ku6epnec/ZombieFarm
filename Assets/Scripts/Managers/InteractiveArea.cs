@@ -36,6 +36,14 @@ namespace ZombieFarm.Views.Player
             }
         }
 
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.tag == "Zombie" && InteractiveObject == null)
+            {
+                InteractiveObject = other.gameObject;
+            }
+        }
+
         private void OnTriggerExit(Collider other)
         {
             if (other.gameObject == InteractiveObject)
