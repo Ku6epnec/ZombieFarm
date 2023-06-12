@@ -70,8 +70,6 @@ public class Cage : MonoBehaviour, IRemovableObject, IHealth
         if (other.tag == "Player")
         {
             progressBar.gameObject.SetActive(false);
-            //progressBar.ResetProgress();
-
             OnDestroyProcess(false);
         }
     }
@@ -82,7 +80,6 @@ public class Cage : MonoBehaviour, IRemovableObject, IHealth
 
         cageModel.gameObject.SetActive(false);
         
-        //set animal to follow
         animal.StartFollowing();
         
         disappearVFX.gameObject.SetActive(true);
@@ -95,7 +92,6 @@ public class Cage : MonoBehaviour, IRemovableObject, IHealth
     {
         yield return new WaitForSeconds(destroyTimeout);
 
-        //delete the cage
         Destroy(gameObject);
     }
 }

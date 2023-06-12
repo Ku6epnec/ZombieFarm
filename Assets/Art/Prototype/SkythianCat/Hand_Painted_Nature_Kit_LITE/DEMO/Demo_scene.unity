@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 581995915}
   - component: {fileID: 581995916}
   m_Layer: 0
-  m_Name: Collider
+  m_Name: AxeCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,6 +218,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a5743402479bf54c8d4390e07ea4b5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InteractiveObject: {fileID: 0}
+  Enemy: {fileID: 0}
+  cage: {fileID: 0}
 --- !u!1 &769116884 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8131392078995878616, guid: fa7fb9bc35ea1e746a04ba2a6acf14dc,
