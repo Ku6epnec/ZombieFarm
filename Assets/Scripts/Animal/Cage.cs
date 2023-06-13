@@ -16,7 +16,6 @@ public class Cage : ReceivedDamageObject, IRemovableObject, IHealth
     [SerializeField] private ParticleSystem disappearVFX;
 
     private float destroyTimeout = 2f;
-    private PlayerView playerView;
 
     [SerializeField] private float _maxHealth = 10;
     [SerializeField] private float _health = 10;
@@ -35,9 +34,13 @@ public class Cage : ReceivedDamageObject, IRemovableObject, IHealth
 
     private void Awake()
     {
-        interactiveArea = FindObjectOfType<InteractiveArea>();
         progressBar.ProcessCompleted += Free;
         progressBar.InitSlider(_maxHealth);
+    }
+
+    private void Start()
+    {
+        interactiveArea = Root.ViewManager.GetInteractiveArea();
     }
 
     private void Update()

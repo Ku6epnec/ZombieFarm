@@ -9,10 +9,11 @@ namespace ZombieFarm.Views.Player
 
         private ReceivedDamageObject ReceivedDamageObject;
 
-        private void Awake()
+        private void Start()
         {
-            playerView = FindObjectOfType<PlayerView>();
+            playerView = Root.ViewManager.GetPlayerView();
         }
+
         private void OnTriggerEnter(Collider other)
         {
             InteractiveObject = other.gameObject;
@@ -22,6 +23,7 @@ namespace ZombieFarm.Views.Player
             }
             ApplyDamage();
         }
+
         private void ApplyDamage()
         {
             if (ReceivedDamageObject != null)
