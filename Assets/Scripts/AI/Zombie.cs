@@ -59,8 +59,6 @@ namespace ZombieFarm.AI
 
         private void Awake()
         {
-            playerView = FindObjectOfType<ZombieFarm.Views.Player.PlayerView>();
-            interactiveArea = FindObjectOfType<ZombieFarm.Views.Player.InteractiveArea>();
             agent = GetComponent<NavMeshAgent>();
             walkingPoints = GetWalkingPoints();
 
@@ -73,6 +71,8 @@ namespace ZombieFarm.AI
         private void Start()
         {
             currentState = ZombieState.Idle;
+            playerView = Root.ViewManager.GetPlayerView();
+            interactiveArea = Root.ViewManager.GetInteractiveArea();
         }
 
         private void OnDestroy()
