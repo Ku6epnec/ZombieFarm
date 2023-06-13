@@ -35,10 +35,6 @@ namespace ZombieFarm.Views.Player
         [SerializeField] private InteractiveArea interactiveArea;
         [SerializeField] private AttackTrigger attackTrigger;
 
-
-        public ZombieFarm.AI.Zombie enemy;
-        public Cage cage;
-
         private void Awake()
         {
             currentPlayerState = PlayerState.Idle;

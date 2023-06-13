@@ -4,7 +4,7 @@ using UnityEngine;
 using ZombieFarm.Interfaces;
 using ZombieFarm.Views.Player;
 
-public class Cage : MonoBehaviour, IRemovableObject, IHealth
+public class Cage : ReceivedDamageObject, IRemovableObject, IHealth
 {
     public event Action<bool> OnDestroyProcess = (inProgress) => { };
     public float Health => _health;
@@ -26,8 +26,16 @@ public class Cage : MonoBehaviour, IRemovableObject, IHealth
     private float maxTimer = 2.0f;
     private float receivedDamageTimer;
 
+    [SerializeField] private ZombieFarm.Views.Player.InteractiveArea interactiveArea;
+
+    public override void Interaction(float damage)
+    {
+        ReceivedDamage(damage);
+    }
+
     private void Awake()
     {
+        interactiveArea = FindObjectOfType<InteractiveArea>();
         progressBar.ProcessCompleted += Free;
         progressBar.InitSlider(_maxHealth);
     }
@@ -40,6 +48,7 @@ public class Cage : MonoBehaviour, IRemovableObject, IHealth
     private void OnDestroy()
     {
         progressBar.ProcessCompleted -= Free;
+        interactiveArea.InteractiveObject = null;
     }
 
     private void OnTriggerEnter(Collider other)

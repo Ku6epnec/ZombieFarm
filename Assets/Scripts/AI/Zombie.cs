@@ -7,7 +7,7 @@ using UnityEngine.AI;
 namespace ZombieFarm.AI
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    public class Zombie : MonoBehaviour, IHealth, IDamage
+    public class Zombie : ReceivedDamageObject, IHealth, IDamage
     {
         public float Health => _health;
         public float MaxHealth => _maxHealth;
@@ -51,6 +51,11 @@ namespace ZombieFarm.AI
         [SerializeField] private ZombieFarm.Views.Player.InteractiveArea interactiveArea;
 
         private bool IsCurrentStateUpdatableInEveryFrame => currentState == ZombieState.Chase;
+
+        public override void Interaction(float damage)
+        {
+            ReceivedDamage(damage);
+        }
 
         private void Awake()
         {
