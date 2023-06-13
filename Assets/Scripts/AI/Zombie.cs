@@ -44,7 +44,7 @@ namespace ZombieFarm.AI
         private ZombieState currentState;
 
         private float timer;
-        private float maxTimer = 1.0f;
+        private float maxTimer = 2.0f;
         private float recievedDamageTimer;
 
         [SerializeField] private ZombieFarm.Views.Player.PlayerView playerView;

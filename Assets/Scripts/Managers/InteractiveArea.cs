@@ -24,10 +24,13 @@ namespace ZombieFarm.Views.Player
 
         private void OnTriggerStay(Collider other)
         {
-            if (other.gameObject.TryGetComponent<ReceivedDamageObject>(out ReceivedDamageObject receivedDamageObject))
+            if (InteractiveObject == null)
             {
-                InteractiveObject = other.gameObject;
-                ReceivedDamageObject = receivedDamageObject;
+                if (other.gameObject.TryGetComponent<ReceivedDamageObject>(out ReceivedDamageObject receivedDamageObject))
+                {
+                    InteractiveObject = other.gameObject;
+                    ReceivedDamageObject = receivedDamageObject;
+                }
             }
         }
 
