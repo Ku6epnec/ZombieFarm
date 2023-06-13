@@ -7,11 +7,11 @@ namespace ZombieFarm.Views.Player
 {
     public class AttackTrigger : MonoBehaviour
     {
-        public GameObject InteractiveObject;
-        internal event Action ApplyDamage = () => { };
+        private GameObject InteractiveObject;
         private PlayerView playerView;
-        public ZombieFarm.AI.Zombie Enemy;
-        public Cage cage;
+        private ZombieFarm.AI.Zombie Enemy;
+        private Cage cage;
+
         private void Awake()
         {
             playerView = FindObjectOfType<PlayerView>();
@@ -37,6 +37,17 @@ namespace ZombieFarm.Views.Player
                 }
                 playerView.cage = cage;
                 ApplyDamage();
+            }
+        }
+        private void ApplyDamage()
+        {
+            if (Enemy != null)
+            {
+                Enemy.ReceivedDamage(playerView.Damage);
+            }
+            else if (cage != null)
+            {
+                cage.ReceivedDamage(playerView.Damage);
             }
         }
     }
