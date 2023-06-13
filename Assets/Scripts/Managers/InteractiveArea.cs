@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 
@@ -8,39 +6,28 @@ namespace ZombieFarm.Views.Player
     public class InteractiveArea : MonoBehaviour
     {
         public GameObject InteractiveObject;
-        public ZombieFarm.AI.Zombie Enemy;
-        public Cage cage;
         private float timer;
         private float maxTimer = 1;
         internal event Action Interactive = () => { };
         internal event Action DeInteractive = () => { };
         public LookAt lookAt;
+        private ReceivedDamageObject ReceivedDamageObject;
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.tag == "Zombie")
+            if (other.gameObject.TryGetComponent<ReceivedDamageObject>(out ReceivedDamageObject receivedDamageObject))
             {
                 InteractiveObject = other.gameObject;
-                if (InteractiveObject.TryGetComponent<ZombieFarm.AI.Zombie>(out ZombieFarm.AI.Zombie zombie))
-                {
-                    Enemy = zombie;
-                }
-            }
-            else if ((other.tag == "Interactible"))
-            {
-                InteractiveObject = other.gameObject;
-                if (InteractiveObject.TryGetComponent<Cage>(out Cage _cage))
-                {
-                    cage = _cage;
-                }
+                ReceivedDamageObject = receivedDamageObject;
             }
         }
 
         private void OnTriggerStay(Collider other)
         {
-            if (other.tag == "Zombie" && InteractiveObject == null)
+            if (other.gameObject.TryGetComponent<ReceivedDamageObject>(out ReceivedDamageObject receivedDamageObject))
             {
                 InteractiveObject = other.gameObject;
+                ReceivedDamageObject = receivedDamageObject;
             }
         }
 
