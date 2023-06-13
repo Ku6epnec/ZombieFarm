@@ -11,7 +11,7 @@ namespace ZombieFarm.Views.Player
         public ZombieFarm.AI.Zombie Enemy;
         public Cage cage;
         private float timer;
-        private float MaxTimer = 1;
+        private float maxTimer = 1;
         internal event Action Interactive = () => { };
         internal event Action DeInteractive = () => { };
         public LookAt lookAt;
@@ -57,7 +57,7 @@ namespace ZombieFarm.Views.Player
             timer -= Time.deltaTime;
             if (InteractiveObject != null && timer <= 0)
             {
-                timer = MaxTimer;
+                timer = maxTimer;
                 Interactive();
                 lookAt.InitObject(InteractiveObject);
             }

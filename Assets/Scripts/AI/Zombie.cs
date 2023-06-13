@@ -15,11 +15,11 @@ namespace ZombieFarm.AI
         [SerializeField] private CharacterController characterController;
 
         [Header("HealthStats")]
-        public float _health = 10;
-        public float _maxHealth = 10;
+        [SerializeField] private float _health = 10;
+        [SerializeField] private float _maxHealth = 10;
 
         [Header("DamageStats")]
-        public float _damage = 1;
+        [SerializeField] private float _damage = 1;
 
         public event Action<ZombieState> OnChangeState = (newState) => { };
         public event Action<Zombie> OnDie = (Zombie) => { };
@@ -44,7 +44,7 @@ namespace ZombieFarm.AI
         private ZombieState currentState;
 
         private float timer;
-        private float Maxtimer = 1.0f;
+        private float maxTimer = 1.0f;
         private float recievedDamageTimer;
 
         [SerializeField] private ZombieFarm.Views.Player.PlayerView playerView;
@@ -85,7 +85,7 @@ namespace ZombieFarm.AI
             if (currentState == ZombieState.Attack && timer <= 0)
             {
                 Attack();
-                timer = Maxtimer;
+                timer = maxTimer;
             }
             if (IsCurrentStateUpdatableInEveryFrame == true)
             {
@@ -114,10 +114,10 @@ namespace ZombieFarm.AI
             agent.speed = 0;
             agent.isStopped = true;
 
-            playerView.RecievedDamage(Damage);
+            playerView.ReceivedDamage(Damage);
         }
 
-        public void RecievedDamage(float damage)
+        public void ReceivedDamage(float damage)
         {
             if (recievedDamageTimer <= 0)
             {

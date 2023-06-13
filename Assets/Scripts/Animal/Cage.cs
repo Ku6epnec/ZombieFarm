@@ -18,13 +18,13 @@ public class Cage : MonoBehaviour, IRemovableObject, IHealth
     private float destroyTimeout = 2f;
     private PlayerView playerView;
 
-    public float _maxHealth = 10;
-    public float _health = 10;
+    [SerializeField] private float _maxHealth = 10;
+    [SerializeField] private float _health = 10;
 
     private float _damage = 1;
 
-    private float Maxtimer = 2.0f;
-    private float recievedDamageTimer;
+    private float maxTimer = 2.0f;
+    private float receivedDamageTimer;
 
     private void Awake()
     {
@@ -34,7 +34,7 @@ public class Cage : MonoBehaviour, IRemovableObject, IHealth
 
     private void Update()
     {
-        recievedDamageTimer -= Time.deltaTime;
+        receivedDamageTimer -= Time.deltaTime;
     }
 
     private void OnDestroy()
@@ -55,13 +55,13 @@ public class Cage : MonoBehaviour, IRemovableObject, IHealth
         }
     }
 
-    public void RecievedDamage(float damage)
+    public void ReceivedDamage(float damage)
     {
-        if (recievedDamageTimer <= 0)
+        if (receivedDamageTimer <= 0)
         {
             _health -= damage;
             progressBar.StartProgress(_health);
-            recievedDamageTimer = Maxtimer;
+            receivedDamageTimer = maxTimer;
         }
     }
 

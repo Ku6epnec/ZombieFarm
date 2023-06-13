@@ -19,14 +19,14 @@ namespace ZombieFarm.Views.Player
         public float Damage => _damage;
 
         [Header("HealthStats")]
-        public float _health = 20;
-        public float _maxHealth = 20;
+        [SerializeField] private float _health = 20;
+        [SerializeField] private float _maxHealth = 20;
 
         [Header("ArmorStats")]
-        public float _armor = 0;
+        [SerializeField] private float _armor = 0;
 
         [Header("DamageStats")]
-        public float _damage = 1;
+        [SerializeField] private float _damage = 1;
 
         [Header("References")]
         [SerializeField] private ProgressBar healthProgressBar;
@@ -45,7 +45,6 @@ namespace ZombieFarm.Views.Player
             healthProgressBar.InitSlider(MaxHealth);
             healthProgressBar.ProcessCompleted += Die;
 
-            attackTrigger.ApplyDamage += OnApplyDamage;
             interactiveArea.Interactive += OnAttack;
             interactiveArea.DeInteractive += OnIdle;
         }
@@ -54,7 +53,6 @@ namespace ZombieFarm.Views.Player
         {
             Root.ZombieManager.OnMonsterAttack -= OnAttack;
             healthProgressBar.ProcessCompleted -= Die;
-            attackTrigger.ApplyDamage -= OnApplyDamage;
         }
 
         public void OnIdle()
@@ -65,18 +63,6 @@ namespace ZombieFarm.Views.Player
         public void OnAttack()
         {                    
             RefreshCurrentState(PlayerState.Attack);
-        }
-
-        private void OnApplyDamage()
-        {
-            if (enemy != null)
-            {
-                enemy.RecievedDamage(Damage);
-            }
-            else if (cage != null)
-            {
-                cage.RecievedDamage(Damage);
-            }
         }
 
         public void DestroyObject(bool inProcess)
@@ -95,7 +81,7 @@ namespace ZombieFarm.Views.Player
             }
         }
 
-        public void RecievedDamage(float damage)
+        public void ReceivedDamage(float damage)
         {
             damage = damage - _armor;
             if (damage > 0)
