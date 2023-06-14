@@ -10,7 +10,7 @@ namespace ZombieFarm.Views.Player
         private float maxTimer = 1;
         internal event Action Interactive = () => { };
         internal event Action DeInteractive = () => { };
-        public LookAt lookAt;
+        private LookAt lookAt;
         private ReceivedDamageObject ReceivedDamageObject;
 
         private void OnTriggerEnter(Collider other)

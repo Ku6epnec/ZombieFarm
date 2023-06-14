@@ -4,10 +4,10 @@ namespace ZombieFarm.Views.Player
 {
     public class AttackTrigger : MonoBehaviour
     {
-        private GameObject InteractiveObject;
+        private GameObject interactiveObject;
         private PlayerView playerView;
 
-        private ReceivedDamageObject ReceivedDamageObject;
+        private ReceivedDamageObject receivedDamageObject;
 
         private void Start()
         {
@@ -16,19 +16,19 @@ namespace ZombieFarm.Views.Player
 
         private void OnTriggerEnter(Collider other)
         {
-            InteractiveObject = other.gameObject;
-            if (InteractiveObject.TryGetComponent<ReceivedDamageObject>(out ReceivedDamageObject receivedDamageObject))
+            interactiveObject = other.gameObject;
+            if (interactiveObject.TryGetComponent<ReceivedDamageObject>(out ReceivedDamageObject _receivedDamageObject))
             {
-                ReceivedDamageObject = receivedDamageObject;
+                receivedDamageObject = _receivedDamageObject;
             }
             ApplyDamage();
         }
 
         private void ApplyDamage()
         {
-            if (ReceivedDamageObject != null)
+            if (receivedDamageObject != null)
             {
-                ReceivedDamageObject.Interaction(playerView.Damage);
+                receivedDamageObject.Interaction(playerView.Damage);
             }
         }
     }
