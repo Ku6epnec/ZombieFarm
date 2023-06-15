@@ -8,20 +8,21 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: IL3DN_Plant_Grass_02
-  m_Shader: {fileID: 34, guid: 0000000000000000f000000000000000, type: 0}
-  m_ValidKeywords: []
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ValidKeywords:
+  - _ALPHATEST_ON
   m_InvalidKeywords:
   - EFFECT_HUE_VARIATION
   - GEOM_TYPE_LEAF
-  - _ALPHATEST_ON
   - _BEND_ON
   - _WIGGLE_ON
   - _WIND_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
+  m_CustomRenderQueue: 2450
+  stringTagMap:
+    RenderType: TransparentCutout
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
@@ -123,7 +124,7 @@ Material:
     - _ColorRampIntensity: 0
     - _ColoredHatch: 0
     - _Cull: 0
-    - _Cutoff: 0.535
+    - _Cutoff: 0.437
     - _DetailNormalMapScale: 1
     - _DirectionNoise: 1
     - _DirectionSpeed: 10
@@ -131,7 +132,7 @@ Material:
     - _Float0: 1
     - _Float1: 10
     - _GlossMapScale: 1
-    - _Glossiness: 0
+    - _Glossiness: 0.505
     - _GlossyReflections: 1
     - _HatchIntensity: 1
     - _HatchRampIntensity: 0
