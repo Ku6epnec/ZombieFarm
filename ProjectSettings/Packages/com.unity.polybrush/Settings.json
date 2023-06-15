@@ -29,7 +29,7 @@
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "Scattering.AvoidOverlappingObjects",
-                "value": "{\"m_Value\":true}"
+                "value": "{\"m_Value\":false}"
             },
             {
                 "type": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
@@ -89,7 +89,7 @@
             {
                 "type": "UnityEditor.Polybrush.PrefabLoadout, Unity.Polybrush.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
                 "key": "ScatteringEditor.userLoadout",
-                "value": "{\"m_Value\":{\"infos\":[{\"palette\":{\"fileID\":11400000,\"guid\":\"c8d88913f1db89c4ba612cddcef80ff3\",\"type\":2},\"prefab\":{\"fileID\":138553360571289287,\"guid\":\"43c0e6942f29f7a41bd9e7129fb0b59f\",\"type\":3}}]}}"
+                "value": "{\"m_Value\":{\"infos\":[{\"palette\":{\"fileID\":11400000,\"guid\":\"c8d88913f1db89c4ba612cddcef80ff3\",\"type\":2},\"prefab\":{\"fileID\":6852482293740630607,\"guid\":\"68cd299ff62b54d4f8b6b9516732d619\",\"type\":3}}]}}"
             },
             {
                 "type": "UnityEngine.Polybrush.PolyDirection, Unity.Polybrush, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
