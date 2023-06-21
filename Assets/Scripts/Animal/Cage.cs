@@ -6,23 +6,24 @@ using ZombieFarm.Views.Player;
 
 public class Cage : ReceivedDamageObject, IRemovableObject, IHealth
 {
-    public event Action<bool> OnDestroyProcess = (inProgress) => { };
     public float Health => _health;
     public float MaxHealth => _maxHealth;
+
+    public event Action<bool> OnDestroyProcess = (inProgress) => { };
     internal override event Action CleanInteractiveObject = () => { };
 
     [SerializeField] AnimalFollow animal;
     [SerializeField] ProgressBar progressBar;
+
     [SerializeField] private Transform cageModel;
     [SerializeField] private ParticleSystem disappearVFX;
-
-    private float destroyTimeout = 2f;
 
     [SerializeField] private float _maxHealth = 10;
     [SerializeField] private float _health = 10;
 
     private float _damage = 1;
 
+    private float destroyTimeout = 2f;
     private float maxTimer = 2.0f;
     private float receivedDamageTimer;
 

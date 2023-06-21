@@ -5,21 +5,24 @@ namespace ZombieFarm.Views.Player
 {
     public class InteractiveArea : MonoBehaviour
     {
-        private GameObject InteractiveObject;
-        private float timer;
-        private float maxTimer = 1;
+        private ReceivedDamageObject receivedDamageObject;
+        private LookAt lookAt;
+
         internal event Action Interactive = () => { };
         internal event Action DeInteractive = () => { };
-        private LookAt lookAt;
-        private ReceivedDamageObject ReceivedDamageObject;
+
+        private GameObject InteractiveObject;
+
+        private float timer;
+        private float maxTimer = 1;
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.TryGetComponent<ReceivedDamageObject>(out ReceivedDamageObject receivedDamageObject))
+            if (other.gameObject.TryGetComponent<ReceivedDamageObject>(out ReceivedDamageObject _receivedDamageObject))
             {
                 InteractiveObject = other.gameObject;
-                ReceivedDamageObject = receivedDamageObject;
-                ReceivedDamageObject.CleanInteractiveObject += Cleaner;
+                receivedDamageObject = _receivedDamageObject;
+                receivedDamageObject.CleanInteractiveObject += Cleaner;
             }
         }
 
@@ -27,11 +30,11 @@ namespace ZombieFarm.Views.Player
         {
             if (InteractiveObject == null)
             {
-                if (other.gameObject.TryGetComponent<ReceivedDamageObject>(out ReceivedDamageObject receivedDamageObject))
+                if (other.gameObject.TryGetComponent<ReceivedDamageObject>(out ReceivedDamageObject _receivedDamageObject))
                 {
                     InteractiveObject = other.gameObject;
-                    ReceivedDamageObject = receivedDamageObject;
-                    ReceivedDamageObject.CleanInteractiveObject += Cleaner;
+                    receivedDamageObject = _receivedDamageObject;
+                    receivedDamageObject.CleanInteractiveObject += Cleaner;
                 }
             }
         }
@@ -41,7 +44,7 @@ namespace ZombieFarm.Views.Player
             if (other.gameObject == InteractiveObject)
             {
                 Cleaner();
-                ReceivedDamageObject.CleanInteractiveObject -= Cleaner;
+                receivedDamageObject.CleanInteractiveObject -= Cleaner;
             }
         }
 
@@ -56,9 +59,8 @@ namespace ZombieFarm.Views.Player
             }
             else if (InteractiveObject == null && timer <= 0)
             {           
-                DeInteractive();
-                
-                ReceivedDamageObject.CleanInteractiveObject -= Cleaner;
+                DeInteractive();              
+                receivedDamageObject.CleanInteractiveObject -= Cleaner;
                 lookAt.DeInitObject();
             }
         }
