@@ -4,10 +4,10 @@ namespace ZombieFarm.Views.Player
 {
     public class AttackTrigger : MonoBehaviour
     {
-        private GameObject interactiveObject;
         private PlayerView playerView;
-
         private ReceivedDamageObject receivedDamageObject;
+
+        private GameObject interactiveObject;
 
         private void Start()
         {

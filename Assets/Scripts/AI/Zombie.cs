@@ -12,7 +12,20 @@ namespace ZombieFarm.AI
         public float MaxHealth => _maxHealth;
         public float Damage => _damage;
 
+        public event Action<ZombieState> OnChangeState = (newState) => { };
+        public event Action<Zombie> OnDie = (Zombie) => { };
+
+        internal override event Action CleanInteractiveObject = () => { };
+
+        private NavMeshAgent agent;
+        private List<Transform> walkingPoints;
+        private ZombieState currentState;
+
         [SerializeField] private CharacterController characterController;
+        [SerializeField] private ZombieFarm.Views.Player.PlayerView playerView;
+
+        [Header("References")]
+        [SerializeField] private ProgressBar healthProgressBar;
 
         [Header("HealthStats")]
         [SerializeField] private float _health = 10;
@@ -21,8 +34,6 @@ namespace ZombieFarm.AI
         [Header("DamageStats")]
         [SerializeField] private float _damage = 1;
 
-        public event Action<ZombieState> OnChangeState = (newState) => { };
-        public event Action<Zombie> OnDie = (Zombie) => { };
 
         [Header("SpeedStats")]
         [SerializeField] private float speedForWalking = 2f;
@@ -32,23 +43,13 @@ namespace ZombieFarm.AI
         [SerializeField] private float distanceToPlayerForAttack = 2f;
         [SerializeField] private float distanceToPlayerForChase = 15f;
 
-        [Header("References")]
-        [SerializeField] private ProgressBar healthProgressBar;
-
         [Header("Walking")]
         [SerializeField] private GameObject walkingPointsParent;
         [SerializeField][Range(0, 1000)] private int walkingProbability;
 
-        private NavMeshAgent agent;
-        private List<Transform> walkingPoints;
-        private ZombieState currentState;
-
         private float timer;
         private float maxTimer = 2.0f;
         private float recievedDamageTimer;
-
-        [SerializeField] private ZombieFarm.Views.Player.PlayerView playerView;
-        internal override event Action CleanInteractiveObject = () => { };
 
         private bool IsCurrentStateUpdatableInEveryFrame => currentState == ZombieState.Chase;
 
