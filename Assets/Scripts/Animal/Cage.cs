@@ -9,6 +9,7 @@ public class Cage : ReceivedDamageObject, IRemovableObject, IHealth
     public event Action<bool> OnDestroyProcess = (inProgress) => { };
     public float Health => _health;
     public float MaxHealth => _maxHealth;
+    internal override event Action CleanInteractiveObject = () => { };
 
     [SerializeField] AnimalFollow animal;
     [SerializeField] ProgressBar progressBar;
@@ -25,8 +26,6 @@ public class Cage : ReceivedDamageObject, IRemovableObject, IHealth
     private float maxTimer = 2.0f;
     private float receivedDamageTimer;
 
-    [SerializeField] private ZombieFarm.Views.Player.InteractiveArea interactiveArea;
-
     public override void Interaction(float damage)
     {
         ReceivedDamage(damage);
@@ -38,11 +37,6 @@ public class Cage : ReceivedDamageObject, IRemovableObject, IHealth
         progressBar.InitSlider(_maxHealth);
     }
 
-    private void Start()
-    {
-        interactiveArea = Root.ViewManager.GetInteractiveArea();
-    }
-
     private void Update()
     {
         receivedDamageTimer -= Time.deltaTime;
@@ -51,7 +45,7 @@ public class Cage : ReceivedDamageObject, IRemovableObject, IHealth
     private void OnDestroy()
     {
         progressBar.ProcessCompleted -= Free;
-        interactiveArea.InteractiveObject = null;
+        CleanInteractiveObject();
     }
 
     private void OnTriggerEnter(Collider other)

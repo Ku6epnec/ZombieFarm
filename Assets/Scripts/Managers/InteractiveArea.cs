@@ -5,7 +5,7 @@ namespace ZombieFarm.Views.Player
 {
     public class InteractiveArea : MonoBehaviour
     {
-        public GameObject InteractiveObject;
+        private GameObject InteractiveObject;
         private float timer;
         private float maxTimer = 1;
         internal event Action Interactive = () => { };
@@ -19,6 +19,7 @@ namespace ZombieFarm.Views.Player
             {
                 InteractiveObject = other.gameObject;
                 ReceivedDamageObject = receivedDamageObject;
+                ReceivedDamageObject.CleanInteractiveObject += Cleaner;
             }
         }
 
@@ -30,6 +31,7 @@ namespace ZombieFarm.Views.Player
                 {
                     InteractiveObject = other.gameObject;
                     ReceivedDamageObject = receivedDamageObject;
+                    ReceivedDamageObject.CleanInteractiveObject += Cleaner;
                 }
             }
         }
@@ -38,7 +40,8 @@ namespace ZombieFarm.Views.Player
         {
             if (other.gameObject == InteractiveObject)
             {
-                InteractiveObject = null;
+                Cleaner();
+                ReceivedDamageObject.CleanInteractiveObject -= Cleaner;
             }
         }
 
@@ -46,16 +49,23 @@ namespace ZombieFarm.Views.Player
         {
             timer -= Time.deltaTime;
             if (InteractiveObject != null && timer <= 0)
-            {
+            {           
                 timer = maxTimer;
                 Interactive();
                 lookAt.InitObject(InteractiveObject);
             }
             else if (InteractiveObject == null && timer <= 0)
-            {
-                lookAt.DeInitObject();
+            {           
                 DeInteractive();
+                
+                ReceivedDamageObject.CleanInteractiveObject -= Cleaner;
+                lookAt.DeInitObject();
             }
+        }
+
+        private void Cleaner()
+        {
+            InteractiveObject = null;
         }
     }
 }

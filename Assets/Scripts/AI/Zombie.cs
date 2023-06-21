@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +11,7 @@ namespace ZombieFarm.AI
         public float Health => _health;
         public float MaxHealth => _maxHealth;
         public float Damage => _damage;
+
         [SerializeField] private CharacterController characterController;
 
         [Header("HealthStats")]
@@ -48,7 +48,7 @@ namespace ZombieFarm.AI
         private float recievedDamageTimer;
 
         [SerializeField] private ZombieFarm.Views.Player.PlayerView playerView;
-        [SerializeField] private ZombieFarm.Views.Player.InteractiveArea interactiveArea;
+        internal override event Action CleanInteractiveObject = () => { };
 
         private bool IsCurrentStateUpdatableInEveryFrame => currentState == ZombieState.Chase;
 
@@ -72,14 +72,13 @@ namespace ZombieFarm.AI
         {
             currentState = ZombieState.Idle;
             playerView = Root.ViewManager.GetPlayerView();
-            interactiveArea = Root.ViewManager.GetInteractiveArea();
         }
 
         private void OnDestroy()
         {
             healthProgressBar.ProcessCompleted -= Die;
             OnChangeState -= UpdateAction;
-            interactiveArea.InteractiveObject = null;
+            CleanInteractiveObject();
         }
 
         private void FixedUpdate()
@@ -135,7 +134,7 @@ namespace ZombieFarm.AI
         private void Die()
         {
             Destroy(characterController);
-            interactiveArea.InteractiveObject = null;
+            CleanInteractiveObject();
             currentState = ZombieState.Die;
             healthProgressBar.gameObject.SetActive(false);
             OnDie(this);
