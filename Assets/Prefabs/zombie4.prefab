@@ -711,7 +711,7 @@ GameObject:
   - component: {fileID: -746617514671488665}
   m_Layer: 0
   m_Name: zombie4
-  m_TagString: Zombie
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -789,6 +789,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: -746617514671488665}
+  playerView: {fileID: 0}
+  healthProgressBar: {fileID: 8459082727513587825}
   _health: 10
   _maxHealth: 10
   _damage: 1
@@ -796,11 +798,8 @@ MonoBehaviour:
   speedForChasing: 10
   distanceToPlayerForAttack: 4
   distanceToPlayerForChase: 15
-  healthProgressBar: {fileID: 8459082727513587825}
   walkingPointsParent: {fileID: 0}
   walkingProbability: 3
-  playerView: {fileID: 0}
-  interactiveArea: {fileID: 0}
 --- !u!114 &18330316162123251
 MonoBehaviour:
   m_ObjectHideFlags: 0
