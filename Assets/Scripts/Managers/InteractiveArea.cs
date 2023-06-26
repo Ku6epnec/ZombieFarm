@@ -8,8 +8,8 @@ namespace ZombieFarm.Views.Player
         private ReceivedDamageObject receivedDamageObject;
         private LookAt lookAt;
 
-        internal event Action Interactive = () => { };
-        internal event Action DeInteractive = () => { };
+        internal event Action OnInteractive = () => { };
+        internal event Action OnDeInteractive = () => { };
 
         private GameObject InteractiveObject;
 
@@ -22,7 +22,7 @@ namespace ZombieFarm.Views.Player
             {
                 InteractiveObject = other.gameObject;
                 receivedDamageObject = _receivedDamageObject;
-                receivedDamageObject.CleanInteractiveObject += Cleaner;
+                receivedDamageObject.CleanInteractiveObject += Clean;
             }
         }
 
@@ -34,7 +34,7 @@ namespace ZombieFarm.Views.Player
                 {
                     InteractiveObject = other.gameObject;
                     receivedDamageObject = _receivedDamageObject;
-                    receivedDamageObject.CleanInteractiveObject += Cleaner;
+                    receivedDamageObject.CleanInteractiveObject += Clean;
                 }
             }
         }
@@ -43,8 +43,8 @@ namespace ZombieFarm.Views.Player
         {
             if (other.gameObject == InteractiveObject)
             {
-                Cleaner();
-                receivedDamageObject.CleanInteractiveObject -= Cleaner;
+                Clean();
+                receivedDamageObject.CleanInteractiveObject -= Clean;
             }
         }
 
@@ -54,18 +54,18 @@ namespace ZombieFarm.Views.Player
             if (InteractiveObject != null && timer <= 0)
             {           
                 timer = maxTimer;
-                Interactive();
+                OnInteractive();
                 lookAt.InitObject(InteractiveObject);
             }
             else if (InteractiveObject == null && timer <= 0)
             {           
-                DeInteractive();              
-                receivedDamageObject.CleanInteractiveObject -= Cleaner;
+                OnDeInteractive();              
+                receivedDamageObject.CleanInteractiveObject -= Clean;
                 lookAt.DeInitObject();
             }
         }
 
-        private void Cleaner()
+        private void Clean()
         {
             InteractiveObject = null;
         }
