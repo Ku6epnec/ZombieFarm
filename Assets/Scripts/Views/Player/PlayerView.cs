@@ -41,8 +41,8 @@ namespace ZombieFarm.Views.Player
             healthProgressBar.InitSlider(MaxHealth);
             healthProgressBar.ProcessCompleted += Die;
 
-            interactiveArea.Interactive += OnAttack;
-            interactiveArea.DeInteractive += OnIdle;
+            interactiveArea.OnInteractive += OnAttack;
+            interactiveArea.OnDeInteractive += OnIdle;
         }
 
         private void OnDestroy()
