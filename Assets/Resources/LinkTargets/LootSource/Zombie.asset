@@ -16,4 +16,7 @@ MonoBehaviour:
   - resource:
       itemId: Wood
     amount: 3
+  - resource:
+      itemId: Crop
+    amount: 3
   itemsLoot: []

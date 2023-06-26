@@ -13,5 +13,9 @@ MonoBehaviour:
   m_Name: Wool
   m_EditorClassIdentifier: 
   displayName: "\u0428\u0435\u0440\u0441\u0442\u044C"
-  worth: 5
   sprite: {fileID: 21300000, guid: 0bd2ee4293bb6934f93f75052784b75c, type: 3}
+  worthResources:
+  - linkToOtherResource:
+      itemId: Wood
+    thisWorth: 1
+    otherWorth: 5
