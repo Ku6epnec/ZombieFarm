@@ -17,7 +17,6 @@ public class ConfigManager : MonoBehaviour, IConfigManager
 
     }
 
-
     private void GetListOfAssets<T>(List<string> buffer)
     {
         string pathToSearch = Path.Combine(Application.dataPath, LinkBase.GetResourcesPathForAsset<T>());

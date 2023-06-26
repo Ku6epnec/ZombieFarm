@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityTools.Runtime.Links;
@@ -24,6 +25,8 @@ public class ResourceManager : MonoBehaviour, IResourceManager
     {
         resourceAmount = new Dictionary<LinkToResource, int>();
     }
+
+    public List<LinkToResource> GetAllAvailableResources() => resourceAmount.Keys.ToList();
 
     public void AddResource(LinkToResource type, int amount)
     {
