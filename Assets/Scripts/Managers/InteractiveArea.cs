@@ -5,8 +5,9 @@ namespace ZombieFarm.Views.Player
 {
     public class InteractiveArea : MonoBehaviour
     {
+        [SerializeField] private LookAt lookAt;
+
         private ReceivedDamageObject receivedDamageObject;
-        private LookAt lookAt;
 
         internal event Action OnInteractive = () => { };
         internal event Action OnDeInteractive = () => { };
@@ -60,8 +61,6 @@ namespace ZombieFarm.Views.Player
             else if (InteractiveObject == null && timer <= 0)
             {           
                 OnDeInteractive();              
-                receivedDamageObject.CleanInteractiveObject -= Clean;
-                lookAt.DeInitObject();
             }
         }
 
