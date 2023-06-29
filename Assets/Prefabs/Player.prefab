@@ -1499,15 +1499,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aed9ae5e9366f0043860a8e0043d8b05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 10
-  _maxHealth: 10
+  _health: 20
+  _maxHealth: 20
   _armor: 0
   _damage: 1
   healthProgressBar: {fileID: 8766386389089777751}
   interactiveArea: {fileID: 8602405530869876968}
   attackTrigger: {fileID: 3390736063855088345}
-  enemy: {fileID: 0}
-  cage: {fileID: 0}
 --- !u!195 &1038839095363543107
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -6214,10 +6212,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db9a36044ad5c4143a7f9b75e2764302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractiveObject: {fileID: 0}
-  Enemy: {fileID: 0}
-  cage: {fileID: 0}
-  lookAt: {fileID: 0}
 --- !u!1 &8779323719618473218
 GameObject:
   m_ObjectHideFlags: 0
