@@ -18,4 +18,8 @@ MonoBehaviour:
   - linkToOtherResource:
       itemId: Wood
     thisWorth: 1
-    otherWorth: 5
+    otherWorth: 4
+  - linkToOtherResource:
+      itemId: Crop
+    thisWorth: 3
+    otherWorth: 1

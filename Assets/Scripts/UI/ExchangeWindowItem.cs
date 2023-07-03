@@ -4,25 +4,57 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityTools.UnityRuntime.UI.Element;
+using UnityTools.UnityRuntime.UI.ElementSet;
 using ZombieFarm.Config.Links;
 using ZombieFarm.Config.LinkTargets;
 
 namespace ZombieFarm.UI
 {
-    public class ExchangeWindowItem : ElementBase
+    public class ExchangeWindowItem : MonoBehaviour
     {
-        public TextMeshProUGUI amountText;
+        [SerializeField] private TextMeshProUGUI amountText;
+        public Image resourseImage;
 
         [HideInInspector] public Button button;
         [HideInInspector] public LinkToResource link;
-        [HideInInspector] public int index;
 
-        public void SetUp(LinkToResource linkToResource, int index)
+        private IResourceManager resourceManager;
+        private int amount;
+
+        public int Amount
+        {
+            get
+            {
+                return amount;
+            }
+            set
+            {
+                amount = value;
+                amountText.text = amount.ToString();
+            }
+        }
+
+        public void SetUp(LinkToResource linkToResource)
         {
             link = linkToResource;
-            GetComponent<Image>().sprite = Root.ConfigManager.GetByLink<Resource>(link).sprite;
+            resourseImage.sprite = Root.ConfigManager.GetByLink<Resource>(link).sprite;
             button = GetComponent<Button>();
-            this.index = index;
+            resourceManager = Root.ResourceManager;
+            resourceManager.OnChangeResource += UpdateResourseAmount;
+            UpdateResourseAmount(link);
+            if (Amount == 0)
+            {
+                button.interactable = false;
+            }
+            else
+            {
+                button.interactable = true;
+            }
+        }
+
+        public void UpdateResourseAmount(LinkToResource obj)
+        {
+            Amount = resourceManager.GetResourceAmount(link);
         }
 
         public int GetExchangeRate(LinkToResource other)
@@ -32,23 +64,7 @@ namespace ZombieFarm.UI
             {
                 return -1;
             }
-            Debug.Log(1f * foundResource.otherWorth / foundResource.thisWorth);
             return foundResource.otherWorth / foundResource.thisWorth;
         }
-
-        private int amount;
-        public int Amount
-        {
-            get 
-            { 
-                return amount; 
-            }
-            set
-            {
-                amount = value;
-                amountText.text = amount.ToString();
-            }
-        }
-
     }
 }

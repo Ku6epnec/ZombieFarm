@@ -17,5 +17,9 @@ MonoBehaviour:
   worthResources:
   - linkToOtherResource:
       itemId: Wool
-    thisWorth: 5
+    thisWorth: 4
+    otherWorth: 1
+  - linkToOtherResource:
+      itemId: Crop
+    thisWorth: 10
     otherWorth: 1
