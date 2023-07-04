@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using ZombieFarm.Interfaces;
+using ZombieFarm.Managers.Interfaces;
 
-public class UIManager : MonoBehaviour
+public class UIManager : MonoBehaviour, IUIManager
 {
+    [SerializeField] private FloatingJoystick floatingJoystick;
+
+    public IJoystick Joystick => floatingJoystick;
+
     private Dictionary<string, IUIElement> uiPanels;
     private IUIElement currentOpen;
 
