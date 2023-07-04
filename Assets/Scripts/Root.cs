@@ -12,7 +12,6 @@ public class Root : MonoBehaviour
     [SerializeField] ViewManager viewManager;
     [SerializeField] ResourceManager resourceManager;
     [SerializeField] ConfigManager configManager;
-    [SerializeField] UIManager uiManager;
 
     private static Root instance;
 
@@ -37,14 +36,6 @@ public class Root : MonoBehaviour
         }
     }
 
-    public static IUIManager UIManager
-    {
-        get 
-        {
-            return instance.uiManager;
-        }
-    }
-
     public static IViewManager ViewManager
     {
         get
@@ -60,19 +51,14 @@ public class Root : MonoBehaviour
             return instance.resourceManager;
         }
     }
-<<<<<<< HEAD
-    
-    public static ConfigManager ConfigManager
-=======
     public static IConfigManager ConfigManager
->>>>>>> a455c69 (resource and config managers)
     {
         get
         {
             return instance.configManager;
         }
     }
-    public static UIManager UIManager
+    public static IUIManager UIManager
     {
         get
         {
