@@ -5,66 +5,70 @@ using UnityEngine;
 using UnityEngine.UI;
 using ZombieFarm.Config.Links;
 using ZombieFarm.Config.LinkTargets;
+using ZombieFarm.Managers.Interfaces;
 
-public class ResourceList : MonoBehaviour
+namespace ZombieFarm.UI
 {
-    [SerializeField] private GameObject contents;
-    [SerializeField] private GameObject placeholderPrefab;
-
-    private Dictionary<LinkToResource, ResourceItem> resourceToUI;
-    private List<ResourceItem> emptyPlaceholders;
-    private IResourceManager resourceManager;
-
-    private void Start()
+    public class ResourceList : MonoBehaviour
     {
-        resourceManager = Root.ResourceManager;
-        resourceManager.OnChangeResource += UpdateUI;
-        UpdateUIOnStart();
-    }
+        [SerializeField] private GameObject contents;
+        [SerializeField] private GameObject placeholderPrefab;
 
-    private void OnDestroy()
-    {
-        resourceManager.OnChangeResource -= UpdateUI;
-    }
+        private Dictionary<LinkToResource, ResourceItem> resourceToUI;
+        private List<ResourceItem> emptyPlaceholders;
+        private IResourceManager resourceManager;
 
-    private void UpdateUIOnStart()
-    {
-        resourceToUI = new Dictionary<LinkToResource, ResourceItem>();
-        emptyPlaceholders = contents.GetComponentsInChildren<ResourceItem>(true).ToList();
-
-        foreach (ResourceItem item in emptyPlaceholders)
+        private void Start()
         {
-            item.gameObject.SetActive(false);
+            resourceManager = Root.ResourceManager;
+            resourceManager.OnChangeResource += UpdateUI;
+            UpdateUIOnStart();
         }
-    }
 
-    private void UpdateUI(LinkToResource linkToResource)
-    {
-        if (resourceToUI.ContainsKey(linkToResource))
+        private void OnDestroy()
         {
-            resourceToUI[linkToResource].amountText.text = resourceManager.GetResourceAmount(linkToResource).ToString();
+            resourceManager.OnChangeResource -= UpdateUI;
         }
-        else
+
+        private void UpdateUIOnStart()
         {
-            ResourceItem placeholder;
-            if (emptyPlaceholders.Count != 0)
+            resourceToUI = new Dictionary<LinkToResource, ResourceItem>();
+            emptyPlaceholders = contents.GetComponentsInChildren<ResourceItem>(true).ToList();
+
+            foreach (ResourceItem item in emptyPlaceholders)
             {
-                placeholder = emptyPlaceholders[0];
-                emptyPlaceholders.RemoveAt(0);
+                item.gameObject.SetActive(false);
+            }
+        }
+
+        private void UpdateUI(LinkToResource linkToResource)
+        {
+            if (resourceToUI.ContainsKey(linkToResource))
+            {
+                resourceToUI[linkToResource].amountText.text = resourceManager.GetResourceAmount(linkToResource).ToString();
             }
             else
             {
-                placeholder = Instantiate(placeholderPrefab).GetComponent<ResourceItem>();
-                placeholder.transform.parent = contents.transform;
+                ResourceItem placeholder;
+                if (emptyPlaceholders.Count != 0)
+                {
+                    placeholder = emptyPlaceholders[0];
+                    emptyPlaceholders.RemoveAt(0);
+                }
+                else
+                {
+                    placeholder = Instantiate(placeholderPrefab).GetComponent<ResourceItem>();
+                    placeholder.transform.parent = contents.transform;
+                }
+
+                Resource resourceInfo = Root.ConfigManager.GetByLink<Resource>(linkToResource);
+                placeholder.image.sprite = resourceInfo.sprite;
+                placeholder.nameText.text = resourceInfo.displayName;
+                placeholder.amountText.text = resourceManager.GetResourceAmount(linkToResource).ToString();
+                placeholder.gameObject.SetActive(true);
+
+                resourceToUI.Add(linkToResource, placeholder);
             }
-
-            Resource resourceInfo = Root.ConfigManager.GetByLink<Resource>(linkToResource);
-            placeholder.image.sprite = resourceInfo.sprite;
-            placeholder.nameText.text = resourceInfo.displayName;
-            placeholder.amountText.text = resourceManager.GetResourceAmount(linkToResource).ToString();
-            placeholder.gameObject.SetActive(true);
-
-            resourceToUI.Add(linkToResource, placeholder);
         }
     }
 }

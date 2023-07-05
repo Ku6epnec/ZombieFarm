@@ -4,9 +4,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ResourceItem : MonoBehaviour
+namespace ZombieFarm.UI
 {
-    public Image image;
-    public TextMeshProUGUI nameText;
-    public TextMeshProUGUI amountText;
+    public class ResourceItem : MonoBehaviour
+    {
+        public Image image;
+        public TextMeshProUGUI nameText;
+        public TextMeshProUGUI amountText;
+    }
 }

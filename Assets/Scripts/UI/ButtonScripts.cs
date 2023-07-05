@@ -1,14 +1,17 @@
 using UnityEngine;
 
-public class ButtonScripts : MonoBehaviour
+namespace ZombieFarm.UI
 {
-    public void Open(string name)
+    public class ButtonScripts : MonoBehaviour
     {
-        Root.UIManager.OpenPanel(name);
-    }
+        public void Open(string name)
+        {
+            Root.UIManager.OpenPanel(name);
+        }
 
-    public void CloseCurrentWindow()
-    {
-        Root.UIManager.ClosePanel();
+        public void CloseCurrentWindow()
+        {
+            Root.UIManager.ClosePanel();
+        }
     }
 }

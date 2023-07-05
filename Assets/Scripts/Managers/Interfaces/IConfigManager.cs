@@ -1,6 +1,9 @@
 using CozyServer.DTS.Links;
 
-public interface IConfigManager
+namespace ZombieFarm.Managers.Interfaces
 {
-    public T GetByLink<T>(ILink link) where T : UnityEngine.Object;
+    public interface IConfigManager
+    {
+        public T GetByLink<T>(ILink link) where T : UnityEngine.Object;
+    }
 }
