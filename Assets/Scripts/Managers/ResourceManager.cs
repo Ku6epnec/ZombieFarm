@@ -1,14 +1,9 @@
-using CozyServer.DTS.Links;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
-using UnityTools.Runtime.Links;
 using ZombieFarm.Config.Links;
-using ZombieFarm.Config.LinkTargets;
+using ZombieFarm.Managers.Interfaces;
 
 public class ResourceManager : MonoBehaviour, IResourceManager
 {

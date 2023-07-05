@@ -7,6 +7,7 @@ using UnityTools.UnityRuntime.UI.Element;
 using UnityTools.UnityRuntime.UI.ElementSet;
 using ZombieFarm.Config.Links;
 using ZombieFarm.Config.LinkTargets;
+using ZombieFarm.Managers.Interfaces;
 
 namespace ZombieFarm.UI
 {

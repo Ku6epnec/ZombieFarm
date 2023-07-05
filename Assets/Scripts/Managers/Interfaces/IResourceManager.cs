@@ -5,12 +5,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZombieFarm.Config.Links;
 
-public interface IResourceManager
+namespace ZombieFarm.Managers.Interfaces
 {
-    public event Action<LinkToResource> OnChangeResource;
-    public List<LinkToResource> GetAllAvailableResources();
-    public void AddResource(LinkToResource type, int amount);
-    public bool SubtractResource(LinkToResource type, int amount);
-    public int GetResourceAmount(LinkToResource type);
+    public interface IResourceManager
+    {
+        public event Action<LinkToResource> OnChangeResource;
+        public List<LinkToResource> GetAllAvailableResources();
+        public void AddResource(LinkToResource type, int amount);
+        public bool SubtractResource(LinkToResource type, int amount);
+        public int GetResourceAmount(LinkToResource type);
 
+    }
 }

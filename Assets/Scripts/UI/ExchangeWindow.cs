@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using ZombieFarm.Config.Links;
 using ZombieFarm.Config.LinkTargets;
+using ZombieFarm.Managers.Interfaces;
 
 namespace ZombieFarm.UI
 {
