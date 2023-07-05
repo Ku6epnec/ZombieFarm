@@ -53,12 +53,8 @@ public class Cage : ReceivedDamageObject, IRemovableObject, IHealth
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<PlayerView>().RegisterRemovableObject(this);
-            OnDestroyProcess(true);
-
             progressBar.gameObject.SetActive(true);
-            _health -= _damage;
-            progressBar.StartProgress(_health);
+            OnDestroyProcess(true);
         }
     }
 
@@ -67,7 +63,7 @@ public class Cage : ReceivedDamageObject, IRemovableObject, IHealth
         if (receivedDamageTimer <= 0)
         {
             _health -= damage;
-            progressBar.StartProgress(_health);
+            progressBar.RefreshProgress(_health);
             receivedDamageTimer = maxTimer;
         }
     }

@@ -28,7 +28,7 @@ public class ProgressBar : MonoBehaviour
         middleLane.sizeDelta = new Vector2(middleLaneWidth, middleLane.rect.height);
     }
 
-    public void StartProgress(float lostProgressValue)
+    public void RefreshProgress(float lostProgressValue)
     {
         progress = SetProgress(lostProgressValue);
         StartCoroutine(progress);
