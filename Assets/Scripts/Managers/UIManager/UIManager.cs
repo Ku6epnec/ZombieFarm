@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using ZombieFarm.Interfaces;
 using ZombieFarm.Managers.Interfaces;
@@ -10,28 +9,24 @@ namespace ZombieFarm.Managers
     public class UIManager : MonoBehaviour, IUIManager
     {
         [SerializeField] private FloatingJoystick floatingJoystick;
+        [SerializeField] private List<SerializedDictionaryElement> uiPanels;
 
         public IJoystick Joystick => floatingJoystick;
 
-        private Dictionary<string, IUIElement> uiPanels;
         private IUIElement currentOpen;
-
-
-        private void Start()
-        {
-            IEnumerable<IUIElement> uiPanelsObjects = FindObjectsOfType<MonoBehaviour>(true).OfType<IUIElement>();
-            uiPanels = new Dictionary<string, IUIElement>();
-
-            foreach (var element in uiPanelsObjects)
-            {
-                uiPanels.Add(element.ID, element);
-            }
-        }
 
         public void OpenPanel(string type)
         {
-            uiPanels[type].Open();
-            currentOpen = uiPanels[type];
+            //uiPanels.Find(s => s.key == type);
+            foreach (SerializedDictionaryElement element in uiPanels)
+            {
+                if (element.key.Equals(type))
+                {
+                    currentOpen = element.value.GetComponent<IUIElement>();
+                    currentOpen.Open();
+                    break;
+                }
+            }
         }
 
         public void ClosePanel()

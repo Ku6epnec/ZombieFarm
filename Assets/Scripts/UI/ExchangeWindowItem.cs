@@ -14,7 +14,7 @@ namespace ZombieFarm.UI
     public class ExchangeWindowItem : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI amountText;
-        public Image resourseImage;
+        public Image resourceImage;
 
         [HideInInspector] public Button button;
         [HideInInspector] public LinkToResource link;
@@ -28,7 +28,7 @@ namespace ZombieFarm.UI
             {
                 return amount;
             }
-            set
+            private set
             {
                 amount = value;
                 amountText.text = amount.ToString();
@@ -38,11 +38,12 @@ namespace ZombieFarm.UI
         public void SetUp(LinkToResource linkToResource)
         {
             link = linkToResource;
-            resourseImage.sprite = Root.ConfigManager.GetByLink<Resource>(link).sprite;
+            resourceImage.sprite = Root.ConfigManager.GetByLink<Resource>(link).sprite;
             button = GetComponent<Button>();
+            button.onClick.RemoveAllListeners();
             resourceManager = Root.ResourceManager;
-            resourceManager.OnChangeResource += UpdateResourseAmount;
-            UpdateResourseAmount(link);
+            resourceManager.OnChangeResource += UpdateResourceAmount;
+            UpdateResourceAmount(link);
             if (Amount == 0)
             {
                 button.interactable = false;
@@ -53,7 +54,7 @@ namespace ZombieFarm.UI
             }
         }
 
-        public void UpdateResourseAmount(LinkToResource obj)
+        public void UpdateResourceAmount(LinkToResource _)
         {
             Amount = resourceManager.GetResourceAmount(link);
         }
