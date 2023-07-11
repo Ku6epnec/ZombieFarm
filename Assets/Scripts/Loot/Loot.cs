@@ -5,17 +5,20 @@ using UnityEngine;
 using ZombieFarm.Config.Links;
 using ZombieFarm.Config.LinkTargets;
 
-public class Loot : MonoBehaviour
+namespace ZombieFarm.Loot
 {
-    [SerializeField] private LinkToLootSource link;
-
-    public void AddToInventory()
+    public class Loot : MonoBehaviour
     {
-        LootSource lootSource = Root.ConfigManager.GetByLink<LootSource>(link);
+        [SerializeField] private LinkToLootSource link;
 
-        foreach (var loot in lootSource.resourcesLoot)
+        public void AddToInventory()
         {
-            Root.ResourceManager.AddResource(loot.resource, loot.amount);
+            LootSource lootSource = Root.ConfigManager.GetByLink<LootSource>(link);
+
+            foreach (var loot in lootSource.resourcesLoot)
+            {
+                Root.ResourceManager.AddResource(loot.resource, loot.amount);
+            }
         }
     }
 }

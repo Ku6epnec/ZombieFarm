@@ -9,53 +9,51 @@ using UnityTools.Runtime.Links;
 using ZombieFarm.Config.LinkTargets;
 using ZombieFarm.Managers.Interfaces;
 
-public class ConfigManager : MonoBehaviour, IConfigManager
+namespace ZombieFarm.Managers
 {
-    private readonly Dictionary<Type, Dictionary<string, object>> cache = new Dictionary<Type, Dictionary<string, object>>();
-
-    public void Initialize()
+    public class ConfigManager : MonoBehaviour, IConfigManager
     {
+        private readonly Dictionary<Type, Dictionary<string, object>> cache = new Dictionary<Type, Dictionary<string, object>>();
 
-    }
-
-    private void GetListOfAssets<T>(List<string> buffer)
-    {
-        string pathToSearch = Path.Combine(Application.dataPath, LinkBase.GetResourcesPathForAsset<T>());
-
-        buffer.Clear();
-
-        buffer.AddRange(Directory.GetFiles(pathToSearch, "*.asset", SearchOption.AllDirectories));
-
-        for (int i = buffer.Count - 1; i >= 0; i--)
+        private void GetListOfAssets<T>(List<string> buffer)
         {
-            buffer[i] =
-                Path.Combine(Path.GetDirectoryName(buffer[i]), Path.GetFileNameWithoutExtension(buffer[i])) // get same path without extension
-                    .Substring(pathToSearch.Length + 1) // remove path to config root && 1 separator
-                    .Replace(Path.DirectorySeparatorChar, '/')
-                    .Replace(Path.AltDirectorySeparatorChar, '/'); // replace all kind of path separators to unity-style path separator
-        }
-    }
+            string pathToSearch = Path.Combine(Application.dataPath, LinkBase.GetResourcesPathForAsset<T>());
 
-    public T GetByLink<T>(ILink link) where T : UnityEngine.Object
-    {
-        if (cache.TryGetValue(typeof(T), out Dictionary<string, object> typedCache) == false)
-        {
-            typedCache = new Dictionary<string, object>();
-            cache.Add(typeof(T), typedCache);
+            buffer.Clear();
+
+            buffer.AddRange(Directory.GetFiles(pathToSearch, "*.asset", SearchOption.AllDirectories));
+
+            for (int i = buffer.Count - 1; i >= 0; i--)
+            {
+                buffer[i] =
+                    Path.Combine(Path.GetDirectoryName(buffer[i]), Path.GetFileNameWithoutExtension(buffer[i])) // get same path without extension
+                        .Substring(pathToSearch.Length + 1) // remove path to config root && 1 separator
+                        .Replace(Path.DirectorySeparatorChar, '/')
+                        .Replace(Path.AltDirectorySeparatorChar, '/'); // replace all kind of path separators to unity-style path separator
+            }
         }
 
-        if (typedCache.TryGetValue(link.LinkedObjectId, out object cachedObject) == false)
+        public T GetByLink<T>(ILink link) where T : UnityEngine.Object
         {
-            cachedObject = Resources.Load<T>(Path.Combine(GetPathForAssetInsideResources<T>(), link.LinkedObjectId));
-            typedCache.Add(link.LinkedObjectId, cachedObject);
+            if (cache.TryGetValue(typeof(T), out Dictionary<string, object> typedCache) == false)
+            {
+                typedCache = new Dictionary<string, object>();
+                cache.Add(typeof(T), typedCache);
+            }
+
+            if (typedCache.TryGetValue(link.LinkedObjectId, out object cachedObject) == false)
+            {
+                cachedObject = Resources.Load<T>(Path.Combine(GetPathForAssetInsideResources<T>(), link.LinkedObjectId));
+                typedCache.Add(link.LinkedObjectId, cachedObject);
+            }
+
+            return cachedObject as T;
+
         }
 
-        return cachedObject as T;
-
-    }
-
-    public static string GetPathForAssetInsideResources<T>()
-    {
-        return Path.Combine("LinkTargets", typeof(T).Name).Replace(@"\", @"/");
+        public static string GetPathForAssetInsideResources<T>()
+        {
+            return Path.Combine("LinkTargets", typeof(T).Name).Replace(@"\", @"/");
+        }
     }
 }

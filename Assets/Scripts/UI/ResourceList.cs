@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using ZombieFarm.Config.Links;
@@ -12,7 +11,7 @@ namespace ZombieFarm.UI
     public class ResourceList : MonoBehaviour
     {
         [SerializeField] private GameObject contents;
-        [SerializeField] private GameObject placeholderPrefab;
+        [SerializeField] private ResourceItem placeholderPrefab;
 
         private Dictionary<LinkToResource, ResourceItem> resourceToUI;
         private List<ResourceItem> emptyPlaceholders;
@@ -33,10 +32,12 @@ namespace ZombieFarm.UI
         private void UpdateUIOnStart()
         {
             resourceToUI = new Dictionary<LinkToResource, ResourceItem>();
-            emptyPlaceholders = contents.GetComponentsInChildren<ResourceItem>(true).ToList();
+            emptyPlaceholders = new List<ResourceItem>();
+            ResourceItem[] emptyPlaceholdersArray = contents.GetComponentsInChildren<ResourceItem>(true);
 
-            foreach (ResourceItem item in emptyPlaceholders)
+            foreach (ResourceItem item in emptyPlaceholdersArray)
             {
+                emptyPlaceholders.Add(item);
                 item.gameObject.SetActive(false);
             }
         }
@@ -57,7 +58,7 @@ namespace ZombieFarm.UI
                 }
                 else
                 {
-                    placeholder = Instantiate(placeholderPrefab).GetComponent<ResourceItem>();
+                    placeholder = Instantiate(placeholderPrefab);
                     placeholder.transform.parent = contents.transform;
                 }
 

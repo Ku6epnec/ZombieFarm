@@ -16,6 +16,5 @@ namespace ZombieFarm.Config.LinkTargets
         }
 
         public List<ResourceAmount> resourcesLoot;
-        public List<LinkToItem> itemsLoot;
     }
 } 

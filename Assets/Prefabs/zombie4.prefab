@@ -709,6 +709,7 @@ GameObject:
   - component: {fileID: 4522107712775081865}
   - component: {fileID: 18330316162123251}
   - component: {fileID: -746617514671488665}
+  - component: {fileID: 6785385919677913448}
   m_Layer: 0
   m_Name: zombie4
   m_TagString: Untagged
@@ -833,6 +834,20 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6785385919677913448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2994725570028760540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a12fb1a7284f36949a00bbd162da4981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  link:
+    itemId: Zombie
 --- !u!1 &3047545272381345415
 GameObject:
   m_ObjectHideFlags: 0

@@ -137,11 +137,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amountText: {fileID: 7508412377920738689}
-  resourseImage: {fileID: 689922271148838169}
+  resourceImage: {fileID: 689922271148838169}
   button: {fileID: 0}
   link:
     itemId: 
-  index: 0
 --- !u!1 &7508412377920738695
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,38 +21,42 @@ namespace ZombieFarm.UI
         [SerializeField] private TextMeshProUGUI finalAmountText;
         [SerializeField] private Image finalImage;
 
+        private List<LinkToResource> optionLinks;
         private IResourceManager resourceManager;
         private ExchangeWindowItem upItemSelected;
         private ExchangeWindowItem downItemSelected;
+
+        private List<ExchangeWindowItem> upExchangeWindowItems;
+        private List<ExchangeWindowItem> downExchangeWindowItems;
 
         private int downItemIteration = 1;
         private int upItemIteration = 1;
 
         public string ID => nameID;
 
-        private void Awake()
-        {
-            resourceManager = Root.ResourceManager;
-        }
-
         private void Start()
         {
+            resourceManager = Root.ResourceManager;
+
+            optionLinks = new List<LinkToResource>();
+            upExchangeWindowItems = new List<ExchangeWindowItem>();
+            downExchangeWindowItems = new List<ExchangeWindowItem>();
+
+            resourceManager.OnChangeResource += CheckOptions;
             amountSelection.onValueChanged.AddListener(delegate { CheckSelection(); });
             exchangeButton.onClick.AddListener(delegate { Exchange(); });
+
+            gameObject.SetActive(false);
         }
 
         private void SetOptions()
         {
-            DeleteOptions(upScrollListContent.transform);
-            DeleteOptions(downScrollListContent.transform);
+            optionLinks.Sort((x, y) => resourceManager.GetResourceAmount(y).CompareTo(resourceManager.GetResourceAmount(x)));
 
-            List<LinkToResource> cachedOptionLinks = resourceManager.GetAllAvailableResources();
-
-            cachedOptionLinks.Sort((x, y) => resourceManager.GetResourceAmount(y).CompareTo(resourceManager.GetResourceAmount(x)));
-
-            foreach(LinkToResource link in cachedOptionLinks)
+            for(int i = 0; i < upExchangeWindowItems.Count; i++)
             {
-                CreateOption(link);
+                InitOption(optionLinks[i], upExchangeWindowItems[i]);
+                InitOption(optionLinks[i], downExchangeWindowItems[i]);
             }
 
             upItemSelected = null;
@@ -60,12 +64,11 @@ namespace ZombieFarm.UI
             CheckSelection();
         }
 
-        private void DeleteOptions(Transform parent)
+        private void CheckOptions(LinkToResource obj)
         {
-            ExchangeWindowItem[] children = parent.GetComponentsInChildren<ExchangeWindowItem>();
-            foreach (ExchangeWindowItem child in children)
+            if (!optionLinks.Contains(obj))
             {
-                Destroy(child.gameObject);
+                CreateOption(obj);
             }
         }
 
@@ -73,14 +76,31 @@ namespace ZombieFarm.UI
         {
             InitWindow(upScrollListContent.transform);
             InitWindow(downScrollListContent.transform);
+
+            optionLinks.Add(link);
         
             void InitWindow(Transform scrollListContentTransform)
             {
-                var item = Instantiate(optionPrefab, scrollListContentTransform);
+                GameObject item = Instantiate(optionPrefab, scrollListContentTransform);
                 ExchangeWindowItem itemWindow = item.GetComponent<ExchangeWindowItem>();
-                itemWindow.SetUp(link);
-                itemWindow.button.onClick.AddListener(delegate { ScrollViewItemSelected(itemWindow); });
+                InitOption(link, itemWindow);
+
+                if (scrollListContentTransform.Equals(upScrollListContent.transform))
+                {
+                    upExchangeWindowItems.Add(itemWindow);
+                }
+                else
+                {
+                    downExchangeWindowItems.Add(itemWindow);
+                }
             }
+        }
+
+        private void InitOption(LinkToResource link, ExchangeWindowItem itemWindow)
+        {
+            itemWindow.SetUp(link);
+            itemWindow.button.onClick.AddListener(delegate { ScrollViewItemSelected(itemWindow); });
+
         }
 
         private void Exchange()
@@ -106,7 +126,7 @@ namespace ZombieFarm.UI
                 item.button.interactable = false;
                 upItemSelected = item;
 
-                foreach (var downItem in downScrollListContent.GetComponentsInChildren<ExchangeWindowItem>())
+                foreach (ExchangeWindowItem downItem in downExchangeWindowItems)
                 {
                     var foundResource = Root.ConfigManager.GetByLink<Resource>(upItemSelected.link).worthResources.Find(s => s.linkToOtherResource == downItem.link);
                     
@@ -160,7 +180,7 @@ namespace ZombieFarm.UI
                 amountSelection.maxValue = upItemSelected.Amount / downItemIteration;
 
                 finalAmountText.text = (amountSelection.value * upItemIteration).ToString();
-                finalImage.sprite = downItemSelected.resourseImage.sprite;
+                finalImage.sprite = downItemSelected.resourceImage.sprite;
                 amountSelection.GetComponentInChildren<TextMeshProUGUI>().text = (amountSelection.value * downItemIteration).ToString();
             }
             else

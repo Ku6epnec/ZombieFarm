@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnDestroyLoot : Loot
+namespace ZombieFarm.Loot
 {
-    private void OnDestroy()
+    public class OnDestroyLoot : Loot
     {
-        AddToInventory();
+        private void OnDestroy()
+        {
+            AddToInventory();
+        }
     }
 }

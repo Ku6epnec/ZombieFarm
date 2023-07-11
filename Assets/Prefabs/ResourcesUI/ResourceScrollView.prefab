@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   contents: {fileID: 1793965763644450234}
-  placeholderPrefab: {fileID: 2978038342839338959, guid: bdf1fde2e18eb7441be872db57d8d6d3,
+  placeholderPrefab: {fileID: 2978038342839338947, guid: bdf1fde2e18eb7441be872db57d8d6d3,
     type: 3}
 --- !u!1 &1793965763644450234
 GameObject:

@@ -1,67 +1,78 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using ZombieFarm.Config.Links;
 using ZombieFarm.Managers.Interfaces;
 
-public class ResourceManager : MonoBehaviour, IResourceManager
+namespace ZombieFarm.Managers
 {
-    Dictionary<LinkToResource, int> resourceAmount;
-
-    public event Action<LinkToResource> OnChangeResource = (resourceName) => { };
-
-    private void Start()
+    public class ResourceManager : MonoBehaviour, IResourceManager
     {
-        Initialize();
-    }
+        Dictionary<LinkToResource, int> resourceAmount;
 
-    private void Initialize()
-    {
-        resourceAmount = new Dictionary<LinkToResource, int>();
-    }
+        public event Action<LinkToResource> OnChangeResource = (resourceName) => { };
 
-    public List<LinkToResource> GetAllAvailableResources() => resourceAmount.Keys.ToList();
-
-    public void AddResource(LinkToResource type, int amount)
-    {
-        AddResourceIfMissing(type);
-        resourceAmount[type] += amount;
-        OnChangeResource(type);
-    }
-
-    public bool SubtractResource(LinkToResource type, int amount)
-    {
-        AddResourceIfMissing(type);
-        if (resourceAmount[type] - amount < 0)
+        private void Start()
         {
-            return false;
+            Initialize();
         }
-        else
+
+        private void Initialize()
         {
-            resourceAmount[type] -= amount;
+            resourceAmount = new Dictionary<LinkToResource, int>();
+        }
+
+        public List<LinkToResource> GetAllAvailableResources()
+        {
+            List<LinkToResource> allAvailableResources = new List<LinkToResource>();
+            foreach(LinkToResource linkToResource in resourceAmount.Keys)
+            {
+                allAvailableResources.Add(linkToResource);
+            }
+
+            return allAvailableResources;
+        }
+
+        public void AddResource(LinkToResource type, int amount)
+        {
+            AddResourceIfMissing(type);
+            resourceAmount[type] += amount;
             OnChangeResource(type);
-            return true;
         }
-    }
 
-    public int GetResourceAmount(LinkToResource type)
-    {
-        if (resourceAmount.ContainsKey(type) == false)
+        public bool SubtractResource(LinkToResource type, int amount)
         {
-            return 0;
+            AddResourceIfMissing(type);
+            if (resourceAmount[type] - amount < 0)
+            {
+                return false;
+            }
+            else
+            {
+                resourceAmount[type] -= amount;
+                OnChangeResource(type);
+                return true;
+            }
         }
-        else
-        {
-            return resourceAmount[type];
-        }
-    }
 
-    private void AddResourceIfMissing(LinkToResource type)
-    {
-        if (resourceAmount.ContainsKey(type) == false)
+        public int GetResourceAmount(LinkToResource type)
         {
-            resourceAmount.Add(type, 0);
+            if (resourceAmount.ContainsKey(type) == false)
+            {
+                return 0;
+            }
+            else
+            {
+                return resourceAmount[type];
+            }
+        }
+
+        private void AddResourceIfMissing(LinkToResource type)
+        {
+            if (resourceAmount.ContainsKey(type) == false)
+            {
+                resourceAmount.Add(type, 0);
+            }
         }
     }
 }
