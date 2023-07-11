@@ -17,7 +17,6 @@ namespace ZombieFarm.Managers
 
         public void OpenPanel(string type)
         {
-            //uiPanels.Find(s => s.key == type);
             foreach (SerializedDictionaryElement element in uiPanels)
             {
                 if (element.key.Equals(type))

@@ -66,7 +66,7 @@ namespace ZombieFarm.UI
 
         private void CheckOptions(LinkToResource obj)
         {
-            if (!optionLinks.Contains(obj))
+            if (optionLinks.Contains(obj) == false)
             {
                 CreateOption(obj);
             }
