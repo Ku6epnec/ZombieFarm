@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
 
-namespace ZombieFarm 
+namespace ZombieFarm.Managers 
 {
     [Serializable]
-    public class SerializedDictionaryElement
+    public struct SerializedDictionaryElement
     {
         public string key;
         public GameObject value;
