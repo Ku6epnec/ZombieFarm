@@ -12,7 +12,7 @@ namespace ZombieFarm.Views.Player
         internal event Action OnInteractive = () => { };
         internal event Action OnDeInteractive = () => { };
 
-        private GameObject InteractiveObject;
+        private GameObject interactiveObject;
 
         private float timer;
         private float maxTimer = 1;
@@ -21,7 +21,7 @@ namespace ZombieFarm.Views.Player
         {
             if (other.gameObject.TryGetComponent<ReceivedDamageObject>(out ReceivedDamageObject _receivedDamageObject))
             {
-                InteractiveObject = other.gameObject;
+                interactiveObject = other.gameObject;
                 receivedDamageObject = _receivedDamageObject;
                 receivedDamageObject.CleanInteractiveObject += Clean;
             }
@@ -29,11 +29,11 @@ namespace ZombieFarm.Views.Player
 
         private void OnTriggerStay(Collider other)
         {
-            if (InteractiveObject == null)
+            if (interactiveObject == null)
             {
                 if (other.gameObject.TryGetComponent<ReceivedDamageObject>(out ReceivedDamageObject _receivedDamageObject))
                 {
-                    InteractiveObject = other.gameObject;
+                    interactiveObject = other.gameObject;
                     receivedDamageObject = _receivedDamageObject;
                     receivedDamageObject.CleanInteractiveObject += Clean;
                 }
@@ -42,7 +42,7 @@ namespace ZombieFarm.Views.Player
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.gameObject == InteractiveObject)
+            if (other.gameObject == interactiveObject)
             {
                 Clean();
                 receivedDamageObject.CleanInteractiveObject -= Clean;
@@ -52,13 +52,13 @@ namespace ZombieFarm.Views.Player
         private void Update()
         {
             timer -= Time.deltaTime;
-            if (InteractiveObject != null && timer <= 0)
+            if (interactiveObject != null && timer <= 0)
             {           
                 timer = maxTimer;
                 OnInteractive();
-                lookAt.InitObject(InteractiveObject);
+                lookAt.InitObject(interactiveObject);
             }
-            else if (InteractiveObject == null && timer <= 0)
+            else if (interactiveObject == null && timer <= 0)
             {           
                 OnDeInteractive();              
             }
@@ -66,7 +66,7 @@ namespace ZombieFarm.Views.Player
 
         private void Clean()
         {
-            InteractiveObject = null;
+            interactiveObject = null;
         }
     }
 }
