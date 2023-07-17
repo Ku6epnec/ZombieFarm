@@ -21,8 +21,6 @@ public class Cage : ReceivedDamageObject, IRemovableObject, IHealth
     [SerializeField] private float _maxHealth = 10;
     [SerializeField] private float _health = 10;
 
-    private float _damage = 1;
-
     private float destroyTimeout = 2f;
     private float maxTimer = 2.0f;
     private float receivedDamageTimer;
