@@ -30,8 +30,7 @@ public class ProgressBar : MonoBehaviour
 
     public void RefreshProgress(float lostProgressValue)
     {
-        progress = SetProgress(lostProgressValue);
-        StartCoroutine(progress);
+        SetProgress(lostProgressValue);
     }
 
     public void ResetProgress()
@@ -46,19 +45,18 @@ public class ProgressBar : MonoBehaviour
         }
     }
 
-    private IEnumerator SetProgress(float _health)
+    private void SetProgress(float _health)
     {
         if (_health > 0)
         {
             slider.value += Time.fixedDeltaTime;
             middleLane.sizeDelta = new Vector2( (_health / maxBarValue) * middleLaneWidth, middleLane.rect.height);
-            yield return null;
+            return;
         }
 
         if (_health <= 0)
         {
             ProcessCompleted();
-            yield break;
         }
     }
 }
