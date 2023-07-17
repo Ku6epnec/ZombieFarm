@@ -11,7 +11,6 @@ namespace ZombieFarm.Views.Player
         private PlayerState currentPlayerState;
         private float deltaSpeed = 0.05f;
         private bool destroyObjectState = false;
-        private IRemovableObject removableObject;
 
         public float Health => _health;
         public float MaxHealth => _maxHealth;
@@ -61,29 +60,13 @@ namespace ZombieFarm.Views.Player
             RefreshCurrentState(PlayerState.Attack);
         }
 
-        public void DestroyObject(bool inProcess)
-        {
-            destroyObjectState = inProcess;
-
-            if (inProcess == true)
-            {
-                OnAttack();
-            }
-            else
-            {
-                RefreshCurrentState(PlayerState.Idle);
-                removableObject.OnDestroyProcess -= DestroyObject;
-                removableObject = null;
-            }
-        }
-
         public void ReceivedDamage(float damage)
         {
             damage = damage - _armor;
             if (damage > 0)
             {
                 _health -= damage;
-                healthProgressBar.StartProgress(_health);
+                healthProgressBar.RefreshProgress(_health);
             }
         }
 
@@ -110,12 +93,6 @@ namespace ZombieFarm.Views.Player
             {
                 OnChangeState(currentPlayerState);
             }
-        }
-
-        public void RegisterRemovableObject(IRemovableObject removableObject)
-        {
-            this.removableObject = removableObject;
-            this.removableObject.OnDestroyProcess += DestroyObject;
         }
     }
 }

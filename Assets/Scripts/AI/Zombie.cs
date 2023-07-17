@@ -127,7 +127,7 @@ namespace ZombieFarm.AI
             if (recievedDamageTimer <= 0)
             {
                 _health -= damage;
-                healthProgressBar.StartProgress(_health);
+                healthProgressBar.RefreshProgress(_health);
                 recievedDamageTimer = 2;
             }
         }
