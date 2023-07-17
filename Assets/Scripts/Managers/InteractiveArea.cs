@@ -45,7 +45,6 @@ namespace ZombieFarm.Views.Player
             if (other.gameObject == interactiveObject)
             {
                 Clean();
-                receivedDamageObject.CleanInteractiveObject -= Clean;
             }
         }
 
@@ -64,9 +63,13 @@ namespace ZombieFarm.Views.Player
             }
         }
 
-        private void Clean()
+        public void Clean()
         {
             interactiveObject = null;
+            if (receivedDamageObject != null)
+            {
+                receivedDamageObject.CleanInteractiveObject -= Clean;
+            }
         }
     }
 }
