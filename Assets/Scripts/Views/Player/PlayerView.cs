@@ -112,10 +112,8 @@ namespace ZombieFarm.Views.Player
             interactiveArea.OnInteractive += OnAttack;
             interactiveArea.OnDeInteractive += OnIdle;
 
-            //transform.localEulerAngles = new Vector3(0, 0, 0);
             transform.localPosition = SpawnPoint;
             transform.localRotation = _spawnRotation;
-            Debug.Log("Local position " + transform.localPosition);
             RefreshCurrentState(PlayerState.Idle);
             _health = MaxHealth;
             interactiveArea.Clean();

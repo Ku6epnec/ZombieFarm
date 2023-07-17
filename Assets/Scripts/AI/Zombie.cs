@@ -40,8 +40,8 @@ namespace ZombieFarm.AI
         [SerializeField] private float speedForChasing = 6f;
 
         [Header("DistanceStats")]
-        [SerializeField] private float distanceToPlayerForAttack = 2f;
-        [SerializeField] private float distanceToPlayerForChase = 15f;
+        [SerializeField] private float attackDistance = 2f;
+        [SerializeField] private float chaseDistance = 15f;
 
         [Header("Walking")]
         [SerializeField] private GameObject walkingPointsParent;
@@ -187,12 +187,12 @@ namespace ZombieFarm.AI
 
             float distanceToPlayer = Vector3.Distance(this.transform.position, Root.Player.transform.position);
 
-            if (distanceToPlayer < distanceToPlayerForAttack)
+            if (distanceToPlayer < attackDistance)
             { 
                 return ZombieState.Attack;
             }
 
-            if (distanceToPlayer < distanceToPlayerForChase)
+            if (distanceToPlayer < chaseDistance)
             { 
                 return ZombieState.Chase;
             }
