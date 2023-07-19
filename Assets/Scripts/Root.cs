@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using ZombieFarm.Managers;
 using ZombieFarm.Managers.Interfaces;
@@ -12,14 +11,24 @@ public class Root : MonoBehaviour
     [SerializeField] ViewManager viewManager;
     [SerializeField] ResourceManager resourceManager;
     [SerializeField] ConfigManager configManager;
+    [SerializeField] SpawnConfig spawnConfig;
 
     private static Root instance;
 
     private void Awake()
     {
+        if (spawnConfig == null) spawnConfig = Resources.Load("SceneTestSpawnConfig") as SpawnConfig;
         instance = this;
+        if (spawnConfig != null) Spawner.Spawn(spawnConfig, transform);     
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+
+        }
+    }
     public static PlayerMover Player
     {
         get

@@ -10,8 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 18f9d09e852b61a4b89f2399c380d412, type: 3}
-  m_Name: newSpawnConfig
+  m_Name: SceneTestSpawnConfig
   m_EditorClassIdentifier: 
-  Objects:
-  - prefab: {fileID: 0}
-    objectTransform: {fileID: 0}
+  PlayerObjects:
+  - player: {fileID: 8654738544158328395, guid: 21f24515dd0964146a2bbb4e121128b8,
+      type: 3}
+    playerTransform: {fileID: 1554863141757558404, guid: 21f24515dd0964146a2bbb4e121128b8,
+      type: 3}
+    posit: {x: 87, y: 100, z: 159}
+  EnemyObjects: []
+  FriendlyObjects: []
+  ConstructionObjects: []
+  EnvironmentObjects: []
