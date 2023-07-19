@@ -14,7 +14,6 @@ public class ProgressBar : MonoBehaviour
 
     private Slider slider;
     float middleLaneWidth;
-    private IEnumerator progress;
     private float maxBarValue;
 
     public void InitSlider(float _maxHealth)
@@ -31,18 +30,6 @@ public class ProgressBar : MonoBehaviour
     public void RefreshProgress(float lostProgressValue)
     {
         SetProgress(lostProgressValue);
-    }
-
-    public void ResetProgress()
-    {
-        slider.value = 0;
-        middleLane.sizeDelta = new Vector2(middleLaneWidth, middleLane.rect.height);
-        
-
-        if (progress != null)
-        {
-            StopCoroutine(progress);
-        }
     }
 
     private void SetProgress(float _health)
