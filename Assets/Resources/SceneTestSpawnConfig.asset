@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: SceneTestSpawnConfig
   m_EditorClassIdentifier: 
   PlayerObjects:
-  - player: {fileID: 8654738544158328395, guid: 21f24515dd0964146a2bbb4e121128b8,
+  - playerView: {fileID: 8654738544158328395, guid: 21f24515dd0964146a2bbb4e121128b8,
+      type: 3}
+    playerMover: {fileID: 8011706126854376977, guid: 21f24515dd0964146a2bbb4e121128b8,
       type: 3}
     playerTransform: {fileID: 1554863141757558404, guid: 21f24515dd0964146a2bbb4e121128b8,
       type: 3}

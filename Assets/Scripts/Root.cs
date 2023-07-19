@@ -12,21 +12,23 @@ public class Root : MonoBehaviour
     [SerializeField] ResourceManager resourceManager;
     [SerializeField] ConfigManager configManager;
     [SerializeField] SpawnConfig spawnConfig;
+    [SerializeField] Spawner spawner;
 
     private static Root instance;
 
     private void Awake()
     {
-        if (spawnConfig == null) spawnConfig = Resources.Load("SceneTestSpawnConfig") as SpawnConfig;
         instance = this;
-        if (spawnConfig != null) Spawner.Spawn(spawnConfig, transform);     
+        if (spawnConfig == null) spawnConfig = Resources.Load("SceneTestSpawnConfig") as SpawnConfig;
+        Spawner.Spawn(spawnConfig, transform);
+        player = spawnConfig.PlayerObjects[0].playerMover;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-
+            Debug.Log("Сохраняем данные объектов");
         }
     }
     public static PlayerMover Player
@@ -74,6 +76,18 @@ public class Root : MonoBehaviour
             return instance.uiManager;
         }
     }
-
-    
+    public static SpawnConfig SpawnConfigs
+    {
+        get
+        {
+            return instance.spawnConfig;
+        }
+    }
+    public static Spawner Spawner
+    {
+        get
+        {
+            return instance.spawner;
+        }
+    }
 }

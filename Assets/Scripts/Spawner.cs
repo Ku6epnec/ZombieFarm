@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class Spawner : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class Spawner : MonoBehaviour
         var players = spawnSettings.PlayerObjects;
         foreach(var spawnSetting in players)
         {
-            var pref = Instantiate(spawnSetting.player, transform);
+            var pref = Instantiate(spawnSetting.playerView, transform);
             pref.transform.position = spawnSetting.posit;
         }
         var enemies = spawnSettings.EnemyObjects;

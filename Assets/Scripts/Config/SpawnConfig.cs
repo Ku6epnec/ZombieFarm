@@ -16,7 +16,8 @@ public class SpawnConfig : ScriptableObject
 [Serializable]
 public class PlayerData
 {
-    public ZombieFarm.Views.Player.PlayerView player;
+    public ZombieFarm.Views.Player.PlayerView playerView;
+    public ZombieFarm.Views.Player.PlayerMover playerMover;
     public Transform playerTransform;
     public Vector3 posit;
 }
