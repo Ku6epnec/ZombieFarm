@@ -39,10 +39,6 @@ namespace ZombieFarm.Views.Player
         [SerializeField] private InteractiveArea interactiveArea;
         [SerializeField] private AttackTrigger attackTrigger;
 
-        private void Awake()
-        {
-        }
-
         private void Start()
         {
             _spawnPoint = transform.localPosition;
