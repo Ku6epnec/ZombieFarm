@@ -231,8 +231,8 @@ MonoBehaviour:
   _damage: 1
   speedForWalking: 2
   speedForChasing: 10
-  distanceToPlayerForAttack: 4
-  distanceToPlayerForChase: 15
+  attackDistance: 4
+  chaseDistance: 15
   walkingPointsParent: {fileID: 0}
   walkingProbability: 3
 --- !u!114 &4584742694800312524
@@ -267,7 +267,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!114 &2639210469391496735
 MonoBehaviour:
   m_ObjectHideFlags: 0
