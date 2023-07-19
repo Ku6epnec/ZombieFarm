@@ -9,7 +9,6 @@ public class ProgressBar : MonoBehaviour
 {
     internal event Action ProcessCompleted = () => { };
 
-    [SerializeField] float necessaryTime = 3f;
     [SerializeField] RectTransform middleLane;
 
     private Slider slider;
@@ -18,9 +17,9 @@ public class ProgressBar : MonoBehaviour
 
     public void InitSlider(float _maxHealth)
     {
-        slider = GetComponent<Slider>();
-        slider.maxValue = necessaryTime;
-        slider.value = 0;
+        //slider = GetComponent<Slider>();
+        //slider.maxValue = (int)_maxHealth;
+        //slider.value = 0;
         middleLaneWidth = middleLane.rect.width;
         maxBarValue = _maxHealth;
 
@@ -32,11 +31,16 @@ public class ProgressBar : MonoBehaviour
         SetProgress(lostProgressValue);
     }
 
+    public void ResetProgress()
+    {
+        middleLane.sizeDelta = new Vector2(middleLaneWidth, middleLane.rect.height);
+    }
+
     private void SetProgress(float _health)
     {
         if (_health > 0)
         {
-            slider.value += Time.fixedDeltaTime;
+            //slider.value += Time.fixedDeltaTime;
             middleLane.sizeDelta = new Vector2( (_health / maxBarValue) * middleLaneWidth, middleLane.rect.height);
             return;
         }
