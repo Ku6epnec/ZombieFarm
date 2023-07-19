@@ -63,7 +63,7 @@ namespace ZombieFarm.Views.Player
             }
         }
 
-        public void Clean()
+        internal void Clean()
         {
             interactiveObject = null;
             if (receivedDamageObject != null)
