@@ -294,7 +294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToOpen: 3
   progressBar: {fileID: 5669923409785307474}
-  chestModel: {fileID: 482955780292276651}
+  objectModel: {fileID: 482955780292276651}
   disappearVFX: {fileID: 3886089949349762188}
 --- !u!65 &482955781639092229
 BoxCollider:
