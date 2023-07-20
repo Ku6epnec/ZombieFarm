@@ -50,7 +50,7 @@ namespace ZombieFarm.Views.Player
         private void OnDestroy()
         {
             Root.ZombieManager.OnMonsterAttack -= OnAttack;
-            healthProgressBar.ProcessCompleted -= Die;
+            healthProgressBar.OnProcessCompleted -= Die;
             interactiveArea.OnDeInteractive -= OnIdle;
         }
 
@@ -78,7 +78,7 @@ namespace ZombieFarm.Views.Player
         {
             healthProgressBar.gameObject.SetActive(false);
             Root.ZombieManager.OnMonsterAttack -= OnAttack;
-            healthProgressBar.ProcessCompleted -= Die;
+            healthProgressBar.OnProcessCompleted -= Die;
             interactiveArea.OnDeInteractive -= OnIdle;
             OnSpawn();
         }
@@ -104,7 +104,7 @@ namespace ZombieFarm.Views.Player
 
         public void OnSpawn()
         {
-            healthProgressBar.ProcessCompleted += Die;
+            healthProgressBar.OnProcessCompleted += Die;
             interactiveArea.OnInteractive += OnAttack;
             interactiveArea.OnDeInteractive += OnIdle;
 

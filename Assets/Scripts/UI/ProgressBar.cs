@@ -7,19 +7,15 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Slider))]
 public class ProgressBar : MonoBehaviour
 {
-    internal event Action ProcessCompleted = () => { };
+    internal event Action OnProcessCompleted = () => { };
 
     [SerializeField] RectTransform middleLane;
 
-    private Slider slider;
     float middleLaneWidth;
     private float maxBarValue;
 
     public void InitSlider(float _maxHealth)
     {
-        //slider = GetComponent<Slider>();
-        //slider.maxValue = (int)_maxHealth;
-        //slider.value = 0;
         middleLaneWidth = middleLane.rect.width;
         maxBarValue = _maxHealth;
 
@@ -40,14 +36,13 @@ public class ProgressBar : MonoBehaviour
     {
         if (_health > 0)
         {
-            //slider.value += Time.fixedDeltaTime;
             middleLane.sizeDelta = new Vector2( (_health / maxBarValue) * middleLaneWidth, middleLane.rect.height);
             return;
         }
 
         if (_health <= 0)
         {
-            ProcessCompleted();
+            OnProcessCompleted();
         }
     }
 }

@@ -9,13 +9,13 @@ namespace ZombieFarm.InteractableObjects
         protected override void Awake()
         {
             base.Awake();
-            progressBar.ProcessCompleted += Free;
+            progressBar.OnProcessCompleted += Free;
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            progressBar.ProcessCompleted -= Free;
+            progressBar.OnProcessCompleted -= Free;
         }
 
         private void Free()

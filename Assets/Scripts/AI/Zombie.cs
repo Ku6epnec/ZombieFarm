@@ -63,7 +63,7 @@ namespace ZombieFarm.AI
             agent = GetComponent<NavMeshAgent>();
             walkingPoints = GetWalkingPoints();
 
-            healthProgressBar.ProcessCompleted += Die;
+            healthProgressBar.OnProcessCompleted += Die;
             OnChangeState += UpdateAction;
 
             healthProgressBar.InitSlider(MaxHealth);
@@ -77,7 +77,7 @@ namespace ZombieFarm.AI
 
         private void OnDestroy()
         {
-            healthProgressBar.ProcessCompleted -= Die;
+            healthProgressBar.OnProcessCompleted -= Die;
             OnChangeState -= UpdateAction;
             CleanInteractiveObject();
         }
