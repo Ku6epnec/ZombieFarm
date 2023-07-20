@@ -1,47 +1,51 @@
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class AnimalFollow : MonoBehaviour
 {
     public event Action OnStartFollowing = () => { }; 
 
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private Transform target;
+    [SerializeField] private float stopFollowingDistance;
     [SerializeField] private GameObject vfx;
 
-    private CharacterController controller;
-    private float distanceBetween = 5f;
+    private NavMeshAgent agent;
     private bool isFollowing = false;
 
 
     private void Start()
     {
-        controller = GetComponent<CharacterController>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     private void Update()
     {
-        if (isFollowing)
+        if (isFollowing == true)
         {
-            Vector3 direction = target.position - transform.position;
-            direction = direction.normalized;
-            Vector3 velocity = direction * moveSpeed;
-            if (Vector3.Distance(target.position, transform.position) > distanceBetween)
-                controller.Move(velocity * Time.deltaTime);
+            Vector3 playerPosition = Root.Player.transform.position;
+            Vector3 distanceBetween = playerPosition - transform.position;
+            if (distanceBetween.sqrMagnitude < stopFollowingDistance * stopFollowingDistance)
+            {
+                agent.isStopped = false;
+                agent.SetDestination(playerPosition);
+            }
+            else
+            {
+                agent.isStopped = true;
+            }
         }
     }
 
-    public void StartFollowing(GameObject targetObject = null)
+    public void StartFollowing()
     {
         isFollowing = true;
 
-        if (targetObject != null)
-        { 
-            target = targetObject.transform;
-        } 
+        agent.speed = moveSpeed;
 
         vfx.SetActive(true);
+        
         OnStartFollowing();
     }
 }
