@@ -11,12 +11,12 @@ namespace ZombieFarm.InteractableObjects
         protected override void Awake()
         {
             base.Awake();
-            progressBar.ProcessCompleted += Open;
+            progressBar.OnProcessCompleted += Open;
         }
 
         protected virtual void OnDestroy()
         {
-            progressBar.ProcessCompleted -= Open;
+            progressBar.OnProcessCompleted -= Open;
         }
 
         private void Open()
@@ -34,7 +34,7 @@ namespace ZombieFarm.InteractableObjects
 
             yield return new WaitForSeconds(destroyTimeout);
 
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
