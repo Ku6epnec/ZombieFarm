@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using ZombieFarm.Animal;
 using ZombieFarm.Interfaces;
 using ZombieFarm.Views.Player;
 

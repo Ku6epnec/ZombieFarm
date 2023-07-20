@@ -2,50 +2,55 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
-public class AnimalFollow : MonoBehaviour
-{
-    public event Action OnStartFollowing = () => { }; 
-
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float stopFollowingDistance;
-    [SerializeField] private GameObject vfx;
-
-    private NavMeshAgent agent;
-    private bool isFollowing = false;
-
-
-    private void Start()
+namespace ZombieFarm.Animal
+{ 
+    [RequireComponent(typeof(NavMeshAgent))]
+    public class AnimalFollow : MonoBehaviour
     {
-        agent = GetComponent<NavMeshAgent>();
-    }
+        public event Action OnStartFollowing = () => { }; 
 
-    private void Update()
-    {
-        if (isFollowing == true)
+        [SerializeField] private float moveSpeed = 5f;
+        [SerializeField] private float stopFollowingDistance;
+        [SerializeField] private GameObject vfx;
+        [SerializeField] private Transform safeZone;
+
+        private NavMeshAgent agent;
+        private bool isFollowing = false;
+
+
+        private void Start()
         {
-            Vector3 playerPosition = Root.Player.transform.position;
-            Vector3 distanceBetween = playerPosition - transform.position;
-            if (distanceBetween.sqrMagnitude < stopFollowingDistance * stopFollowingDistance)
+            agent = GetComponent<NavMeshAgent>();
+        }
+
+        private void Update()
+        {
+            if (isFollowing == true)
             {
-                agent.isStopped = false;
-                agent.SetDestination(playerPosition);
-            }
-            else
-            {
-                agent.isStopped = true;
+                Vector3 playerPosition = Root.Player.transform.position;
+                Vector3 distanceBetween = playerPosition - transform.position;
+
+                if (distanceBetween.sqrMagnitude < stopFollowingDistance * stopFollowingDistance)
+                {
+                    agent.isStopped = false;
+                    agent.SetDestination(playerPosition);
+                }
+                else
+                {
+                    agent.isStopped = true;
+                }
             }
         }
-    }
 
-    public void StartFollowing()
-    {
-        isFollowing = true;
+        public void StartFollowing()
+        {
+            isFollowing = true;
 
-        agent.speed = moveSpeed;
+            agent.speed = moveSpeed;
 
-        vfx.SetActive(true);
+            vfx.SetActive(true);
         
-        OnStartFollowing();
+            OnStartFollowing();
+        }
     }
 }

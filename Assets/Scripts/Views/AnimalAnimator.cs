@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using ZombieFarm.Animal;
 
 namespace ZombieFarm.Views
 {
