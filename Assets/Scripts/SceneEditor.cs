@@ -33,9 +33,16 @@ public class SceneEditor: MonoBehaviour
 
     public void LoadScene()
     {
+        SpawnConfig spawnConfig = FindObjectOfType<SpawnConfig>();
         string jsonContainer = File.ReadAllText("Assets/jsonContainer");
         SaveContainer myScene = JsonUtility.FromJson<SaveContainer>(jsonContainer);
-
+        foreach(var PlayerObject in myScene.PlayerDictionary)
+        {
+            GameObject newPlayerObject = Instantiate(GameObject.Find(PlayerObject.Key));
+            newPlayerObject.transform.position = PlayerObject.Value.position;
+            newPlayerObject.transform.rotation = PlayerObject.Value.rotation;
+            newPlayerObject.transform.localScale = PlayerObject.Value.localScale;
+        }
     }
 
     public void SaveScene()

@@ -14,7 +14,7 @@ public class SpawnConfig : ScriptableObject
 }
 
 [Serializable]
-public class PlayerData
+public class PlayerData: IPlayerObject
 {
     public ZombieFarm.Views.Player.PlayerView playerView;
     public ZombieFarm.Views.Player.PlayerMover playerMover;
@@ -23,9 +23,10 @@ public class PlayerData
 }
 
 [Serializable]
-public class EnemyData
+public class EnemyData: IEnemyObject
 {
     public GameObject prefab;
+    public string enemyName;
     public Transform enemyTransform;
 }
 
