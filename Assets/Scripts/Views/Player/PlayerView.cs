@@ -77,6 +77,7 @@ namespace ZombieFarm.Views.Player
         private void Die()
         {
             healthProgressBar.gameObject.SetActive(false);
+            healthProgressBar.ResetProgress();
             Root.ZombieManager.OnMonsterAttack -= OnAttack;
             healthProgressBar.OnProcessCompleted -= Die;
             interactiveArea.OnDeInteractive -= OnIdle;
@@ -113,6 +114,7 @@ namespace ZombieFarm.Views.Player
             RefreshCurrentState(PlayerState.Idle);
             _health = MaxHealth;
             interactiveArea.Clean();
+            healthProgressBar.gameObject.SetActive(true);
             healthProgressBar.InitSlider(MaxHealth);
         }
     }
