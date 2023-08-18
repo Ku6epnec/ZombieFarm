@@ -6,33 +6,37 @@ using UnityEngine.UI;
 
 public class SceneEditor: MonoBehaviour
 {
-    private List<GameObject> childs = new List<GameObject>();
-    public string jsonConteiner;
+    private List<Transform> childs = new List<Transform>();
+    string jsonConteiner;
 
     [Serializable]
-    public class SceneObject
+    public class TestPlayerObject
     {
-        public Transform transform;
+        public string name;
+        public Vector3 position;
+        public Quaternion rotation;
     }
 
     [Serializable]
     public class SaveContainer
     {
+        public TestPlayerObject[] playerObjects;
         public Dictionary<string, Transform> PlayerDictionary = new Dictionary<string, Transform>();
         public Dictionary<string, Transform> EnemyDictionary = new Dictionary<string, Transform>();
         public Dictionary<string, Transform> FriendlyDictionary = new Dictionary<string, Transform>();
         public Dictionary<string, Transform> ContructionDictionary = new Dictionary<string, Transform>();
         public Dictionary<string, Transform> EnvironmentDictionary = new Dictionary<string, Transform>();
 
-        public IPlayerObject[] playerObjects;
+        /*public IPlayerObject[] playerObjects;
         public IEnemyObject[] enemyObjects;
         public IFriendlyObject[] friendlyObjects;
         public IConstructionObject[] constructionObjects;
-        public IEnvironmentObject[] environmentObjects;
+        public IEnvironmentObject[] environmentObjects;*/
     }
 
     public void LoadScene()
     {
+        Debug.Log("Пытаемся загрузиться");
         SpawnConfig spawnConfig = FindObjectOfType<SpawnConfig>();
         string jsonContainer = File.ReadAllText("Assets/jsonContainer");
         SaveContainer myScene = JsonUtility.FromJson<SaveContainer>(jsonContainer);
@@ -43,15 +47,18 @@ public class SceneEditor: MonoBehaviour
             newPlayerObject.transform.rotation = PlayerObject.Value.rotation;
             newPlayerObject.transform.localScale = PlayerObject.Value.localScale;
         }
+        Debug.Log("Конец загрузки");
     }
 
     public void SaveScene()
     {
+        Debug.Log("Пытаемся сохраниться");
         SaveContainer newScene = new();
-        foreach(GameObject child in transform)
+        foreach(Transform child in transform)
         {
             childs.Add(child);
         }
+        Debug.Log("Всего детей: " + childs.Count);
         for (int i = 0; i < childs.Count; i++)
         {
             if (childs[i].TryGetComponent<IEnvironmentObject>(out IEnvironmentObject environmentObject))
@@ -60,23 +67,38 @@ public class SceneEditor: MonoBehaviour
             }
             else if (childs[i].TryGetComponent<IPlayerObject>(out IPlayerObject playerObject))
             {
+                Debug.Log("Имя объекта: " + playerObject.objectName);
+                Debug.Log("Длина массива: " + newScene.playerObjects.Length);
+                newScene.playerObjects = new TestPlayerObject[newScene.playerObjects.Length];
+                Debug.Log("Длина массива: " + newScene.playerObjects.Length);
+                newScene.playerObjects[0].name = playerObject.objectName;
+                newScene.playerObjects[0].position = playerObject.transform.position;
+                newScene.playerObjects[0].rotation = playerObject.transform.rotation;
                 newScene.PlayerDictionary.Add(playerObject.objectName, playerObject.transform);
+                //Debug.Log("Нашли объект-игрок " + playerObject.objectName);
+                //Debug.Log("Его трансформ " + playerObject.transform);
+                //Debug.Log("Его позиция " + playerObject.transform.position);
+                //newScene.PlayerDictionary.Add(playerObject.objectName, playerObject.transform);
+                //Debug.Log("Контейнер " + newScene);
+                //Debug.Log("Игроки контейнера " + newScene.PlayerDictionary);
             }
             else if (childs[i].TryGetComponent<IEnemyObject>(out IEnemyObject enemyObject))
             {
-                newScene.PlayerDictionary.Add(enemyObject.objectName, enemyObject.transform);
+                newScene.EnemyDictionary.Add(enemyObject.objectName, enemyObject.transform);
             }
             else if (childs[i].TryGetComponent<IConstructionObject>(out IConstructionObject constructionObject))
             {
-                newScene.PlayerDictionary.Add(constructionObject.objectName, constructionObject.transform);
+                newScene.ContructionDictionary.Add(constructionObject.objectName, constructionObject.transform);
             }
             else if (childs[i].TryGetComponent<IFriendlyObject>(out IFriendlyObject friendlyObject))
             {
-                newScene.PlayerDictionary.Add(friendlyObject.objectName, friendlyObject.transform);
+                newScene.FriendlyDictionary.Add(friendlyObject.objectName, friendlyObject.transform);
             }
             else Debug.Log("Этот объект не подпадает под категории, его имя: " + childs[i].name);
         }
-        string newJsonConteiner = JsonUtility.ToJson(newScene);
-        File.WriteAllText("Assets/jsonContainer", newJsonConteiner);
+        //string newJsonConteiner = JsonUtility.ToJson(newScene);
+        Debug.Log("Что мы пытаемся записать в Json: " + JsonUtility.ToJson(newScene.playerObjects[0]));
+        File.WriteAllText("Assets/jsonContainer", JsonUtility.ToJson(newScene.playerObjects[0]));
+        Debug.Log("Завершаем сохранение");
     }
 }
