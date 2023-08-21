@@ -10,28 +10,22 @@ public class SceneEditor: MonoBehaviour
     string jsonConteiner;
 
     [Serializable]
-    public class TestPlayerObject
+    public class SceneObject
     {
-        public string name;
-        public Vector3 position;
-        public Quaternion rotation;
+        public string typeObject;
+        public string nameObject;
+        public Vector3 po;
+        public Quaternion ro;
     }
 
     [Serializable]
     public class SaveContainer
     {
-        public TestPlayerObject[] playerObjects;
         public Dictionary<string, Transform> PlayerDictionary = new Dictionary<string, Transform>();
         public Dictionary<string, Transform> EnemyDictionary = new Dictionary<string, Transform>();
         public Dictionary<string, Transform> FriendlyDictionary = new Dictionary<string, Transform>();
         public Dictionary<string, Transform> ContructionDictionary = new Dictionary<string, Transform>();
         public Dictionary<string, Transform> EnvironmentDictionary = new Dictionary<string, Transform>();
-
-        /*public IPlayerObject[] playerObjects;
-        public IEnemyObject[] enemyObjects;
-        public IFriendlyObject[] friendlyObjects;
-        public IConstructionObject[] constructionObjects;
-        public IEnvironmentObject[] environmentObjects;*/
     }
 
     public void LoadScene()
@@ -50,6 +44,10 @@ public class SceneEditor: MonoBehaviour
         Debug.Log("Конец загрузки");
     }
 
+    public List<SceneObject> MainList = new List<SceneObject>();
+    public string jString;
+    public int index = 0;
+
     public void SaveScene()
     {
         Debug.Log("Пытаемся сохраниться");
@@ -63,42 +61,93 @@ public class SceneEditor: MonoBehaviour
         {
             if (childs[i].TryGetComponent<IEnvironmentObject>(out IEnvironmentObject environmentObject))
             {
-                newScene.EnvironmentDictionary.Add(environmentObject.objectName, environmentObject.transform);
+                SaveEnvironmentObject(environmentObject);
             }
             else if (childs[i].TryGetComponent<IPlayerObject>(out IPlayerObject playerObject))
             {
-                Debug.Log("Имя объекта: " + playerObject.objectName);
-                Debug.Log("Длина массива: " + newScene.playerObjects.Length);
-                newScene.playerObjects = new TestPlayerObject[newScene.playerObjects.Length];
-                Debug.Log("Длина массива: " + newScene.playerObjects.Length);
-                newScene.playerObjects[0].name = playerObject.objectName;
-                newScene.playerObjects[0].position = playerObject.transform.position;
-                newScene.playerObjects[0].rotation = playerObject.transform.rotation;
-                newScene.PlayerDictionary.Add(playerObject.objectName, playerObject.transform);
-                //Debug.Log("Нашли объект-игрок " + playerObject.objectName);
-                //Debug.Log("Его трансформ " + playerObject.transform);
-                //Debug.Log("Его позиция " + playerObject.transform.position);
-                //newScene.PlayerDictionary.Add(playerObject.objectName, playerObject.transform);
-                //Debug.Log("Контейнер " + newScene);
-                //Debug.Log("Игроки контейнера " + newScene.PlayerDictionary);
+                SavePlayerObject(playerObject);
             }
             else if (childs[i].TryGetComponent<IEnemyObject>(out IEnemyObject enemyObject))
             {
-                newScene.EnemyDictionary.Add(enemyObject.objectName, enemyObject.transform);
+                SaveEnemyObject(enemyObject);
             }
             else if (childs[i].TryGetComponent<IConstructionObject>(out IConstructionObject constructionObject))
             {
-                newScene.ContructionDictionary.Add(constructionObject.objectName, constructionObject.transform);
+                SaveConstructionObject(constructionObject);
             }
             else if (childs[i].TryGetComponent<IFriendlyObject>(out IFriendlyObject friendlyObject))
             {
-                newScene.FriendlyDictionary.Add(friendlyObject.objectName, friendlyObject.transform);
+                SaveFriendlyObject(friendlyObject);
             }
             else Debug.Log("Этот объект не подпадает под категории, его имя: " + childs[i].name);
         }
-        //string newJsonConteiner = JsonUtility.ToJson(newScene);
-        Debug.Log("Что мы пытаемся записать в Json: " + JsonUtility.ToJson(newScene.playerObjects[0]));
-        File.WriteAllText("Assets/jsonContainer", JsonUtility.ToJson(newScene.playerObjects[0]));
+
+        File.WriteAllText("Assets/jsonContainer", jString);
         Debug.Log("Завершаем сохранение");
+    }
+
+    private void SaveFriendlyObject(IFriendlyObject friendlyObject)
+    {
+        Debug.Log("Имя объекта: " + friendlyObject.objectName);
+        SceneObject thisObject = new SceneObject();
+        thisObject.typeObject = "FriendlyObject";
+        thisObject.nameObject = friendlyObject.objectName;
+        thisObject.po = friendlyObject.transform.position;
+        thisObject.ro = friendlyObject.transform.rotation;
+        MainList.Add(thisObject);
+        jString += JsonUtility.ToJson(MainList[index]);
+        index++;
+    }
+
+    private void SaveConstructionObject(IConstructionObject constructionObject)
+    {
+        Debug.Log("Имя объекта: " + constructionObject.objectName);
+        SceneObject thisObject = new SceneObject();
+        thisObject.typeObject = "ConstructionObject";
+        thisObject.nameObject = constructionObject.objectName;
+        thisObject.po = constructionObject.transform.position;
+        thisObject.ro = constructionObject.transform.rotation;
+        MainList.Add(thisObject);
+        jString += JsonUtility.ToJson(MainList[index]);
+        index++;
+    }
+
+    private void SaveEnemyObject(IEnemyObject enemyObject)
+    {
+        Debug.Log("Имя объекта: " + enemyObject.objectName);
+        SceneObject thisObject = new SceneObject();
+        thisObject.typeObject = "EnemyObject";
+        thisObject.nameObject = enemyObject.objectName;
+        thisObject.po = enemyObject.transform.position;
+        thisObject.ro = enemyObject.transform.rotation;
+        MainList.Add(thisObject);
+        jString += JsonUtility.ToJson(MainList[index]);
+        index++;
+    }
+
+    private void SavePlayerObject(IPlayerObject playerObject)
+    {
+        Debug.Log("Имя объекта: " + playerObject.objectName);
+        SceneObject thisObject = new SceneObject();
+        thisObject.typeObject = "PlayerObject";
+        thisObject.nameObject = playerObject.objectName;
+        thisObject.po = playerObject.transform.position;
+        thisObject.ro = playerObject.transform.rotation;
+        MainList.Add(thisObject);
+        jString += JsonUtility.ToJson(MainList[index]);
+        index++;
+    }
+
+    private void SaveEnvironmentObject(IEnvironmentObject environmentObject)
+    {
+        Debug.Log("Имя объекта: " + environmentObject.objectName);
+        SceneObject thisObject = new SceneObject();
+        thisObject.typeObject = "EnvironmentObject";
+        thisObject.nameObject = environmentObject.objectName;
+        thisObject.po = environmentObject.transform.position;
+        thisObject.ro = environmentObject.transform.rotation;
+        MainList.Add(thisObject);
+        jString += JsonUtility.ToJson(MainList[index]);
+        index++;
     }
 }
