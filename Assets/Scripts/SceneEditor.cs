@@ -54,13 +54,25 @@ public class SceneEditor: MonoBehaviour
         for (int i = 0; i < MainList.Count; i++)
         {
             int j = 0;
-            while (spawnConfig.PlayerObjects[j].objectName != MainList[i].nameObject && spawnConfig.PlayerObjects.Length < j)
+            if (MainList[i].typeObject == "PlayerObject")
             {
-                j++;
-            }    
-            if (spawnConfig.PlayerObjects[j].objectName == MainList[i].nameObject)
+                SpawnPlayerObject(i, j);
+            }
+            else if (MainList[i].typeObject == "EnemyObject")
             {
-                Instantiate(spawnConfig.PlayerObjects[j].playerView, MainList[i].position, MainList[i].rotation);
+                SpawnEnemyObject(i, j);
+            }
+            else if (MainList[i].typeObject == "FriendlyObject")
+            {
+                SpawnFriendlyObject(i, j);
+            }
+            else if (MainList[i].typeObject == "ConstructionObject")
+            {
+                SpawnConstructionObject(i, j);
+            }
+            else if (MainList[i].typeObject == "EnvironmentObject")
+            {
+                SpawnEnvironmentObject(i, j);
             }
             //GameObject thisChild = GameObject.Find(MainList[i].nameObject);
             //Instantiate(thisChild, MainList[i].position, MainList[i].rotation);
@@ -76,7 +88,65 @@ public class SceneEditor: MonoBehaviour
         Debug.Log("Конец загрузки");
     }
 
+    private void SpawnConstructionObject(int i, int j)
+    {
+        while (spawnConfig.ConstructionObjects[j].objectName != MainList[i].nameObject && spawnConfig.PlayerObjects.Length < j)
+        {
+            j++;
+        }
+        if (spawnConfig.ConstructionObjects[j].objectName == MainList[i].nameObject)
+        {
+            Instantiate(spawnConfig.ConstructionObjects[j].constuctionTransform, MainList[i].position, MainList[i].rotation);
+        }
+    }
 
+    private void SpawnFriendlyObject(int i, int j)
+    {
+        while (spawnConfig.FriendlyObjects[j].objectName != MainList[i].nameObject && spawnConfig.PlayerObjects.Length < j)
+        {
+            j++;
+        }
+        if (spawnConfig.FriendlyObjects[j].objectName == MainList[i].nameObject)
+        {
+            Instantiate(spawnConfig.FriendlyObjects[j].friendTransform, MainList[i].position, MainList[i].rotation);
+        }
+    }
+
+    private void SpawnEnemyObject(int i, int j)
+    {
+        while (spawnConfig.EnemyObjects[j].objectName != MainList[i].nameObject && spawnConfig.PlayerObjects.Length < j)
+        {
+            j++;
+        }
+        if (spawnConfig.EnemyObjects[j].objectName == MainList[i].nameObject)
+        {
+            Instantiate(spawnConfig.EnemyObjects[j].enemyTransform, MainList[i].position, MainList[i].rotation);
+        }
+    }
+
+    private void SpawnPlayerObject(int i, int j)
+    {
+        while (spawnConfig.PlayerObjects[j].objectName != MainList[i].nameObject && spawnConfig.PlayerObjects.Length < j)
+        {
+            j++;
+        }
+        if (spawnConfig.PlayerObjects[j].objectName == MainList[i].nameObject)
+        {
+            Instantiate(spawnConfig.PlayerObjects[j].playerView, MainList[i].position, MainList[i].rotation);
+        }
+    }
+
+    private void SpawnEnvironmentObject(int i, int j)
+    {
+        while (spawnConfig.EnvironmentObjects[j].objectName != MainList[i].nameObject && spawnConfig.PlayerObjects.Length < j)
+        {
+            j++;
+        }
+        if (spawnConfig.EnvironmentObjects[j].objectName == MainList[i].nameObject)
+        {
+            Instantiate(spawnConfig.EnvironmentObjects[j].environmentTransform, MainList[i].position, MainList[i].rotation);
+        }
+    }
 
     public void SaveScene()
     {
@@ -118,6 +188,23 @@ public class SceneEditor: MonoBehaviour
 
     private void SaveFriendlyObject(IFriendlyObject friendlyObject)
     {
+        int i = 0;
+        while (spawnConfig.FriendlyObjects[i].objectName != friendlyObject.objectName && i < spawnConfig.PlayerObjects.Length)
+        {
+            i++;
+        }
+        if (spawnConfig.FriendlyObjects[i].objectName != friendlyObject.objectName)
+        {
+            if (friendlyObject.TryGetComponent<FriendlyData>(out FriendlyData friendlyData))
+            {
+                spawnConfig.FriendlyObjects[i] = friendlyData;
+            }
+            else
+            {
+                Debug.LogError("Ошибка! У объекта " + friendlyObject.name + " отсутствует компонент FriendlyData, " +
+                    "добавьте данный компонент и повторите процесс сохранения!");
+            }
+        }
         Debug.Log("Имя объекта: " + friendlyObject.objectName);
         SceneObject thisObject = new SceneObject();
         thisObject.typeObject = "FriendlyObject";
@@ -131,6 +218,23 @@ public class SceneEditor: MonoBehaviour
 
     private void SaveConstructionObject(IConstructionObject constructionObject)
     {
+        int i = 0;
+        while (spawnConfig.ConstructionObjects[i].objectName != constructionObject.objectName && i < spawnConfig.PlayerObjects.Length)
+        {
+            i++;
+        }
+        if (spawnConfig.ConstructionObjects[i].objectName != constructionObject.objectName)
+        {
+            if (constructionObject.TryGetComponent<ConstructionData>(out ConstructionData constructionData))
+            {
+                spawnConfig.ConstructionObjects[i] = constructionData;
+            }
+            else
+            {
+                Debug.LogError("Ошибка! У объекта " + constructionObject.name + " отсутствует компонент ConstructionData, " +
+                    "добавьте данный компонент и повторите процесс сохранения!");
+            }
+        }
         Debug.Log("Имя объекта: " + constructionObject.objectName);
         SceneObject thisObject = new SceneObject();
         thisObject.typeObject = "ConstructionObject";
@@ -144,6 +248,23 @@ public class SceneEditor: MonoBehaviour
 
     private void SaveEnemyObject(IEnemyObject enemyObject)
     {
+        int i = 0;
+        while (spawnConfig.EnemyObjects[i].objectName != enemyObject.objectName && i < spawnConfig.PlayerObjects.Length)
+        {
+            i++;
+        }
+        if (spawnConfig.EnemyObjects[i].objectName != enemyObject.objectName)
+        {
+            if (enemyObject.TryGetComponent<EnemyData>(out EnemyData enemyData))
+            {
+                spawnConfig.EnemyObjects[i] = enemyData;
+            }
+            else
+            {
+                Debug.LogError("Ошибка! У объекта " + enemyObject.name + " отсутствует компонент EnemyData, " +
+                    "добавьте данный компонент и повторите процесс сохранения!");
+            }
+        }
         Debug.Log("Имя объекта: " + enemyObject.objectName);
         SceneObject thisObject = new SceneObject();
         thisObject.typeObject = "EnemyObject";
@@ -187,6 +308,23 @@ public class SceneEditor: MonoBehaviour
 
     private void SaveEnvironmentObject(IEnvironmentObject environmentObject)
     {
+        int i = 0;
+        while (spawnConfig.EnvironmentObjects[i].objectName != environmentObject.objectName && i < spawnConfig.PlayerObjects.Length)
+        {
+            i++;
+        }
+        if (spawnConfig.EnvironmentObjects[i].objectName != environmentObject.objectName)
+        {
+            if (environmentObject.TryGetComponent<EnvironmentData>(out EnvironmentData environmentData))
+            {
+                spawnConfig.EnvironmentObjects[i] = environmentData;
+            }
+            else
+            {
+                Debug.LogError("Ошибка! У объекта " + environmentObject.name + " отсутствует компонент EnvironmentData, " +
+                    "добавьте данный компонент и повторите процесс сохранения!");
+            }
+        }
         Debug.Log("Имя объекта: " + environmentObject.objectName);
         SceneObject thisObject = new SceneObject();
         thisObject.typeObject = "EnvironmentObject";

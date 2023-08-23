@@ -31,21 +31,21 @@ public class EnemyData: IEnemyObject
 }
 
 [Serializable]
-public class FriendlyData
+public class FriendlyData: IFriendlyObject
 {
     public GameObject prefab;
     public Transform friendTransform;
 }
 
 [Serializable]
-public class ConstructionData
+public class ConstructionData: IConstructionObject
 {
     public GameObject prefab;
     public Transform constuctionTransform;
 }
 
 [Serializable]
-public class EnvironmentData
+public class EnvironmentData: IEnvironmentObject
 {
     public GameObject prefab;
     public Transform environmentTransform;
