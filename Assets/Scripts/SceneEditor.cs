@@ -10,6 +10,12 @@ public class SceneEditor: MonoBehaviour
     string jsonConteiner;
     public SpawnConfig spawnConfig;
 
+    [SerializeField] private Transform PlayersTransform;
+    [SerializeField] private Transform EnemiesTransform;
+    [SerializeField] private Transform FriendliesTransform;
+    [SerializeField] private Transform EnvironmentsTransform;
+    [SerializeField] private Transform ConstructionsTransform;
+
     [Serializable]
     public class SceneObject
     {
@@ -36,7 +42,6 @@ public class SceneEditor: MonoBehaviour
     public void LoadScene()
     {
         Debug.Log("Пытаемся загрузиться");
-        
         string jsonContainer = File.ReadAllText("Assets/jsonContainer");
         string[] StringObjects = jsonContainer.Split("}{");
         Debug.Log("Строка: " + jsonContainer);
@@ -88,39 +93,55 @@ public class SceneEditor: MonoBehaviour
         Debug.Log("Конец загрузки");
     }
 
+    public void CleanScene()
+    {
+        Debug.Log("Чистим сцену");
+        foreach (Transform child in transform)
+        {
+            if (child.gameObject.name != "Players" &&
+                child.gameObject.name != "Enemies" &&
+                child.gameObject.name != "Frendlies" &&
+                child.gameObject.name != "Environments" &&
+                child.gameObject.name != "Constrictions")
+            {
+                Destroy(child.gameObject);
+            }
+        }
+    }
+
     private void SpawnConstructionObject(int i, int j)
     {
-        while (spawnConfig.ConstructionObjects[j].objectName != MainList[i].nameObject && spawnConfig.PlayerObjects.Length < j)
+        while (spawnConfig.ConstructionObjects[j].objectName != MainList[i].nameObject && spawnConfig.ConstructionObjects.Length < j)
         {
             j++;
         }
         if (spawnConfig.ConstructionObjects[j].objectName == MainList[i].nameObject)
         {
-            Instantiate(spawnConfig.ConstructionObjects[j].constuctionTransform, MainList[i].position, MainList[i].rotation);
+            Instantiate(spawnConfig.ConstructionObjects[j].constuctionTransform, MainList[i].position, MainList[i].rotation, ConstructionsTransform);
         }
     }
 
     private void SpawnFriendlyObject(int i, int j)
     {
-        while (spawnConfig.FriendlyObjects[j].objectName != MainList[i].nameObject && spawnConfig.PlayerObjects.Length < j)
+        while (spawnConfig.FriendlyObjects[j].objectName != MainList[i].nameObject && spawnConfig.FriendlyObjects.Length < j)
         {
             j++;
         }
         if (spawnConfig.FriendlyObjects[j].objectName == MainList[i].nameObject)
         {
-            Instantiate(spawnConfig.FriendlyObjects[j].friendTransform, MainList[i].position, MainList[i].rotation);
+            Instantiate(spawnConfig.FriendlyObjects[j].friendTransform, MainList[i].position, MainList[i].rotation, FriendliesTransform);
         }
     }
 
     private void SpawnEnemyObject(int i, int j)
     {
-        while (spawnConfig.EnemyObjects[j].objectName != MainList[i].nameObject && spawnConfig.PlayerObjects.Length < j)
+        while (spawnConfig.EnemyObjects[j].objectName != MainList[i].nameObject && spawnConfig.EnemyObjects.Length < j)
         {
             j++;
         }
         if (spawnConfig.EnemyObjects[j].objectName == MainList[i].nameObject)
         {
-            Instantiate(spawnConfig.EnemyObjects[j].enemyTransform, MainList[i].position, MainList[i].rotation);
+            Instantiate(spawnConfig.EnemyObjects[j].enemyTransform, MainList[i].position, MainList[i].rotation, EnemiesTransform);
         }
     }
 
@@ -132,19 +153,19 @@ public class SceneEditor: MonoBehaviour
         }
         if (spawnConfig.PlayerObjects[j].objectName == MainList[i].nameObject)
         {
-            Instantiate(spawnConfig.PlayerObjects[j].playerView, MainList[i].position, MainList[i].rotation);
+            Instantiate(spawnConfig.PlayerObjects[j].playerView, MainList[i].position, MainList[i].rotation, PlayersTransform);
         }
     }
 
     private void SpawnEnvironmentObject(int i, int j)
     {
-        while (spawnConfig.EnvironmentObjects[j].objectName != MainList[i].nameObject && spawnConfig.PlayerObjects.Length < j)
+        while (spawnConfig.EnvironmentObjects[j].objectName != MainList[i].nameObject && spawnConfig.EnvironmentObjects.Length < j)
         {
             j++;
         }
         if (spawnConfig.EnvironmentObjects[j].objectName == MainList[i].nameObject)
         {
-            Instantiate(spawnConfig.EnvironmentObjects[j].environmentTransform, MainList[i].position, MainList[i].rotation);
+            Instantiate(spawnConfig.EnvironmentObjects[j].environmentTransform, MainList[i].position, MainList[i].rotation, EnvironmentsTransform);
         }
     }
 
@@ -184,6 +205,8 @@ public class SceneEditor: MonoBehaviour
 
         File.WriteAllText("Assets/jsonContainer", jString);
         Debug.Log("Завершаем сохранение");
+        childs = null;
+        MainList = null;
     }
 
     private void SaveFriendlyObject(IFriendlyObject friendlyObject)
