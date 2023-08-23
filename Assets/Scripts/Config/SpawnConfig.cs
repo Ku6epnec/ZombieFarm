@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 [CreateAssetMenu(fileName = "newSpawnConfig", menuName = "SpawnConfig")]
 public class SpawnConfig : ScriptableObject
@@ -13,40 +10,3 @@ public class SpawnConfig : ScriptableObject
     public EnvironmentData[] EnvironmentObjects;
 }
 
-/*[Serializable]
-public class PlayerData: IPlayerObject
-{
-    public ZombieFarm.Views.Player.PlayerView playerView;
-    public ZombieFarm.Views.Player.PlayerMover playerMover;
-    public Transform playerTransform;
-    public Vector3 posit;
-}*/
-
-[Serializable]
-public class EnemyData: IEnemyObject
-{
-    public GameObject prefab;
-    public string enemyName;
-    public Transform enemyTransform;
-}
-
-[Serializable]
-public class FriendlyData: IFriendlyObject
-{
-    public GameObject prefab;
-    public Transform friendTransform;
-}
-
-[Serializable]
-public class ConstructionData: IConstructionObject
-{
-    public GameObject prefab;
-    public Transform constuctionTransform;
-}
-
-[Serializable]
-public class EnvironmentData: IEnvironmentObject
-{
-    public GameObject prefab;
-    public Transform environmentTransform;
-}
