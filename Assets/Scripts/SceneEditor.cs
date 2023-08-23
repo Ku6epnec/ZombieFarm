@@ -8,6 +8,7 @@ public class SceneEditor: MonoBehaviour
 {
     private List<Transform> childs = new List<Transform>();
     string jsonConteiner;
+    public SpawnConfig spawnConfig;
 
     [Serializable]
     public class SceneObject
@@ -35,7 +36,7 @@ public class SceneEditor: MonoBehaviour
     public void LoadScene()
     {
         Debug.Log("Пытаемся загрузиться");
-        SpawnConfig spawnConfig = FindObjectOfType<SpawnConfig>();
+        
         string jsonContainer = File.ReadAllText("Assets/jsonContainer");
         string[] StringObjects = jsonContainer.Split("}{");
         Debug.Log("Строка: " + jsonContainer);
@@ -49,8 +50,24 @@ public class SceneEditor: MonoBehaviour
             MainList.Add(obj);
         }
         Debug.Log("Новая Строка: " + MainList);
+
         for (int i = 0; i < MainList.Count; i++)
         {
+            int j = 0;
+            while (spawnConfig.PlayerObjects[j].objectName != MainList[i].nameObject && spawnConfig.PlayerObjects.Length < j)
+            {
+                j++;
+            }    
+            if (spawnConfig.PlayerObjects[j].objectName == MainList[i].nameObject)
+            {
+                Instantiate(spawnConfig.PlayerObjects[j].playerView, MainList[i].position, MainList[i].rotation);
+            }
+            //GameObject thisChild = GameObject.Find(MainList[i].nameObject);
+            //Instantiate(thisChild, MainList[i].position, MainList[i].rotation);
+            if (MainList[i].typeObject == "PlayerObject")
+            {
+                //spawnConfig.PlayerObjects[0].objectName;
+            }
             Debug.Log("Тип: " + MainList[i].typeObject);
             Debug.Log("Имя: " + MainList[i].nameObject);
             Debug.Log("Позиция: " + MainList[i].position);
@@ -140,6 +157,23 @@ public class SceneEditor: MonoBehaviour
 
     private void SavePlayerObject(IPlayerObject playerObject)
     {
+        int i = 0;
+        while (spawnConfig.PlayerObjects[i].objectName != playerObject.objectName && i < spawnConfig.PlayerObjects.Length)
+        {
+            i++;
+        }
+        if (spawnConfig.PlayerObjects[i].objectName != playerObject.objectName)
+        {
+            if (playerObject.TryGetComponent<PlayerData>(out PlayerData playerData))
+            {
+                spawnConfig.PlayerObjects[i] = playerData;
+            }
+            else
+            {
+                Debug.LogError("Ошибка! У объекта " + playerObject.name + " отсутствует компонент PlayerData, " +
+                    "добавьте данный компонент и повторите процесс сохранения!");
+            }
+        }
         Debug.Log("Имя объекта: " + playerObject.objectName);
         SceneObject thisObject = new SceneObject();
         thisObject.typeObject = "PlayerObject";

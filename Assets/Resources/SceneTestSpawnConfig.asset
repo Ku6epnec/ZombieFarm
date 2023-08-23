@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18f9d09e852b61a4b89f2399c380d412, type: 3}
   m_Name: SceneTestSpawnConfig
   m_EditorClassIdentifier: 
-  PlayerObjects: []
+  PlayerObjects:
+  - {fileID: 1970289896772140297, guid: 0d6d4bbb116637b42915410e478128b3, type: 3}
   EnemyObjects: []
   FriendlyObjects: []
   ConstructionObjects: []
