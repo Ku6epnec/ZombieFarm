@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TransitionWindow : MonoBehaviour, IUIElement
 {
     [SerializeField] private string nameID;
 
-    public string ID => throw new System.NotImplementedException();
+    public string ID => nameID;
 
     void Start()
     {
@@ -25,8 +26,7 @@ public class TransitionWindow : MonoBehaviour, IUIElement
 
     public void TransitionToScene(int sceneBuildIndex)
     {
-        //load new scene
-
-        //decide something about transition art/cutscene
+        Root.UIManager.ClosePanel();
+        SceneManager.LoadScene(sceneBuildIndex);
     }
 }
