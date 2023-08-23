@@ -14,8 +14,8 @@ public class SceneEditor: MonoBehaviour
     {
         public string typeObject;
         public string nameObject;
-        public Vector3 po;
-        public Quaternion ro;
+        public Vector3 position;
+        public Quaternion rotation;
     }
 
     [Serializable]
@@ -28,25 +28,38 @@ public class SceneEditor: MonoBehaviour
         public Dictionary<string, Transform> EnvironmentDictionary = new Dictionary<string, Transform>();
     }
 
+    public List<SceneObject> MainList = new List<SceneObject>();
+    public string jString;
+    public int index = 0;
+
     public void LoadScene()
     {
         Debug.Log("Пытаемся загрузиться");
         SpawnConfig spawnConfig = FindObjectOfType<SpawnConfig>();
         string jsonContainer = File.ReadAllText("Assets/jsonContainer");
-        SaveContainer myScene = JsonUtility.FromJson<SaveContainer>(jsonContainer);
-        foreach(var PlayerObject in myScene.PlayerDictionary)
+        string[] StringObjects = jsonContainer.Split("}{");
+        Debug.Log("Строка: " + jsonContainer);
+        for (int i = 0; i < StringObjects.Length; i++)
         {
-            GameObject newPlayerObject = Instantiate(GameObject.Find(PlayerObject.Key));
-            newPlayerObject.transform.position = PlayerObject.Value.position;
-            newPlayerObject.transform.rotation = PlayerObject.Value.rotation;
-            newPlayerObject.transform.localScale = PlayerObject.Value.localScale;
+            if (i == 0) StringObjects[i] = StringObjects[i] + "}";
+            else if (i == StringObjects.Length - 1) StringObjects[i] = "{" + StringObjects[i];
+            else StringObjects[i] = "{" + StringObjects[i] + "}";
+            Debug.Log("Строки: " + StringObjects[i]);
+            SceneObject obj = JsonUtility.FromJson<SceneObject>(StringObjects[i]);
+            MainList.Add(obj);
+        }
+        Debug.Log("Новая Строка: " + MainList);
+        for (int i = 0; i < MainList.Count; i++)
+        {
+            Debug.Log("Тип: " + MainList[i].typeObject);
+            Debug.Log("Имя: " + MainList[i].nameObject);
+            Debug.Log("Позиция: " + MainList[i].position);
+            Debug.Log("Ротация: " + MainList[i].rotation);
         }
         Debug.Log("Конец загрузки");
     }
 
-    public List<SceneObject> MainList = new List<SceneObject>();
-    public string jString;
-    public int index = 0;
+
 
     public void SaveScene()
     {
@@ -92,8 +105,8 @@ public class SceneEditor: MonoBehaviour
         SceneObject thisObject = new SceneObject();
         thisObject.typeObject = "FriendlyObject";
         thisObject.nameObject = friendlyObject.objectName;
-        thisObject.po = friendlyObject.transform.position;
-        thisObject.ro = friendlyObject.transform.rotation;
+        thisObject.position = friendlyObject.transform.position;
+        thisObject.rotation = friendlyObject.transform.rotation;
         MainList.Add(thisObject);
         jString += JsonUtility.ToJson(MainList[index]);
         index++;
@@ -105,8 +118,8 @@ public class SceneEditor: MonoBehaviour
         SceneObject thisObject = new SceneObject();
         thisObject.typeObject = "ConstructionObject";
         thisObject.nameObject = constructionObject.objectName;
-        thisObject.po = constructionObject.transform.position;
-        thisObject.ro = constructionObject.transform.rotation;
+        thisObject.position = constructionObject.transform.position;
+        thisObject.rotation = constructionObject.transform.rotation;
         MainList.Add(thisObject);
         jString += JsonUtility.ToJson(MainList[index]);
         index++;
@@ -118,8 +131,8 @@ public class SceneEditor: MonoBehaviour
         SceneObject thisObject = new SceneObject();
         thisObject.typeObject = "EnemyObject";
         thisObject.nameObject = enemyObject.objectName;
-        thisObject.po = enemyObject.transform.position;
-        thisObject.ro = enemyObject.transform.rotation;
+        thisObject.position = enemyObject.transform.position;
+        thisObject.rotation = enemyObject.transform.rotation;
         MainList.Add(thisObject);
         jString += JsonUtility.ToJson(MainList[index]);
         index++;
@@ -131,8 +144,8 @@ public class SceneEditor: MonoBehaviour
         SceneObject thisObject = new SceneObject();
         thisObject.typeObject = "PlayerObject";
         thisObject.nameObject = playerObject.objectName;
-        thisObject.po = playerObject.transform.position;
-        thisObject.ro = playerObject.transform.rotation;
+        thisObject.position = playerObject.transform.position;
+        thisObject.rotation = playerObject.transform.rotation;
         MainList.Add(thisObject);
         jString += JsonUtility.ToJson(MainList[index]);
         index++;
@@ -144,8 +157,8 @@ public class SceneEditor: MonoBehaviour
         SceneObject thisObject = new SceneObject();
         thisObject.typeObject = "EnvironmentObject";
         thisObject.nameObject = environmentObject.objectName;
-        thisObject.po = environmentObject.transform.position;
-        thisObject.ro = environmentObject.transform.rotation;
+        thisObject.position = environmentObject.transform.position;
+        thisObject.rotation = environmentObject.transform.rotation;
         MainList.Add(thisObject);
         jString += JsonUtility.ToJson(MainList[index]);
         index++;
