@@ -6,6 +6,12 @@ using UnityEngine.UI;
 
 public class SceneEditor: MonoBehaviour
 {
+    private struct SpawnParameters
+    {
+        public IData[] dataArray;
+        public Transform parentTransform;
+    }
+
     private List<Transform> childs = new List<Transform>();
     string jsonConteiner;
     public SpawnConfig spawnConfig;
@@ -59,26 +65,9 @@ public class SceneEditor: MonoBehaviour
         for (int i = 0; i < MainList.Count; i++)
         {
             int j = 0;
-            if (MainList[i].typeObject == "PlayerObject")
-            {
-                SpawnPlayerObject(i, j);
-            }
-            else if (MainList[i].typeObject == "EnemyObject")
-            {
-                SpawnEnemyObject(i, j);
-            }
-            else if (MainList[i].typeObject == "FriendlyObject")
-            {
-                SpawnFriendlyObject(i, j);
-            }
-            else if (MainList[i].typeObject == "ConstructionObject")
-            {
-                SpawnConstructionObject(i, j);
-            }
-            else if (MainList[i].typeObject == "EnvironmentObject")
-            {
-                SpawnEnvironmentObject(i, j);
-            }
+
+            SpawnObject(i, j, GetSpawnParameters(MainList[i].typeObject));
+
             //GameObject thisChild = GameObject.Find(MainList[i].nameObject);
             //Instantiate(thisChild, MainList[i].position, MainList[i].rotation);
             if (MainList[i].typeObject == "PlayerObject")
@@ -91,6 +80,41 @@ public class SceneEditor: MonoBehaviour
             Debug.Log("Ротация: " + MainList[i].rotation);
         }
         Debug.Log("Конец загрузки");
+    }
+
+    private SpawnParameters GetSpawnParameters(string typeObject)
+    {
+        SpawnParameters result = new SpawnParameters();
+
+        switch (typeObject)
+        {
+            case "PlayerObject":
+                result.dataArray = spawnConfig.PlayerObjects;
+                result.parentTransform = PlayersTransform;
+                break;
+
+            case "EnemyObject":
+                result.dataArray = spawnConfig.EnemyObjects;
+                result.parentTransform = EnemiesTransform;
+                break;
+
+            case "FriendlyObject":
+                result.dataArray = spawnConfig.FriendlyObjects;
+                result.parentTransform = FriendliesTransform;
+                break;
+
+            case "ConstructionObject":
+                result.dataArray = spawnConfig.ConstructionObjects;
+                result.parentTransform = ConstructionsTransform;
+                break;
+
+            case "EnvironmentObject":
+                result.dataArray = spawnConfig.EnvironmentObjects;
+                result.parentTransform = EnvironmentsTransform;
+                break;
+        }
+
+        return result;
     }
 
     public void CleanScene()
@@ -109,63 +133,16 @@ public class SceneEditor: MonoBehaviour
         }
     }
 
-    private void SpawnConstructionObject(int i, int j)
-    {
-        while (spawnConfig.ConstructionObjects[j].objectName != MainList[i].nameObject && spawnConfig.ConstructionObjects.Length < j)
-        {
-            j++;
-        }
-        if (spawnConfig.ConstructionObjects[j].objectName == MainList[i].nameObject)
-        {
-            Instantiate(spawnConfig.ConstructionObjects[j].constuctionTransform, MainList[i].position, MainList[i].rotation, ConstructionsTransform);
-        }
-    }
 
-    private void SpawnFriendlyObject(int i, int j)
+    private void SpawnObject(int i, int j, SpawnParameters spawnParameters)
     {
-        while (spawnConfig.FriendlyObjects[j].objectName != MainList[i].nameObject && spawnConfig.FriendlyObjects.Length < j)
+        while (spawnParameters.dataArray[j].ObjectName != MainList[i].nameObject && spawnParameters.dataArray.Length < j)
         {
             j++;
         }
-        if (spawnConfig.FriendlyObjects[j].objectName == MainList[i].nameObject)
+        if (spawnParameters.dataArray[j].ObjectName == MainList[i].nameObject)
         {
-            Instantiate(spawnConfig.FriendlyObjects[j].friendTransform, MainList[i].position, MainList[i].rotation, FriendliesTransform);
-        }
-    }
-
-    private void SpawnEnemyObject(int i, int j)
-    {
-        while (spawnConfig.EnemyObjects[j].objectName != MainList[i].nameObject && spawnConfig.EnemyObjects.Length < j)
-        {
-            j++;
-        }
-        if (spawnConfig.EnemyObjects[j].objectName == MainList[i].nameObject)
-        {
-            Instantiate(spawnConfig.EnemyObjects[j].enemyTransform, MainList[i].position, MainList[i].rotation, EnemiesTransform);
-        }
-    }
-
-    private void SpawnPlayerObject(int i, int j)
-    {
-        while (spawnConfig.PlayerObjects[j].objectName != MainList[i].nameObject && spawnConfig.PlayerObjects.Length < j)
-        {
-            j++;
-        }
-        if (spawnConfig.PlayerObjects[j].objectName == MainList[i].nameObject)
-        {
-            Instantiate(spawnConfig.PlayerObjects[j].playerView, MainList[i].position, MainList[i].rotation, PlayersTransform);
-        }
-    }
-
-    private void SpawnEnvironmentObject(int i, int j)
-    {
-        while (spawnConfig.EnvironmentObjects[j].objectName != MainList[i].nameObject && spawnConfig.EnvironmentObjects.Length < j)
-        {
-            j++;
-        }
-        if (spawnConfig.EnvironmentObjects[j].objectName == MainList[i].nameObject)
-        {
-            Instantiate(spawnConfig.EnvironmentObjects[j].environmentTransform, MainList[i].position, MainList[i].rotation, EnvironmentsTransform);
+            Instantiate(spawnParameters.dataArray[j].ObjectTransform, MainList[i].position, MainList[i].rotation, spawnParameters.parentTransform);
         }
     }
 
@@ -180,6 +157,17 @@ public class SceneEditor: MonoBehaviour
         Debug.Log("Всего детей: " + childs.Count);
         for (int i = 0; i < childs.Count; i++)
         {
+            /*    This is just sample, delete or use in code
+
+            if (childs[i].TryGetComponent<IData>(out IData data))
+            {
+                if (data is EnvironmentData environmentData)
+                {
+                    SaveEnvironmentObject(environmentData);
+                }
+            }*/
+
+
             if (childs[i].TryGetComponent<IEnvironmentObject>(out IEnvironmentObject environmentObject))
             {
                 SaveEnvironmentObject(environmentObject);
