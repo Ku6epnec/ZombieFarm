@@ -4,9 +4,9 @@ using UnityEngine;
 namespace ZombieFarm.Managers 
 {
     [Serializable]
-    public struct SerializedDictionaryElement
+    public struct SerializedDictionaryElement<T, K>
     {
-        public string key;
-        public GameObject value;
+        public T key;
+        public K value;
     }
 }
