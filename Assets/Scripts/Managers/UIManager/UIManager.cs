@@ -21,6 +21,7 @@ namespace ZombieFarm.Managers
             {
                 if (element.key.Equals(type))
                 {
+                    if (currentOpen != null) ClosePanel();
                     currentOpen = element.value.GetComponent<IUIElement>();
                     currentOpen.Open();
                     break;

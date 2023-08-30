@@ -58,4 +58,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2beaad819fd74244db981740cc201f06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transitionToScene: 1
   uiToOpenID: TransitionWindow
