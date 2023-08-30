@@ -8,7 +8,7 @@ namespace ZombieFarm.Managers
 {
     public class SceneTransitionManager : MonoBehaviour, ITransitionManager
     {
-        [SerializeField] private string panelToOpenID = "SceneStartWindow";
+        [SerializeField] private UIManager.WindowType panelToOpenID;
 
         private int currentTransitionIndex = -1;
 

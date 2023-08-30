@@ -8,16 +8,23 @@ namespace ZombieFarm.Managers
 {
     public class UIManager : MonoBehaviour, IUIManager
     {
+        public enum WindowType
+        {
+            ExchangeWindow,
+            TransitionWindow,
+            SceneStartWindow
+        }
+
         [SerializeField] private FloatingJoystick floatingJoystick;
-        [SerializeField] private List<SerializedDictionaryElement> uiPanels;
+        [SerializeField] private List<SerializedDictionaryElement<WindowType, GameObject>> uiPanels;
 
         public IJoystick Joystick => floatingJoystick;
 
         private IWindow currentOpen;
 
-        public void OpenPanel(string type)
+        public void OpenPanel(WindowType type)
         {
-            foreach (SerializedDictionaryElement element in uiPanels)
+            foreach (SerializedDictionaryElement<WindowType, GameObject> element in uiPanels)
             {
                 if (element.key.Equals(type))
                 {

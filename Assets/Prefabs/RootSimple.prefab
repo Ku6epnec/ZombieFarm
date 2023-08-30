@@ -205,7 +205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatingJoystick: {fileID: 4140688408228926865}
   uiPanels:
-  - key: SceneStartWindow
+  - key: 2
     value: {fileID: 7340715116708234900}
 --- !u!1 &8942437822678751034
 GameObject:
@@ -304,7 +304,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d25c02e1db5fb4abe765e4896e7df4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelToOpenID: SceneStartWindow
+  panelToOpenID: 2
 --- !u!1 &8942437822735082734
 GameObject:
   m_ObjectHideFlags: 0
