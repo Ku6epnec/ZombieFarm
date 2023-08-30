@@ -12,7 +12,7 @@ public class Root : MonoBehaviour
     [SerializeField] ViewManager viewManager;
     [SerializeField] ResourceManager resourceManager;
     [SerializeField] ConfigManager configManager;
-    [SerializeField] TransitionManager transitionManager;
+    [SerializeField] SceneTransitionManager transitionManager;
 
     private static Root instance;
 

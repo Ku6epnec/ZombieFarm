@@ -8,7 +8,7 @@ using ZombieFarm.Managers.Interfaces;
 
 namespace ZombieFarm.UI
 {
-    public class ExchangeWindow : MonoBehaviour, IUIElement
+    public class ExchangeWindow : MonoBehaviour, IWindow
     {
         [Header("Main elements")]
         [SerializeField] private Button exchangeButton;

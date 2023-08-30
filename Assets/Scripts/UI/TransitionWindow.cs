@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ZombieFarm.UI
 {
-    public class TransitionWindow : MonoBehaviour, IUIElement
+    public class TransitionWindow : MonoBehaviour, IWindow
     {
         void Start()
         {

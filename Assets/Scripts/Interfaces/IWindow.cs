@@ -1,4 +1,4 @@
-public interface IUIElement
+public interface IWindow
 {
     public void Open();
     public void Close();

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ZombieFarm.UI
 {
-    public class SceneStartWindow : MonoBehaviour, IUIElement
+    public class SceneStartWindow : MonoBehaviour, IWindow
     {
         [SerializeField] private int waitSeconds;
 
