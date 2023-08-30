@@ -13,7 +13,7 @@ namespace ZombieFarm.Managers
 
         public IJoystick Joystick => floatingJoystick;
 
-        private IUIElement currentOpen;
+        private IWindow currentOpen;
 
         public void OpenPanel(string type)
         {
@@ -22,7 +22,7 @@ namespace ZombieFarm.Managers
                 if (element.key.Equals(type))
                 {
                     if (currentOpen != null) ClosePanel();
-                    currentOpen = element.value.GetComponent<IUIElement>();
+                    currentOpen = element.value.GetComponent<IWindow>();
                     currentOpen.Open();
                     break;
                 }

@@ -6,7 +6,7 @@ using ZombieFarm.Managers.Interfaces;
 
 namespace ZombieFarm.Managers
 {
-    public class TransitionManager : MonoBehaviour, ITransitionManager
+    public class SceneTransitionManager : MonoBehaviour, ITransitionManager
     {
         [SerializeField] private string panelToOpenID = "SceneStartWindow";
 
@@ -22,15 +22,13 @@ namespace ZombieFarm.Managers
             if (currentTransitionIndex == -1) return;
 
             Root.UIManager.OpenPanel(panelToOpenID);
-            Debug.Log("UI should be opened");
             StartCoroutine(LoadAsyncScene(currentTransitionIndex));
         }
         private IEnumerator LoadAsyncScene(int sceneBuildIndex)
         {
-            Debug.Log("Coroutine should be start");
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneBuildIndex);
 
-            while (!asyncLoad.isDone)
+            while (asyncLoad.isDone == false)
             {
                 yield return null;
             }
