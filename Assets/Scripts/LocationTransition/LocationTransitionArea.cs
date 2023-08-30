@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LocationTransitionArea : MonoBehaviour
+namespace ZombieFarm.LocationTransition
 {
-    [SerializeField] private int transitionToScene;
-    [SerializeField] private string uiToOpenID;
-
-    private void OnTriggerEnter(Collider other)
+    public class LocationTransitionArea : MonoBehaviour
     {
-        if (other.CompareTag("Player"))
+        [SerializeField] private int transitionToScene;
+        [SerializeField] private string uiToOpenID;
+
+        private void OnTriggerEnter(Collider other)
         {
-            Root.UIManager.OpenPanel(uiToOpenID);
-            Root.TransitionManager.SetTransition(transitionToScene);
+            if (other.CompareTag("Player"))
+            {
+                Root.UIManager.OpenPanel(uiToOpenID);
+                Root.TransitionManager.SetTransition(transitionToScene);
+            }
         }
     }
 }
