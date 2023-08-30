@@ -1,25 +1,27 @@
 using UnityEngine;
 
-
-public class TransitionWindow : MonoBehaviour, IUIElement
+namespace ZombieFarm.UI
 {
-    void Start()
+    public class TransitionWindow : MonoBehaviour, IUIElement
     {
-        gameObject.SetActive(false);
-    }
+        void Start()
+        {
+            gameObject.SetActive(false);
+        }
 
-    public void Close()
-    {
-        gameObject.SetActive(false);
-    }
+        public void Close()
+        {
+            gameObject.SetActive(false);
+        }
 
-    public void Open()
-    {
-        gameObject.SetActive(true);
-    }
+        public void Open()
+        {
+            gameObject.SetActive(true);
+        }
 
-    public void TransitionToScene()
-    {
-        Root.TransitionManager.StartTransition();
+        public void TransitionToScene()
+        {
+            Root.TransitionManager.StartTransition();
+        }
     }
 }
