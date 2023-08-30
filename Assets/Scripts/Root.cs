@@ -12,6 +12,7 @@ public class Root : MonoBehaviour
     [SerializeField] ViewManager viewManager;
     [SerializeField] ResourceManager resourceManager;
     [SerializeField] ConfigManager configManager;
+    [SerializeField] TransitionManager transitionManager;
 
     private static Root instance;
 
@@ -63,6 +64,14 @@ public class Root : MonoBehaviour
         get
         {
             return instance.uiManager;
+        }
+    }
+
+    public static ITransitionManager TransitionManager
+    {
+        get
+        {
+            return instance.transitionManager;
         }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneStartWindow : MonoBehaviour
+public class SceneStartWindow : MonoBehaviour, IUIElement
 {
     [SerializeField] private int waitSeconds;
 
@@ -21,5 +21,15 @@ public class SceneStartWindow : MonoBehaviour
     {
         yield return new WaitForSeconds(waitSeconds);
         OnEndLoading();
+    }
+
+    public void Close()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void Open()
+    {
+        gameObject.SetActive(true);
     }
 }

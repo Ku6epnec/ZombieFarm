@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waitSeconds: 1
+  nameID: SceneStartWindow
 --- !u!1 &8521393402392462393
 GameObject:
   m_ObjectHideFlags: 0

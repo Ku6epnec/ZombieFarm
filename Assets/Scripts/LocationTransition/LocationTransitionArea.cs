@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LocationTransitionArea : MonoBehaviour
 {
+    [SerializeField] private int transitionToScene;
     [SerializeField] private string uiToOpenID;
 
     private void OnTriggerEnter(Collider other)
@@ -11,6 +12,7 @@ public class LocationTransitionArea : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Root.UIManager.OpenPanel(uiToOpenID);
+            Root.TransitionManager.SetTransition(transitionToScene);
         }
     }
 }
