@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityTools.Runtime.StatefulEvent;
+using ZombieFarm.LocationTransition;
 
 namespace ZombieFarm.AI
 {
@@ -49,6 +50,15 @@ namespace ZombieFarm.AI
             agent.isStopped = active == false;
 
             vfx.SetActive(active);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.GetComponent<LocationTransitionArea>() == true)
+            {
+                isFollowing = false;
+                //TODO: Add animal to farm location due spawn manager
+            }
         }
     }
 }
