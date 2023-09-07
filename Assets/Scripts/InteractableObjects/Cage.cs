@@ -1,4 +1,5 @@
 using UnityEngine;
+using ZombieFarm.AI;
 
 namespace ZombieFarm.InteractableObjects
 {
