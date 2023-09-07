@@ -22,20 +22,22 @@ namespace ZombieFarm.AI
         private void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
-            agent.isStopped = true;
 
             isMoving.OnValueChanged += Move;
+            Move(false);
         }
 
         private void Update()
         {
-            if (isFollowing == true)
-            { 
-                float distanceToPlayer = Vector3.Distance(this.transform.position, Root.Player.transform.position);
-                bool canMove = distanceToPlayer > nearDistanceBetweenForStop && distanceToPlayer < farDistanceBetweenForStop;
-
-                isMoving.Set(canMove);
+            if (isFollowing == false)
+            {
+                return;
             }
+
+            float distanceToPlayer = Vector3.Distance(this.transform.position, Root.Player.transform.position);
+            bool canMove = distanceToPlayer > nearDistanceBetweenForStop && distanceToPlayer < farDistanceBetweenForStop;
+
+            isMoving.Set(canMove);
 
             if (agent.isStopped == false)
             {
