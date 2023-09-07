@@ -1,8 +1,11 @@
+using System;
+
 namespace ZombieFarm.Managers.Interfaces
 {
     public interface ITransitionManager
     {
-        public void SetTransition(int sceneBuildIndex);
-        public void StartTransition();
+        event Action OnSetNewTransitionIndex;
+        void SetTransition(int sceneBuildIndex);
+        void StartTransition();
     }
 }

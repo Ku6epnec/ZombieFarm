@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ namespace ZombieFarm.Managers
 {
     public class SceneTransitionManager : MonoBehaviour, ITransitionManager
     {
+        public event Action OnSetNewTransitionIndex = () => { };
+
         [SerializeField] private UIManager.WindowType panelToOpenID;
 
         private int currentTransitionIndex = -1;
@@ -15,6 +18,8 @@ namespace ZombieFarm.Managers
         public void SetTransition(int sceneBuildIndex)
         {
             currentTransitionIndex = sceneBuildIndex;
+
+            OnSetNewTransitionIndex();
         }
 
         public void StartTransition()
