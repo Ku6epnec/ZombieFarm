@@ -25,6 +25,13 @@ namespace ZombieFarm.AI
 
             isMoving.OnValueChanged += Move;
             Move(false);
+
+            Root.TransitionManager.OnSetNewTransitionIndex += ReachSafeZone;
+        }
+
+        private void OnDestroy()
+        {
+            Root.TransitionManager.OnSetNewTransitionIndex -= ReachSafeZone;
         }
 
         private void Update()
@@ -54,13 +61,11 @@ namespace ZombieFarm.AI
             vfx.SetActive(active);
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void ReachSafeZone()
         {
-            if (other.GetComponent<LocationTransitionArea>() == true)
-            {
-                isFollowing = false;
-                //TODO: Add animal to farm location due spawn manager
-            }
+            isFollowing = false;
+
+            //TODO: Add animal to farm location due spawn manager
         }
     }
 }
