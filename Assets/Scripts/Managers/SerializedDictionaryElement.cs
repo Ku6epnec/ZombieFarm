@@ -8,5 +8,11 @@ namespace ZombieFarm.Managers
     {
         public T key;
         public K value;
+
+        public SerializedDictionaryElement(T key, K value)
+        {
+            this.key = key;
+            this.value = value;
+        }
     }
 }

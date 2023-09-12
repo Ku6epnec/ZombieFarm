@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZombieFarm.Config.Links;
 using ZombieFarm.Managers.Interfaces;
+using ZombieFarm.Saves;
 
 namespace ZombieFarm.Managers
 {
     public class ResourceManager : MonoBehaviour, IResourceManager
     {
+        [SerializeField] private bool loadDataOnStart;
+
         Dictionary<LinkToResource, int> resourceAmount;
 
         public event Action<LinkToResource> OnChangeResource = (resourceName) => { };
@@ -15,6 +18,10 @@ namespace ZombieFarm.Managers
         private void Start()
         {
             Initialize();
+            if (loadDataOnStart)
+            {
+                resourceAmount = ResourceSaver.Load();
+            }
         }
 
         private void Initialize()
@@ -73,6 +80,11 @@ namespace ZombieFarm.Managers
             {
                 resourceAmount.Add(type, 0);
             }
+        }
+
+        private void OnDestroy()
+        {
+            ResourceSaver.Save(resourceAmount);
         }
     }
 }
