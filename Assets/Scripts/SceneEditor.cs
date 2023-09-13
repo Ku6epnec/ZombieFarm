@@ -13,7 +13,7 @@ public class SceneEditor: MonoBehaviour
     }
 
     private List<Transform> childs = new List<Transform>();
-    string jsonConteiner;
+    [SerializeField] private string jsonFile;
     public SpawnConfig spawnConfig;
 
     [SerializeField] private Transform PlayersTransform;
@@ -48,7 +48,7 @@ public class SceneEditor: MonoBehaviour
     public void LoadScene()
     {
         Debug.Log("Пытаемся загрузиться");
-        string jsonContainer = File.ReadAllText("Assets/jsonContainer");
+        string jsonContainer = File.ReadAllText("Assets/" + jsonFile);
         string[] StringObjects = jsonContainer.Split("}{");
         Debug.Log("Строка: " + jsonContainer);
         for (int i = 0; i < StringObjects.Length; i++)
@@ -191,7 +191,7 @@ public class SceneEditor: MonoBehaviour
             else Debug.Log("Этот объект не подпадает под категории, его имя: " + childs[i].name);
         }
 
-        File.WriteAllText("Assets/jsonContainer", jString);
+        File.WriteAllText("Assets/" + jsonFile, jString);
         Debug.Log("Завершаем сохранение");
         childs = null;
         MainList = null;
