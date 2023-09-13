@@ -18,7 +18,7 @@ MonoBehaviour:
   FriendlyObjects: []
   ConstructionObjects:
   - {fileID: 1348349912654817896, guid: 71a819752bcd42b48968c6333ed0ec92, type: 3}
-  - {fileID: 0}
+  - {fileID: 140704599011220795, guid: 86d1f4979c1a78b418ddd13dad05f9d3, type: 3}
   - {fileID: 5876036950389806434, guid: 5cb36c6e9a7851047b27e1d3f8652247, type: 3}
   - {fileID: 5100421874339371935, guid: 788d7b43389d381449685309e98c16c9, type: 3}
   EnvironmentObjects:
