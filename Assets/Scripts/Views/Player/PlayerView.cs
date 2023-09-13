@@ -4,7 +4,7 @@ using ZombieFarm.Interfaces;
 
 namespace ZombieFarm.Views.Player
 { 
-    public class PlayerView : MonoBehaviour, IHealth, IDamage, IHaveArmor
+    public class PlayerView : MonoBehaviour, IHealth, IDamage, IHaveArmor, ISpawn
     {
         public event Action<PlayerState> OnChangeState = (newState) => { };
         
@@ -16,6 +16,11 @@ namespace ZombieFarm.Views.Player
         public float MaxHealth => _maxHealth;
         public float Armor => _armor;
         public float Damage => _damage;
+
+        public Vector3 SpawnPoint => _spawnPoint;
+
+        private Vector3 _spawnPoint;
+        private Quaternion _spawnRotation;
 
         [Header("HealthStats")]
         [SerializeField] private float _health = 20;
@@ -34,20 +39,19 @@ namespace ZombieFarm.Views.Player
         [SerializeField] private InteractiveArea interactiveArea;
         [SerializeField] private AttackTrigger attackTrigger;
 
-        private void Awake()
+        private void Start()
         {
-            currentPlayerState = PlayerState.Idle;
-            healthProgressBar.InitSlider(MaxHealth);
-            healthProgressBar.ProcessCompleted += Die;
+            _spawnPoint = transform.localPosition;
+            _spawnRotation = transform.localRotation;
+            OnSpawn();
 
-            interactiveArea.OnInteractive += OnAttack;
-            interactiveArea.OnDeInteractive += OnIdle;
         }
 
         private void OnDestroy()
         {
             Root.ZombieManager.OnMonsterAttack -= OnAttack;
-            healthProgressBar.ProcessCompleted -= Die;
+            healthProgressBar.OnProcessCompleted -= Die;
+            interactiveArea.OnDeInteractive -= OnIdle;
         }
 
         public void OnIdle()
@@ -73,7 +77,11 @@ namespace ZombieFarm.Views.Player
         private void Die()
         {
             healthProgressBar.gameObject.SetActive(false);
-            Destroy(gameObject);
+            healthProgressBar.ResetProgress();
+            Root.ZombieManager.OnMonsterAttack -= OnAttack;
+            healthProgressBar.OnProcessCompleted -= Die;
+            interactiveArea.OnDeInteractive -= OnIdle;
+            OnSpawn();
         }
 
         private void Update()
@@ -93,6 +101,21 @@ namespace ZombieFarm.Views.Player
             {
                 OnChangeState(currentPlayerState);
             }
+        }
+
+        public void OnSpawn()
+        {
+            healthProgressBar.OnProcessCompleted += Die;
+            interactiveArea.OnInteractive += OnAttack;
+            interactiveArea.OnDeInteractive += OnIdle;
+
+            transform.localPosition = SpawnPoint;
+            transform.localRotation = _spawnRotation;
+            RefreshCurrentState(PlayerState.Idle);
+            _health = MaxHealth;
+            interactiveArea.Clean();
+            healthProgressBar.gameObject.SetActive(true);
+            healthProgressBar.InitSlider(MaxHealth);
         }
     }
 }

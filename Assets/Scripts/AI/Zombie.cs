@@ -40,15 +40,15 @@ namespace ZombieFarm.AI
         [SerializeField] private float speedForChasing = 6f;
 
         [Header("DistanceStats")]
-        [SerializeField] private float distanceToPlayerForAttack = 2f;
-        [SerializeField] private float distanceToPlayerForChase = 15f;
+        [SerializeField] private float attackDistance = 2f;
+        [SerializeField] private float chaseDistance = 15f;
 
         [Header("Walking")]
         [SerializeField] private GameObject walkingPointsParent;
         [SerializeField][Range(0, 1000)] private int walkingProbability;
 
         private float timer;
-        private float maxTimer = 2.0f;
+        private float maxTimer = 1.0f;
         private float recievedDamageTimer;
 
         private bool IsCurrentStateUpdatableInEveryFrame => currentState == ZombieState.Chase;
@@ -63,7 +63,7 @@ namespace ZombieFarm.AI
             agent = GetComponent<NavMeshAgent>();
             walkingPoints = GetWalkingPoints();
 
-            healthProgressBar.ProcessCompleted += Die;
+            healthProgressBar.OnProcessCompleted += Die;
             OnChangeState += UpdateAction;
 
             healthProgressBar.InitSlider(MaxHealth);
@@ -72,12 +72,13 @@ namespace ZombieFarm.AI
         private void Start()
         {
             currentState = ZombieState.Idle;
+
             playerView = Root.ViewManager.GetPlayerView();
         }
 
         private void OnDestroy()
         {
-            healthProgressBar.ProcessCompleted -= Die;
+            healthProgressBar.OnProcessCompleted -= Die;
             OnChangeState -= UpdateAction;
             CleanInteractiveObject();
         }
@@ -85,13 +86,19 @@ namespace ZombieFarm.AI
         private void FixedUpdate()
         {
             RefreshCurrentState();
-            timer -= Time.deltaTime;
+
             recievedDamageTimer -= Time.deltaTime;
-            if (currentState == ZombieState.Attack && timer <= 0)
+
+            if (currentState == ZombieState.Attack)
             {
-                Attack();
-                timer = maxTimer;
+                timer -= Time.deltaTime;
+
+                if (timer <= 0)
+                { 
+                    Attack();
+                }
             }
+
             if (IsCurrentStateUpdatableInEveryFrame == true)
             {
                 UpdateAction(currentState);
@@ -120,6 +127,8 @@ namespace ZombieFarm.AI
             agent.isStopped = true;
 
             playerView.ReceivedDamage(Damage);
+
+            timer = maxTimer;
         }
 
         public void ReceivedDamage(float damage)
@@ -159,8 +168,7 @@ namespace ZombieFarm.AI
             switch (newState)
             {
                 case ZombieState.Attack:
-                    if (timer <= 0)
-                    Attack();
+                    timer = maxTimer;
                     break;
 
                 case ZombieState.Chase:
@@ -187,12 +195,12 @@ namespace ZombieFarm.AI
 
             float distanceToPlayer = Vector3.Distance(this.transform.position, Root.Player.transform.position);
 
-            if (distanceToPlayer < distanceToPlayerForAttack)
-            { 
+            if (distanceToPlayer < attackDistance)
+            {
                 return ZombieState.Attack;
             }
 
-            if (distanceToPlayer < distanceToPlayerForChase)
+            if (distanceToPlayer < chaseDistance)
             { 
                 return ZombieState.Chase;
             }

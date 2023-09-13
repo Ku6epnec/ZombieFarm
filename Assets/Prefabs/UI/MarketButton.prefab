@@ -124,9 +124,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2918529687057060895}
-        m_TargetAssemblyTypeName: ButtonScripts, Assembly-CSharp
+        m_TargetAssemblyTypeName: ZombieFarm.UI.ButtonScripts, Assembly-CSharp
         m_MethodName: Open
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9763e4dc2eecf645a9f76c6c6abdc89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiToOpen: 0
 --- !u!1 &2918529687266844683
 GameObject:
   m_ObjectHideFlags: 0

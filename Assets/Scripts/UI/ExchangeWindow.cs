@@ -8,9 +8,8 @@ using ZombieFarm.Managers.Interfaces;
 
 namespace ZombieFarm.UI
 {
-    public class ExchangeWindow : MonoBehaviour, IUIElement
+    public class ExchangeWindow : MonoBehaviour, IWindow
     {
-        [SerializeField] private string nameID;
         [Header("Main elements")]
         [SerializeField] private Button exchangeButton;
         [SerializeField] private Slider amountSelection;
@@ -31,8 +30,6 @@ namespace ZombieFarm.UI
 
         private int downItemIteration = 1;
         private int upItemIteration = 1;
-
-        public string ID => nameID;
 
         private void Start()
         {

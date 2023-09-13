@@ -951,7 +951,7 @@ GameObject:
   - component: {fileID: 8309649479254448684}
   - component: {fileID: 1495260307177580401}
   - component: {fileID: 3226905819129865126}
-  - component: {fileID: -8359394486867164529}
+  - component: {fileID: 802903127435966855}
   m_Layer: 0
   m_Name: zombie1
   m_TagString: Untagged
@@ -1031,7 +1031,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ed6c4799c573549af9045c09245f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterController: {fileID: -8359394486867164529}
+  characterController: {fileID: 0}
   playerView: {fileID: 0}
   healthProgressBar: {fileID: 5271046812444472927}
   _health: 10
@@ -1039,8 +1039,8 @@ MonoBehaviour:
   _damage: 1
   speedForWalking: 2
   speedForChasing: 10
-  distanceToPlayerForAttack: 2
-  distanceToPlayerForChase: 15
+  attackDistance: 2
+  chaseDistance: 15
   walkingPointsParent: {fileID: 0}
   walkingProbability: 3
 --- !u!114 &1495260307177580401
@@ -1072,7 +1072,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   link:
     itemId: Zombie
---- !u!143 &-8359394486867164529
+--- !u!143 &802903127435966855
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1089,7 +1089,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!1 &5822140378706725339
 GameObject:
   m_ObjectHideFlags: 0

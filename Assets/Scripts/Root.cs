@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using ZombieFarm.Managers;
 using ZombieFarm.Managers.Interfaces;
@@ -11,26 +12,15 @@ public class Root : MonoBehaviour
     [SerializeField] ViewManager viewManager;
     [SerializeField] ResourceManager resourceManager;
     [SerializeField] ConfigManager configManager;
-    [SerializeField] SpawnConfig spawnConfig;
-    [SerializeField] Spawner spawner;
+    [SerializeField] SceneTransitionManager transitionManager;
 
     private static Root instance;
 
     private void Awake()
     {
         instance = this;
-        if (spawnConfig == null) spawnConfig = Resources.Load("SceneTestSpawnConfig") as SpawnConfig;
-        Spawner.Spawn(spawnConfig, transform);
-        player = spawnConfig.PlayerObjects[0].playerMover;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Debug.Log("Сохраняем данные объектов");
-        }
-    }
     public static PlayerMover Player
     {
         get
@@ -76,18 +66,12 @@ public class Root : MonoBehaviour
             return instance.uiManager;
         }
     }
-    public static SpawnConfig SpawnConfigs
+
+    public static ITransitionManager TransitionManager
     {
         get
         {
-            return instance.spawnConfig;
-        }
-    }
-    public static Spawner Spawner
-    {
-        get
-        {
-            return instance.spawner;
+            return instance.transitionManager;
         }
     }
 }

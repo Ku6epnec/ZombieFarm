@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using ZombieFarm.AI;
 
 namespace ZombieFarm.Views
 {
@@ -16,18 +17,18 @@ namespace ZombieFarm.Views
 
         private void Awake()
         {
-            animalFollow.OnStartFollowing += OnStartFollowing;
+            animalFollow.IsMoving.OnValueChanged += OnMovingValueChanged;
             animator = GetComponent<Animator>();
         }
 
         private void OnDestroy()
         {
-            animalFollow.OnStartFollowing -= OnStartFollowing;
+            animalFollow.IsMoving.OnValueChanged -= OnMovingValueChanged;
         }
 
-        private void OnStartFollowing()
+        private void OnMovingValueChanged(bool value)
         {
-            animator.SetBool(animatorParameter_StateIndex_Bool_Id, true);
+            animator.SetBool(animatorParameter_StateIndex_Bool_Id, value);
         }
 
     }
