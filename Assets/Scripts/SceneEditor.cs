@@ -136,7 +136,7 @@ public class SceneEditor: MonoBehaviour
 
     private void SpawnObject(int i, int j, SpawnParameters spawnParameters)
     {
-        while (spawnParameters.dataArray[j].ObjectName != MainList[i].nameObject && spawnParameters.dataArray.Length < j)
+        while (spawnParameters.dataArray[j].ObjectName != MainList[i].nameObject)
         {
             j++;
         }
