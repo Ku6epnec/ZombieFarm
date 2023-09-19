@@ -20,7 +20,7 @@ namespace ZombieFarm.Managers
             Initialize();
             if (loadDataOnStart)
             {
-                resourceAmount = ResourceSaver.Load();
+                LoadResources();
             }
         }
 
@@ -72,6 +72,13 @@ namespace ZombieFarm.Managers
             {
                 return resourceAmount[type];
             }
+        }
+
+        //use in some loader script when switching scenes
+        //need to load somewhere on scene start
+        public void LoadResources()
+        {
+            resourceAmount = ResourceSaver.Load();
         }
 
         private void AddResourceIfMissing(LinkToResource type)
