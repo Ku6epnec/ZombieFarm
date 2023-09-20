@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6769032376072569285}
   - component: {fileID: 7271576188830261203}
   m_Layer: 0
-  m_Name: fence_2
+  m_Name: fence_2 - Copy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
