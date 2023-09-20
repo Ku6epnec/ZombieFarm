@@ -204,7 +204,7 @@ public class SceneEditor: MonoBehaviour
         {
             i++;
         }
-        if (spawnConfig.FriendlyObjects[i].objectName != friendlyObject.objectName)
+        /*if (spawnConfig.FriendlyObjects[i].objectName != friendlyObject.objectName)
         {
             if (friendlyObject.TryGetComponent<FriendlyData>(out FriendlyData friendlyData))
             {
@@ -215,7 +215,7 @@ public class SceneEditor: MonoBehaviour
                 Debug.LogError("Ошибка! У объекта " + friendlyObject.name + " отсутствует компонент FriendlyData, " +
                     "добавьте данный компонент и повторите процесс сохранения!");
             }
-        }
+        }*/
         Debug.Log("Имя объекта: " + friendlyObject.objectName);
         SceneObject thisObject = new SceneObject();
         thisObject.typeObject = "FriendlyObject";
@@ -252,18 +252,6 @@ public class SceneEditor: MonoBehaviour
         {
             i++;
         }
-        if (spawnConfig.EnemyObjects[i].objectName != enemyObject.objectName)
-        {
-            if (enemyObject.TryGetComponent<EnemyData>(out EnemyData enemyData))
-            {
-                spawnConfig.EnemyObjects[i] = enemyData;
-            }
-            else
-            {
-                Debug.LogError("Ошибка! У объекта " + enemyObject.name + " отсутствует компонент EnemyData, " +
-                    "добавьте данный компонент и повторите процесс сохранения!");
-            }
-        }
         Debug.Log("Имя объекта: " + enemyObject.objectName);
         SceneObject thisObject = new SceneObject();
         thisObject.typeObject = "EnemyObject";
@@ -281,18 +269,6 @@ public class SceneEditor: MonoBehaviour
         while (spawnConfig.PlayerObjects[i].objectName != playerObject.objectName && i < spawnConfig.PlayerObjects.Length)
         {
             i++;
-        }
-        if (spawnConfig.PlayerObjects[i].objectName != playerObject.objectName)
-        {
-            if (playerObject.TryGetComponent<PlayerData>(out PlayerData playerData))
-            {
-                spawnConfig.PlayerObjects[i] = playerData;
-            }
-            else
-            {
-                Debug.LogError("Ошибка! У объекта " + playerObject.name + " отсутствует компонент PlayerData, " +
-                    "добавьте данный компонент и повторите процесс сохранения!");
-            }
         }
         Debug.Log("Имя объекта: " + playerObject.objectName);
         SceneObject thisObject = new SceneObject();
