@@ -150,6 +150,7 @@ public class SceneEditor: MonoBehaviour
 
     public void SaveScene()
     {
+        jString = File.ReadAllText("Assets/" + jsonFile);
         Debug.Log("ѕытаемс€ сохранитьс€");
         SaveContainer newScene = new();
         foreach(Transform child in transform)
