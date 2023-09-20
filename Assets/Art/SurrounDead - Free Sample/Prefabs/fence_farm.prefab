@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5240687305714288752}
+  - component: {fileID: -2971690783652279250}
+  - component: {fileID: -114598971683090319}
   m_Layer: 0
   m_Name: fence_farm
   m_TagString: Untagged
@@ -32,6 +34,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-2971690783652279250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6959489130309182554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fa1ac999887b8940b758887b3739c94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: FanceFarm
+--- !u!114 &-114598971683090319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6959489130309182554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42a77d7bc381ec4fb20a44cb5b24179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectName: FanceFarm
+  prefab: {fileID: 6959489130309182554}
+  constuctionTransform: {fileID: 5240687305714288752}
 --- !u!1001 &6552868805523628745
 PrefabInstance:
   m_ObjectHideFlags: 0
