@@ -81,6 +81,8 @@ public class SceneEditor: MonoBehaviour
             Debug.Log("Ротация: " + MainList[i].rotation);
         }
         Debug.Log("Конец загрузки");
+
+        MainList.Clear();
     }
 
     private SpawnParameters GetSpawnParameters(string typeObject)
