@@ -150,8 +150,54 @@ public class SceneEditor: MonoBehaviour
         }
     }
 
+    public Transform[] ObjectContainers;
+
+    public void AddChanges()
+    {
+        childs.Clear();
+        SaveContainer newScene = new();
+        for (int containerIndex = 0; containerIndex < ObjectContainers.Length; containerIndex++)
+        {
+            foreach (Transform child in ObjectContainers[containerIndex])
+            {
+                childs.Add(child);
+            }
+        }
+        Debug.Log("Всего детей: " + childs.Count);
+        for (int i = 0; i < childs.Count; i++)
+        {
+            if (childs[i].TryGetComponent<IEnvironmentObject>(out IEnvironmentObject environmentObject))
+            {
+                SaveEnvironmentObject(environmentObject);
+            }
+            else if (childs[i].TryGetComponent<IPlayerObject>(out IPlayerObject playerObject))
+            {
+                SavePlayerObject(playerObject);
+            }
+            else if (childs[i].TryGetComponent<IEnemyObject>(out IEnemyObject enemyObject))
+            {
+                SaveEnemyObject(enemyObject);
+            }
+            else if (childs[i].TryGetComponent<IConstructionObject>(out IConstructionObject constructionObject))
+            {
+                SaveConstructionObject(constructionObject);
+            }
+            else if (childs[i].TryGetComponent<IFriendlyObject>(out IFriendlyObject friendlyObject))
+            {
+                SaveFriendlyObject(friendlyObject);
+            }
+            else Debug.Log("Этот объект не подпадает под категории, его имя: " + childs[i].name);
+        }
+        File.WriteAllText("Assets/" + jsonFile, jString);
+        Debug.Log("Завершаем сохранение");
+        childs.Clear();
+        MainList.Clear();
+
+    }
+
     public void SaveScene()
     {
+        childs.Clear();
         jString = File.ReadAllText("Assets/" + jsonFile);
         Debug.Log("Пытаемся сохраниться");
         SaveContainer newScene = new();
@@ -198,8 +244,8 @@ public class SceneEditor: MonoBehaviour
 
         File.WriteAllText("Assets/" + jsonFile, jString);
         Debug.Log("Завершаем сохранение");
-        childs = null;
-        MainList = null;
+        childs.Clear();
+        MainList.Clear();
     }
 
     private void SaveFriendlyObject(IFriendlyObject friendlyObject)
