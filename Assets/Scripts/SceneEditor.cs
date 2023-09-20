@@ -234,18 +234,6 @@ public class SceneEditor: MonoBehaviour
         {
             i++;
         }
-        /*if (spawnConfig.ConstructionObjects[i].objectName != constructionObject.objectName)
-        {
-            if (constructionObject.TryGetComponent<ConstructionData>(out ConstructionData constructionData))
-            {
-                spawnConfig.ConstructionObjects[i] = constructionData;
-            }
-            else
-            {
-                Debug.LogError("Ошибка! У объекта " + constructionObject.name + " отсутствует компонент ConstructionData, " +
-                    "добавьте данный компонент и повторите процесс сохранения!");
-            }
-        }*/
         Debug.Log("Имя объекта: " + constructionObject.objectName);
         SceneObject thisObject = new SceneObject();
         thisObject.typeObject = "ConstructionObject";
@@ -323,18 +311,6 @@ public class SceneEditor: MonoBehaviour
         while (spawnConfig.EnvironmentObjects[i].objectName != environmentObject.objectName && i < spawnConfig.PlayerObjects.Length)
         {
             i++;
-        }
-        if (spawnConfig.EnvironmentObjects[i].objectName != environmentObject.objectName)
-        {
-            if (environmentObject.TryGetComponent<EnvironmentData>(out EnvironmentData environmentData))
-            {
-                spawnConfig.EnvironmentObjects[i] = environmentData;
-            }
-            else
-            {
-                Debug.LogError("Ошибка! У объекта " + environmentObject.name + " отсутствует компонент EnvironmentData, " +
-                    "добавьте данный компонент и повторите процесс сохранения!");
-            }
         }
         Debug.Log("Имя объекта: " + environmentObject.objectName);
         SceneObject thisObject = new SceneObject();
