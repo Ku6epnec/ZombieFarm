@@ -29,6 +29,7 @@ public class SceneEditor: MonoBehaviour
         public string nameObject;
         public Vector3 position;
         public Quaternion rotation;
+        public Vector3 scale;
     }
 
     [Serializable]
@@ -142,7 +143,8 @@ public class SceneEditor: MonoBehaviour
         }
         if (spawnParameters.dataArray[j].ObjectName == MainList[i].nameObject)
         {
-            Instantiate(spawnParameters.dataArray[j].ObjectTransform, MainList[i].position, MainList[i].rotation, spawnParameters.parentTransform);
+            var newObject = Instantiate(spawnParameters.dataArray[j].ObjectTransform, MainList[i].position, MainList[i].rotation, spawnParameters.parentTransform);
+            newObject.localScale = MainList[i].scale;
         }
     }
 
@@ -222,6 +224,7 @@ public class SceneEditor: MonoBehaviour
         thisObject.nameObject = friendlyObject.objectName;
         thisObject.position = friendlyObject.transform.position;
         thisObject.rotation = friendlyObject.transform.rotation;
+        thisObject.scale = friendlyObject.transform.localScale;
         MainList.Add(thisObject);
         jString += JsonUtility.ToJson(MainList[index]);
         index++;
@@ -240,6 +243,7 @@ public class SceneEditor: MonoBehaviour
         thisObject.nameObject = constructionObject.objectName;
         thisObject.position = constructionObject.transform.position;
         thisObject.rotation = constructionObject.transform.rotation;
+        thisObject.scale = constructionObject.transform.localScale;
         MainList.Add(thisObject);
         jString += JsonUtility.ToJson(MainList[index]);
         index++;
@@ -258,6 +262,7 @@ public class SceneEditor: MonoBehaviour
         thisObject.nameObject = enemyObject.objectName;
         thisObject.position = enemyObject.transform.position;
         thisObject.rotation = enemyObject.transform.rotation;
+        thisObject.scale = enemyObject.transform.localScale;
         MainList.Add(thisObject);
         jString += JsonUtility.ToJson(MainList[index]);
         index++;
@@ -276,6 +281,7 @@ public class SceneEditor: MonoBehaviour
         thisObject.nameObject = playerObject.objectName;
         thisObject.position = playerObject.transform.position;
         thisObject.rotation = playerObject.transform.rotation;
+        thisObject.scale = playerObject.transform.localScale;
         MainList.Add(thisObject);
         jString += JsonUtility.ToJson(MainList[index]);
         index++;
@@ -294,6 +300,7 @@ public class SceneEditor: MonoBehaviour
         thisObject.nameObject = environmentObject.objectName;
         thisObject.position = environmentObject.transform.position;
         thisObject.rotation = environmentObject.transform.rotation;
+        thisObject.scale = environmentObject.transform.localScale;
         MainList.Add(thisObject);
         jString += JsonUtility.ToJson(MainList[index]);
         index++;
