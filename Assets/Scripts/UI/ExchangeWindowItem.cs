@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityTools.UnityRuntime.UI.Element;
-using UnityTools.UnityRuntime.UI.ElementSet;
 using ZombieFarm.Config.Links;
 using ZombieFarm.Config.LinkTargets;
 using ZombieFarm.Managers.Interfaces;
@@ -13,14 +9,19 @@ namespace ZombieFarm.UI
 {
     public class ExchangeWindowItem : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI amountText;
         public Image resourceImage;
+        [SerializeField] private TextMeshProUGUI amountText;
 
-        [HideInInspector] public Button button;
+        [Header("Background")]
+        [SerializeField] private Image background;
+        [SerializeField] private Sprite activeSprite;
+        [SerializeField] private Sprite inActiveSprite;
+
         [HideInInspector] public LinkToResource link;
-
         private IResourceManager resourceManager;
         private int amount;
+
+        public Button button { get; private set; }
 
         public int Amount
         {
@@ -46,11 +47,11 @@ namespace ZombieFarm.UI
             UpdateResourceAmount(link);
             if (Amount == 0)
             {
-                button.interactable = false;
+                SetInteractable(false);
             }
             else
             {
-                button.interactable = true;
+                SetInteractable(true);
             }
         }
 
@@ -67,6 +68,19 @@ namespace ZombieFarm.UI
                 return -1;
             }
             return foundResource.otherWorth / foundResource.thisWorth;
+        }
+
+        public void SetInteractable(bool interactabe)
+        {
+            button.interactable = interactabe;
+            if (interactabe)
+            {
+                background.sprite = activeSprite;
+            }
+            else
+            {
+                background.sprite = inActiveSprite;
+            }
         }
     }
 }

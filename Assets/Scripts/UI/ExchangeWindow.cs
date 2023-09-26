@@ -17,8 +17,10 @@ namespace ZombieFarm.UI
         [SerializeField] private GameObject downScrollListContent;
         [SerializeField] private GameObject optionPrefab;
         [Header("Final elements")]
-        [SerializeField] private TextMeshProUGUI finalAmountText;
-        [SerializeField] private Image finalImage;
+        [SerializeField] private TextMeshProUGUI finalGetAmountText;
+        [SerializeField] private Image finalGetImage;
+        [SerializeField] private TextMeshProUGUI finalSpendAmountText;
+        [SerializeField] private Image finalSpendImage;
 
         private List<LinkToResource> optionLinks;
         private IResourceManager resourceManager;
@@ -44,6 +46,22 @@ namespace ZombieFarm.UI
             exchangeButton.onClick.AddListener(delegate { Exchange(); });
 
             gameObject.SetActive(false);
+        }
+
+        public void AddOne(bool add)
+        {
+            if (amountSelection.interactable == false) return;
+
+            if (add == true && amountSelection.value < amountSelection.maxValue)
+            {
+                amountSelection.value++;
+            }
+            else if (add == false && amountSelection.value > amountSelection.minValue)
+            {
+                amountSelection.value--;
+            }
+
+            CheckSelection(); //????
         }
 
         private void SetOptions()
@@ -116,11 +134,11 @@ namespace ZombieFarm.UI
             {
                 if (upItemSelected != null)
                 {
-                    upItemSelected.button.interactable = true;
+                    upItemSelected.SetInteractable(true);
 
                     downItemSelected = null;
                 }
-                item.button.interactable = false;
+                item.SetInteractable(false);
                 upItemSelected = item;
 
                 foreach (ExchangeWindowItem downItem in downExchangeWindowItems)
@@ -129,11 +147,11 @@ namespace ZombieFarm.UI
                     
                     if (foundResource.linkToOtherResource.HasValue == true && foundResource.thisWorth <= upItemSelected.Amount)
                     {
-                        downItem.button.interactable = true;
+                        downItem.SetInteractable(true);
                     }
                     else
                     {
-                        downItem.button.interactable = false;
+                        downItem.SetInteractable(false);
                     }
                 }
             }
@@ -141,9 +159,9 @@ namespace ZombieFarm.UI
             {
                 if (downItemSelected != null)
                 {
-                    downItemSelected.button.interactable = true;
+                    downItemSelected.SetInteractable(true);
                 }
-                item.button.interactable = false;
+                item.SetInteractable(false);
                 downItemSelected = item;
             }
 
@@ -176,19 +194,28 @@ namespace ZombieFarm.UI
                 amountSelection.interactable = true;
                 amountSelection.maxValue = upItemSelected.Amount / downItemIteration;
 
-                finalAmountText.text = (amountSelection.value * upItemIteration).ToString();
-                finalImage.sprite = downItemSelected.resourceImage.sprite;
+                finalGetAmountText.text = (amountSelection.value * upItemIteration).ToString();
+                finalGetImage.sprite = downItemSelected.resourceImage.sprite;
+                finalSpendAmountText.text = (amountSelection.value).ToString();
+                finalSpendImage.sprite = upItemSelected.resourceImage.sprite;
                 amountSelection.GetComponentInChildren<TextMeshProUGUI>().text = (amountSelection.value * downItemIteration).ToString();
             }
             else
             {
-                finalAmountText.text = "0";
-                finalImage.sprite = null;
-                amountSelection.value = 1;
-                amountSelection.interactable = false;
-                amountSelection.GetComponentInChildren<TextMeshProUGUI>().text = (amountSelection.value).ToString();
+                SetDefault();
             }
 
+        }
+
+        private void SetDefault()
+        {
+            finalGetAmountText.text = "0";
+            finalGetImage.sprite = null;
+            finalSpendAmountText.text = "0";
+            finalSpendImage.sprite = null;
+            amountSelection.value = 1;
+            amountSelection.interactable = false;
+            amountSelection.GetComponentInChildren<TextMeshProUGUI>().text = (amountSelection.value).ToString();
         }
 
         private void OnDestroy()
