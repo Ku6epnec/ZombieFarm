@@ -61,7 +61,7 @@ namespace ZombieFarm.UI
                 amountSelection.value--;
             }
 
-            CheckSelection(); //????
+            CheckSelection(); 
         }
 
         private void SetOptions()
@@ -196,7 +196,7 @@ namespace ZombieFarm.UI
 
                 finalGetAmountText.text = (amountSelection.value * upItemIteration).ToString();
                 finalGetImage.sprite = downItemSelected.resourceImage.sprite;
-                finalSpendAmountText.text = (amountSelection.value).ToString();
+                finalSpendAmountText.text = (amountSelection.value * downItemIteration).ToString();
                 finalSpendImage.sprite = upItemSelected.resourceImage.sprite;
                 amountSelection.GetComponentInChildren<TextMeshProUGUI>().text = (amountSelection.value * downItemIteration).ToString();
             }
