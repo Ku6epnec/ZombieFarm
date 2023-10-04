@@ -69,12 +69,6 @@ public class SceneEditor: MonoBehaviour
 
             SpawnObject(i, j, GetSpawnParameters(MainList[i].typeObject));
 
-            //GameObject thisChild = GameObject.Find(MainList[i].nameObject);
-            //Instantiate(thisChild, MainList[i].position, MainList[i].rotation);
-            if (MainList[i].typeObject == "PlayerObject")
-            {
-                //spawnConfig.PlayerObjects[0].objectName;
-            }
             Debug.Log("Тип: " + MainList[i].typeObject);
             Debug.Log("Имя: " + MainList[i].nameObject);
             Debug.Log("Позиция: " + MainList[i].position);
@@ -136,7 +130,6 @@ public class SceneEditor: MonoBehaviour
         }
     }
 
-
     private void SpawnObject(int i, int j, SpawnParameters spawnParameters)
     {
         while (spawnParameters.dataArray[j].ObjectName != MainList[i].nameObject)
@@ -192,7 +185,6 @@ public class SceneEditor: MonoBehaviour
         Debug.Log("Завершаем сохранение");
         childs.Clear();
         MainList.Clear();
-
     }
 
     public void SaveScene()
