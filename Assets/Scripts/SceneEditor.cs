@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SceneEditor: MonoBehaviour
 {
@@ -200,17 +199,6 @@ public class SceneEditor: MonoBehaviour
         Debug.Log("Всего детей: " + childs.Count);
         for (int i = 0; i < childs.Count; i++)
         {
-            /*    This is just sample, delete or use in code
-
-            if (childs[i].TryGetComponent<IData>(out IData data))
-            {
-                if (data is EnvironmentData environmentData)
-                {
-                    SaveEnvironmentObject(environmentData);
-                }
-            }*/
-
-
             if (childs[i].TryGetComponent<IEnvironmentObject>(out IEnvironmentObject environmentObject))
             {
                 SaveEnvironmentObject(environmentObject);
@@ -247,18 +235,6 @@ public class SceneEditor: MonoBehaviour
         {
             i++;
         }
-        /*if (spawnConfig.FriendlyObjects[i].objectName != friendlyObject.objectName)
-        {
-            if (friendlyObject.TryGetComponent<FriendlyData>(out FriendlyData friendlyData))
-            {
-                spawnConfig.FriendlyObjects[i] = friendlyData;
-            }
-            else
-            {
-                Debug.LogError("Ошибка! У объекта " + friendlyObject.name + " отсутствует компонент FriendlyData, " +
-                    "добавьте данный компонент и повторите процесс сохранения!");
-            }
-        }*/
         Debug.Log("Имя объекта: " + friendlyObject.objectName);
         SceneObject thisObject = new SceneObject();
         thisObject.typeObject = "FriendlyObject";
