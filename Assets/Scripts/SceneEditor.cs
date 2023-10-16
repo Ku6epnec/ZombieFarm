@@ -176,23 +176,23 @@ public class SceneEditor: MonoBehaviour
         Debug.Log("Всего детей: " + childs.Count);
         for (int i = 0; i < childs.Count; i++)
         {
-            if (childs[i].TryGetComponent<IEnvironmentObject>(out IEnvironmentObject environmentObject))
+            if (childs[i].TryGetComponent<EnvironmentData>(out EnvironmentData environmentObject))
             {
                 SaveEnvironmentObject(environmentObject);
             }
-            else if (childs[i].TryGetComponent<IPlayerObject>(out IPlayerObject playerObject))
+            else if (childs[i].TryGetComponent<PlayerData>(out PlayerData playerObject))
             {
                 SavePlayerObject(playerObject);
             }
-            else if (childs[i].TryGetComponent<IEnemyObject>(out IEnemyObject enemyObject))
+            else if (childs[i].TryGetComponent<EnemyData>(out EnemyData enemyObject))
             {
                 SaveEnemyObject(enemyObject);
             }
-            else if (childs[i].TryGetComponent<IConstructionObject>(out IConstructionObject constructionObject))
+            else if (childs[i].TryGetComponent<ConstructionData>(out ConstructionData constructionObject))
             {
                 SaveConstructionObject(constructionObject);
             }
-            else if (childs[i].TryGetComponent<IFriendlyObject>(out IFriendlyObject friendlyObject))
+            else if (childs[i].TryGetComponent<FriendlyData>(out FriendlyData friendlyObject))
             {
                 SaveFriendlyObject(friendlyObject);
             }
@@ -204,7 +204,7 @@ public class SceneEditor: MonoBehaviour
         MainList.Clear();
     }
 
-    private void SaveFriendlyObject(IFriendlyObject friendlyObject)
+    private void SaveFriendlyObject(FriendlyData friendlyObject)
     {
         int i = 0;
         while (spawnConfig.FriendlyObjects[i].objectName != friendlyObject.objectName && i < spawnConfig.PlayerObjects.Length)
@@ -223,7 +223,7 @@ public class SceneEditor: MonoBehaviour
         index++;
     }
 
-    private void SaveConstructionObject(IConstructionObject constructionObject)
+    private void SaveConstructionObject(ConstructionData constructionObject)
     {
         int i = 0;
         while (spawnConfig.ConstructionObjects[i].objectName != constructionObject.objectName && i < spawnConfig.PlayerObjects.Length)
@@ -242,7 +242,7 @@ public class SceneEditor: MonoBehaviour
         index++;
     }
 
-    private void SaveEnemyObject(IEnemyObject enemyObject)
+    private void SaveEnemyObject(EnemyData enemyObject)
     {
         int i = 0;
         while (spawnConfig.EnemyObjects[i].objectName != enemyObject.objectName && i < spawnConfig.PlayerObjects.Length)
@@ -261,7 +261,7 @@ public class SceneEditor: MonoBehaviour
         index++;
     }
 
-    private void SavePlayerObject(IPlayerObject playerObject)
+    private void SavePlayerObject(PlayerData playerObject)
     {
         int i = 0;
         while (spawnConfig.PlayerObjects[i].objectName != playerObject.objectName && i < spawnConfig.PlayerObjects.Length)
@@ -280,7 +280,7 @@ public class SceneEditor: MonoBehaviour
         index++;
     }
 
-    private void SaveEnvironmentObject(IEnvironmentObject environmentObject)
+    private void SaveEnvironmentObject(EnvironmentData environmentObject)
     {
         int i = 0;
         while (spawnConfig.EnvironmentObjects[i].objectName != environmentObject.objectName && i < spawnConfig.PlayerObjects.Length)
