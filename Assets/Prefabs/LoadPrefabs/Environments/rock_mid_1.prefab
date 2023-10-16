@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7662714865680893191}
   - component: {fileID: 5598987930750366157}
   - component: {fileID: 6517285330640547146}
-  - component: {fileID: 7511435320541349811}
   - component: {fileID: 3322942850776360401}
   m_Layer: 0
   m_Name: rock_mid_1
@@ -2598,19 +2597,6 @@ MonoBehaviour:
   m_OriginalMeshObject: {fileID: 2212009239438826721, guid: 16994ee7780ee4f46a56b86e422a7860,
     type: 3}
   m_Mode: 0
---- !u!114 &7511435320541349811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 138553360571289287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bb3cb62db7f7d24eb7ecce873eedcc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: RockMid1
 --- !u!114 &3322942850776360401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2623,6 +2609,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4984ed4c30568dc47b78a5accd20b619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: RockMid1
   prefab: {fileID: 138553360571289287}
   environmentTransform: {fileID: 6281383605844650120}
+  objectName: RockMid1

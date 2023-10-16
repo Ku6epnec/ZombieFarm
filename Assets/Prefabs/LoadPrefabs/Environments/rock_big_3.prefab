@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2458294469606666565}
-  - component: {fileID: 1378505269271050967}
   - component: {fileID: -7930078446981849611}
   m_Layer: 0
   m_Name: rock_big_3
@@ -34,19 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1378505269271050967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1275616217515348116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bb3cb62db7f7d24eb7ecce873eedcc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectName: RockBig3
 --- !u!114 &-7930078446981849611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4984ed4c30568dc47b78a5accd20b619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: RockBig3
   prefab: {fileID: 1275616217515348116}
   environmentTransform: {fileID: 2458294469606666565}
+  objectName: RockBig3
 --- !u!1001 &7238950911364754146
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2312650}
   - component: {fileID: 6524938}
   - component: {fileID: 1348349912654817896}
-  - component: {fileID: 506727445259504907}
   m_Layer: 0
   m_Name: fence_wood_B
   m_TagString: Untagged
@@ -111,19 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d42a77d7bc381ec4fb20a44cb5b24179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: Fence
   prefab: {fileID: 198534}
   constuctionTransform: {fileID: 458416}
---- !u!114 &506727445259504907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 198534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fa1ac999887b8940b758887b3739c94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   objectName: Fence

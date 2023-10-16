@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3932747636166090934}
   - component: {fileID: 3932747636167058038}
   - component: {fileID: 2394463523178368856}
-  - component: {fileID: 3894834410590966155}
   m_Layer: 0
   m_Name: soil_3m
   m_TagString: Untagged
@@ -97,19 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d42a77d7bc381ec4fb20a44cb5b24179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: Soil
   prefab: {fileID: 3932747636164803766}
   constuctionTransform: {fileID: 3932747636164763798}
---- !u!114 &3894834410590966155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3932747636164803766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fa1ac999887b8940b758887b3739c94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   objectName: Soil

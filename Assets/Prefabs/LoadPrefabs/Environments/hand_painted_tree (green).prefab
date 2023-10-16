@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5009897490527822869}
   - component: {fileID: 1561646146370431137}
-  - component: {fileID: -1722418586620402246}
   m_Layer: 0
   m_Name: hand_painted_tree (green)
   m_TagString: Untagged
@@ -46,21 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4984ed4c30568dc47b78a5accd20b619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: TreePainted
   prefab: {fileID: 1939513854358012833}
   environmentTransform: {fileID: 5009897490527822869}
---- !u!114 &-1722418586620402246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1939513854358012833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bb3cb62db7f7d24eb7ecce873eedcc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   objectName: TreePainted
 --- !u!1001 &501215577757408975
 PrefabInstance:

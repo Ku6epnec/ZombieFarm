@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7637666198351871165}
   - component: {fileID: 5627959913324316791}
   - component: {fileID: -6769032376072569285}
-  - component: {fileID: 7271576188830261203}
   m_Layer: 0
   m_Name: fence_2 - Copy
   m_TagString: Untagged
@@ -97,19 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d42a77d7bc381ec4fb20a44cb5b24179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: FenceWood2
   prefab: {fileID: 6132349946465757602}
   constuctionTransform: {fileID: 6796401766176551704}
---- !u!114 &7271576188830261203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6132349946465757602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fa1ac999887b8940b758887b3739c94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   objectName: FenceWood2

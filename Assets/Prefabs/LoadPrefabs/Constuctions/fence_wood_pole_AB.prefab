@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3647385291450226539}
   - component: {fileID: 3647385291451356587}
   - component: {fileID: -7583924186396336348}
-  - component: {fileID: -8639583604505337705}
   m_Layer: 0
   m_Name: fence_wood_pole_AB
   m_TagString: Untagged
@@ -97,19 +96,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d42a77d7bc381ec4fb20a44cb5b24179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectName: FencePole
   prefab: {fileID: 3647385291449420651}
   constuctionTransform: {fileID: 3647385291449456459}
---- !u!114 &-8639583604505337705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3647385291449420651}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fa1ac999887b8940b758887b3739c94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   objectName: FencePole
