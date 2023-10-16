@@ -9,7 +9,7 @@ public class Spawner : MonoBehaviour
         foreach(var spawnSetting in players)
         {
             var pref = Instantiate(spawnSetting.playerView, transform);
-            pref.transform.position = spawnSetting.posit;
+            pref.transform.position = spawnSetting.position;
         }
         var enemies = spawnSettings.EnemyObjects;
         foreach (var spawnSetting in enemies)

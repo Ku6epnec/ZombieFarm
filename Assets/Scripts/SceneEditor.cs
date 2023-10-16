@@ -51,27 +51,27 @@ public class SceneEditor: MonoBehaviour
         string jsonContainer = File.ReadAllText("Assets/" + jsonFile);
         string[] StringObjects = jsonContainer.Split("}{");
         Debug.Log("Строка: " + jsonContainer);
-        for (int i = 0; i < StringObjects.Length; i++)
+        for (int NumberOfObjectInJson = 0; NumberOfObjectInJson < StringObjects.Length; NumberOfObjectInJson++)
         {
-            if (i == 0) StringObjects[i] = StringObjects[i] + "}";
-            else if (i == StringObjects.Length - 1) StringObjects[i] = "{" + StringObjects[i];
-            else StringObjects[i] = "{" + StringObjects[i] + "}";
-            Debug.Log("Строки: " + StringObjects[i]);
-            SceneObject obj = JsonUtility.FromJson<SceneObject>(StringObjects[i]);
+            if (NumberOfObjectInJson == 0) StringObjects[NumberOfObjectInJson] = StringObjects[NumberOfObjectInJson] + "}";
+            else if (NumberOfObjectInJson == StringObjects.Length - 1) StringObjects[NumberOfObjectInJson] = "{" + StringObjects[NumberOfObjectInJson];
+            else StringObjects[NumberOfObjectInJson] = "{" + StringObjects[NumberOfObjectInJson] + "}";
+            Debug.Log("Строки: " + StringObjects[NumberOfObjectInJson]);
+            SceneObject obj = JsonUtility.FromJson<SceneObject>(StringObjects[NumberOfObjectInJson]);
             MainList.Add(obj);
         }
         Debug.Log("Новая Строка: " + MainList);
 
-        for (int i = 0; i < MainList.Count; i++)
+        for (int NumberOfElementInMainList = 0; NumberOfElementInMainList < MainList.Count; NumberOfElementInMainList++)
         {
-            int j = 0;
+            int NumberOfElementInDataArray = 0;
 
-            SpawnObject(i, j, GetSpawnParameters(MainList[i].typeObject));
+            SpawnObject(NumberOfElementInMainList, NumberOfElementInDataArray, GetSpawnParameters(MainList[NumberOfElementInMainList].typeObject));
 
-            Debug.Log("Тип: " + MainList[i].typeObject);
-            Debug.Log("Имя: " + MainList[i].nameObject);
-            Debug.Log("Позиция: " + MainList[i].position);
-            Debug.Log("Ротация: " + MainList[i].rotation);
+            Debug.Log("Тип: " + MainList[NumberOfElementInMainList].typeObject);
+            Debug.Log("Имя: " + MainList[NumberOfElementInMainList].nameObject);
+            Debug.Log("Позиция: " + MainList[NumberOfElementInMainList].position);
+            Debug.Log("Ротация: " + MainList[NumberOfElementInMainList].rotation);
         }
         Debug.Log("Конец загрузки");
 
@@ -129,16 +129,16 @@ public class SceneEditor: MonoBehaviour
         }
     }
 
-    private void SpawnObject(int i, int j, SpawnParameters spawnParameters)
+    private void SpawnObject(int numberOfElementInMainList, int numberOfElementInDataArray, SpawnParameters spawnParameters)
     {
-        while (spawnParameters.dataArray[j].ObjectName != MainList[i].nameObject)
+        while (spawnParameters.dataArray[numberOfElementInDataArray].ObjectName != MainList[numberOfElementInMainList].nameObject)
         {
-            j++;
+            numberOfElementInDataArray++;
         }
-        if (spawnParameters.dataArray[j].ObjectName == MainList[i].nameObject)
+        if (spawnParameters.dataArray[numberOfElementInDataArray].ObjectName == MainList[numberOfElementInMainList].nameObject)
         {
-            var newObject = Instantiate(spawnParameters.dataArray[j].ObjectTransform, MainList[i].position, MainList[i].rotation, spawnParameters.parentTransform);
-            newObject.localScale = MainList[i].scale;
+            var newObject = Instantiate(spawnParameters.dataArray[numberOfElementInDataArray].ObjectTransform, MainList[numberOfElementInMainList].position, MainList[numberOfElementInMainList].rotation, spawnParameters.parentTransform);
+            newObject.localScale = MainList[numberOfElementInMainList].scale;
         }
     }
 
@@ -174,29 +174,29 @@ public class SceneEditor: MonoBehaviour
     private void EndSave()
     {
         Debug.Log("Всего детей: " + childs.Count);
-        for (int i = 0; i < childs.Count; i++)
+        for (int numberOfChild = 0; numberOfChild < childs.Count; numberOfChild++)
         {
-            if (childs[i].TryGetComponent<EnvironmentData>(out EnvironmentData environmentObject))
+            if (childs[numberOfChild].TryGetComponent<EnvironmentData>(out EnvironmentData environmentObject))
             {
                 SaveEnvironmentObject(environmentObject);
             }
-            else if (childs[i].TryGetComponent<PlayerData>(out PlayerData playerObject))
+            else if (childs[numberOfChild].TryGetComponent<PlayerData>(out PlayerData playerObject))
             {
                 SavePlayerObject(playerObject);
             }
-            else if (childs[i].TryGetComponent<EnemyData>(out EnemyData enemyObject))
+            else if (childs[numberOfChild].TryGetComponent<EnemyData>(out EnemyData enemyObject))
             {
                 SaveEnemyObject(enemyObject);
             }
-            else if (childs[i].TryGetComponent<ConstructionData>(out ConstructionData constructionObject))
+            else if (childs[numberOfChild].TryGetComponent<ConstructionData>(out ConstructionData constructionObject))
             {
                 SaveConstructionObject(constructionObject);
             }
-            else if (childs[i].TryGetComponent<FriendlyData>(out FriendlyData friendlyObject))
+            else if (childs[numberOfChild].TryGetComponent<FriendlyData>(out FriendlyData friendlyObject))
             {
                 SaveFriendlyObject(friendlyObject);
             }
-            else Debug.Log("Этот объект не подпадает под категории, его имя: " + childs[i].name);
+            else Debug.Log("Этот объект не подпадает под категории, его имя: " + childs[numberOfChild].name);
         }
         File.WriteAllText("Assets/" + jsonFile, jString);
         Debug.Log("Завершаем сохранение");
@@ -206,10 +206,10 @@ public class SceneEditor: MonoBehaviour
 
     private void SaveFriendlyObject(FriendlyData friendlyObject)
     {
-        int i = 0;
-        while (spawnConfig.FriendlyObjects[i].objectName != friendlyObject.objectName && i < spawnConfig.PlayerObjects.Length)
+        int NumberOfFriendlyObject = 0;
+        while (spawnConfig.FriendlyObjects[NumberOfFriendlyObject].objectName != friendlyObject.objectName && NumberOfFriendlyObject < spawnConfig.PlayerObjects.Length)
         {
-            i++;
+            NumberOfFriendlyObject++;
         }
         Debug.Log("Имя объекта: " + friendlyObject.objectName);
         SceneObject thisObject = new SceneObject();
@@ -225,10 +225,10 @@ public class SceneEditor: MonoBehaviour
 
     private void SaveConstructionObject(ConstructionData constructionObject)
     {
-        int i = 0;
-        while (spawnConfig.ConstructionObjects[i].objectName != constructionObject.objectName && i < spawnConfig.PlayerObjects.Length)
+        int NumberOfConstructionObject = 0;
+        while (spawnConfig.ConstructionObjects[NumberOfConstructionObject].objectName != constructionObject.objectName && NumberOfConstructionObject < spawnConfig.PlayerObjects.Length)
         {
-            i++;
+            NumberOfConstructionObject++;
         }
         Debug.Log("Имя объекта: " + constructionObject.objectName);
         SceneObject thisObject = new SceneObject();
@@ -244,10 +244,10 @@ public class SceneEditor: MonoBehaviour
 
     private void SaveEnemyObject(EnemyData enemyObject)
     {
-        int i = 0;
-        while (spawnConfig.EnemyObjects[i].objectName != enemyObject.objectName && i < spawnConfig.PlayerObjects.Length)
+        int NumberOfEnemyObject = 0;
+        while (spawnConfig.EnemyObjects[NumberOfEnemyObject].objectName != enemyObject.objectName && NumberOfEnemyObject < spawnConfig.PlayerObjects.Length)
         {
-            i++;
+            NumberOfEnemyObject++;
         }
         Debug.Log("Имя объекта: " + enemyObject.objectName);
         SceneObject thisObject = new SceneObject();
@@ -263,10 +263,10 @@ public class SceneEditor: MonoBehaviour
 
     private void SavePlayerObject(PlayerData playerObject)
     {
-        int i = 0;
-        while (spawnConfig.PlayerObjects[i].objectName != playerObject.objectName && i < spawnConfig.PlayerObjects.Length)
+        int NumberOfPlayerObject = 0;
+        while (spawnConfig.PlayerObjects[NumberOfPlayerObject].objectName != playerObject.objectName && NumberOfPlayerObject < spawnConfig.PlayerObjects.Length)
         {
-            i++;
+            NumberOfPlayerObject++;
         }
         Debug.Log("Имя объекта: " + playerObject.objectName);
         SceneObject thisObject = new SceneObject();
@@ -282,10 +282,10 @@ public class SceneEditor: MonoBehaviour
 
     private void SaveEnvironmentObject(EnvironmentData environmentObject)
     {
-        int i = 0;
-        while (spawnConfig.EnvironmentObjects[i].objectName != environmentObject.objectName && i < spawnConfig.PlayerObjects.Length)
+        int NumberOfEnvironmentObject = 0;
+        while (spawnConfig.EnvironmentObjects[NumberOfEnvironmentObject].objectName != environmentObject.objectName && NumberOfEnvironmentObject < spawnConfig.PlayerObjects.Length)
         {
-            i++;
+            NumberOfEnvironmentObject++;
         }
         Debug.Log("Имя объекта: " + environmentObject.objectName);
         SceneObject thisObject = new SceneObject();

@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyData : MonoBehaviour, IData
 {
     public GameObject prefab;
-    public string enemyName;
     public Transform enemyTransform;
     public string objectName;
 

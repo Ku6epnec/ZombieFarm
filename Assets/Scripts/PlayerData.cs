@@ -1,13 +1,14 @@
 using System;
 using UnityEngine;
+using ZombieFarm.Views.Player;
 
 [Serializable]
 public class PlayerData : MonoBehaviour, IData
 {
-    public ZombieFarm.Views.Player.PlayerView playerView;
-    public ZombieFarm.Views.Player.PlayerMover playerMover;
+    public PlayerView playerView;
+    public PlayerMover playerMover;
     public Transform playerTransform;
-    public Vector3 posit;
+    public Vector3 position;
     public string objectName;
 
     public Transform ObjectTransform => playerTransform;
