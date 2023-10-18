@@ -45,14 +45,7 @@ namespace ZombieFarm.UI
             resourceManager = Root.ResourceManager;
             resourceManager.OnChangeResource += UpdateResourceAmount;
             UpdateResourceAmount(link);
-            if (Amount == 0)
-            {
-                SetInteractable(false);
-            }
-            else
-            {
-                SetInteractable(true);
-            }
+            SetInteractable(amount > 0);
         }
 
         public void UpdateResourceAmount(LinkToResource _)
@@ -70,10 +63,10 @@ namespace ZombieFarm.UI
             return foundResource.otherWorth / foundResource.thisWorth;
         }
 
-        public void SetInteractable(bool interactabe)
+        public void SetInteractable(bool interactable)
         {
-            button.interactable = interactabe;
-            if (interactabe)
+            button.interactable = interactable;
+            if (interactable)
             {
                 background.sprite = activeSprite;
             }
