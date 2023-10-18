@@ -1343,6 +1343,12 @@ MonoBehaviour:
   downScrollListContent: {fileID: 5123445475943135673}
   optionPrefab: {fileID: 7508412377696886429, guid: 9e905dc51cb88024da1a5159c090cdd4,
     type: 3}
+  getItem:
+    amountText: {fileID: 6663849898023519637}
+    resourceImage: {fileID: 4457127446837107981}
+  spendItem:
+    amountText: {fileID: 6350385490209940872}
+    resourceImage: {fileID: 4143659195493498128}
   finalGetAmountText: {fileID: 6663849898023519637}
   finalGetImage: {fileID: 4457127446837107981}
   finalSpendAmountText: {fileID: 6350385490209940872}

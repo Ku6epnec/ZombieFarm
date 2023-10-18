@@ -17,10 +17,8 @@ namespace ZombieFarm.UI
         [SerializeField] private GameObject downScrollListContent;
         [SerializeField] private GameObject optionPrefab;
         [Header("Final elements")]
-        [SerializeField] private TextMeshProUGUI finalGetAmountText;
-        [SerializeField] private Image finalGetImage;
-        [SerializeField] private TextMeshProUGUI finalSpendAmountText;
-        [SerializeField] private Image finalSpendImage;
+        [SerializeField] private ExchangeFinalItem getItem;
+        [SerializeField] private ExchangeFinalItem spendItem;
 
         private List<LinkToResource> optionLinks;
         private IResourceManager resourceManager;
@@ -144,15 +142,9 @@ namespace ZombieFarm.UI
                 foreach (ExchangeWindowItem downItem in downExchangeWindowItems)
                 {
                     var foundResource = Root.ConfigManager.GetByLink<Resource>(upItemSelected.link).worthResources.Find(s => s.linkToOtherResource == downItem.link);
-                    
-                    if (foundResource.linkToOtherResource.HasValue == true && foundResource.thisWorth <= upItemSelected.Amount)
-                    {
-                        downItem.SetInteractable(true);
-                    }
-                    else
-                    {
-                        downItem.SetInteractable(false);
-                    }
+
+                    bool isDownItemInteractable = foundResource.linkToOtherResource.HasValue == true && foundResource.thisWorth <= upItemSelected.Amount;
+                    downItem.SetInteractable(isDownItemInteractable);
                 }
             }
             if (item.transform.parent.gameObject == downScrollListContent)
@@ -194,10 +186,8 @@ namespace ZombieFarm.UI
                 amountSelection.interactable = true;
                 amountSelection.maxValue = upItemSelected.Amount / downItemIteration;
 
-                finalGetAmountText.text = (amountSelection.value * upItemIteration).ToString();
-                finalGetImage.sprite = downItemSelected.resourceImage.sprite;
-                finalSpendAmountText.text = (amountSelection.value * downItemIteration).ToString();
-                finalSpendImage.sprite = upItemSelected.resourceImage.sprite;
+                SetFinalItem(getItem, downItemSelected.resourceImage.sprite, upItemIteration);
+                SetFinalItem(spendItem, upItemSelected.resourceImage.sprite, downItemIteration);
                 amountSelection.GetComponentInChildren<TextMeshProUGUI>().text = (amountSelection.value * downItemIteration).ToString();
             }
             else
@@ -209,13 +199,17 @@ namespace ZombieFarm.UI
 
         private void SetDefault()
         {
-            finalGetAmountText.text = "0";
-            finalGetImage.sprite = null;
-            finalSpendAmountText.text = "0";
-            finalSpendImage.sprite = null;
+            SetFinalItem(getItem, null, 0);
+            SetFinalItem(spendItem, null, 0);
             amountSelection.value = 1;
             amountSelection.interactable = false;
             amountSelection.GetComponentInChildren<TextMeshProUGUI>().text = (amountSelection.value).ToString();
+        }
+
+        private void SetFinalItem(ExchangeFinalItem item, Sprite sprite, int itemIteration)
+        {
+            item.amountText.text = (amountSelection.value * itemIteration).ToString();
+            item.resourceImage.sprite = sprite;
         }
 
         private void OnDestroy()
