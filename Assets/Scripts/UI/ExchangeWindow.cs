@@ -21,6 +21,7 @@ namespace ZombieFarm.UI
         [SerializeField] private ExchangeFinalItem spendItem;
 
         private List<LinkToResource> optionLinks;
+        private TextMeshProUGUI amountSelectionText;
         private IResourceManager resourceManager;
         private ExchangeWindowItem upItemSelected;
         private ExchangeWindowItem downItemSelected;
@@ -36,6 +37,7 @@ namespace ZombieFarm.UI
             resourceManager = Root.ResourceManager;
 
             optionLinks = new List<LinkToResource>();
+            amountSelectionText = amountSelection.GetComponentInChildren<TextMeshProUGUI>();
             upExchangeWindowItems = new List<ExchangeWindowItem>();
             downExchangeWindowItems = new List<ExchangeWindowItem>();
 
@@ -188,7 +190,7 @@ namespace ZombieFarm.UI
 
                 SetFinalItem(getItem, downItemSelected.resourceImage.sprite, upItemIteration);
                 SetFinalItem(spendItem, upItemSelected.resourceImage.sprite, downItemIteration);
-                amountSelection.GetComponentInChildren<TextMeshProUGUI>().text = (amountSelection.value * downItemIteration).ToString();
+                amountSelectionText.text = (amountSelection.value * downItemIteration).ToString();
             }
             else
             {
