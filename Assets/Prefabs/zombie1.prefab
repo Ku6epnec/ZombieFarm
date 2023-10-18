@@ -950,8 +950,8 @@ GameObject:
   - component: {fileID: 4535573857121215724}
   - component: {fileID: 8309649479254448684}
   - component: {fileID: 1495260307177580401}
-  - component: {fileID: 3226905819129865126}
   - component: {fileID: 802903127435966855}
+  - component: {fileID: 2063465106823032838}
   m_Layer: 0
   m_Name: zombie1
   m_TagString: Untagged
@@ -1058,20 +1058,6 @@ MonoBehaviour:
   secondsBeforeDisappearance: 3
   disappearVFX: {fileID: 8077349255483975817}
   zombieModel: {fileID: 7130512699062924584}
---- !u!114 &3226905819129865126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5663414270104929127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a12fb1a7284f36949a00bbd162da4981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  link:
-    itemId: Zombie
 --- !u!143 &802903127435966855
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1090,6 +1076,20 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.7, z: 0}
+--- !u!114 &2063465106823032838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5663414270104929127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6017d06ffdafbe8449da662b437c95fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  link:
+    itemId: Zombie
 --- !u!1 &5822140378706725339
 GameObject:
   m_ObjectHideFlags: 0
