@@ -31,16 +31,6 @@ public class SceneEditor: MonoBehaviour
         public Vector3 scale;
     }
 
-    [Serializable]
-    public class SaveContainer
-    {
-        public Dictionary<string, Transform> PlayerDictionary = new Dictionary<string, Transform>();
-        public Dictionary<string, Transform> EnemyDictionary = new Dictionary<string, Transform>();
-        public Dictionary<string, Transform> FriendlyDictionary = new Dictionary<string, Transform>();
-        public Dictionary<string, Transform> ContructionDictionary = new Dictionary<string, Transform>();
-        public Dictionary<string, Transform> EnvironmentDictionary = new Dictionary<string, Transform>();
-    }
-
     public List<SceneObject> MainList = new List<SceneObject>();
     public string jString;
     public int index = 0;
@@ -137,7 +127,6 @@ public class SceneEditor: MonoBehaviour
     public void AddChanges()
     {
         childs.Clear();
-        SaveContainer newScene = new();
         for (int containerIndex = 0; containerIndex < ObjectContainers.Length; containerIndex++)
         {
             foreach (Transform child in ObjectContainers[containerIndex])
@@ -152,7 +141,6 @@ public class SceneEditor: MonoBehaviour
     {
         childs.Clear();
         jString = File.ReadAllText("Assets/" + jsonFile);
-        SaveContainer newScene = new();
         foreach(Transform child in transform)
         {
             childs.Add(child);
