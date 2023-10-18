@@ -33,7 +33,7 @@ public class SceneEditor: MonoBehaviour
 
     public List<SceneObject> MainList = new List<SceneObject>();
     public string jString;
-    public int index = 0;
+    public int numberObjectInMainList = 0;
 
     public void LoadScene()
     {
@@ -194,8 +194,8 @@ public class SceneEditor: MonoBehaviour
         thisObject.rotation = friendlyObject.transform.rotation;
         thisObject.scale = friendlyObject.transform.localScale;
         MainList.Add(thisObject);
-        jString += JsonUtility.ToJson(MainList[index]);
-        index++;
+        jString += JsonUtility.ToJson(MainList[numberObjectInMainList]);
+        numberObjectInMainList++;
     }
 
     private void SaveConstructionObject(ConstructionData constructionObject)
@@ -213,8 +213,8 @@ public class SceneEditor: MonoBehaviour
         thisObject.rotation = constructionObject.transform.rotation;
         thisObject.scale = constructionObject.transform.localScale;
         MainList.Add(thisObject);
-        jString += JsonUtility.ToJson(MainList[index]);
-        index++;
+        jString += JsonUtility.ToJson(MainList[numberObjectInMainList]);
+        numberObjectInMainList++;
     }
 
     private void SaveEnemyObject(EnemyData enemyObject)
@@ -231,8 +231,8 @@ public class SceneEditor: MonoBehaviour
         thisObject.rotation = enemyObject.transform.rotation;
         thisObject.scale = enemyObject.transform.localScale;
         MainList.Add(thisObject);
-        jString += JsonUtility.ToJson(MainList[index]);
-        index++;
+        jString += JsonUtility.ToJson(MainList[numberObjectInMainList]);
+        numberObjectInMainList++;
     }
 
     private void SavePlayerObject(PlayerData playerObject)
@@ -249,8 +249,8 @@ public class SceneEditor: MonoBehaviour
         thisObject.rotation = playerObject.transform.rotation;
         thisObject.scale = playerObject.transform.localScale;
         MainList.Add(thisObject);
-        jString += JsonUtility.ToJson(MainList[index]);
-        index++;
+        jString += JsonUtility.ToJson(MainList[numberObjectInMainList]);
+        numberObjectInMainList++;
     }
 
     private void SaveEnvironmentObject(EnvironmentData environmentObject)
@@ -267,7 +267,7 @@ public class SceneEditor: MonoBehaviour
         thisObject.rotation = environmentObject.transform.rotation;
         thisObject.scale = environmentObject.transform.localScale;
         MainList.Add(thisObject);
-        jString += JsonUtility.ToJson(MainList[index]);
-        index++;
+        jString += JsonUtility.ToJson(MainList[numberObjectInMainList]);
+        numberObjectInMainList++;
     }
 }
