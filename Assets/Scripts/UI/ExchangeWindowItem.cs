@@ -15,7 +15,6 @@ namespace ZombieFarm.UI
         [Header("Background")]
         [SerializeField] private Image background;
         [SerializeField] private Sprite activeSprite;
-        [SerializeField] private Sprite inActiveSprite;
 
         [HideInInspector] public LinkToResource link;
         private IResourceManager resourceManager;
@@ -66,14 +65,7 @@ namespace ZombieFarm.UI
         public void SetInteractable(bool interactable)
         {
             button.interactable = interactable;
-            if (interactable)
-            {
-                background.sprite = activeSprite;
-            }
-            else
-            {
-                background.sprite = inActiveSprite;
-            }
+            background.overrideSprite = interactable == true ? activeSprite : null;
         }
     }
 }
