@@ -56,7 +56,7 @@ namespace ZombieFarm.Views
             zombieModel.gameObject.SetActive(false);
             disappearVFX.gameObject.SetActive(true);
 
-            StartCoroutine(WaitingForAction(disappearVFX.GetMaxParticleDuration(), () => Destroy(gameObject)));
+            StartCoroutine(WaitingForAction(disappearVFX.GetMaxParticleDuration(), () => gameObject.SetActive(false)));
         }
         
         private IEnumerator WaitingForAction(float time, Action action)
