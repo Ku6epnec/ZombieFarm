@@ -22,7 +22,6 @@ namespace ZombieFarm.Saves
             }
 
             string json = JsonUtility.ToJson(resourceWrapper);
-            Debug.Log(json);
             string filePath = Application.persistentDataPath + fileName;
 
             File.WriteAllText(filePath, json);
@@ -40,7 +39,7 @@ namespace ZombieFarm.Saves
 
                 Dictionary<LinkToResource, int> resources = new Dictionary<LinkToResource, int>();
 
-                foreach(var element in data.dictionaryList)
+                foreach(SerializedDictionaryElement<LinkToResource, int> element in data.dictionaryList)
                 {
                     resources.Add(element.key, element.value);
                 }
