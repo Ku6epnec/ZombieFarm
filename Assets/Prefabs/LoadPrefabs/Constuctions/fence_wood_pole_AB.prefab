@@ -97,5 +97,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 3647385291449420651}
-  constuctionTransform: {fileID: 3647385291449456459}
+  constructionTransform: {fileID: 3647385291449456459}
   objectName: FencePole

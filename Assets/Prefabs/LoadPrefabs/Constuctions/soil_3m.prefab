@@ -97,5 +97,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 3932747636164803766}
-  constuctionTransform: {fileID: 3932747636164763798}
+  constructionTransform: {fileID: 3932747636164763798}
   objectName: Soil

@@ -6,9 +6,9 @@ using System;
 public class ConstructionData : MonoBehaviour, IData
 {
     public GameObject prefab;
-    public Transform constuctionTransform;
+    public Transform constructionTransform;
     public string objectName;
 
-    public Transform ObjectTransform => constuctionTransform;
+    public Transform ObjectTransform => constructionTransform;
     public string ObjectName => objectName;
 }

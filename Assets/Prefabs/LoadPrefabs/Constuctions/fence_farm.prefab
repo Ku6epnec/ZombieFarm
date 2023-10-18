@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 6959489130309182554}
-  constuctionTransform: {fileID: 5240687305714288752}
+  constructionTransform: {fileID: 5240687305714288752}
   objectName: FanceFarm
 --- !u!1001 &6552868805523628745
 PrefabInstance:

@@ -97,5 +97,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1897324438042312528}
-  constuctionTransform: {fileID: 1897324438042076016}
+  constructionTransform: {fileID: 1897324438042076016}
   objectName: Power_Pole2

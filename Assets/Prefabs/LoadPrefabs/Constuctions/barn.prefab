@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 4596418865648547002}
-  constuctionTransform: {fileID: 4596418865648547003}
+  constructionTransform: {fileID: 4596418865648547003}
   objectName: Barn
 --- !u!1001 &4596418863622355799
 PrefabInstance:

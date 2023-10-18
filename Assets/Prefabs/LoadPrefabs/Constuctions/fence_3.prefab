@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 7163005602244686188}
-  constuctionTransform: {fileID: 3737720380575923881}
+  constructionTransform: {fileID: 3737720380575923881}
   objectName: Fence3
 --- !u!1001 &3327119397852016592
 PrefabInstance:

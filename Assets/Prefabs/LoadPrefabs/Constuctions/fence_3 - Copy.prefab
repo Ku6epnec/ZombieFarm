@@ -97,5 +97,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 4739326534153744480}
-  constuctionTransform: {fileID: 5372417171230124762}
+  constructionTransform: {fileID: 5372417171230124762}
   objectName: FenceWood3
