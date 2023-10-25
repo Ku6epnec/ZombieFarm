@@ -132,14 +132,11 @@ namespace ZombieFarm.UI
         {
             if (item.transform.parent.gameObject == upScrollListContent)
             {
+                SetItems(ref upItemSelected, item);
                 if (upItemSelected != null)
                 {
-                    upItemSelected.SetInteractable(true);
-
                     downItemSelected = null;
                 }
-                item.SetInteractable(false);
-                upItemSelected = item;
 
                 foreach (ExchangeWindowItem downItem in downExchangeWindowItems)
                 {
@@ -151,15 +148,20 @@ namespace ZombieFarm.UI
             }
             if (item.transform.parent.gameObject == downScrollListContent)
             {
-                if (downItemSelected != null)
-                {
-                    downItemSelected.SetInteractable(true);
-                }
-                item.SetInteractable(false);
-                downItemSelected = item;
+                SetItems(ref downItemSelected, item);
             }
 
             CheckSelection();
+        }
+
+        private void SetItems(ref ExchangeWindowItem itemSelected, ExchangeWindowItem item)
+        {
+            if (itemSelected != null)
+            {
+                itemSelected.SetInteractable(true);
+            }
+            item.SetInteractable(false);
+            itemSelected = item;
         }
 
         private void CheckSelection()
@@ -205,7 +207,7 @@ namespace ZombieFarm.UI
             SetFinalItem(spendItem, null, 0);
             amountSelection.value = 1;
             amountSelection.interactable = false;
-            amountSelection.GetComponentInChildren<TextMeshProUGUI>().text = (amountSelection.value).ToString();
+            amountSelectionText.text = (amountSelection.value).ToString();
         }
 
         private void SetFinalItem(ExchangeFinalItem item, Sprite sprite, int itemIteration)
