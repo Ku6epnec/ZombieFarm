@@ -1,0 +1,39 @@
+using UnityEngine;
+using System;
+
+public class Spawner : MonoBehaviour
+{
+    public static void Spawn(SpawnConfig spawnSettings, Transform transform)
+    {
+        var players = spawnSettings.PlayerObjects;
+        foreach(var spawnSetting in players)
+        {
+            var pref = Instantiate(spawnSetting.playerView, transform);
+            pref.transform.position = spawnSetting.position;
+        }
+        var enemies = spawnSettings.EnemyObjects;
+        foreach (var spawnSetting in enemies)
+        {
+            var pref = Instantiate(spawnSetting.prefab, transform);
+            pref.transform.position = spawnSetting.enemyTransform.position;
+        }
+        var frends = spawnSettings.FriendlyObjects;
+        foreach (var spawnSetting in frends)
+        {
+            var pref = Instantiate(spawnSetting.prefab, transform);
+            pref.transform.position = spawnSetting.friendTransform.position;
+        }
+        var contructions = spawnSettings.ConstructionObjects;
+        foreach (var spawnSetting in contructions)
+        {
+            var pref = Instantiate(spawnSetting.prefab, transform);
+            pref.transform.position = spawnSetting.constructionTransform.position;
+        }
+        var environments = spawnSettings.EnvironmentObjects;
+        foreach (var spawnSetting in environments)
+        {
+            var pref = Instantiate(spawnSetting.prefab, transform);
+            pref.transform.position = spawnSetting.environmentTransform.position;
+        }
+    }
+}
