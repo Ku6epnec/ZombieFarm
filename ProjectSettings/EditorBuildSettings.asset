@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/anyaloc.unity
     guid: 9f5dbe2d4fe5ccf43825ccf0c11dab89
   - enabled: 1
-    path: Assets/Scenes/farm.unity
+    path: Assets/Scenes/Farm.unity
     guid: 83038207beab6ea4bac9f80132a0c33b
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 324839ac872548f43a42241d01081b19,
