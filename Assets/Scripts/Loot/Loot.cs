@@ -14,6 +14,7 @@ namespace ZombieFarm.Loot
         public void AddToInventory()
         {
             LootSource lootSource = Root.ConfigManager.GetByLink<LootSource>(link);
+            Debug.Log("add");
 
             foreach (var loot in lootSource.resourcesLoot)
             {

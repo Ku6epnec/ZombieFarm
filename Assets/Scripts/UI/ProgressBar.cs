@@ -42,6 +42,7 @@ public class ProgressBar : MonoBehaviour
 
         if (_health <= 0)
         {
+            Debug.Log("HealthBar Process Completed " + _health);
             OnProcessCompleted();
         }
     }
