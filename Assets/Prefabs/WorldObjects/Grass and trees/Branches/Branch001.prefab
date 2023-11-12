@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4466018400919502958}
   - component: {fileID: 9006079925495323879}
+  - component: {fileID: -4354508516401409045}
   m_Layer: 0
   m_Name: Branch001
   m_TagString: Untagged
@@ -48,6 +49,19 @@ MonoBehaviour:
   prefab: {fileID: 5079211194360421986}
   environmentTransform: {fileID: 4466018400919502958}
   objectName: Branch001
+--- !u!65 &-4354508516401409045
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5079211194360421986}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.6746888, y: 1, z: 1.869064}
+  m_Center: {x: -0.036311686, y: 0, z: -0.10234302}
 --- !u!1001 &2397091646278000478
 PrefabInstance:
   m_ObjectHideFlags: 0

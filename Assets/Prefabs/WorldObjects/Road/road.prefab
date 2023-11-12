@@ -46,6 +46,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3636171601460604360}
+  - component: {fileID: 1439563704623436509}
   m_Layer: 0
   m_Name: road
   m_TagString: Untagged
@@ -70,6 +71,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1439563704623436509
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9018372300768932790}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 21.05362, y: 1, z: 21.977747}
+  m_Center: {x: 0.04620552, y: 0, z: -0.046206474}
 --- !u!1001 &353555757923773829
 PrefabInstance:
   m_ObjectHideFlags: 0
