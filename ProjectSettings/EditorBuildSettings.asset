@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Farm.unity
     guid: 83038207beab6ea4bac9f80132a0c33b
+  - enabled: 1
+    path: Assets/Scenes/desertloc_2.unity
+    guid: 1f95ce5c5b892424db5afc0cb744fdb1
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 324839ac872548f43a42241d01081b19,
       type: 2}
