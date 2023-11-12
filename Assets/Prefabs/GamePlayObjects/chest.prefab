@@ -156,8 +156,8 @@ GameObject:
   m_Component:
   - component: {fileID: 482955781639092250}
   - component: {fileID: 482955781639092251}
-  - component: {fileID: 6008942413541404766}
   - component: {fileID: 9151834401199168953}
+  - component: {fileID: 7981841474632957715}
   m_Layer: 0
   m_Name: chest
   m_TagString: Untagged
@@ -199,20 +199,6 @@ MonoBehaviour:
   progressBar: {fileID: 5669923409785307474}
   objectModel: {fileID: 4068066339805686669}
   disappearVFX: {fileID: 3886089949349762188}
---- !u!114 &6008942413541404766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 482955781639092248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6017d06ffdafbe8449da662b437c95fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  link:
-    itemId: ChestTest
 --- !u!65 &9151834401199168953
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -226,6 +212,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.246109, y: 3.59196, z: 5.21027}
   m_Center: {x: 2.6492066, y: 1.8175747, z: -0.069607854}
+--- !u!114 &7981841474632957715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482955781639092248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d9c3a05fc11b5a43aeea028e6c66eae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  link:
+    itemId: ChestTest
 --- !u!1 &4068066339805263785
 GameObject:
   m_ObjectHideFlags: 0

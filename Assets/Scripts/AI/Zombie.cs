@@ -50,6 +50,7 @@ namespace ZombieFarm.AI
         private float timer;
         private float maxTimer = 1.0f;
         private float recievedDamageTimer;
+        private Loot.Loot loot;
 
         private bool IsCurrentStateUpdatableInEveryFrame => currentState == ZombieState.Chase;
 
@@ -61,6 +62,7 @@ namespace ZombieFarm.AI
         private void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
+            loot = GetComponent<Loot.Loot>();
             walkingPoints = GetWalkingPoints();
 
             healthProgressBar.OnProcessCompleted += Die;
@@ -143,10 +145,12 @@ namespace ZombieFarm.AI
 
         private void Die()
         {
+            Debug.Log("Die method");
             Destroy(characterController);
             CleanInteractiveObject();
             currentState = ZombieState.Die;
             healthProgressBar.gameObject.SetActive(false);
+            loot.AddToInventory();
             OnDie(this);
         }
 

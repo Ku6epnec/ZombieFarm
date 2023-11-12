@@ -7,6 +7,8 @@ namespace ZombieFarm.InteractableObjects
     {
         [SerializeField] AnimalFollow animal;
 
+        private Loot.Loot loot;
+
         protected override void Awake()
         {
             base.Awake();
@@ -17,6 +19,12 @@ namespace ZombieFarm.InteractableObjects
         {
             base.OnDestroy();
             progressBar.OnProcessCompleted -= Free;
+        }
+
+        protected override void Open()
+        {
+            loot.AddToInventory();
+            base.Open();
         }
 
         private void Free()

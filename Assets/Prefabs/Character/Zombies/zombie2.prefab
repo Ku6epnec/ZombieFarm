@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 6878625291768294683}
   - component: {fileID: 4691639151591081239}
   - component: {fileID: -1696954429153348416}
-  - component: {fileID: 4067593857892963495}
+  - component: {fileID: 5161894116937851174}
   m_Layer: 0
   m_Name: zombie2
   m_TagString: Untagged
@@ -534,7 +534,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.7, z: 0}
---- !u!114 &4067593857892963495
+--- !u!114 &5161894116937851174
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -543,7 +543,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1920011725772298721}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6017d06ffdafbe8449da662b437c95fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d9c3a05fc11b5a43aeea028e6c66eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   link:

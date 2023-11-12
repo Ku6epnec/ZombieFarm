@@ -19,7 +19,7 @@ namespace ZombieFarm.InteractableObjects
             progressBar.OnProcessCompleted -= Open;
         }
 
-        private void Open()
+        protected virtual void Open()
         {
             objectModel.gameObject.SetActive(false);
             progressBar.gameObject.SetActive(false);

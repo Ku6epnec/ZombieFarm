@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 217263260893844343}
   - component: {fileID: 8069523059152896465}
   - component: {fileID: 2483226110707996331}
-  - component: {fileID: 2307012681183502117}
+  - component: {fileID: 1779644362212298179}
   m_Layer: 0
   m_Name: cage
   m_TagString: Untagged
@@ -66,7 +66,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0.39256564, y: 0.276347, z: -0.38}
---- !u!114 &2307012681183502117
+--- !u!114 &1779644362212298179
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 596743874859387341}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a12fb1a7284f36949a00bbd162da4981, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d9c3a05fc11b5a43aeea028e6c66eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   link:
