@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3932747636166090934}
   - component: {fileID: 3932747636167058038}
   - component: {fileID: 2394463523178368856}
+  - component: {fileID: 9067189985172326101}
   m_Layer: 0
   m_Name: soil_3m
   m_TagString: Untagged
@@ -99,3 +100,16 @@ MonoBehaviour:
   prefab: {fileID: 3932747636164803766}
   constructionTransform: {fileID: 3932747636164763798}
   objectName: Soil
+--- !u!65 &9067189985172326101
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3932747636164803766}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.2070048, y: 0.74128526, z: 11.137007}
+  m_Center: {x: -0.00006341934, y: 0.3706424, z: -0.014797449}

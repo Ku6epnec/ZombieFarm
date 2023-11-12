@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1808759538897333978}
   - component: {fileID: 140704599011220795}
+  - component: {fileID: 6401679221423329638}
   m_Layer: 0
   m_Name: fence_1
   m_TagString: Untagged
@@ -48,6 +49,19 @@ MonoBehaviour:
   prefab: {fileID: 8337950785455138900}
   constructionTransform: {fileID: 1808759538897333978}
   objectName: Fence1
+--- !u!65 &6401679221423329638
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8337950785455138900}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.979942, y: 5.9589763, z: 0.7245014}
+  m_Center: {x: -3.0872061, y: 2.9170449, z: 0.024308696}
 --- !u!1001 &5555895532511417381
 PrefabInstance:
   m_ObjectHideFlags: 0

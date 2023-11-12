@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5240687305714288752}
+  - component: {fileID: 1583342495233585174}
   m_Layer: 0
   m_Name: fence_farm
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1583342495233585174
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6959489130309182554}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.844867, y: 3.8190992, z: 0.48596275}
+  m_Center: {x: -2.1525671, y: 1.8805228, z: -0.000022560358}
 --- !u!1001 &6552868805523628745
 PrefabInstance:
   m_ObjectHideFlags: 0

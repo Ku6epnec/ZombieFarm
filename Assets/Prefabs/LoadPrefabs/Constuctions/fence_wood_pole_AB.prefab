@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3647385291450226539}
   - component: {fileID: 3647385291451356587}
   - component: {fileID: -7583924186396336348}
+  - component: {fileID: 9188774428240494025}
   m_Layer: 0
   m_Name: fence_wood_pole_AB
   m_TagString: Untagged
@@ -99,3 +100,16 @@ MonoBehaviour:
   prefab: {fileID: 3647385291449420651}
   constructionTransform: {fileID: 3647385291449456459}
   objectName: FencePole
+--- !u!65 &9188774428240494025
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3647385291449420651}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5119506, y: 5.4608, z: 0.51195025}
+  m_Center: {x: 0.0000027120113, y: 2.7304, z: -0.00000011920929}
