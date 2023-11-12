@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/anyaloc.unity
-    guid: 9f5dbe2d4fe5ccf43825ccf0c11dab89
-  - enabled: 1
     path: Assets/Scenes/Farm.unity
     guid: 83038207beab6ea4bac9f80132a0c33b
   - enabled: 1
