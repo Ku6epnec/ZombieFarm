@@ -1471,7 +1471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05412d1150d154b4d91d987839b519d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 10
+  movementSpeed: 15
   rotationSpeed: 3
   gravity: 9.8
 --- !u!114 &4039981035190579135
@@ -1502,7 +1502,7 @@ MonoBehaviour:
   _health: 20
   _maxHealth: 20
   _armor: 0
-  _damage: 1
+  _damage: 10
   healthProgressBar: {fileID: 8766386389089777751}
   interactiveArea: {fileID: 8602405530869876968}
   attackTrigger: {fileID: 3390736063855088345}
