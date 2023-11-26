@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2274192415961298597}
   - component: {fileID: 2274192415964722821}
   - component: {fileID: 2274192415963722821}
-  - component: {fileID: 2274192417735907813}
   - component: {fileID: 3657422011335633764}
   m_Layer: 0
   m_Name: soil_3m
@@ -85,20 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2274192417735907813
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2274192415961459333}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: f5e3e3d6fbd09b44b9bb8ecbdfe8d7db, type: 3}
 --- !u!65 &3657422011335633764
 BoxCollider:
   m_ObjectHideFlags: 0

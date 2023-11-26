@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3459102865845348705}
   - component: {fileID: 553635097038841540}
   - component: {fileID: 2326706680775086606}
-  - component: {fileID: 7307746522452056192}
   - component: {fileID: 2344978051505529084}
   m_Layer: 0
   m_Name: Ambulance-Truck
@@ -85,20 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7307746522452056192
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4272476880722932699}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8276468743271084272, guid: 509eb149074154547a6b7a4a46184d78, type: 3}
 --- !u!65 &2344978051505529084
 BoxCollider:
   m_ObjectHideFlags: 0

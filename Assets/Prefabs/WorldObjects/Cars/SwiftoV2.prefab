@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1321368888357096315}
   - component: {fileID: 2736404708196877534}
   - component: {fileID: 152382263195660308}
-  - component: {fileID: 439388843046357009}
   - component: {fileID: 6975093279118594008}
   m_Layer: 0
   m_Name: SwiftoV2
@@ -85,20 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &439388843046357009
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809781486458982849}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3779302490802967053, guid: 32e9cc17e727e984091f5a44f796fb1a, type: 3}
 --- !u!65 &6975093279118594008
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -260,7 +260,6 @@ GameObject:
   - component: {fileID: 4523052969893653150}
   - component: {fileID: 678573647090574651}
   - component: {fileID: 3354672008269304305}
-  - component: {fileID: 1316909688887365970}
   - component: {fileID: 5257694906907789812}
   m_Layer: 0
   m_Name: MinivanV1
@@ -338,20 +337,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1316909688887365970
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3859246346376130596}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5610649313680417688, guid: 4474cf470b6d7264bb08bbea8e9b8d53, type: 3}
 --- !u!65 &5257694906907789812
 BoxCollider:
   m_ObjectHideFlags: 0

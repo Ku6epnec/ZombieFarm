@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1601504425659824212}
   - component: {fileID: 2420249803203311601}
   - component: {fileID: 464577844529627963}
-  - component: {fileID: 1289322121733900984}
   - component: {fileID: 6691356022526526219}
   m_Layer: 0
   m_Name: IceCream-Truck
@@ -85,20 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1289322121733900984
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2121898453311890158}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6327341993432413220, guid: eafc7f334aca16745a4dd55164b81b29, type: 3}
 --- !u!65 &6691356022526526219
 BoxCollider:
   m_ObjectHideFlags: 0
