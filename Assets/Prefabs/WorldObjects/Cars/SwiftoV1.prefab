@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2430990503139496507}
   - component: {fileID: 457233776136333041}
   - component: {fileID: 7269150527183189782}
+  - component: {fileID: 8014770553407822068}
   m_Layer: 0
   m_Name: SwiftoV1
   m_TagString: Untagged
@@ -97,3 +98,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2407466, y: 0.8504204, z: 0.6383082}
   m_Center: {x: -0.03144276, y: 0.43054888, z: 0}
+--- !u!208 &8014770553407822068
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114606885926930212}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.62, y: 0.425, z: 0.319}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.031000001, y: 0.43100002, z: 0}
+  m_TimeToStationary: 0.5
