@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2701984903932050903}
   - component: {fileID: 187910650579028253}
   - component: {fileID: 4488341565335276129}
+  - component: {fileID: 4047947625174068222}
   m_Layer: 0
   m_Name: MuscleCarV2
   m_TagString: Untagged
@@ -97,3 +98,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.6527159, y: 0.4552943, z: 0.6381046}
   m_Center: {x: 0.10114959, y: 0.1447052, z: 0}
+--- !u!208 &4047947625174068222
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845187002965240008}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.82600003, y: 0.22800002, z: 0.319}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.101, y: 0.14500001, z: 0}
+  m_TimeToStationary: 0.5
