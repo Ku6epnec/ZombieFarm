@@ -94,7 +94,6 @@ GameObject:
   - component: {fileID: 3638062501665518907}
   - component: {fileID: 419719892279638686}
   - component: {fileID: 2465670550344617556}
-  - component: {fileID: 6514625554117839884}
   - component: {fileID: 5298941689497243470}
   m_Layer: 0
   m_Name: PickupV1
@@ -172,20 +171,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6514625554117839884
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4122814825300586369}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2704422749049179590, guid: d54d5083f75fe7e41891c4756c2a36f3, type: 3}
 --- !u!65 &5298941689497243470
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4393064139162317946}
   - component: {fileID: 817569471975259103}
   - component: {fileID: 3223557345277185813}
-  - component: {fileID: 6671865637869266703}
   - component: {fileID: 4812196491734455195}
   m_Layer: 0
   m_Name: MuscleCarV4
@@ -85,20 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6671865637869266703
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4016256644948602560}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7332064684370021606, guid: 330758c92d218b544b9bf32c24ddb173, type: 3}
 --- !u!65 &4812196491734455195
 BoxCollider:
   m_ObjectHideFlags: 0

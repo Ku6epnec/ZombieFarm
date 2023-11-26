@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4596418865648547003}
   - component: {fileID: -8029620610498121298}
   - component: {fileID: 7503430627133063752}
+  - component: {fileID: 5283542025945987911}
   m_Layer: 0
   m_Name: barn
   m_TagString: Untagged
@@ -72,8 +73,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3936272, y: 10.053462, z: 11.663759}
-  m_Center: {x: 0.19681358, y: 5.099282, z: 5.0813894}
+  m_Size: {x: 4.362692, y: 10.053462, z: 1.1456413}
+  m_Center: {x: -1.2877188, y: 5.099282, z: 10.667507}
+--- !u!65 &5283542025945987911
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4596418865648547002}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.300953, y: 10.053462, z: 0.987854}
+  m_Center: {x: -9.046337, y: 5.099282, z: 10.60442}
 --- !u!1001 &4596418863622355799
 PrefabInstance:
   m_ObjectHideFlags: 0
