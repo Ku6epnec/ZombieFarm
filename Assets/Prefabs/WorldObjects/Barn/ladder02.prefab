@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3321888}
   - component: {fileID: 2350620}
   - component: {fileID: 6543810}
+  - component: {fileID: 8578721363884500371}
   m_Layer: 0
   m_Name: ladder02
   m_TagString: Untagged
@@ -97,3 +98,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.340028, y: 12.243173, z: 0.5266541}
   m_Center: {x: -0.000031352043, y: 6.1215863, z: -0.013549864}
+--- !u!208 &8578721363884500371
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188572}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.131, y: 6.0930004, z: 0.18200001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 6.0930004, z: 0}
+  m_TimeToStationary: 0.5

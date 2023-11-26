@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2274192415964722821}
   - component: {fileID: 2274192415963722821}
   - component: {fileID: 3657422011335633764}
+  - component: {fileID: 886241765880987702}
   m_Layer: 0
   m_Name: soil_3m
   m_TagString: Untagged
@@ -97,3 +98,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.2070048, y: 0.74128526, z: 11.137007}
   m_Center: {x: -0.00006341934, y: 0.3706424, z: -0.014797449}
+--- !u!208 &886241765880987702
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2274192415961459333}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.6040001, y: 0.37100002, z: 5.5690002}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.37100002, z: -0.015000001}
+  m_TimeToStationary: 0.5

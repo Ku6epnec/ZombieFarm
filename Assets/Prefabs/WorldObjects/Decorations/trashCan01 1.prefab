@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3301254}
   - component: {fileID: 2306192}
   - component: {fileID: 6551548}
+  - component: {fileID: 7339457317253684702}
   m_Layer: 0
   m_Name: trashCan01 1
   m_TagString: Untagged
@@ -98,6 +99,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.79393977, y: 1.1243061, z: 0.6875437}
   m_Center: {x: -0.0059795678, y: 0.5621529, z: -0.0021640956}
+--- !u!208 &7339457317253684702
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122622}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.43400002, y: 0.59300005, z: 0.36400002}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.59300005, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &195932
 GameObject:
   m_ObjectHideFlags: 0
