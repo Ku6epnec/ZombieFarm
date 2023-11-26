@@ -15,8 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/desertloc_2.unity
     guid: 1f95ce5c5b892424db5afc0cb744fdb1
   m_configObjects:
-    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 324839ac872548f43a42241d01081b19,
+    com.unity.adaptiveperformance.google.android.provider_settings: {fileID: 11400000,
+      guid: f9620bac8567c4649b1c8da61d5c43ff, type: 2}
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 6ac6d6c522e8f4045ae4d729160a13d2,
       type: 2}
+    com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000,
+      guid: 4e4a8da88ec469c4e9c8780e385bedd5, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
       guid: d99ab055a04a27c4d94d27361461633d, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 25047b641e00e6c4a84c849a11903580,
