@@ -192,6 +192,10 @@ MonoBehaviour:
   uiPanels:
   - key: 0
     value: {fileID: 6010009624083874728}
+  - key: 1
+    value: {fileID: 2005619992310542609}
+  - key: 2
+    value: {fileID: 5700477103854598645}
 --- !u!1001 &95535452309202800
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1137,6 +1141,12 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 4069659020119994302}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5700477103854598645 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8603701474594608715, guid: 44223edbbdc4d704fa831995d990217a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4069659020119994302}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6564299482165067933
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1393,6 +1403,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11891e5322fe157489c6e3e96ea459ea, type: 3}
+--- !u!1 &2005619992310542609 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7067740027906537538, guid: 11891e5322fe157489c6e3e96ea459ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 8773237312340019539}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6489919652097208823 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2580597029976570020, guid: 11891e5322fe157489c6e3e96ea459ea,
