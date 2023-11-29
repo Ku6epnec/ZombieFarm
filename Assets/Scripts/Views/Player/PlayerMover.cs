@@ -7,6 +7,7 @@ namespace ZombieFarm.Views.Player
     public class PlayerMover : MonoBehaviour
     {
         [Header("Movement Settings")]
+        [SerializeField] private Transform camera;
         [SerializeField] private float movementSpeed = 1;
         [SerializeField] private float rotationSpeed = 1;
         [SerializeField] private float gravity = 9.8f;
@@ -65,7 +66,7 @@ namespace ZombieFarm.Views.Player
 
         private void Rotate()
         {
-            Quaternion targetRotation = Quaternion.LookRotation(target, Vector3.up);
+            Quaternion targetRotation = Quaternion.LookRotation(target * Mathf.Cos(camera.rotation.y), Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed);         
         }
     }
