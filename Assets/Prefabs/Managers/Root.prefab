@@ -59,6 +59,7 @@ MonoBehaviour:
   resourceManager: {fileID: 6316860777211075005}
   configManager: {fileID: 1445012785819048518}
   transitionManager: {fileID: 1017628441865592395}
+  camera: {fileID: 2835387068012833427}
 --- !u!114 &6316860777211075005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1569,6 +1570,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1470943333381484774}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &2835387068012833427 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3688596181451709045, guid: d03bf533ab2df6547aea2978c30c82fe,
+    type: 3}
+  m_PrefabInstance: {fileID: 1470943333381484774}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8316030433413158440
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1750,22 +1757,22 @@ PrefabInstance:
     - target: {fileID: 5476435585372549031, guid: 9685b13563fd2134da2c1a9bb3b6a685,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5476435585372549031, guid: 9685b13563fd2134da2c1a9bb3b6a685,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5476435585372549031, guid: 9685b13563fd2134da2c1a9bb3b6a685,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 82.517
       objectReference: {fileID: 0}
     - target: {fileID: 5476435585372549031, guid: 9685b13563fd2134da2c1a9bb3b6a685,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -41.582
       objectReference: {fileID: 0}
     - target: {fileID: 5502533015539387765, guid: 9685b13563fd2134da2c1a9bb3b6a685,
         type: 3}
