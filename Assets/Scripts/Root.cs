@@ -13,6 +13,7 @@ public class Root : MonoBehaviour
     [SerializeField] ResourceManager resourceManager;
     [SerializeField] ConfigManager configManager;
     [SerializeField] SceneTransitionManager transitionManager;
+    [SerializeField] Camera camera;
 
     private static Root instance;
 
@@ -72,6 +73,14 @@ public class Root : MonoBehaviour
         get
         {
             return instance.transitionManager;
+        }
+    }
+
+    public static Camera Camera
+    {
+        get
+        {
+            return instance.camera;
         }
     }
 }
