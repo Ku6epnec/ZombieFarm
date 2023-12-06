@@ -145,6 +145,7 @@ namespace ZombieFarm.AI
 
         private void Die()
         {
+            Active = false;
             Debug.Log("Die method");
             Destroy(characterController);
             CleanInteractiveObject();

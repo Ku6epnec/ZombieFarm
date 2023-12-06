@@ -19,6 +19,7 @@ namespace ZombieFarm.Views.Player
 
         private void OnTriggerEnter(Collider other)
         {
+            Debug.Log("’¬¿“¿≈ÃÃ!!!!!");
             if (other.gameObject.TryGetComponent<ReceivedDamageObject>(out ReceivedDamageObject _receivedDamageObject))
             {
                 interactiveObject = other.gameObject;
@@ -29,11 +30,15 @@ namespace ZombieFarm.Views.Player
 
         private void OnTriggerStay(Collider other)
         {
+            Debug.Log("ƒ≈–∆»Ã ƒ≈–∆»Ã!!!!!");
             if (interactiveObject == null)
             {
                 if (other.gameObject.TryGetComponent<ReceivedDamageObject>(out ReceivedDamageObject _receivedDamageObject))
                 {
-                    interactiveObject = other.gameObject;
+                    if (_receivedDamageObject.Active == true)
+                    {
+                        interactiveObject = other.gameObject;
+                    }
                     receivedDamageObject = _receivedDamageObject;
                     receivedDamageObject.CleanInteractiveObject += Clean;
                 }
@@ -66,6 +71,7 @@ namespace ZombieFarm.Views.Player
 
         internal void Clean()
         {
+            Debug.Log("◊»—“»Ã ◊»—“»Ã!!");
             interactiveObject = null;
             if (receivedDamageObject != null)
             {
