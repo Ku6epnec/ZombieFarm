@@ -15,7 +15,7 @@ namespace ZombieFarm.Managers
 
         public event Action<LinkToResource> OnChangeResource = (resourceName) => { };
 
-        private void Start()
+        private void Awake()
         {
             Initialize();
             if (loadDataOnStart)

@@ -13,6 +13,7 @@ namespace ZombieFarm.InteractableObjects
         {
             base.Awake();
             progressBar.OnProcessCompleted += Free;
+            loot = GetComponent<Loot.Loot>();
         }
 
         protected override void OnDestroy()

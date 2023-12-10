@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +6,7 @@ using UnityEngine.UI;
 public class ProgressBar : MonoBehaviour
 {
     internal event Action OnProcessCompleted = () => { };
+    internal event Action<float> OnRefreshProgress = (lostProgress) => { };
 
     [SerializeField] RectTransform middleLane;
 
@@ -20,11 +19,12 @@ public class ProgressBar : MonoBehaviour
         maxBarValue = _maxHealth;
 
         middleLane.sizeDelta = new Vector2(middleLaneWidth, middleLane.rect.height);
+        OnRefreshProgress += SetProgress;
     }
 
     public void RefreshProgress(float lostProgressValue)
     {
-        SetProgress(lostProgressValue);
+        OnRefreshProgress(lostProgressValue);
     }
 
     public void ResetProgress()
@@ -43,7 +43,13 @@ public class ProgressBar : MonoBehaviour
         if (_health <= 0)
         {
             Debug.Log("HealthBar Process Completed " + _health);
+            OnRefreshProgress -= SetProgress;
             OnProcessCompleted();
         }
+    }
+
+    private void OnDestroy()
+    {
+        OnRefreshProgress -= SetProgress;
     }
 }

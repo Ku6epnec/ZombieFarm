@@ -40,6 +40,11 @@ namespace ZombieFarm.UI
                 emptyPlaceholders.Add(item);
                 item.gameObject.SetActive(false);
             }
+
+            foreach(var resource in resourceManager.GetAllAvailableResources())
+            {
+                UpdateUI(resource);
+            }
         }
 
         private void UpdateUI(LinkToResource linkToResource)
