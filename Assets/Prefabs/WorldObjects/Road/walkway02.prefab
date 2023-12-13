@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3383310}
   - component: {fileID: 2396654}
   - component: {fileID: 6503742}
+  - component: {fileID: 7416779704568682490}
   m_Layer: 0
   m_Name: walkway02
   m_TagString: Untagged
@@ -93,7 +94,20 @@ BoxCollider:
   m_GameObject: {fileID: 160374}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 6.83231, y: 0.49516487, z: 3.3747346}
-  m_Center: {x: -3.416155, y: 0.24758226, z: 1.6873673}
+  m_Size: {x: 6.83231, y: 0.06845561, z: 3.4418817}
+  m_Center: {x: -3.416155, y: -0.034481645, z: 1.7209408}
+--- !u!65 &7416779704568682490
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160374}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 6.875484, y: 0.043969333, z: 2.3383596}
+  m_Center: {x: -3.3945682, y: 0.13722521, z: 1.6714875}
