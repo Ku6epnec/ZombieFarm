@@ -1472,7 +1472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 15
-  rotationSpeed: 3
+  rotationSpeed: 20
   gravity: 9.8
 --- !u!114 &4039981035190579135
 MonoBehaviour:
