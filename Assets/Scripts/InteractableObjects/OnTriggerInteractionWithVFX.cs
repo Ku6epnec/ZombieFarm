@@ -11,18 +11,12 @@ namespace ZombieFarm.InteractableObjects
         protected override void Awake()
         {
             base.Awake();
-            progressBar.OnProcessCompleted += Open;
         }
 
-        protected virtual void OnDestroy()
+        protected override void FinishProcess()
         {
-            progressBar.OnProcessCompleted -= Open;
-        }
-
-        protected virtual void Open()
-        {
+            base.FinishProcess();
             objectModel.gameObject.SetActive(false);
-            progressBar.gameObject.SetActive(false);
 
             float vfxDuration = disappearVFX.main.startLifetime.constantMax;
             StartCoroutine(DestroyTimer(vfxDuration));

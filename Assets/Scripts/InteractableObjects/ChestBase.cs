@@ -1,6 +1,6 @@
 namespace ZombieFarm.InteractableObjects
 {
-    public class ChestBase : OnTriggerInteractionWithVFX
+    public class ChestBase : OnTriggerInteractionWithVFX, IItemWithHealthBar
     {
         private Loot.Loot loot;
 
@@ -10,10 +10,10 @@ namespace ZombieFarm.InteractableObjects
             loot = GetComponent<Loot.Loot>();
         }
 
-        protected override void Open()
+        protected override void FinishProcess()
         {
             loot.AddToInventory();
-            base.Open();
+            base.FinishProcess();
         }
     }
 }
