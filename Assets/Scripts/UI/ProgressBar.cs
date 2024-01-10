@@ -5,22 +5,22 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Slider))]
 public class ProgressBar : MonoBehaviour
 {
-    internal event Action OnProcessCompleted = () => { };
-
     [SerializeField] RectTransform middleLane;
 
     float middleLaneWidth;
     private float maxBarValue;
-    private IItemWithHealthBar itemWithHealth;
+    private IItemWithHealthBar itemWithProgressBar;
 
-    public void InitSlider(float _maxHealth, IItemWithHealthBar itemWithHealthBar)
+    private void Awake()
     {
-        middleLaneWidth = middleLane.rect.width;
-        maxBarValue = _maxHealth;
+        itemWithProgressBar = GetComponentInParent<IItemWithHealthBar>();
 
+        middleLaneWidth = middleLane.rect.width;
+        maxBarValue = itemWithProgressBar.MaxHealthBarValue;
         middleLane.sizeDelta = new Vector2(middleLaneWidth, middleLane.rect.height);
-        itemWithHealth = itemWithHealthBar;
-        itemWithHealth.OnRefreshProgress += SetProgress;
+        itemWithProgressBar.OnRefreshProgress += SetProgress;
+        itemWithProgressBar.OnResetProgress += ResetProgress;
+        itemWithProgressBar.OnRefreshProgressBarState += RefreshBarState;
     }
 
     public void ResetProgress()
@@ -36,16 +36,16 @@ public class ProgressBar : MonoBehaviour
             return;
         }
 
-        if (_health <= 0)
-        {
-            itemWithHealth.OnRefreshProgress -= SetProgress;
-            gameObject.SetActive(false);
-            OnProcessCompleted();
-        }
+        itemWithProgressBar.OnRefreshProgress -= SetProgress;
+        gameObject.SetActive(false);
     }
+
+    private void RefreshBarState(bool isActive) => gameObject.SetActive(isActive);
 
     private void OnDestroy()
     {
-        itemWithHealth.OnRefreshProgress -= SetProgress;
+        itemWithProgressBar.OnRefreshProgress -= SetProgress;
+        itemWithProgressBar.OnResetProgress -= ResetProgress;
+        itemWithProgressBar.OnRefreshProgressBarState -= RefreshBarState;
     }
 }

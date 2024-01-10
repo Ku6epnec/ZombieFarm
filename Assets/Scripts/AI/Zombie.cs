@@ -11,12 +11,16 @@ namespace ZombieFarm.AI
         public float Health => _health;
         public float MaxHealth => _maxHealth;
         public float Damage => _damage;
+        public float MaxHealthBarValue => _maxHealth;
 
         public event Action<ZombieState> OnChangeState = (newState) => { };
         public event Action<Zombie> OnDie = (Zombie) => { };
 
-        internal override event Action CleanInteractiveObject = () => { };
         public event Action<float> OnRefreshProgress = (lostProgress) => { };
+        public event Action<bool> OnRefreshProgressBarState = (currentState) => { };
+        public event Action OnResetProgress = () => { };
+
+        internal override event Action CleanInteractiveObject = () => { };
 
         private NavMeshAgent agent;
         private List<Transform> walkingPoints;
@@ -24,9 +28,6 @@ namespace ZombieFarm.AI
 
         [SerializeField] private CharacterController characterController;
         [SerializeField] private ZombieFarm.Views.Player.PlayerView playerView;
-
-        [Header("References")]
-        [SerializeField] private ProgressBar healthProgressBar;
 
         [Header("HealthStats")]
         [SerializeField] private float _health = 10;
@@ -66,10 +67,7 @@ namespace ZombieFarm.AI
             loot = GetComponent<Loot.Loot>();
             walkingPoints = GetWalkingPoints();
 
-            healthProgressBar.OnProcessCompleted += Die;
             OnChangeState += UpdateAction;
-
-            healthProgressBar.InitSlider(MaxHealth, this);
         }
 
         private void Start()
@@ -81,7 +79,6 @@ namespace ZombieFarm.AI
 
         private void OnDestroy()
         {
-            healthProgressBar.OnProcessCompleted -= Die;
             OnChangeState -= UpdateAction;
             CleanInteractiveObject();
         }
@@ -139,19 +136,22 @@ namespace ZombieFarm.AI
             if (recievedDamageTimer <= 0)
             {
                 _health -= damage;
-                OnRefreshProgress(_health);
                 recievedDamageTimer = 2;
+                OnRefreshProgress(_health);
+
+                if (_health <= 0)
+                {
+                    Die();
+                }
             }
         }
 
         private void Die()
         {
             Active = false;
-            Debug.Log("Die method");
             Destroy(characterController);
             CleanInteractiveObject();
             currentState = ZombieState.Die;
-            healthProgressBar.gameObject.SetActive(false);
             loot.AddToInventory();
             OnDie(this);
         }
@@ -169,7 +169,7 @@ namespace ZombieFarm.AI
 
         private void UpdateAction(ZombieState newState)
         {
-            healthProgressBar.gameObject.SetActive(newState == ZombieState.Chase || newState == ZombieState.Attack);
+            OnRefreshProgressBarState(newState == ZombieState.Chase || newState == ZombieState.Attack);
 
             switch (newState)
             {

@@ -49,7 +49,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToOpen: 3
-  progressBar: {fileID: 6626031990652524857}
   objectModel: {fileID: 1523942098824264105}
   disappearVFX: {fileID: 303242583822971850}
   animal: {fileID: 0}
@@ -334,62 +333,62 @@ PrefabInstance:
     - target: {fileID: 592880227927288879, guid: e74b94b61ac4cb842859ece945628c3d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 592880227927288879, guid: e74b94b61ac4cb842859ece945628c3d,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 592880227927288879, guid: e74b94b61ac4cb842859ece945628c3d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 103
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 592880227927288879, guid: e74b94b61ac4cb842859ece945628c3d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 592880228008592414, guid: e74b94b61ac4cb842859ece945628c3d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 592880228008592414, guid: e74b94b61ac4cb842859ece945628c3d,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 592880228008592414, guid: e74b94b61ac4cb842859ece945628c3d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1248.75
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 592880228008592414, guid: e74b94b61ac4cb842859ece945628c3d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 592880228468775597, guid: e74b94b61ac4cb842859ece945628c3d,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 592880228468775597, guid: e74b94b61ac4cb842859ece945628c3d,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 592880228468775597, guid: e74b94b61ac4cb842859ece945628c3d,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2394.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 592880228468775597, guid: e74b94b61ac4cb842859ece945628c3d,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5196117087091987157, guid: e74b94b61ac4cb842859ece945628c3d,
         type: 3}
@@ -509,7 +508,7 @@ PrefabInstance:
     - target: {fileID: 7109133261068113344, guid: e74b94b61ac4cb842859ece945628c3d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e74b94b61ac4cb842859ece945628c3d, type: 3}
@@ -597,18 +596,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1434453693004205036}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6626031990652524857 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5196117087091987157, guid: e74b94b61ac4cb842859ece945628c3d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1434453693004205036}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 522d3c4e714bb5f42ac4148f2a01db72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3992636802661783724
 PrefabInstance:
   m_ObjectHideFlags: 0

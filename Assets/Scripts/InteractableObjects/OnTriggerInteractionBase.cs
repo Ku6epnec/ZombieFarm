@@ -6,18 +6,20 @@ namespace ZombieFarm.InteractableObjects
     public class OnTriggerInteractionBase : MonoBehaviour, IItemWithHealthBar
     {
         [SerializeField] private float timeToOpen = 3f;
-        [SerializeField] protected ProgressBar progressBar;
 
         private bool isOpening = false;
         private float currentTime;
 
+        public float MaxHealthBarValue => timeToOpen;
+
         public event Action<float> OnRefreshProgress = (lostProgress) => { };
+        public event Action OnResetProgress = () => { };
+        public event Action<bool> OnRefreshProgressBarState = (isActive) => { };
 
         protected virtual void Awake()
         {
             currentTime = timeToOpen;
-            progressBar.InitSlider(timeToOpen, this);
-            progressBar.gameObject.SetActive(false);
+            OnRefreshProgressBarState(false);
         }
 
         private void Update()
@@ -26,6 +28,11 @@ namespace ZombieFarm.InteractableObjects
             {
                 currentTime -= Time.deltaTime;
                 OnRefreshProgress(currentTime);
+
+                if (currentTime <= 0)
+                {
+                    FinishProcess();
+                }
             }
         }
 
@@ -33,7 +40,7 @@ namespace ZombieFarm.InteractableObjects
         {
             if (other.tag == "Player")
             {
-                progressBar.gameObject.SetActive(true);
+                OnRefreshProgressBarState(true);
                 isOpening = true;
             }
         }
@@ -45,13 +52,18 @@ namespace ZombieFarm.InteractableObjects
                 ResetProgress();
             }
         }
+        protected virtual void FinishProcess()
+        {
+            OnRefreshProgressBarState(false);
+            isOpening = false;
+        }
 
         private void ResetProgress()
         {
-            progressBar.ResetProgress();
+            OnResetProgress();
             currentTime = timeToOpen;
             isOpening = false;
-            progressBar.gameObject.SetActive(false);
+            OnRefreshProgressBarState(false);
         }
     }
 }
