@@ -6,25 +6,21 @@ using UnityEngine.UI;
 public class ProgressBar : MonoBehaviour
 {
     internal event Action OnProcessCompleted = () => { };
-    internal event Action<float> OnRefreshProgress = (lostProgress) => { };
 
     [SerializeField] RectTransform middleLane;
 
     float middleLaneWidth;
     private float maxBarValue;
+    private IItemWithHealthBar itemWithHealth;
 
-    public void InitSlider(float _maxHealth)
+    public void InitSlider(float _maxHealth, IItemWithHealthBar itemWithHealthBar)
     {
         middleLaneWidth = middleLane.rect.width;
         maxBarValue = _maxHealth;
 
         middleLane.sizeDelta = new Vector2(middleLaneWidth, middleLane.rect.height);
-        OnRefreshProgress += SetProgress;
-    }
-
-    public void RefreshProgress(float lostProgressValue)
-    {
-        OnRefreshProgress(lostProgressValue);
+        itemWithHealth = itemWithHealthBar;
+        itemWithHealth.OnRefreshProgress += SetProgress;
     }
 
     public void ResetProgress()
@@ -42,14 +38,14 @@ public class ProgressBar : MonoBehaviour
 
         if (_health <= 0)
         {
-            Debug.Log("HealthBar Process Completed " + _health);
-            OnRefreshProgress -= SetProgress;
+            itemWithHealth.OnRefreshProgress -= SetProgress;
+            gameObject.SetActive(false);
             OnProcessCompleted();
         }
     }
 
     private void OnDestroy()
     {
-        OnRefreshProgress -= SetProgress;
+        itemWithHealth.OnRefreshProgress -= SetProgress;
     }
 }

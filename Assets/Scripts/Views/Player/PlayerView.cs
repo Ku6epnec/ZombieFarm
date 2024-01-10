@@ -4,10 +4,11 @@ using ZombieFarm.Interfaces;
 
 namespace ZombieFarm.Views.Player
 { 
-    public class PlayerView : MonoBehaviour, IHealth, IDamage, IHaveArmor, ISpawn
+    public class PlayerView : MonoBehaviour, IHealth, IDamage, IHaveArmor, ISpawn, IItemWithHealthBar
     {
         public event Action<PlayerState> OnChangeState = (newState) => { };
-        
+        public event Action<float> OnRefreshProgress = (lostProgress) => { };
+
         private PlayerState currentPlayerState;
         private float deltaSpeed = 0.05f;
         private bool destroyObjectState = false;
@@ -44,7 +45,6 @@ namespace ZombieFarm.Views.Player
             _spawnPoint = transform.localPosition;
             _spawnRotation = transform.localRotation;
             OnSpawn();
-
         }
 
         private void OnDestroy()
@@ -70,7 +70,7 @@ namespace ZombieFarm.Views.Player
             if (damage > 0)
             {
                 _health -= damage;
-                healthProgressBar.RefreshProgress(_health);
+                OnRefreshProgress(_health);
             }
         }
 
@@ -115,7 +115,7 @@ namespace ZombieFarm.Views.Player
             _health = MaxHealth;
             interactiveArea.Clean();
             healthProgressBar.gameObject.SetActive(true);
-            healthProgressBar.InitSlider(MaxHealth);
+            healthProgressBar.InitSlider(MaxHealth, this);
         }
     }
 }
