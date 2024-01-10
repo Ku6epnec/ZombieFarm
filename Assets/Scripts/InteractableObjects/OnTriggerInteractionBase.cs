@@ -1,8 +1,9 @@
+using System;
 using UnityEngine;
 
 namespace ZombieFarm.InteractableObjects
 {
-    public class OnTriggerInteractionBase : MonoBehaviour
+    public class OnTriggerInteractionBase : MonoBehaviour, IItemWithHealthBar
     {
         [SerializeField] private float timeToOpen = 3f;
         [SerializeField] protected ProgressBar progressBar;
@@ -10,10 +11,12 @@ namespace ZombieFarm.InteractableObjects
         private bool isOpening = false;
         private float currentTime;
 
+        public event Action<float> OnRefreshProgress = (lostProgress) => { };
+
         protected virtual void Awake()
         {
             currentTime = timeToOpen;
-            progressBar.InitSlider(timeToOpen);
+            progressBar.InitSlider(timeToOpen, this);
             progressBar.gameObject.SetActive(false);
         }
 
@@ -22,7 +25,7 @@ namespace ZombieFarm.InteractableObjects
             if (isOpening)
             {
                 currentTime -= Time.deltaTime;
-                progressBar.RefreshProgress(currentTime);
+                OnRefreshProgress(currentTime);
             }
         }
 

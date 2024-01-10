@@ -6,7 +6,7 @@ using UnityEngine.AI;
 namespace ZombieFarm.AI
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    public class Zombie : ReceivedDamageObject, IHealth, IDamage
+    public class Zombie : ReceivedDamageObject, IHealth, IDamage, IItemWithHealthBar
     {
         public float Health => _health;
         public float MaxHealth => _maxHealth;
@@ -16,6 +16,7 @@ namespace ZombieFarm.AI
         public event Action<Zombie> OnDie = (Zombie) => { };
 
         internal override event Action CleanInteractiveObject = () => { };
+        public event Action<float> OnRefreshProgress = (lostProgress) => { };
 
         private NavMeshAgent agent;
         private List<Transform> walkingPoints;
@@ -68,7 +69,7 @@ namespace ZombieFarm.AI
             healthProgressBar.OnProcessCompleted += Die;
             OnChangeState += UpdateAction;
 
-            healthProgressBar.InitSlider(MaxHealth);
+            healthProgressBar.InitSlider(MaxHealth, this);
         }
 
         private void Start()
@@ -138,7 +139,7 @@ namespace ZombieFarm.AI
             if (recievedDamageTimer <= 0)
             {
                 _health -= damage;
-                healthProgressBar.RefreshProgress(_health);
+                OnRefreshProgress(_health);
                 recievedDamageTimer = 2;
             }
         }
