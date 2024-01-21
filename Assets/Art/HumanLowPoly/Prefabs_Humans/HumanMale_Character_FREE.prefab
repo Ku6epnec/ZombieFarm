@@ -1070,7 +1070,6 @@ MonoBehaviour:
   movementSpeed: 1
   rotationSpeed: 1
   gravity: 9.8
-  floatingJoystick: {fileID: 0}
 --- !u!114 &4500679619243696114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1096,6 +1095,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aed9ae5e9366f0043860a8e0043d8b05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _health: 20
+  _maxHealth: 20
+  _armor: 0
+  _damage: 1
+  interactiveArea: {fileID: 0}
+  attackTrigger: {fileID: 0}
 --- !u!195 &580955261043970062
 NavMeshAgent:
   m_ObjectHideFlags: 0
