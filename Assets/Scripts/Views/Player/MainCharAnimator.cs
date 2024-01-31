@@ -3,12 +3,11 @@ using UnityEngine;
 
 namespace ZombieFarm.Views.Player
 {
-    [RequireComponent(typeof(PlayerView), typeof(Animator))]
+    [RequireComponent(typeof(Animator))]
     public class MainCharAnimator : MonoBehaviour
     {
-        [SerializeField] Transform axe;
+        [SerializeField] private PlayerView playerView;
 
-        private PlayerView playerView;
         private Animator animator;
         private float motionSpeed = 0;
         private float stateTransitionStep = 0.02f;
@@ -22,7 +21,6 @@ namespace ZombieFarm.Views.Player
         private void Awake()
         {
             animator = GetComponent<Animator>();
-            playerView = GetComponent<PlayerView>();
 
             playerView.OnChangeState += OnChangeState;
         }
@@ -50,7 +48,6 @@ namespace ZombieFarm.Views.Player
 
         private void OnChangeState(PlayerState newState)
         {
-            axe.gameObject.SetActive(newState == PlayerState.Attack);
             animator.SetInteger(animatorParameter_StateIndex_Int_Id, (int)newState);
         }
     }

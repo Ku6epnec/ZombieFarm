@@ -4,5 +4,6 @@ namespace ZombieFarm.Views.Player
     {
         Idle = 0,
         Attack = 1,
+        Death = 2,
     }
 }
