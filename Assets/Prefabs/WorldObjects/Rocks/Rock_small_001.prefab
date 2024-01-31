@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5598987930750366157}
   - component: {fileID: 6517285330640547146}
   m_Layer: 0
-  m_Name: rock_mid_1
+  m_Name: Rock_small_001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,8 @@ Transform:
   m_LocalPosition: {x: 1814, y: 27.545279, z: 384.7}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 586327082533941780}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2596,3 +2597,99 @@ MonoBehaviour:
   m_OriginalMeshObject: {fileID: 2212009239438826721, guid: 16994ee7780ee4f46a56b86e422a7860,
     type: 3}
   m_Mode: 0
+--- !u!1001 &1128631220328797695
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6281383605844650120}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: b6e52fed9ba03a149b0019c66e072bca,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b6e52fed9ba03a149b0019c66e072bca,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b6e52fed9ba03a149b0019c66e072bca,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b6e52fed9ba03a149b0019c66e072bca,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b6e52fed9ba03a149b0019c66e072bca,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b6e52fed9ba03a149b0019c66e072bca,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b6e52fed9ba03a149b0019c66e072bca,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b6e52fed9ba03a149b0019c66e072bca,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b6e52fed9ba03a149b0019c66e072bca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b6e52fed9ba03a149b0019c66e072bca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b6e52fed9ba03a149b0019c66e072bca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b6e52fed9ba03a149b0019c66e072bca,
+        type: 3}
+      propertyPath: m_Name
+      value: Rock_small_001
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -870131185436156570, guid: b6e52fed9ba03a149b0019c66e072bca, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: b6e52fed9ba03a149b0019c66e072bca, type: 3}
+--- !u!4 &586327082533941780 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b6e52fed9ba03a149b0019c66e072bca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1128631220328797695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5620450481603653415 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4443243095203136808, guid: b6e52fed9ba03a149b0019c66e072bca,
+    type: 3}
+  m_PrefabInstance: {fileID: 1128631220328797695}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &3774846864736522649
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5620450481603653415}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -917087415454948689, guid: b6e52fed9ba03a149b0019c66e072bca, type: 3}
