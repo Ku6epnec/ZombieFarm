@@ -3,7 +3,17 @@ guid: b6e52fed9ba03a149b0019c66e072bca
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 03 - Default
+    second: {fileID: 2100000, guid: 043b4eef1cf7b354aadf2857d5ec1eb7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Midle_rock_1
+    second: {fileID: 2100000, guid: 043b4eef1cf7b354aadf2857d5ec1eb7, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -76,7 +86,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []
