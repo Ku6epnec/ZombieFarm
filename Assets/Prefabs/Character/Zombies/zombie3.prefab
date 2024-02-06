@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 4584742694800312524}
   - component: {fileID: 7484394908874911236}
   - component: {fileID: 5420623989216208863}
+  - component: {fileID: -753688468443917323}
   m_Layer: 0
   m_Name: zombie3
   m_TagString: Untagged
@@ -191,9 +192,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16ed6c4799c573549af9045c09245f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Active: 1
   characterController: {fileID: 7484394908874911236}
   playerView: {fileID: 0}
-  healthProgressBar: {fileID: 5716743870028787284}
   _health: 10
   _maxHealth: 10
   _damage: 1
@@ -250,6 +251,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   link:
     itemId: Zombie
+--- !u!114 &-753688468443917323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783883170116995531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e38b374dc2541b44a9a429f9c5faaf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 783883170116995531}
+  enemyTransform: {fileID: 120252743147017073}
+  objectName: Zombie3
 --- !u!1 &978767343894165045
 GameObject:
   m_ObjectHideFlags: 0
@@ -1610,18 +1626,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 525131938516810881}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5716743870028787284 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5196117087091987157, guid: 8ea195b04925d70498d212b694bbc1ff,
-    type: 3}
-  m_PrefabInstance: {fileID: 525131938516810881}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 522d3c4e714bb5f42ac4148f2a01db72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &692604301557878570
 PrefabInstance:
   m_ObjectHideFlags: 0

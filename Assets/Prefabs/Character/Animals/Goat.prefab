@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 228987753834475017}
   - component: {fileID: 7370144457684381484}
   - component: {fileID: 380260718703342774}
+  - component: {fileID: -3768176504545072144}
   m_Layer: 0
   m_Name: Goat
   m_TagString: Untagged
@@ -119,6 +120,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _object: {fileID: 0}
+--- !u!114 &-3768176504545072144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7186433082951406447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ba808e1831f2cd4d9548f6aa0888e8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 7186433082951406447}
+  friendTransform: {fileID: 7561691645211527637}
+  objectName: goat
 --- !u!1001 &2134661728286908820
 PrefabInstance:
   m_ObjectHideFlags: 0

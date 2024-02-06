@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 9151834401199168953}
   - component: {fileID: 7981841474632957715}
   - component: {fileID: 4964619991923990272}
+  - component: {fileID: -7213509034199084891}
   m_Layer: 0
   m_Name: chest
   m_TagString: Untagged
@@ -197,9 +198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToOpen: 3
-  progressBar: {fileID: 5669923409785307474}
   objectModel: {fileID: 4068066339805686669}
-  disappearVFX: {fileID: 3886089949349762188}
+  disappearVFX: {fileID: 0}
 --- !u!65 &9151834401199168953
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -243,6 +243,21 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &-7213509034199084891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482955781639092248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42a77d7bc381ec4fb20a44cb5b24179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 482955781639092248}
+  constructionTransform: {fileID: 482955781639092250}
+  objectName: chest
 --- !u!1 &4068066339805263785
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,18 +792,6 @@ MonoBehaviour:
   m_FlexibleWidth: 1
   m_FlexibleHeight: 1
   m_LayoutPriority: 1
---- !u!114 &5669923409785307474 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5196117087091987157, guid: e74b94b61ac4cb842859ece945628c3d,
-    type: 3}
-  m_PrefabInstance: {fileID: 482955779856946055}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 522d3c4e714bb5f42ac4148f2a01db72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &5748545951081534947 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5293204749370377828, guid: e74b94b61ac4cb842859ece945628c3d,
@@ -1404,12 +1407,6 @@ PrefabInstance:
 --- !u!4 &478052940582154398 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4977646799359860, guid: 46876a2780737ec45a19d62f88e5ce56,
-    type: 3}
-  m_PrefabInstance: {fileID: 482955781364383722}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &3886089949349762188 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3701369011519662950, guid: 46876a2780737ec45a19d62f88e5ce56,
     type: 3}
   m_PrefabInstance: {fileID: 482955781364383722}
   m_PrefabAsset: {fileID: 0}

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 687580885664404628}
   - component: {fileID: 687580885665535572}
   - component: {fileID: 8573474700133436020}
+  - component: {fileID: -1934912380880004536}
   m_Layer: 0
   m_Name: ITEM_spade02
   m_TagString: Untagged
@@ -97,3 +98,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.06014337, y: 1.2472484, z: 0.21320498}
   m_Center: {x: 0.027571151, y: 0.2232395, z: 0.000000018626451}
+--- !u!114 &-1934912380880004536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687580885663598740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42a77d7bc381ec4fb20a44cb5b24179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 687580885663598740}
+  constructionTransform: {fileID: 687580885663634612}
+  objectName: spade02

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5240687305714288752}
   - component: {fileID: 1583342495233585174}
+  - component: {fileID: -1689375836639600915}
   m_Layer: 0
   m_Name: fence_farm
   m_TagString: Untagged
@@ -46,6 +47,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.844867, y: 3.8190992, z: 0.48596275}
   m_Center: {x: -2.1525671, y: 1.8805228, z: -0.000022560358}
+--- !u!114 &-1689375836639600915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6959489130309182554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42a77d7bc381ec4fb20a44cb5b24179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6959489130309182554}
+  constructionTransform: {fileID: 5240687305714288752}
+  objectName: FenceFarm
 --- !u!1001 &6552868805523628745
 PrefabInstance:
   m_ObjectHideFlags: 0

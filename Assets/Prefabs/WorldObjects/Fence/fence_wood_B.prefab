@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3303010}
   - component: {fileID: 2312650}
   - component: {fileID: 6524938}
+  - component: {fileID: -7387622164275000667}
   m_Layer: 0
   m_Name: fence_wood_B
   m_TagString: Untagged
@@ -97,3 +98,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.037319, y: 5.79433, z: 0.58578175}
   m_Center: {x: -3.1191769, y: 2.675936, z: 0.014921933}
+--- !u!114 &-7387622164275000667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42a77d7bc381ec4fb20a44cb5b24179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 198534}
+  constructionTransform: {fileID: 458416}
+  objectName: FenceWood

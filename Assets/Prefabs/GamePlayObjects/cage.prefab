@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8069523059152896465}
   - component: {fileID: 2483226110707996331}
   - component: {fileID: 1779644362212298179}
+  - component: {fileID: 7829734052194775971}
   m_Layer: 0
   m_Name: cage
   m_TagString: Untagged
@@ -50,7 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToOpen: 3
   objectModel: {fileID: 1523942098824264105}
-  disappearVFX: {fileID: 303242583822971850}
+  disappearVFX: {fileID: 0}
   animal: {fileID: 0}
 --- !u!135 &2483226110707996331
 SphereCollider:
@@ -79,6 +80,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   link:
     itemId: Cage
+--- !u!114 &7829734052194775971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596743874859387341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42a77d7bc381ec4fb20a44cb5b24179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 596743874859387341}
+  constructionTransform: {fileID: 217263260893844343}
+  objectName: Cage
 --- !u!1 &5836090052873543838
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,12 +1218,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46876a2780737ec45a19d62f88e5ce56, type: 3}
---- !u!198 &303242583822971850 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 3701369011519662950, guid: 46876a2780737ec45a19d62f88e5ce56,
-    type: 3}
-  m_PrefabInstance: {fileID: 3992636802661783724}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3997258167922038744 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4977646799359860, guid: 46876a2780737ec45a19d62f88e5ce56,
