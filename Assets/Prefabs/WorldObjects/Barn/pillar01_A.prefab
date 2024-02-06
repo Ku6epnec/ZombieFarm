@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2310036}
   - component: {fileID: 6586248}
   - component: {fileID: 7751670512826146847}
+  - component: {fileID: 3132097444973977318}
   m_Layer: 0
   m_Name: pillar01_A
   m_TagString: Untagged
@@ -115,3 +116,18 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.42700002, y: 5.1190004, z: -0.42700002}
   m_TimeToStationary: 0.5
+--- !u!114 &3132097444973977318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42a77d7bc381ec4fb20a44cb5b24179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 140474}
+  constructionTransform: {fileID: 411358}
+  objectName: Pillar1A

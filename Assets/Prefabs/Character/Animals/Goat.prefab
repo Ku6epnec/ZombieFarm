@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 7186433082951406447}
   friendTransform: {fileID: 7561691645211527637}
-  objectName: goat
+  objectName: Goat
 --- !u!1001 &2134661728286908820
 PrefabInstance:
   m_ObjectHideFlags: 0
