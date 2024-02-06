@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2274192415963722821}
   - component: {fileID: 3657422011335633764}
   - component: {fileID: 886241765880987702}
+  - component: {fileID: 2535870596913090074}
   m_Layer: 0
   m_Name: soil_3m
   m_TagString: Untagged
@@ -114,3 +115,18 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0.37100002, z: -0.015000001}
   m_TimeToStationary: 0.5
+--- !u!114 &2535870596913090074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2274192415961459333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4984ed4c30568dc47b78a5accd20b619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2274192415961459333}
+  environmentTransform: {fileID: 2274192415961298597}
+  objectName: Soil

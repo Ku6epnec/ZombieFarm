@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3357630}
   - component: {fileID: 2306438}
   - component: {fileID: 6586716}
+  - component: {fileID: 2794503246869518460}
   m_Layer: 0
   m_Name: sidewalk01
   m_TagString: Untagged
@@ -98,3 +99,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10.27185, y: 0.09171231, z: 10.267274}
   m_Center: {x: -5.135924, y: 0.045856155, z: 5.133637}
+--- !u!114 &2794503246869518460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42a77d7bc381ec4fb20a44cb5b24179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 111970}
+  constructionTransform: {fileID: 450434}
+  objectName: SideWalk

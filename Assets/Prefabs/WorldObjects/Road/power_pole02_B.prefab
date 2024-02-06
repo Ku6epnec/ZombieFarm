@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2311620}
   - component: {fileID: 13679318}
   - component: {fileID: 8181009558801900375}
+  - component: {fileID: 3411506515684725855}
   m_Layer: 0
   m_Name: power_pole02_B
   m_TagString: Untagged
@@ -115,3 +116,18 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 2.9550002, y: 9.81, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &3411506515684725855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42a77d7bc381ec4fb20a44cb5b24179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 109382}
+  constructionTransform: {fileID: 429374}
+  objectName: PowerPole2

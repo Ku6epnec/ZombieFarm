@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2396654}
   - component: {fileID: 6503742}
   - component: {fileID: 7416779704568682490}
+  - component: {fileID: -5452421285767397038}
   m_Layer: 0
   m_Name: walkway02
   m_TagString: Untagged
@@ -111,3 +112,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.875484, y: 0.043969333, z: 2.3383596}
   m_Center: {x: -3.3945682, y: 0.13722521, z: 1.6714875}
+--- !u!114 &-5452421285767397038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42a77d7bc381ec4fb20a44cb5b24179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 160374}
+  constructionTransform: {fileID: 497674}
+  objectName: WalkWay
