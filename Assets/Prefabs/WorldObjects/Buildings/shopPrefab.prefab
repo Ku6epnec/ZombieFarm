@@ -46755,6 +46755,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7744932125343665046}
   - component: {fileID: 6035827676894333870}
+  - component: {fileID: -6409589742445139530}
   m_Layer: 0
   m_Name: shopPrefab
   m_TagString: Untagged
@@ -46795,6 +46796,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &-6409589742445139530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6931134484753322284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42a77d7bc381ec4fb20a44cb5b24179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6931134484753322284}
+  constructionTransform: {fileID: 7744932125343665046}
+  objectName: Shop
 --- !u!1 &6942284080683727577
 GameObject:
   m_ObjectHideFlags: 0
