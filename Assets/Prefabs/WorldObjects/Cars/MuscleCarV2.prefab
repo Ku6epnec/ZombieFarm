@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 187910650579028253}
   - component: {fileID: 4488341565335276129}
   - component: {fileID: 4047947625174068222}
+  - component: {fileID: 669691475169042778}
   m_Layer: 0
   m_Name: MuscleCarV2
   m_TagString: Untagged
@@ -114,3 +115,18 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.101, y: 0.14500001, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &669691475169042778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1845187002965240008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42a77d7bc381ec4fb20a44cb5b24179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1845187002965240008}
+  constructionTransform: {fileID: 1355789513482924658}
+  objectName: MuscleCar2

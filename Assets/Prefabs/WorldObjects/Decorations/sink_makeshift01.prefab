@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1998824397412928331}
   - component: {fileID: 4348708653746782081}
   - component: {fileID: 4556987489274986393}
+  - component: {fileID: 9216832818949577178}
   m_Layer: 0
   m_Name: sink_makeshift01
   m_TagString: Untagged
@@ -99,6 +100,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.58000004, y: 0.4677927, z: 0.7502092}
   m_Center: {x: 0.29000002, y: 0.7661036, z: -0.000000044703484}
+--- !u!114 &9216832818949577178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2835379950428741204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42a77d7bc381ec4fb20a44cb5b24179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2835379950428741204}
+  constructionTransform: {fileID: 3175771825693099246}
+  objectName: SinkMakeshift
 --- !u!1 &4612075132822716660
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 464577844529627963}
   - component: {fileID: 6691356022526526219}
   - component: {fileID: 4668898529942037524}
+  - component: {fileID: 9156833935750876618}
   m_Layer: 0
   m_Name: IceCream-Truck
   m_TagString: Untagged
@@ -114,3 +115,18 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.101, y: 0.666, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &9156833935750876618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121898453311890158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42a77d7bc381ec4fb20a44cb5b24179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2121898453311890158}
+  constructionTransform: {fileID: 1601504425659824212}
+  objectName: IceCream

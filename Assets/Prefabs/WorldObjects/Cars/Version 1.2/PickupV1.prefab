@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 2465670550344617556}
   - component: {fileID: 5298941689497243470}
   - component: {fileID: 7153686986034633316}
+  - component: {fileID: 6236759739363573583}
   m_Layer: 0
   m_Name: PickupV1
   m_TagString: Untagged
@@ -201,6 +202,21 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.22800002, y: 0.42400002, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &6236759739363573583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4122814825300586369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42a77d7bc381ec4fb20a44cb5b24179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4122814825300586369}
+  constructionTransform: {fileID: 3638062501665518907}
+  objectName: Pickup102
 --- !u!1 &4984922033226935790
 GameObject:
   m_ObjectHideFlags: 0
