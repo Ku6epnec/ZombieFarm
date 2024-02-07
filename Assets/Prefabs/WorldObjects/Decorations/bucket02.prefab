@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1361929825449628262}
   - component: {fileID: 8711262974963224745}
   - component: {fileID: 2272932272210256872}
+  - component: {fileID: -7291055092939230360}
   m_Layer: 0
   m_Name: bucket02
   m_TagString: Untagged
@@ -117,6 +118,21 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0.19000001, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &-7291055092939230360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713389007995728819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42a77d7bc381ec4fb20a44cb5b24179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 713389007995728819}
+  constructionTransform: {fileID: 192994155510671625}
+  objectName: Bucket2
 --- !u!1 &1384067265534308875
 GameObject:
   m_ObjectHideFlags: 0

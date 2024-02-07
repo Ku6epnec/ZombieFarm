@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2365350}
   - component: {fileID: 13537046}
   - component: {fileID: 358601469053846668}
+  - component: {fileID: 2081465771577270639}
   m_Layer: 0
   m_Name: trash_bag
   m_TagString: Untagged
@@ -114,3 +115,18 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.023000002, y: 0.24700001, z: 0.030000001}
   m_TimeToStationary: 0.5
+--- !u!114 &2081465771577270639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42a77d7bc381ec4fb20a44cb5b24179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 108560}
+  constructionTransform: {fileID: 450852}
+  objectName: TrashBag

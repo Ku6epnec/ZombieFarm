@@ -130,4 +130,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 116676}
   constructionTransform: {fileID: 482774}
-  objectName: barrel02_A
+  objectName: Barrel2

@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 100604}
   constructionTransform: {fileID: 426880}
-  objectName: Veh_SchoolBus
+  objectName: SchoolBus
 --- !u!1 &107268
 GameObject:
   m_ObjectHideFlags: 0
