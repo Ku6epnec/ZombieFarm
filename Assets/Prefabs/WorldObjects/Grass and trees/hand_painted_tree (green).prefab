@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5009897490527822869}
   - component: {fileID: 2385107380193649932}
+  - component: {fileID: -7677588088086466871}
   m_Layer: 0
   m_Name: hand_painted_tree (green)
   m_TagString: Untagged
@@ -47,6 +48,21 @@ CapsuleCollider:
   m_Height: 4.877613
   m_Direction: 1
   m_Center: {x: 0.13716388, y: 1.9388065, z: -0.017865896}
+--- !u!114 &-7677588088086466871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939513854358012833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4984ed4c30568dc47b78a5accd20b619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1939513854358012833}
+  environmentTransform: {fileID: 5009897490527822869}
+  objectName: PaintedTree
 --- !u!1001 &501215577757408975
 PrefabInstance:
   m_ObjectHideFlags: 0

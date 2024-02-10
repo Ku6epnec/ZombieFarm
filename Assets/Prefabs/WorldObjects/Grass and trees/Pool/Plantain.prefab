@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33992524123363190}
   - component: {fileID: 23755989723463420}
   - component: {fileID: 5427449469901553321}
+  - component: {fileID: 6845043372055278828}
   m_Layer: 0
   m_Name: Plantain
   m_TagString: Untagged
@@ -100,3 +101,18 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.041, y: 0.136, z: 0.011000001}
   m_TimeToStationary: 0.5
+--- !u!114 &6845043372055278828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660608306427242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4984ed4c30568dc47b78a5accd20b619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1660608306427242}
+  environmentTransform: {fileID: 4350897564425730}
+  objectName: Plantain

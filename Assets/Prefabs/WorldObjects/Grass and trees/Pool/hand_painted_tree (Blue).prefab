@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7979301255538197712}
+  - component: {fileID: 7584611599626673220}
   m_Layer: 0
   m_Name: hand_painted_tree (Blue)
   m_TagString: Untagged
@@ -26,11 +27,27 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3045702848269834721}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7584611599626673220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3589402564649788260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4984ed4c30568dc47b78a5accd20b619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 3589402564649788260}
+  environmentTransform: {fileID: 7979301255538197712}
+  objectName: PaintedTreeBlue
 --- !u!1001 &3300641444330061322
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38,6 +55,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7979301255538197712}
     m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 6e03b0c359b31874989ff66ae1f3a20a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6e03b0c359b31874989ff66ae1f3a20a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -55,6 +77,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6e03b0c359b31874989ff66ae1f3a20a,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6e03b0c359b31874989ff66ae1f3a20a,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0.7071068
       objectReference: {fileID: 0}
@@ -67,16 +94,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 6e03b0c359b31874989ff66ae1f3a20a,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 6e03b0c359b31874989ff66ae1f3a20a,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6e03b0c359b31874989ff66ae1f3a20a,
         type: 3}
