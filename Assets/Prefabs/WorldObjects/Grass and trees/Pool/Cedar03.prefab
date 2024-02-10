@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 33265709180256148}
   - component: {fileID: 23339686187338838}
   - component: {fileID: 669425660625506384}
+  - component: {fileID: -3883313849932017576}
   m_Layer: 0
   m_Name: Cedar03
   m_TagString: Untagged
@@ -99,3 +100,18 @@ CapsuleCollider:
   m_Height: 12.771143
   m_Direction: 1
   m_Center: {x: 0.08424544, y: 5.383829, z: 0.118820906}
+--- !u!114 &-3883313849932017576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276113068307054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4984ed4c30568dc47b78a5accd20b619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1276113068307054}
+  environmentTransform: {fileID: 4196199969613490}
+  objectName: Cedar1
