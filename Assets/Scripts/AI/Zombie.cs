@@ -154,6 +154,7 @@ namespace ZombieFarm.AI
             currentState = ZombieState.Die;
             loot.AddToInventory();
             OnDie(this);
+            OnRefreshProgressBarState(false);
         }
 
         private void RefreshCurrentState()

@@ -204,6 +204,7 @@ MonoBehaviour:
     gameObject: {fileID: 5178754487499004375}
   - time: 3
     gameObject: {fileID: 5802045354288148145}
+  plant: {fileID: 6634498855205865431}
 --- !u!135 &5313720490800421045
 SphereCollider:
   m_ObjectHideFlags: 0

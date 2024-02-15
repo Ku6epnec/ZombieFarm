@@ -16,6 +16,7 @@ namespace ZombieFarm.InteractableObjects
         }
 
         [SerializeField] private List<GrowStep> growSteps;
+        [SerializeField] private Plant plant;
 
         private IPromise growingQueue;
 
@@ -23,7 +24,19 @@ namespace ZombieFarm.InteractableObjects
         {
             base.Awake();
 
+            plant.OnPlantCollected += OnPlantCollected;
+
             HideAllPlantsSteps();
+        }
+
+        private void OnDestroy()
+        {
+            plant.OnPlantCollected -= OnPlantCollected;
+        }
+
+        private void OnPlantCollected()
+        {
+            StartGrow();
         }
 
         protected override void FinishProcess()
