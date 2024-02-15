@@ -8,6 +8,7 @@ namespace ZombieFarm.InteractableObjects
         [SerializeField] private float timeToOpen = 3f;
 
         private bool isOpening = false;
+        private bool isAvailable = true;
         private float currentTime;
 
         public float MaxHealthBarValue => timeToOpen;
@@ -38,7 +39,9 @@ namespace ZombieFarm.InteractableObjects
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.tag == "Player")
+            if (other.tag == "Player"
+                &&
+                isAvailable == true)
             {
                 OnRefreshProgressBarState(true);
                 isOpening = true;
@@ -47,7 +50,9 @@ namespace ZombieFarm.InteractableObjects
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.tag == "Player")
+            if (other.tag == "Player"
+                && 
+                isAvailable == true)
             {
                 ResetProgress();
             }
@@ -56,14 +61,16 @@ namespace ZombieFarm.InteractableObjects
         {
             OnRefreshProgressBarState(false);
             isOpening = false;
+            isAvailable = false;
         }
 
-        private void ResetProgress()
+        protected virtual void ResetProgress()
         {
             OnResetProgress();
             currentTime = timeToOpen;
             isOpening = false;
             OnRefreshProgressBarState(false);
+            isAvailable = true;     
         }
     }
 }
