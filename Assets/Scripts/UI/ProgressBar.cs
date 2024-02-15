@@ -30,14 +30,7 @@ public class ProgressBar : MonoBehaviour
 
     private void SetProgress(float _health)
     {
-        if (_health > 0)
-        {
-            middleLane.sizeDelta = new Vector2( (_health / maxBarValue) * middleLaneWidth, middleLane.rect.height);
-            return;
-        }
-
-        itemWithProgressBar.OnRefreshProgress -= SetProgress;
-        gameObject.SetActive(false);
+        middleLane.sizeDelta = new Vector2((_health / maxBarValue) * middleLaneWidth, middleLane.rect.height);
     }
 
     private void RefreshBarState(bool isActive) => gameObject.SetActive(isActive);
