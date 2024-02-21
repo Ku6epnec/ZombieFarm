@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5240687305714288752}
   - component: {fileID: 1583342495233585174}
   - component: {fileID: -1689375836639600915}
+  - component: {fileID: 2210490961532753584}
   m_Layer: 0
   m_Name: fence_farm
   m_TagString: Untagged
@@ -62,6 +63,22 @@ MonoBehaviour:
   prefab: {fileID: 6959489130309182554}
   constructionTransform: {fileID: 5240687305714288752}
   objectName: FenceFarm
+--- !u!208 &2210490961532753584
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6959489130309182554}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &6552868805523628745
 PrefabInstance:
   m_ObjectHideFlags: 0
