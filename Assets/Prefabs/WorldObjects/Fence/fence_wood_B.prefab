@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2312650}
   - component: {fileID: 6524938}
   - component: {fileID: -7387622164275000667}
+  - component: {fileID: 6808253808312538407}
   m_Layer: 0
   m_Name: fence_wood_B
   m_TagString: Untagged
@@ -113,3 +114,19 @@ MonoBehaviour:
   prefab: {fileID: 198534}
   constructionTransform: {fileID: 458416}
   objectName: FenceWood
+--- !u!208 &6808253808312538407
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198534}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 3.4150002, y: 2.9, z: 0.27800003}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -3.1590002, y: 2.9, z: 0.022000002}
+  m_TimeToStationary: 0.5
