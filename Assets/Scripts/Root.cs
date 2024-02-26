@@ -1,6 +1,6 @@
-using System.Collections.Generic;
 using UnityEngine;
 using ZombieFarm.Managers;
+using ZombieFarm.Managers.CacheManager;
 using ZombieFarm.Managers.Interfaces;
 using ZombieFarm.Views.Player;
 
@@ -14,6 +14,7 @@ public class Root : MonoBehaviour
     [SerializeField] ConfigManager configManager;
     [SerializeField] SceneTransitionManager transitionManager;
     [SerializeField] Camera mainCamera;
+    [SerializeField] CacheManager cacheManager; 
 
     private static Root instance;
 
@@ -81,6 +82,14 @@ public class Root : MonoBehaviour
         get
         {
             return instance.mainCamera;
+        }
+    }
+
+    public static ICacheManager CacheManager
+    {
+        get
+        {
+            return instance.cacheManager;
         }
     }
 }
