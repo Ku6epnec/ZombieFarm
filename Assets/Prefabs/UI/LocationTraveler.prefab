@@ -121,7 +121,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7522297340534728436}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6687442301494589789}
+        m_TargetAssemblyTypeName: ZombieFarm.UI.TransitionWindow, Assembly-CSharp
+        m_MethodName: TransitionToScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2870315829381418876
 GameObject:
   m_ObjectHideFlags: 0
@@ -567,7 +579,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 632c45048af3cff41a21bce8f8bb9867, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 092a4e68c482dfa459edb762d49760af, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -645,7 +657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9763e4dc2eecf645a9f76c6c6abdc89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiToOpen: 0
+  uiToOpen: 1
 --- !u!1 &7052149714457846594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,7 +1049,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7052149715681005618}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6687442301494589789}
+        m_TargetAssemblyTypeName: ZombieFarm.UI.TransitionWindow, Assembly-CSharp
+        m_MethodName: TransitionToScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7052149715763006085
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,6 +1153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a5c3bdb19557144e84f164d617aaf37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneChangeFarm: {fileID: 7052149715681005617}
+  sceneChangeAny: {fileID: 486447646913896292}
+  sceneChangeDesert: {fileID: 9159058943823144235}
 --- !u!1 &9159058943823144235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,4 +1277,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2755484685470088866}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6687442301494589789}
+        m_TargetAssemblyTypeName: ZombieFarm.UI.TransitionWindow, Assembly-CSharp
+        m_MethodName: TransitionToScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
