@@ -14,7 +14,7 @@ public class HudProgressBar : MonoBehaviour
 
     [SerializeField] private ZombieFarm.Views.Player.PlayerView playerView;
 
-    private void Awake()
+    private void Start()
     {
         playerView = Root.ViewManager.GetPlayerView();
 
@@ -27,6 +27,7 @@ public class HudProgressBar : MonoBehaviour
         itemWithProgressBar.OnResetProgress += ResetProgress;
         itemWithProgressBar.OnRefreshProgressBarState += RefreshBarState;
     }
+
 
     public void ResetProgress()
     {
