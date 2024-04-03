@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2783444160717904106}
   - component: {fileID: -2019360924659591672}
+  - component: {fileID: 4305643940110146285}
   m_Layer: 0
   m_Name: Rock_big_001
   m_TagString: Untagged
@@ -48,6 +49,22 @@ MonoBehaviour:
   prefab: {fileID: 2004196808564053381}
   environmentTransform: {fileID: 2783444160717904106}
   objectName: RockBig1
+--- !u!208 &4305643940110146285
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004196808564053381}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &550252945371636648
 PrefabInstance:
   m_ObjectHideFlags: 0
