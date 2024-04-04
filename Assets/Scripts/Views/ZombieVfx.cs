@@ -14,9 +14,9 @@ namespace ZombieFarm.Views
             
             foreach (ParticleSystem particleSystem in particles)
             {
-                if (particleSystem.duration > result)
+                if (particleSystem.main.duration > result)
                 {
-                    result = particleSystem.duration;
+                    result = particleSystem.main.duration;
                 }
             }
 

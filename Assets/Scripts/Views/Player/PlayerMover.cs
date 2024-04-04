@@ -16,7 +16,7 @@ namespace ZombieFarm.Views.Player
         private bool isJoystickActive = false;
 
         private Vector3 target;
-        private Camera camera;
+        private Camera mainCamera;
 
         internal float CurrentMotionSpeed => Root.UIManager.Joystick.GetCurrentMoveCommand().magnitude;
 
@@ -27,7 +27,7 @@ namespace ZombieFarm.Views.Player
 
         private void Start()
         {
-            this.camera = Root.Camera;
+            this.mainCamera = Root.Camera;
 
             Root.UIManager.Joystick.OnPointerStateChanged += OnPointerStateChanged;
         }
@@ -68,7 +68,7 @@ namespace ZombieFarm.Views.Player
 
         private void Rotate()
         {
-            Quaternion targetRotation = Quaternion.LookRotation(target * Mathf.Cos(camera.transform.rotation.y), Vector3.up);
+            Quaternion targetRotation = Quaternion.LookRotation(target * Mathf.Cos(mainCamera.transform.rotation.y), Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed);         
         }
     }
