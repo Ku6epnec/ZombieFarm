@@ -13,7 +13,7 @@ public class Root : MonoBehaviour
     [SerializeField] ResourceManager resourceManager;
     [SerializeField] ConfigManager configManager;
     [SerializeField] SceneTransitionManager transitionManager;
-    [SerializeField] Camera camera;
+    [SerializeField] Camera mainCamera;
 
     private static Root instance;
 
@@ -80,7 +80,7 @@ public class Root : MonoBehaviour
     {
         get
         {
-            return instance.camera;
+            return instance.mainCamera;
         }
     }
 }
