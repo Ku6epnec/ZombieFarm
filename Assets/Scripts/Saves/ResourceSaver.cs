@@ -22,7 +22,6 @@ namespace ZombieFarm.Saves
             }
 
             string json = JsonUtility.ToJson(resourceWrapper);
-            Debug.Log(json);
             string filePath = Application.persistentDataPath + fileName;
 
             File.WriteAllText(filePath, json);
