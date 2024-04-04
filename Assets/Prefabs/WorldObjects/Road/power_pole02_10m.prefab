@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 476294}
   - component: {fileID: 3375362}
   - component: {fileID: 2343108}
-  - component: {fileID: 13615532}
   - component: {fileID: 5545639385669948748}
+  - component: {fileID: 3213769610331545014}
   m_Layer: 0
   m_Name: power_pole02_10m
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 125114}
   m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,20 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &13615532
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 125114}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.62
-  m_Height: 22.049107
-  m_Direction: 1
-  m_Center: {x: 0, y: 9.689552, z: -1.841138e-15}
 --- !u!114 &5545639385669948748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,3 +100,16 @@ MonoBehaviour:
   prefab: {fileID: 125114}
   constructionTransform: {fileID: 476294}
   objectName: PowerPole
+--- !u!65 &3213769610331545014
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125114}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4, y: 20.5187, z: 1.89}
+  m_Center: {x: 0.01, y: 10.259351, z: 0.0000004866155}
