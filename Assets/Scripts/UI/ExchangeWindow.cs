@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -70,9 +69,9 @@ namespace ZombieFarm.UI
             List<LinkToResource> allAvailableResources = resourceManager.GetAllAvailableResources();
             if (allAvailableResources.Count > optionLinks.Count)
             {
-                foreach (LinkToResource linkToResource in allAvailableResources.Where(x => !optionLinks.Contains(x)))
+                foreach (LinkToResource linkToResource in allAvailableResources)
                 {
-                    CreateOption(linkToResource);
+                    CheckOptions(linkToResource);
                 }
             }
 
