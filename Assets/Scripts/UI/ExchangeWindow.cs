@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -66,6 +67,15 @@ namespace ZombieFarm.UI
 
         private void SetOptions()
         {
+            List<LinkToResource> allAvailableResources = resourceManager.GetAllAvailableResources();
+            if (allAvailableResources.Count > optionLinks.Count)
+            {
+                foreach (LinkToResource linkToResource in allAvailableResources.Where(x => !optionLinks.Contains(x)))
+                {
+                    CreateOption(linkToResource);
+                }
+            }
+
             optionLinks.Sort((x, y) => resourceManager.GetResourceAmount(y).CompareTo(resourceManager.GetResourceAmount(x)));
 
             for(int i = 0; i < upExchangeWindowItems.Count; i++)
@@ -115,7 +125,6 @@ namespace ZombieFarm.UI
         {
             itemWindow.SetUp(link);
             itemWindow.button.onClick.AddListener(delegate { ScrollViewItemSelected(itemWindow); });
-
         }
 
         private void Exchange()
