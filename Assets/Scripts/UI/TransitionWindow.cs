@@ -1,31 +1,25 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using ZombieFarm.Managers;
 
 namespace ZombieFarm.UI
 {
     public class TransitionWindow : MonoBehaviour, IWindow
     {
-        [SerializeField] private GameObject sceneChangeFarm;
-        [SerializeField] private GameObject sceneChangeAny;
-        [SerializeField] private GameObject sceneChangeDesert;
+        [SerializeField] private List<SerializedDictionaryElement<int, GameObject>> sceneChangeItems;
 
         void Start()
         {
             gameObject.SetActive(false);
-
-            switch (SceneManager.GetActiveScene().buildIndex)
+            int activeSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            foreach(SerializedDictionaryElement<int, GameObject> element in sceneChangeItems)
             {
-                case 0:
-                    sceneChangeFarm.SetActive(false);
+                if (activeSceneIndex == element.key)
+                {
+                    element.value.SetActive(false);
                     break;
-
-                case 1:
-                    sceneChangeAny.SetActive(false);
-                    break;
-
-                case 2:
-                    sceneChangeDesert.SetActive(false);
-                    break;
+                }
             }
         }
 

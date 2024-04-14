@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -10,7 +9,7 @@ namespace ZombieFarm.Saves
 {
     public class ResourceSaver
     {
-        private static string fileName = "/resourceData.json";
+        private const string fileName = "/resourceData.json";
 
         public static void Save(Dictionary<LinkToResource, int> resources)
         {
@@ -47,7 +46,13 @@ namespace ZombieFarm.Saves
                 return resources;
             }
 
-            return null;
+            return new Dictionary<LinkToResource, int>();
+        }
+
+        public static void ClearAll()
+        {
+            string filePath = Application.persistentDataPath + fileName;
+            File.Delete(filePath);
         }
     }
 
