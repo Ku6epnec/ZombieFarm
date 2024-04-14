@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/DraftScenes/DebugStartMenu.unity
+    guid: 0c70162af33d46c438b61fe39d68faf4
+  - enabled: 1
     path: Assets/Scenes/Farm.unity
     guid: 83038207beab6ea4bac9f80132a0c33b
   - enabled: 1

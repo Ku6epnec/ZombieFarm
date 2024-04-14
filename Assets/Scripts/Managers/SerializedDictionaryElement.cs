@@ -1,7 +1,6 @@
 using System;
-using UnityEngine;
 
-namespace ZombieFarm.Managers 
+namespace ZombieFarm.Managers
 {
     [Serializable]
     public struct SerializedDictionaryElement<T, K>
