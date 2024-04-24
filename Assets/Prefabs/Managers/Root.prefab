@@ -105,7 +105,7 @@ MonoBehaviour:
   configManager: {fileID: 1445012785819048518}
   transitionManager: {fileID: 1017628441865592395}
   mainCamera: {fileID: 2835387068012833427}
-  cacheManager: {fileID: 0}
+  cacheManager: {fileID: 2967003039953440608}
 --- !u!114 &6316860777211075005
 MonoBehaviour:
   m_ObjectHideFlags: 0
