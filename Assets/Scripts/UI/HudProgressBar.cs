@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,9 +6,8 @@ public class HudProgressBar : MonoBehaviour
 {
     [SerializeField] RectTransform middleLane;
 
-    float middleLaneWidth;
+    private float middleLaneWidth;
     private float maxBarValue;
-
     private IItemWithHealthBar itemWithProgressBar;
 
     [SerializeField] private ZombieFarm.Views.Player.PlayerView playerView;
