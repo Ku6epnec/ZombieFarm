@@ -17,6 +17,7 @@ namespace ZombieFarm.Views.Player
         private void OnTriggerEnter(Collider other)
         {
             interactiveObject = other.gameObject;
+            receivedDamageObject = null;
             if (interactiveObject.TryGetComponent<ReceivedDamageObject>(out ReceivedDamageObject _receivedDamageObject))
             {
                 receivedDamageObject = _receivedDamageObject;
