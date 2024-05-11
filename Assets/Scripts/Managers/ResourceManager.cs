@@ -13,7 +13,7 @@ namespace ZombieFarm.Managers
 
         Dictionary<LinkToResource, int> resourceAmount;
 
-        public event Action<LinkToResource> OnChangeResource = (resourceName) => { };
+        public event Action<LinkToResource, int> OnChangeResource = (resourceName, amount) => { };
 
         private void Awake()
         {
@@ -44,7 +44,7 @@ namespace ZombieFarm.Managers
         {
             AddResourceIfMissing(type);
             resourceAmount[type] += amount;
-            OnChangeResource(type);
+            OnChangeResource(type, amount);
         }
 
         public bool SubtractResource(LinkToResource type, int amount)
@@ -57,7 +57,7 @@ namespace ZombieFarm.Managers
             else
             {
                 resourceAmount[type] -= amount;
-                OnChangeResource(type);
+                OnChangeResource(type, -amount);
                 return true;
             }
         }
