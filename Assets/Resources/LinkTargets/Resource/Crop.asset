@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Crop
   m_EditorClassIdentifier: 
   displayName: "\u0423\u0440\u043E\u0436\u0430\u0439"
-  sprite: {fileID: 21300000, guid: f95f697d66d238446b1ab717def09945, type: 3}
+  sprite: {fileID: 21300000, guid: f446ceac60ed41a42bf4e1669eb8beb0, type: 3}
   worthResources:
   - linkToOtherResource:
       itemId: Wood

@@ -47,7 +47,7 @@ namespace ZombieFarm.UI
             }
         }
 
-        private void UpdateUI(LinkToResource linkToResource)
+        private void UpdateUI(LinkToResource linkToResource, int amount = 0)
         {
             if (resourceToUI.ContainsKey(linkToResource))
             {

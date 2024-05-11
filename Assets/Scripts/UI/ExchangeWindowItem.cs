@@ -47,7 +47,7 @@ namespace ZombieFarm.UI
             SetInteractable(amount > 0);
         }
 
-        public void UpdateResourceAmount(LinkToResource _)
+        public void UpdateResourceAmount(LinkToResource _, int amountChanged = 0)
         {
             Amount = resourceManager.GetResourceAmount(link);
         }
