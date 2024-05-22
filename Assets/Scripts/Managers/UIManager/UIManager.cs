@@ -12,7 +12,8 @@ namespace ZombieFarm.Managers
         {
             ExchangeWindow,
             TransitionWindow,
-            SceneStartWindow
+            SceneStartWindow,
+            SettingsWindow
         }
 
         [SerializeField] private FloatingJoystick floatingJoystick;
