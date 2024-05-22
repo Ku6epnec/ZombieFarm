@@ -1140,6 +1140,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3822642820626344901, guid: bb8da740b07fd4a42b3e497bb3e119d1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1885925855827864712}
+    - target: {fileID: 3822642820626344901, guid: bb8da740b07fd4a42b3e497bb3e119d1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Open
+      objectReference: {fileID: 0}
+    - target: {fileID: 3822642820626344901, guid: bb8da740b07fd4a42b3e497bb3e119d1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ZombieFarm.UI.SettingsWindow, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7509151430594976895, guid: bb8da740b07fd4a42b3e497bb3e119d1,
         type: 3}
       propertyPath: m_Name
@@ -1761,6 +1776,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a3c1e80b0c7a6549a1f55e40ae12d72, type: 3}
+--- !u!114 &1885925855827864712 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6889641213228273958, guid: 2a3c1e80b0c7a6549a1f55e40ae12d72,
+    type: 3}
+  m_PrefabInstance: {fileID: 5021737596540485038}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c09adf79205c8947aa4adde6c957167, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6470816093069875296 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2052585139636757966, guid: 2a3c1e80b0c7a6549a1f55e40ae12d72,
