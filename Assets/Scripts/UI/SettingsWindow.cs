@@ -41,16 +41,17 @@ namespace ZombieFarm.UI
         [SerializeField] private Button authorsButton;
         [SerializeField] private Button resetButton;
 
-        [SerializeField] private GameObject authorsWindow;
-
         private void Start()
         {
             gameObject.SetActive(false);
+            vibration = true;
+            music = true;
+            sound = true;
         }
 
         public void VibrationChange()
         {
-            if (vibration)
+            if (!vibration)
             {
                 vibrationOn.SetActive(true);
                 vibrationOff.SetActive(false);
@@ -65,7 +66,7 @@ namespace ZombieFarm.UI
 
         public void MusicChange()
         {
-            if (music)
+            if (!music)
             {
                 musicOn.SetActive(true);
                 musicOff.SetActive(false);
@@ -80,7 +81,7 @@ namespace ZombieFarm.UI
 
         public void SoundChange()
         {
-            if (sound)
+            if (!sound)
             {
                 soundOn.SetActive(true);
                 soundOff.SetActive(false);
