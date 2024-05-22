@@ -257,9 +257,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 36191609914856083}
-        m_TargetAssemblyTypeName: ButtonScripts, Assembly-CSharp
-        m_MethodName: CloseCurrentWindow
+      - m_Target: {fileID: 6889641213228273958}
+        m_TargetAssemblyTypeName: ZombieFarm.UI.SettingsWindow, Assembly-CSharp
+        m_MethodName: Close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9763e4dc2eecf645a9f76c6c6abdc89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiToOpen: 1
+  uiToOpen: 3
 --- !u!1 &36191610236702236
 GameObject:
   m_ObjectHideFlags: 0
