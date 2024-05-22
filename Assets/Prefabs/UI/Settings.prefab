@@ -1281,7 +1281,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &385618489378318277
 CanvasRenderer:
@@ -3283,13 +3283,13 @@ MonoBehaviour:
   vibrationButton: {fileID: 1310371871204668987}
   musicButton: {fileID: 3512315086755486758}
   soundButton: {fileID: 5072710159627072369}
-  vibration: 0
-  vibrationOn: {fileID: 0}
-  vibrationOff: {fileID: 0}
-  music: 0
+  vibration: 1
+  vibrationOn: {fileID: 4561965521561761568}
+  vibrationOff: {fileID: 8092304573490417516}
+  music: 1
   musicOn: {fileID: 0}
   musicOff: {fileID: 0}
-  sound: 0
+  sound: 1
   soundOn: {fileID: 0}
   soundOff: {fileID: 0}
   telegramButton: {fileID: 0}
@@ -3317,7 +3317,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5581620655668245544
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3336,7 +3336,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8748084207782793555
 CanvasRenderer:
@@ -3438,14 +3438,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7eaa98a2721549d45bae22d0461e5612, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
