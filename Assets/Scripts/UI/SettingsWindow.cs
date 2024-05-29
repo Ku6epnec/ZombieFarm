@@ -17,8 +17,9 @@ namespace ZombieFarm.UI
 
         [Header("Vibration Settings elements")]
         [SerializeField] private bool vibration;
-        [SerializeField] private GameObject vibrationOn;
-        [SerializeField] private GameObject vibrationOff;
+        [SerializeField] private GameObject vibrationObject;
+        [SerializeField] private Sprite vibrationOffImage;
+        [SerializeField] private Sprite vibrationOnImage;
 
         [Header("Music Settings elements")]
         [SerializeField] private bool music;
@@ -55,16 +56,15 @@ namespace ZombieFarm.UI
 
         public void VibrationChange()
         {
-            if (!vibration)
+            if (vibration)
             {
-                vibrationOn.SetActive(true);
-                vibrationOff.SetActive(false);
+                vibrationObject.GetComponent<Image>().sprite = vibrationOffImage;
             }
             else
             {
-                vibrationOff.SetActive(true);
-                vibrationOn.SetActive(false);
+                vibrationObject.GetComponent<Image>().sprite = vibrationOnImage;
             }
+
             vibration = !vibration;
         }
 
