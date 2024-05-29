@@ -22,13 +22,17 @@ namespace ZombieFarm.UI
 
         [Header("Music Settings elements")]
         [SerializeField] private bool music;
-        [SerializeField] private GameObject musicOn;
-        [SerializeField] private GameObject musicOff;
+        [SerializeField] private GameObject musicObject;
+        [SerializeField] private AudioSource[] musicSource;
+        [SerializeField] private Sprite mutedMusicImage;
+        [SerializeField] private Sprite unmutedMusicImage;
 
         [Header("Sound Settings elements")]
         [SerializeField] private bool sound;
-        [SerializeField] private GameObject soundOn;
-        [SerializeField] private GameObject soundOff;
+        [SerializeField] private GameObject soundObject;
+        [SerializeField] private AudioSource[] soundSource;
+        [SerializeField] private Sprite mutedSoundImage;
+        [SerializeField] private Sprite unmutedSoundImage;
 
         [Header("Socials elements")]
         [SerializeField] private Button telegramButton;
@@ -66,43 +70,57 @@ namespace ZombieFarm.UI
 
         public void MusicChange()
         {
-            if (!music)
+            if (music)
             {
-                musicOn.SetActive(true);
-                musicOff.SetActive(false);
+                musicObject.GetComponent<Image>().sprite = mutedMusicImage;
+                foreach (var source in musicSource)
+                {
+                    source.mute = true;
+                }
             }
             else
             {
-                musicOff.SetActive(true);
-                musicOn.SetActive(false);
+                musicObject.GetComponent<Image>().sprite = unmutedMusicImage;
+                foreach (var source in musicSource)
+                {
+                    source.mute = false;
+                }
             }
+
             music = !music;
         }
 
-        public void SoundChange()
+            public void SoundChange()
         {
-            if (!sound)
+            if (sound)
             {
-                soundOn.SetActive(true);
-                soundOff.SetActive(false);
+                soundObject.GetComponent<Image>().sprite = mutedSoundImage;
+                foreach (var source in soundSource)
+                {
+                    source.mute = true;
+                }
             }
             else
             {
-                soundOff.SetActive(true);
-                soundOn.SetActive(false);
+                soundObject.GetComponent<Image>().sprite = unmutedSoundImage;
+                foreach (var source in soundSource)
+                {
+                    source.mute = false;
+                }
             }
+
             sound = !sound;
         }
 
         public void Telegram()
         {
-            Application.OpenURL("http://unity3d.com/");
+            Application.OpenURL("https://t.me/farm_zombie");
         }
 
 
         public void VK()
         {
-            Application.OpenURL("http://unity3d.com/");
+            Application.OpenURL("https://vk.com/burning_hearts_games");
         }
 
         public void Discord()
