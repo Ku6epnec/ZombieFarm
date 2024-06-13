@@ -71,7 +71,7 @@ namespace ZombieFarm.UI
             {
                 foreach (LinkToResource linkToResource in allAvailableResources)
                 {
-                    CheckOptions(linkToResource);
+                    CheckOptions(linkToResource, 0);
                 }
             }
 
@@ -88,7 +88,7 @@ namespace ZombieFarm.UI
             CheckSelection();
         }
 
-        private void CheckOptions(LinkToResource obj, int amountChanged = 0)
+        private void CheckOptions(LinkToResource obj, int amountChanged)
         {
             if (optionLinks.Contains(obj) == false)
             {

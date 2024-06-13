@@ -43,11 +43,11 @@ namespace ZombieFarm.UI
             button.onClick.RemoveAllListeners();
             resourceManager = Root.ResourceManager;
             resourceManager.OnChangeResource += UpdateResourceAmount;
-            UpdateResourceAmount(link);
+            UpdateResourceAmount(link, 0);
             SetInteractable(amount > 0);
         }
 
-        public void UpdateResourceAmount(LinkToResource _, int amountChanged = 0)
+        public void UpdateResourceAmount(LinkToResource _, int amountChanged)
         {
             Amount = resourceManager.GetResourceAmount(link);
         }

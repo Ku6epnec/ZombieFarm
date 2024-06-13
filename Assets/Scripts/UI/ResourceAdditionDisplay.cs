@@ -33,7 +33,7 @@ namespace ZombieFarm.UI
                 return;
             }
             ResourceWithAmount resource = resourcesInLine.Dequeue();
-            DisplayResource(resource.resource, resource.amount, item);
+            DisplayResource(resource.link, resource.amount, item);
         }
 
         private void ResourceChanged(LinkToResource linkToResource, int amount)
@@ -83,12 +83,12 @@ namespace ZombieFarm.UI
 
         private class ResourceWithAmount
         {
-            public LinkToResource resource;
+            public LinkToResource link;
             public int amount;
 
-            public ResourceWithAmount(LinkToResource resource, int amount)
+            public ResourceWithAmount(LinkToResource link, int amount)
             {
-                this.resource = resource;
+                this.link = link;
                 this.amount = amount;
             }
         }
