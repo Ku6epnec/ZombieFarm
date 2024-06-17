@@ -197,7 +197,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1554863141757558404}
-  - component: {fileID: 4339205697187880932}
   - component: {fileID: 8011706126854376977}
   - component: {fileID: 8654738544158328395}
   - component: {fileID: 1038839095363543107}
@@ -230,24 +229,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 161.865, z: 0}
---- !u!143 &4339205697187880932
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2222574135551116350}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 60
-  m_StepOffset: 0.03
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &8011706126854376977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,6 +244,7 @@ MonoBehaviour:
   movementSpeed: 15
   rotationSpeed: 20
   gravity: 9.8
+  navMeshAgent: {fileID: 1038839095363543107}
 --- !u!114 &8654738544158328395
 MonoBehaviour:
   m_ObjectHideFlags: 0
