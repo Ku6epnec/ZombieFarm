@@ -1,13 +1,13 @@
 
 using UnityEngine;
+using ZombieFarm.Managers.Interfaces;
 
 namespace ZombieFarm.Views.Player
 {
     [RequireComponent(typeof(Animator))]
     public class MainCharAnimator : MonoBehaviour
     {
-        [SerializeField] private PlayerView playerView;
-
+        private IPlayerManager player;
         private Animator animator;
         private float motionSpeed = 0;
         private float stateTransitionStep = 0.02f;
@@ -21,13 +21,17 @@ namespace ZombieFarm.Views.Player
         private void Awake()
         {
             animator = GetComponent<Animator>();
+        }
 
-            playerView.OnChangeState += OnChangeState;
+        private void Start()
+        {
+            player = Root.PlayerManager;
+            player. CurrentPlayerState.OnValueChanged += OnChangeState;
         }
 
         private void OnDestroy()
         {
-            playerView.OnChangeState -= OnChangeState;
+            player.CurrentPlayerState.OnValueChanged -= OnChangeState;
         }
 
         void Update()
@@ -37,12 +41,12 @@ namespace ZombieFarm.Views.Player
 
         private void RunTransitionSmoothly()
         {
-            if (Root.Player.CurrentMotionSpeed == motionSpeed)
+            if (Root.PlayerManager.CurrentMotionSpeed == motionSpeed)
             {
                 return;
             }
 
-            motionSpeed = Mathf.MoveTowards(motionSpeed, Root.Player.CurrentMotionSpeed, stateTransitionStep);
+            motionSpeed = Mathf.MoveTowards(motionSpeed, Root.PlayerManager.CurrentMotionSpeed, stateTransitionStep);
             animator.SetFloat(animatorParameter_CurrentMotionSpeed_Float_Id, motionSpeed);
         }
 

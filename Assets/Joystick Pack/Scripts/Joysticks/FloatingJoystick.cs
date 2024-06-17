@@ -1,11 +1,13 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityTools.Runtime.StatefulEvent;
 using ZombieFarm.Interfaces;
 
 public class FloatingJoystick : Joystick, IJoystick
 {
-    public event Action<bool> OnPointerStateChanged = (pointerDown) => { };
+    public IStatefulEvent<bool> IsActive => isActive;
+    private readonly StatefulEventInt<bool> isActive = StatefulEventInt.Create(false);
     public Vector3 GetCurrentMoveCommand() => new Vector3(-Horizontal, 0, -Vertical);
 
     protected override void Start()
@@ -17,17 +19,22 @@ public class FloatingJoystick : Joystick, IJoystick
     public override void OnPointerDown(PointerEventData eventData)
     {
         background.anchoredPosition = ScreenPointToAnchoredPosition(eventData.position);
-        background.gameObject.SetActive(true);
+
         base.OnPointerDown(eventData);
 
-        OnPointerStateChanged(true);
+        Activate(true);
     }
 
     public override void OnPointerUp(PointerEventData eventData)
     {
-        background.gameObject.SetActive(false);
         base.OnPointerUp(eventData);
 
-        OnPointerStateChanged(false);
+        Activate(false);
+    }
+
+    private void Activate(bool activate)
+    {
+        background.gameObject.SetActive(activate);
+        isActive.Set(activate);
     }
 }

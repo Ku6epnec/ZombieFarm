@@ -41,14 +41,14 @@ namespace ZombieFarm.AI
                 return;
             }
 
-            float distanceToPlayer = Vector3.Distance(this.transform.position, Root.Player.transform.position);
+            float distanceToPlayer = Vector3.Distance(this.transform.position, Root.PlayerManager.PlayerTransform.position);
             bool canMove = distanceToPlayer > nearDistanceBetweenForStop && distanceToPlayer < farDistanceBetweenForStop;
 
             isMoving.Set(canMove);
 
             if (agent.isStopped == false)
             {
-                agent.SetDestination(Root.Player.transform.position);
+                agent.SetDestination(Root.PlayerManager.PlayerTransform.position);
             }
         }
 

@@ -29,6 +29,7 @@ namespace ZombieFarm.Managers
             Root.UIManager.OpenPanel(panelToOpenID);
             StartCoroutine(LoadAsyncScene(currentTransitionIndex));
         }
+
         private IEnumerator LoadAsyncScene(int sceneBuildIndex)
         {
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneBuildIndex);

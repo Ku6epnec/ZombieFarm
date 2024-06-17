@@ -14,6 +14,7 @@ namespace ZombieFarm.Views
         { 
             transform.position = target.position + cameraOffset;
         }
+        
         private void OnTriggerEnter(Collider collider)
         {
             try

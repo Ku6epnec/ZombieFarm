@@ -6,10 +6,9 @@ using ZombieFarm.Views.Player;
 
 public class Root : MonoBehaviour
 {
-    [SerializeField] PlayerMover player;
     [SerializeField] ZombieManager zombieManager;
     [SerializeField] UIManager uiManager;
-    [SerializeField] ViewManager viewManager;
+    [SerializeField] PlayerManager playerManager;
     [SerializeField] ResourceManager resourceManager;
     [SerializeField] ConfigManager configManager;
     [SerializeField] SceneTransitionManager transitionManager;
@@ -23,14 +22,6 @@ public class Root : MonoBehaviour
         instance = this;
     }
 
-    public static PlayerMover Player
-    {
-        get
-        {
-            return instance.player;
-        }
-    }
-
     public static IEnemyManager ZombieManager
     {
         get
@@ -39,11 +30,11 @@ public class Root : MonoBehaviour
         }
     }
 
-    public static IViewManager ViewManager
+    public static IPlayerManager PlayerManager
     {
         get
         {
-            return instance.viewManager;
+            return instance.playerManager;
         }
     }
     
