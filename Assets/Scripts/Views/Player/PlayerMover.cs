@@ -1,17 +1,16 @@
 
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace ZombieFarm.Views.Player
 {
-    [RequireComponent(typeof(CharacterController))]
     public class PlayerMover : MonoBehaviour
     {
         [Header("Movement Settings")]
         [SerializeField] private float movementSpeed = 1;
         [SerializeField] private float rotationSpeed = 1;
         [SerializeField] private float gravity = 9.8f;
-
-        private CharacterController characterController;
+        [SerializeField] private NavMeshAgent navMeshAgent;
 
         private bool isJoystickActive = false;
 
@@ -20,10 +19,6 @@ namespace ZombieFarm.Views.Player
 
         internal float CurrentMotionSpeed => Root.UIManager.Joystick.GetCurrentMoveCommand().magnitude;
 
-        private void Awake()
-        {
-            characterController = GetComponent<CharacterController>();
-        }
 
         private void Start()
         {
@@ -63,7 +58,7 @@ namespace ZombieFarm.Views.Player
             motionJoystick *= movementSpeed * Time.deltaTime;
             motionJoystick.y -= gravity;
 
-            characterController.Move(motionJoystick);
+            navMeshAgent.Move(motionJoystick);
         }
 
         private void Rotate()
