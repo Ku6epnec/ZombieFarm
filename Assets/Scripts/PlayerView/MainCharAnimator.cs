@@ -26,7 +26,7 @@ namespace ZombieFarm.Views.Player
         private void Start()
         {
             player = Root.PlayerManager;
-            player. CurrentPlayerState.OnValueChanged += OnChangeState;
+            player.CurrentPlayerState.OnValueChanged += OnChangeState;
         }
 
         private void OnDestroy()

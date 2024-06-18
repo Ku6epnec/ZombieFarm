@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using ZombieFarm.Interfaces;
+using ZombieFarm.Managers.Interfaces;
 
 namespace ZombieFarm.Views.Player
 { 
@@ -13,12 +14,24 @@ namespace ZombieFarm.Views.Player
 
         private PlayerConfig config;
         private IPlayerProfile playerProfile;
+        private IPlayerManager playerManager;
 
         private void Start()
         {
             config = Root.ConfigManager.GameSettings.Player;
 
             OnRefreshProgressBarState(true);
+        }
+
+        private void Update()
+        {
+            if(playerManager == null)
+            {
+                return;
+            }
+
+            transform.position = playerManager.PlayerTransform.position;
+            transform.rotation = playerManager.PlayerTransform.rotation;
         }
 
         private void OnDestroy()
@@ -29,10 +42,11 @@ namespace ZombieFarm.Views.Player
             }
         }
 
-        public void Init(IPlayerProfile playerProfile)
+        public void Init(IPlayerProfile playerProfile, IPlayerManager playerManager)
         {
             this.playerProfile = playerProfile;
-            
+            this.playerManager = playerManager;
+
             playerProfile.OnDie += OnDie;
         }
 

@@ -12,3 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d219e6758ee12248b0474efa00e04a0, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
+  Player:
+    movementSpeed: 10
+    rotationSpeed: 10
+    maxHealth: 10
+    armor: 10
+    damage: 10

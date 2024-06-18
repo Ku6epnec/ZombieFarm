@@ -33,7 +33,7 @@ namespace ZombieFarm.Managers.Interfaces
             playerProfile = profile;
 
             profile.Init();
-            playerView.Init(playerProfile);
+            playerView.Init(playerProfile, this);
         }
 
         private void FixedUpdate()

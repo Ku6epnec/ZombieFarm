@@ -26,6 +26,7 @@ namespace ZombieFarm.Views.Player
         {
             if (joystick.IsActive.Value == false)
             {
+                motionVector = Vector3.zero;
                 return;
             }
 
