@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4266707360773307331
 Transform:
@@ -53,7 +53,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3636171601460604360
 Transform:
@@ -110,6 +110,10 @@ PrefabInstance:
     - target: {fileID: 160374, guid: e28a3e09836c1c4469b68e99cdeea37b, type: 3}
       propertyPath: m_Name
       value: walkway02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 160374, guid: e28a3e09836c1c4469b68e99cdeea37b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 497674, guid: e28a3e09836c1c4469b68e99cdeea37b, type: 3}
       propertyPath: m_RootOrder
@@ -186,6 +190,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: walkway02 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 160374, guid: e28a3e09836c1c4469b68e99cdeea37b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 497674, guid: e28a3e09836c1c4469b68e99cdeea37b, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -260,6 +268,10 @@ PrefabInstance:
     - target: {fileID: 160374, guid: e28a3e09836c1c4469b68e99cdeea37b, type: 3}
       propertyPath: m_Name
       value: walkway02 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 160374, guid: e28a3e09836c1c4469b68e99cdeea37b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 497674, guid: e28a3e09836c1c4469b68e99cdeea37b, type: 3}
       propertyPath: m_RootOrder
@@ -336,6 +348,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: walkway02 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 160374, guid: e28a3e09836c1c4469b68e99cdeea37b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 497674, guid: e28a3e09836c1c4469b68e99cdeea37b, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -411,6 +427,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: walkway02
       objectReference: {fileID: 0}
+    - target: {fileID: 160374, guid: e28a3e09836c1c4469b68e99cdeea37b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 497674, guid: e28a3e09836c1c4469b68e99cdeea37b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -485,6 +505,10 @@ PrefabInstance:
     - target: {fileID: 160374, guid: e28a3e09836c1c4469b68e99cdeea37b, type: 3}
       propertyPath: m_Name
       value: walkway02 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 160374, guid: e28a3e09836c1c4469b68e99cdeea37b, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 497674, guid: e28a3e09836c1c4469b68e99cdeea37b, type: 3}
       propertyPath: m_RootOrder
@@ -621,6 +645,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: rock_big_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5f554410b4a1481419e25ae11cfffdd8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f554410b4a1481419e25ae11cfffdd8, type: 3}
