@@ -25,6 +25,7 @@ namespace ZombieFarm.AI
 
             isMoving.OnValueChanged += Move;
             Move(false);
+            agent.enabled = false;
 
             Root.TransitionManager.OnSetNewTransitionIndex += ReachSafeZone;
         }
@@ -52,12 +53,14 @@ namespace ZombieFarm.AI
             }
         }
 
-        internal void StartFollowing() => isFollowing = true;
+        internal void StartFollowing() {
+            agent.enabled = true;
+            isFollowing = true;
+        }
 
         private void Move(bool active)
         {
             agent.isStopped = active == false;
-
             vfx.SetActive(active);
         }
 

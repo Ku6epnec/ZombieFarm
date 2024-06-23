@@ -20,8 +20,8 @@ GameObject:
   m_Name: power_pole02_B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &429374
 Transform:
@@ -95,7 +95,7 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109382}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 3.808, y: 10.709001, z: 2.901}
@@ -1071,7 +1071,7 @@ BoxCollider:
   m_GameObject: {fileID: 109382}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.4, y: 21.417543, z: 1.6}
   m_Center: {x: 0.07, y: 9.81, z: 0}
@@ -1084,7 +1084,7 @@ MeshCollider:
   m_GameObject: {fileID: 109382}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
