@@ -10,22 +10,25 @@ public class HudProgressBar : MonoBehaviour
     private float maxBarValue;
     private IItemWithHealthBar itemWithProgressBar;
 
-    [SerializeField] private ZombieFarm.Views.Player.PlayerView playerView;
-
     private void Start()
     {
-        playerView = Root.ViewManager.GetPlayerView();
-
-        itemWithProgressBar = playerView;
+        itemWithProgressBar = Root.PlayerManager.PlayerItemWithHealthBar;
 
         middleLaneWidth = middleLane.rect.width;
         maxBarValue = itemWithProgressBar.MaxHealthBarValue;
         middleLane.sizeDelta = new Vector2(middleLaneWidth, middleLane.rect.height);
+        
         itemWithProgressBar.OnRefreshProgress += SetProgress;
         itemWithProgressBar.OnResetProgress += ResetProgress;
         itemWithProgressBar.OnRefreshProgressBarState += RefreshBarState;
     }
 
+    private void OnDestroy()
+    {
+        itemWithProgressBar.OnRefreshProgress -= SetProgress;
+        itemWithProgressBar.OnResetProgress -= ResetProgress;
+        itemWithProgressBar.OnRefreshProgressBarState -= RefreshBarState;
+    }
 
     public void ResetProgress()
     {
@@ -46,10 +49,5 @@ public class HudProgressBar : MonoBehaviour
 
     private void RefreshBarState(bool isActive) => gameObject.SetActive(isActive);
 
-    private void OnDestroy()
-    {
-        itemWithProgressBar.OnRefreshProgress -= SetProgress;
-        itemWithProgressBar.OnResetProgress -= ResetProgress;
-        itemWithProgressBar.OnRefreshProgressBarState -= RefreshBarState;
-    }
+
 }

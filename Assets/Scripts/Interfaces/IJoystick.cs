@@ -1,11 +1,11 @@
-using System;
 using UnityEngine;
+using UnityTools.Runtime.StatefulEvent;
 
 namespace ZombieFarm.Interfaces
 {
     public interface IJoystick
     {
-        event Action<bool> OnPointerStateChanged;
+        IStatefulEvent<bool> IsActive {get; }
         Vector3 GetCurrentMoveCommand();
     }
 }

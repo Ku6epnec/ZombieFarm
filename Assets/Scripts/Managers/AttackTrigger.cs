@@ -4,14 +4,14 @@ namespace ZombieFarm.Views.Player
 {
     public class AttackTrigger : MonoBehaviour
     {
-        private PlayerView playerView;
         private ReceivedDamageObject receivedDamageObject;
 
         private GameObject interactiveObject;
+        private PlayerConfig playerConfig;
 
         private void Start()
         {
-            playerView = Root.ViewManager.GetPlayerView();
+            playerConfig = Root.ConfigManager.GameSettings.Player;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -29,7 +29,7 @@ namespace ZombieFarm.Views.Player
         {
             if (receivedDamageObject != null)
             {
-                receivedDamageObject.Interaction(playerView.Damage);
+                receivedDamageObject.Interaction(playerConfig.damage);
             }
         }
     }

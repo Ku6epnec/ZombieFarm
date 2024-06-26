@@ -25,11 +25,7 @@ namespace ZombieFarm.Managers.CacheManager
         }
 
         private void OnDestroy() => OnDestroyEvent();
-
-        public void Init()
-        {
-        }
-
+        
         public ICacheStorage<T> GetCacheStorage<T>(bool rememberBetweenSessions)
         {
             string cacheId = typeof(T).FullName;

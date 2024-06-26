@@ -1,18 +1,19 @@
 using CozyServer.DTS.Links;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using UnityEditor;
 using UnityEngine;
 using UnityTools.Runtime.Links;
-using ZombieFarm.Config.LinkTargets;
 using ZombieFarm.Managers.Interfaces;
 
 namespace ZombieFarm.Managers
 {
     public class ConfigManager : MonoBehaviour, IConfigManager
     {
+        public GameSettings GameSettings => gameSettings;
+
+        [SerializeField] private GameSettings gameSettings;
+
         private readonly Dictionary<Type, Dictionary<string, object>> cache = new Dictionary<Type, Dictionary<string, object>>();
 
         private void GetListOfAssets<T>(List<string> buffer)

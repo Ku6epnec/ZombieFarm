@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using ZombieFarm.Managers.Interfaces;
 
 namespace ZombieFarm.AI
 {
@@ -25,9 +26,9 @@ namespace ZombieFarm.AI
         private NavMeshAgent agent;
         private List<Transform> walkingPoints;
         private ZombieState currentState;
+        private IPlayerManager playerManager;
 
         [SerializeField] private CharacterController characterController;
-        [SerializeField] private ZombieFarm.Views.Player.PlayerView playerView;
 
         [Header("HealthStats")]
         [SerializeField] private float _health = 10;
@@ -72,9 +73,9 @@ namespace ZombieFarm.AI
 
         private void Start()
         {
-            currentState = ZombieState.Idle;
+            playerManager = Root.PlayerManager;
 
-            playerView = Root.ViewManager.GetPlayerView();
+            currentState = ZombieState.Idle;
         }
 
         private void OnDestroy()
@@ -118,7 +119,7 @@ namespace ZombieFarm.AI
             agent.speed = speedForChasing;
             agent.isStopped = false;
 
-            agent.SetDestination(Root.Player.transform.position);
+            agent.SetDestination(Root.PlayerManager.PlayerTransform.position);
         }
 
         private void Attack()
@@ -126,7 +127,7 @@ namespace ZombieFarm.AI
             agent.speed = 0;
             agent.isStopped = true;
 
-            playerView.ReceivedDamage(Damage);
+            playerManager.RegisterDamage(Damage);
 
             timer = maxTimer;
         }
@@ -200,7 +201,7 @@ namespace ZombieFarm.AI
                 return ZombieState.Die;
             }
 
-            float distanceToPlayer = Vector3.Distance(this.transform.position, Root.Player.transform.position);
+            float distanceToPlayer = Vector3.Distance(this.transform.position, Root.PlayerManager.PlayerTransform.position);
 
             if (distanceToPlayer < attackDistance)
             {
