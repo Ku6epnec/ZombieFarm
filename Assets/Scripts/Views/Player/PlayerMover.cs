@@ -10,6 +10,7 @@ namespace ZombieFarm.Views.Player
         [SerializeField] private float movementSpeed = 1;
         [SerializeField] private float rotationSpeed = 1;
         [SerializeField] private float gravity = 9.8f;
+        private AudioSource walkAudio;
 
         private CharacterController characterController;
 
@@ -30,6 +31,8 @@ namespace ZombieFarm.Views.Player
             this.mainCamera = Root.Camera;
 
             Root.UIManager.Joystick.OnPointerStateChanged += OnPointerStateChanged;
+
+            walkAudio = GetComponent<AudioSource>();
         }
 
         private void OnDestroy()
@@ -54,6 +57,11 @@ namespace ZombieFarm.Views.Player
             {
                 Move();
                 Rotate();
+                if (!walkAudio.isPlaying) walkAudio.Play();
+            }
+            else
+            {
+                walkAudio.Stop();
             }
         }
 
