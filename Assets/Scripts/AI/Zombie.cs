@@ -148,6 +148,9 @@ namespace ZombieFarm.AI
 
         private void Die()
         {
+            AudioSource dieSound = GetComponent<AudioSource>();
+            dieSound.Play();
+
             Active = false;
             Destroy(characterController);
             CleanInteractiveObject();
