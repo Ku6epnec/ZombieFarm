@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using ZombieFarm.Config.Links;
 using ZombieFarm.Config.LinkTargets;
 using ZombieFarm.Managers.Interfaces;
+using UnityEngine.Audio;
 
 namespace ZombieFarm.UI
 {
@@ -34,6 +35,10 @@ namespace ZombieFarm.UI
         [SerializeField] private AudioSource[] soundSource;
         [SerializeField] private Sprite mutedSoundImage;
         [SerializeField] private Sprite unmutedSoundImage;
+
+        [SerializeField] AudioMixer audioMixer;
+        private float muteSounds = -80.0f;
+        private float unmuteSounds = -20.0f;
 
         [Header("Socials elements")]
         [SerializeField] private Button telegramButton;
@@ -73,6 +78,7 @@ namespace ZombieFarm.UI
             if (music)
             {
                 musicObject.GetComponent<Image>().sprite = mutedMusicImage;
+                audioMixer.SetFloat("MusicVolume", muteSounds);
                 foreach (var source in musicSource)
                 {
                     source.mute = true;
@@ -81,6 +87,7 @@ namespace ZombieFarm.UI
             else
             {
                 musicObject.GetComponent<Image>().sprite = unmutedMusicImage;
+                audioMixer.SetFloat("MusicVolume", unmuteSounds);
                 foreach (var source in musicSource)
                 {
                     source.mute = false;
@@ -95,6 +102,7 @@ namespace ZombieFarm.UI
             if (sound)
             {
                 soundObject.GetComponent<Image>().sprite = mutedSoundImage;
+                audioMixer.SetFloat("SoundsVolume", muteSounds);
                 foreach (var source in soundSource)
                 {
                     source.mute = true;
@@ -103,6 +111,7 @@ namespace ZombieFarm.UI
             else
             {
                 soundObject.GetComponent<Image>().sprite = unmutedSoundImage;
+                audioMixer.SetFloat("SoundsVolume", unmuteSounds);
                 foreach (var source in soundSource)
                 {
                     source.mute = false;
